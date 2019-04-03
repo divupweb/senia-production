@@ -1,0 +1,34 @@
+@import '~assets/css/conf';
+
+.e404-wrap {
+  background: #fafafa;
+
+  .e404 {
+    margin: 0 auto;
+    width: 173px;
+    height: 173px;
+    background: transparent url('/assets/images/e404.svg') left top no-repeat;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 30px;
+    font-family: $font-bold;
+    text-transform: uppercase;
+    background-color: $gray-text;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: rgba(255,255,255,0.5) 0 3px 3px;
+  }
+
+  .centered {
+    display: flex;
+    min-height: 100vh;
+
+    > * {
+      margin: auto;
+    }
+  }
+}

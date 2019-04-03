@@ -1,0 +1,76 @@
+@import '~assets/css/conf';
+.allergies-select{
+  font-size: 0;
+  .allergy-item{
+    cursor: pointer;
+    margin: 10px 60px 10px 0;
+    width: 160px;
+    display: inline-block;
+    vertical-align: top;
+    @include user-select(none);
+
+    .allergy-img{
+      position: relative;
+      width: 50px;
+      height: 50px;
+      padding: 3px;
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: middle;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-size: 73%;
+      background-position: center;
+      border: 2px solid #fafafa;
+      @include border-radius(50%);
+    }
+    .allergy-icon{
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .allergy-name{
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+
+    &.active{
+      .allergy-img{
+        background: #DE4A39;
+      }
+      .allergy-icon{
+        filter: invert(100%);
+      }
+      .allergy-name{
+        font-family: $font-bold;
+      }
+    }
+  }
+
+  &.vertical-items{
+
+    .allergy-item{
+      width: 88px;
+      margin-right: 0;
+      text-align: center;
+
+      .allergy-img{
+        margin-right: 0;
+      }
+      .allergy-name{
+        display: block;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-sm){
+  .allergies-select{
+    .allergy-item{
+      width: 147px;
+      margin: 10px 10px 10px 0;
+    }
+  }
+}

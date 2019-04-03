@@ -1,0 +1,21 @@
+@import '~assets/css/conf';
+
+footer {
+  height: 420px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  text-align: center;
+  position: relative;
+  background-attachment: fixed;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(74, 74, 74, .85);
+  }
+}

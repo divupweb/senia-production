@@ -1,0 +1,1336 @@
+{
+  "en": {
+    "ADMIN": {
+      "ADMIN_PROFILE": "Admin Profile",
+      "BUTTONS": {
+        "APPROVE_KITCHEN": "Approve kitchen"
+      },
+      "COMPANIES": {
+        "ACTIVE_ONLY": "Show active only",
+        "BECOME_EMPLOYEE": "Become as employee",
+        "CANTEEN_APPLIED_SINCE": "Will be applied since {{ date }}" ,
+        "CREDITS": "Set credit",
+        "DISCOUNTS": "Set discount",
+        "DROP_SPOT": "Drop spot",
+        "GENERATE_INVOICE": "Generate invoice",
+        "SEND_MESSAGE": {
+          "TEXT": "Message",
+          "TITLE": "Send message"
+        },
+        "SHARED_LOCATION": {
+          "COMPANY_QUERY": "Add company (search by name or address)",
+          "SHARED": "shared",
+          "TITLE": "Share delivery expenses"
+        }
+      },
+      "COMPANY": {
+        "BACK": "Back to companies list",
+        "CONTACT_INFO": "Contact info",
+        "EMPLOYEES": "Employees",
+        "ETG": "ETG.",
+        "LOCATION": "Location",
+        "ORG_NUMBER": "Org. number",
+        "SUBSIDY_PER_EMPLOYEE": "Subsidy per employee"
+      },
+      "COMPANY_EMPLOYEES": "Company employees",
+      "COMPANY_ORDERS": "Company Orders",
+      "CONTACT_INFO": "Contact info",
+      "CONTROLS": {
+        "OWN_PICTURES": "Own pictures"
+      },
+      "DASHBOARD": {
+        "BUTTONS": {
+          "ADD_MANUAL_ORDERS": "Add manual orders",
+          "MANUAL_ORDERS": "Manual orders",
+          "VIEW_REPORT": "View report"
+        },
+        "COUNT_PROBLEMS_WITH_ORDERS": "{{count}} problems with orders",
+        "MANUAL": {
+          "OWNER": "Owner",
+          "SEARCH_FOR_DISH": "Search for the dish",
+          "SEARCH_FOR_OWNER": "Search for company or employee",
+          "SKIP_CHARGE": "Skip charge"
+        },
+        "TITLE": "Dashboard"
+      },
+      "DELETE_CATEGORY_CONF": "Would you like to delete category?",
+      "DELETE_COMPANY_CONF": "Would you like to delete company?",
+      "DELETE_KITCHEN_CONF": "Would you like to delete kitchen?",
+      "DELETE_LOCATION_CONF": "Would you like to delete location?",
+      "DISCOUNT": {
+        "CREDIT_COMPANY": "Credit all company orders (NOK)",
+        "CREDIT_EMPLPLOYEE": "Credit each selected employee orders",
+        "DISCOUNT_COMPANY": "Discount for all company orders",
+        "DISCOUNT_EMPLPLOYEE": "Discount for all employees orders",
+        "DISCOUNT_KITCHEN": "New kitchen interest percent"
+      },
+      "DISH_CATEGORIES": "Dish Categories",
+      "FINANCIAL_REPORT": "Financial report",
+      "INVOICES": {
+        "DETAILED": "Detailed invoice",
+        "INVOICE": "Invoice"
+      },
+      "KITCHEN": {
+        "BUTTONS": {
+          "ADD": "Add categories",
+          "ADD_REGION": "Add region",
+          "BACK_TO_THE_LIST": "Back to the kitchens list",
+          "REMOVE_REGION": "Remove region",
+          "SET_INTEREST": "Set interest percent"
+        },
+        "DEFAULT_REGION": "Default region",
+        "NEW_CATEGORY": "New category",
+        "SUSPENDS": "Suspends",
+        "UPDATE": "Update!"
+      },
+      "KITCHEN_ORDERS": "Kitchen Orders",
+      "LOCATION": "Location",
+      "LOGISTICS": "Logistics",
+      "LOGISTIC_USERS": "Logistic Users",
+      "PENDING_COMPANIES": "Pending Companies",
+      "PENDING_COMPANY": "Pending company",
+      "PENDING_KITCHEN": "Pending kitchen",
+      "PENDING_KITCHENS": "Pending Kitchens",
+      "PENDING_SLIDER": {
+        "TITLE": "{{ count }} Pending companies and kitchens"
+      },
+      "PROFILE": "Profile",
+      "RELATED_KITCHEN": "Related kitchen",
+      "REPORTS": {
+        "BACK": "Back to statistics",
+        "CARD_CHARGES": "Card charges",
+        "COMPANY_INVOICES": "Company invoices",
+        "CREDIT": "Credit",
+        "DELIVERED": "Delivered",
+        "DELIVERIES": "deliveries",
+        "DELIVERY": "Delivery",
+        "DISCOUNT": "Discount",
+        "ITEMS": "items",
+        "KITCHEN_INVOICES": "Kitchen invoices",
+        "ONE_DELIVERY_COST": "One delivery cost",
+        "PICKED_UP": "Picked up",
+        "PROFIT": "Profit",
+        "QUANTITY": "Quantity",
+        "SIGNATURE": "Signature",
+        "TO_BE_CHARGED": "To be charged",
+        "TO_BE_PAID": "To be paid"
+      },
+      "SELECT_RELATED_KITCHEN": "Select related kitchen",
+      "SEND_MESSAGE": {
+        "ALL_EMPLOYEES": "All employees",
+        "COMPANY_ADMIN": "Company",
+        "COMPANY_ADMIN_DESCRIPTION": "Send message for company administrator",
+        "COMPANY_EMPLOYEES_DESCRIPTION": "Send message for company employees",
+        "EMPLOYEES": "Employees",
+        "KITCHEN_ADMIN": "Kitchen",
+        "KITCHEN_ADMIN_DESCRIPTION": "Send message for kitchen administrator",
+        "KITCHEN_EMPLOYEES_DESCRIPTION": "Send message for kitchen employees",
+        "PLACEHOLDER": "Enter message text",
+        "SEND": "Send",
+        "SEND_NEW": "Send new message",
+        "TO": "To"
+      },
+      "SETTINGS": {
+        "GENERAL_INFO": "General info",
+        "SUSPEND_PLANNER": "Suspend planner",
+        "TITLE": "Settings",
+        "USERS": "Users"
+      },
+      "SHARED_LOCATIONS": "Shared Locations",
+      "SINGULAR": "Admin",
+      "SORT": {
+        "COLUMNS": {
+          "ACTIVE": "Active",
+          "ADDRESS": "Address",
+          "CREATED_AT": "Created at",
+          "DROP_SPOT": "Drop Spot",
+          "FLOOR": "Floor",
+          "NAME": "Name",
+          "ORDERS_COUNT": "Orders",
+          "PHONE": "Phone",
+          "USERS_COUNT": "Users"
+        },
+        "FILTERED_BY": "Filtered by"
+      },
+      "SUSPENDS": {
+        "DELETE_MESSAGE": "Would you like to delete suspend?",
+        "EVENTS": "Events",
+        "TITLE": "Suspends"
+      }
+    },
+    "BUTTONS": {
+      "ACCEPT": "Accept",
+      "ADD": "Add",
+      "ADD_CATEGORY": "Add dish category",
+      "ADD_NEW": "Add new",
+      "APPROVE": "Approve",
+      "BACK": "Back",
+      "BECOME": "Become",
+      "CANCEL": "Cancel",
+      "CHANGE_PASSWORD": "Change password",
+      "CLOSE": "Close",
+      "COMPANY_ADMIN": "Go to Company admin",
+      "CONFIRM": "Confirm",
+      "DECLINE": "Decline",
+      "DEFAULTS": "Defaults",
+      "DISCOUNT": "Discount",
+      "EDIT": "Edit",
+      "FORGOT": "Forgot",
+      "FREEZE": "Freeze",
+      "GENERATE": "Generate",
+      "GENERATE_INVOICE": "Generate invoice",
+      "GET_STARTED": "Get started",
+      "LOG_IN": "Log in",
+      "LOG_OUT": "Log Out",
+      "NEXT": "Next",
+      "MARKETPLACE": "Marketplace",
+      "OPEN": "Open",
+      "REGISTER": "Register",
+      "REJECT": "Reject",
+      "REMOVE": "Remove",
+      "REMOVE_IMAGE": "Remove image",
+      "REMOVE_LOGO": "Remove logo",
+      "SAVE": "Save",
+      "SAVE_AND_UPDATE": "Save & update",
+      "SAVE_CHANGES": "Save changes",
+      "SEND": "Send",
+      "SEND_MESSAGE": "Send message",
+      "SHARE": "Share",
+      "SIGN_UP": "Sign up",
+      "SUBMIT": "Submit",
+      "TRANSFER": "Transfer",
+      "VIEW_DETAILS": "View details",
+      "VIEW_MENU": "View menu",
+      "YES": "Yes",
+      "SHOW_ME_THE_FOOD": "Show me the food",
+      "BECOME_A_RESTAURANT_PARTNER": "Become a restaurant partner",
+      "SELL_FOOD_WITH_US": "Sell food with us",
+      "BECOME_A_DRIVER": "Become a driver"
+    },
+    "CALENDAR": {
+      "DAYS": "days",
+      "LAST_MONTH": "Last month",
+      "LAST_WEEK": "Last week",
+      "SHORT_DAYS": "d",
+      "SHORT_HOURS": "h",
+      "SHORT_MINUTES": "m",
+      "TODAY": "Today",
+      "TOMORROW": "Tomorrow",
+      "W": "W",
+      "YESTERDAY": "Yesterday"
+    },
+    "COMPANY": {
+      "COMPANY_DEFAULTS": "Company Defaults",
+      "COMPANY_ORDERS": "Company Orders",
+      "CONTACT": {
+        "YOUR_LOCAL_ADMIN": "Your local admin"
+      },
+      "DASHBOARD": {
+        "COUNT_COMPANY_ORDERS": "{{ count }} company orders",
+        "COUNT_EMPLOYEE_ORDERS": "{{ count }} employee orders",
+        "COUNT_PROBLEMS": "{{count}} problems",
+        "DELIVERED_WITH_PROBLEM": "Delivered by {{ driver }} with some problems",
+        "ORDERED": "Ordered",
+        "PICKED_UP_BY_DRIVER": "picked up by {{ driver }}",
+        "PRODUCING": "Producing",
+        "TITLE": "Dashboard"
+      },
+      "DEFAULT_WEEKDAYS_SUBSCRIPTION": "Default {{weekDay}}'s {{subscription}}",
+      "EMPLOYEES": {
+        "ADD_KITCHENS": "Add kitchens on the page",
+        "ADMIN": "admin",
+        "AVAILABILITY": "Availability",
+        "BUTTONS": {
+          "ADD_EMPLOYEE": "Add new employee",
+          "INVITE": "Invite employee",
+          "REMOVE_EMPLOYEE": "Remove employee",
+          "RESET_SETTINGS": "Reset settings to default",
+          "SETTINGS_FOR_ALL": "Settings for all employees"
+        },
+        "COMPANY_PIN": "Company PIN: {{pin_code}}",
+        "NOT_AVAILABLE": "{{ subscription }} is not available",
+        "SEARCH_EMPLOYEE": "Search employee",
+        "SETTINGS_FOR_ALL": "Settings for <br>all employees",
+        "YOU": "you"
+      },
+      "EMPLOYEES_ORDERS": "Employees Orders",
+      "FROM_KITCHEN": "from {{ kitchen }}",
+      "KITCHENS": {
+        "BUTTONS": {
+          "ADD": "Add kitchens",
+          "MARK_AS_FAVORITE": "Mark as favorite",
+          "REMOVE_FROM_FAVORITE": "Remove from favorite"
+        },
+        "CONFIRMATION": {
+          "DESC": "Employee orders settings update"
+        },
+        "DELIVERY_COST": {
+          "ESTIMATED": "Estimated delivery cost",
+          "MAX": "max {{ max }} ({{ amount }} kitchens x {{ cost }})",
+          "MIN": "min {{ cost }} (delivery from 1 kitchen)"
+        },
+        "ON_LEAVE": {
+          "CONFIRMATION": "Do you want to leave this page?",
+          "DESC": "All your changes will be lost."
+        },
+        "ON_UPDATE": {
+          "CONFIRMATION": "Do you want to proceed?",
+          "DESC": "All employees will be notified about these changes."
+        },
+        "SEARCH_KITCHEN": "Search kitchen"
+      },
+      "ORDERS": {
+        "BASKET_IS_EMPTY": "Your basket is empty",
+        "BUTTONS": {
+          "ADD": "Add &nbsp;<span>to cart</span>",
+          "ADDED": "Added &nbsp;<span>to cart</span>",
+          "EDIT_ORDER": "Edit order",
+          "ORDER_CATERING": "Order catering"
+        },
+        "DEADLINE_PASSED": "Order time for this kitchen is over",
+        "DEADLINE_PASSED_SUB": "Please, select another kitchen or another date",
+        "DEADLINE_SOON": "{{ subscription }} order for this kitchen will be locked soon",
+        "END_TIME": "End time",
+        "START_TIME": "Start time"
+      },
+      "ORDERS_REPORT": "Orders report",
+      "REPORTS": {
+        "CUSTOM": "Custom",
+        "PREORDER": "Preorder",
+        "SEARCH_EMPLOYEE": "Search employee"
+      },
+      "SETTINGS": {
+        "ADMIN_PROFILE": "Admin profile",
+        "GENERAL_INFO": "General info",
+        "SUSPEND_PLANNER": "Suspend planner",
+        "TITLE": "Settings"
+      },
+      "SUBSCRIPTION_IS_LOCKED": "{{subscription}} is locked",
+      "SUBSCRIPTION_WILL_BE_LOCKED_AT": "{{subscription}} will be locked at {{time}}"
+    },
+    "CONTROLS": {
+      "ACCOUNT_LOGO": "Account logo",
+      "ADDRESS": "Address",
+      "ADDRESS2": "Address 2",
+      "ADD_CARD": "Add card",
+      "ADD_CREDIT_CARD": "Please wait for Food.farm approve or add credit card here or settings page.",
+      "ADD_PAYPAL": "Add paypal",
+      "ADMIN_PASSWORD": "Admin password",
+      "AGREE_FF": "I agree to Food.Farm's ",
+      "APPROVED": "Approved",
+      "BANK_ACCOUNT": "Bank account",
+      "BECOME_FF_DRIVER": "BECOME A FOOD.FARM DELIVERY DRIVER TODAY",
+      "BUNCH": "Group pack",
+      "CALENDAR_ID": "Calendar ID",
+      "CANTEEN": "Digital canteen",
+      "CAPACITY": "Capacity",
+      "CHANGE": "Change",
+      "CHARGE_PERIOD": "Charge period",
+      "CITY": "City",
+      "COMMENT": "Comment",
+      "COMMENT_OPT": "Comment (optional)",
+      "COMPANY_ALREADY_ACCOUNT": "Is your company already on Food.Farm?",
+      "COMPANY_NAME": "Company name",
+      "COMPANY_PHONE": "Company phone",
+      "CONFIRM_PASSWORD": "Confirm password",
+      "CONTACT_PERSON": "Contact person",
+      "COOKIES": "We use cookies for your user experience. See our cookie policy for more information about our own and third-party cookies, and how you can reject (opt-put) and delete cookies. By continuing your navigation on the website, this is considered an acceptance of the placement and use of cookies.",
+      "COOKIES_POLICY": "Cookies policy",
+      "COUNTRY": "Country",
+      "CREDITS": "Credits",
+      "CURRENCY": "Currency",
+      "DATE": "Date",
+      "DELIVERY": "Delivery",
+      "DELIVERY_ADDRESS": "Delivery Address",
+      "DELIVERY_ADDRESS_2": "Delivery Address 2",
+      "DESCRIPTION": "Description",
+      "DROP_SPOT_NAME": "DropSpot Name",
+      "EMAIL": "Email",
+      "EMAILS": "Emails",
+      "ENTERPRISE_REGION": "Enterprise region",
+      "ERRORS": {
+        "INCORRECT": {
+          "EMAIL": "Email is incorrect",
+          "MESSAGE": "Invalid {{ field }} field"
+        },
+        "MATCH": {
+          "PASSWORD": "Password not match"
+        },
+        "REQUIRED": {
+          "ADDRESS": "Please, enter address",
+          "CITY": "Please enter city name",
+          "CONFIRM_PASSWORD": "Please, enter Confirm Password field",
+          "EMAIL": "Please, enter Email field",
+          "FIRST_NAME": "Please enter first name",
+          "LAST_NAME": "Please enter last name",
+          "MESSAGE": "Please, enter {{ field }} field",
+          "MUST_AGREE": "You must agree",
+          "NAME": "Please, enter name field",
+          "ORGANIZATION_NUMBER": "Please, enter organization number field",
+          "PASSWORD": "Please, enter Password field",
+          "ZIP_CODE": "Please, enter zip code"
+        }
+      },
+      "EVERY_WEEK": "Charge every week",
+      "FIRST_NAME": "First name",
+      "FLOOR": "Floor",
+      "HEAD_CHEF_NAME": "Head Chef Name",
+      "HAVE_ACCOUNT": "Already have an account?",
+      "IMAGE": "Image",
+      "INTEREST_PERCENT": "Interest percent",
+      "INVOICE_DELAY": "Invoice delay (days)",
+      "INVOICE_EMAIL": "Invoice email",
+      "INVOICE_MONTHLY": "Invoice monthly",
+      "INVOICE_TWICE_A_MONTH": "Invoice twice a month",
+      "INVOCIE_WEEKLY": "Invoice weekly",
+      "KITCHEN_DELIVERY": "Kitchen Delivery",
+      "KITCHEN_NAME": "Kitchen name",
+      "LANDING_COMPANY": "Company section on landing page",
+      "LANDING_EMPLOYEE": "Employee section on landing page",
+      "LANDING_PAGE_SETTINGS": "Landing page settings",
+      "LAST_NAME": "Last name",
+      "LEARN_MORE": "Learn more",
+      "LAST_NAME_OPTIONAL": "Last name (optional)",
+      "MAX_PRICE": "Max price",
+      "MOBILE": "Mobile",
+      "NAME": "Name",
+      "NEW": "New",
+      "NEW_PASSWORD": "New password",
+      "NO_PAYMENT": "No payment info",
+      "NO_PAYPAL": "No paypal info",
+      "NUMBER_OF_EMPLOYEES": "Number of employees",
+      "OLD_PASSWORD": "Old password",
+      "ONCE_MONTH": "Charge once a month",
+      "ORDERS": "Orders",
+      "ORGANIZATION_NUMBER": "Organization number",
+      "PASSWORD": "Password",
+      "PASSWORD_CONF": "Password Confirmation",
+      "PAYMENT_DETAILS": "Payment details",
+      "PAYPAL": "Paypal",
+      "PHONE": "Phone",
+      "PIN": "Pin",
+      "PIN_CODE": "Pin code",
+      "PRICE": "",
+      "PRICE_RANGE": "Price range",
+      "PRIVACY_POLICY": "Privacy policy",
+      "PROFIT_MARGIN": "Profit margin, %",
+      "RECEIVE_OCCASIONAL": "I would like to receive occasional emails with information that Food.Farm thinks I'd be interested in.",
+      "REGION": "Region",
+      "RETYPE_PASSWORD": "Retype password",
+      "CHOOSE_A_CITY": "Choose a city",
+      "ROLE": "Role",
+      "SEARCH": {
+        "KITCHEN": "Search kitchen"
+      },
+      "SHOW_ACCOUNTS": "Show available accounts",
+      "SHOW_KITCHEN_RATING": "Show kitchen's rating",
+      "SIGN_UP_PIN": "Sign up with your PIN code",
+      "SKIP_CARD": "Don't charge card",
+      "STATUS": "Status",
+      "SUBSIDY_MAX_VALUE": "Subsidy max value",
+      "SUSPEND_PERIODS": "Suspend periods",
+      "TERMS_OF_SERVICE": "Terms of Service",
+      "TIME_ZONE": "Time zone",
+      "TOC": "We've updated our Terms of Service to comply with EU General Data Protection Regulation (GDPR). To continue using Food.Farm, please accept our new terms by May 25th, 2018.",
+      "TWICE_MONTH": "Charge twice a month",
+      "WORK_EMAIL": "Work email",
+      "USERS": "Users",
+      "VAT_NUMBER": "VAT number",
+      "ZIP_CODE": "Zip code"
+    },
+    "DEADLINE": {
+      "SINGULAR": "Deadline"
+    },
+    "EMPLOYEE_CONFIRMATION": {
+      "ENTER_NEW_PASSWORD": "Enter new password",
+      "TOC": {
+        "LINK": "terms and conditions",
+        "TEXT_BEFORE": "Submitting form I agree to the "
+      }
+    },
+    "EMPLOYEE_REGISTER": {
+      "BUTTONS": {
+        "BACK_TO_WEBSITE": "Back to website"
+      },
+      "TOC": {
+        "LINK": "terms and conditions",
+        "TEXT_AFTER": "",
+        "TEXT_BEFORE": "I agree to the"
+      }
+    },
+    "ENTERPRISE": {
+      "ARE_YOU_COMPANY": "Your office meal, delivered",
+      "ARE_YOU_EMPLOYEE": "Are you an employee?",
+      "OPEN_IN_BROWSER_0": "Open web-version in",
+      "OPEN_IN_BROWSER_1": "Browser",
+      "POWERED_BY_0": "Powered by",
+      "POWERED_BY_1": "Food.Farm",
+      "SELECT_WAY": "Select convenient way to order food",
+      "SIGN_UP": {
+        "COMPANY": "Company"
+      }
+    },
+    "HOME": {
+      "ADD_KITCHEN": {
+        "DESC": "Write their email here to invite tem to Food.Farm",
+        "TITLE": "Add your favorite kitchen"
+      },
+      "CITIES": {
+        "FIND_FOOD_FARM": "Find Food.Farm in your city",
+        "IN": "Food.Farm in",
+        "IN_OSLO": "in Oslo",
+        "MADE_WITH": "Food.Farm AS © 2016-2018. Made with",
+        "NORWAY": "Norway",
+        "OSLO": "Оslo",
+        "RESTAURANTS": "Partners",
+        "SELECT_CITY": "Select city",
+        "START_ORDERING": "And start ordering delicious food from our partners"
+      },
+      "COMPANY": {
+        "SIGN_UP": "Sign up your company",
+        "WHOS_HUNGRY": "Who's hungry?",
+        "DROP_YOUR_DETAILS": "Drop your details below to bring great food to your office.",
+        "BRING_FOOD": "Let's bring great food to your office!",
+        "PLEASE_PROVIDE_THE_CONTACT_DETAILS": "Please provide the contact details of the decision maker you would like us to reach out to."
+      },
+      "CONTACT_FORM": {
+        "EMAIL": "Email",
+        "MESSAGE": "Your message",
+        "NAME": "Your name",
+        "PHONE": "Phone (optional)",
+        "SEND": "Send Message",
+        "SUCCESS": "Your message has been sent",
+        "SUCCESS_DESC": "Our regional administrator will contact you soon",
+        "TITLE": "Contact us"
+      },
+      "COOK": {
+        "BENEFITS": "Benefits of using Food.Farm",
+        "BENEFITS_DESC": "A quick look at what we have to offer",
+        "BEN_1": "Sales & Marketing",
+        "BEN_1_DESC": "Being a part of the Food.Farm platform enables you to fully utilise your kitchen´s capacity and increase sales. We do the marketing, you do the cooking.",
+        "BEN_2": "Logistics",
+        "BEN_2_DESC": "Let us take care of the logistics and relax knowing your food will be picked up and delivered to the right location - on time!",
+        "BEN_3": "Admin & Payments",
+        "BEN_3_DESC": "With Food.Farm you get both order predictability and complete control of payments. Spend less time on paperwork and more time cooking.",
+        "COOK": "Cook",
+        "EST_SALES": "Predictability = Smart Production Lines",
+        "GET_MONEY": "Get money",
+        "GET_READY": "And get ready to boost your sales",
+        "LET_US_KNOW": "Let us know your kitchen.",
+        "MARKETPLACE_DESC": "Your food deserves a decent presentation",
+        "PAPERWORK": "We will do the necessary paperwork.",
+        "REGISTER": "Register",
+        "REGISTER_KITCHEN": "Register your kitchen",
+        "SEE_MARKETPLACE": "See Our Kitchen Marketplace",
+        "SET_MENU": "Set your own menu and prices, and start cooking. Don't worry about delivery.",
+        "SIGN_UP_KITCHEN": "SIGN UP YOUR KITCHEN",
+        "WHY_NOT_TRY_US": "Why not try us? It's free.",
+        "WITH": "Cook with Food.Farm"
+      },
+      "DELIVERY": {
+        "CHECK_IF": "Check if we're in your city",
+        "DESC": "We don't do individual orders all over the city.. And thats a good thing! We deliver food for a minimum number of people who share an adress, such as  people who work in the same company.. This enables us to get the meals to you quicker (and warmer) and it saves the environment and the city for a lot of unnessisary trafFic.",
+        "EVERYBODY_WINS": "-Everybody wins.",
+        "GROUPED_DELIVERY": "Grouped Delivery",
+        "REGISTER_FIRST": "or register to be the first"
+      },
+      "DOWNLOAD": {
+        "ANDROID": "Download Android App on",
+        "DESC": "Your employees decide what they want to eat",
+        "IOS": "Download iOS App on",
+        "TITLE": "Download our app"
+      },
+      "EAT": {
+        "ACCESS_TO_KITCHENS": "With access to all our kitchens you can choose from a wide range of cuisines. No more boring meals.",
+        "ADD_KITCHEN": "Add your favorite kitchen",
+        "ANDROID_APP": "Android app on",
+        "AND_NEVER_HASSLE": "and never hassle with it again",
+        "APP_STORE": "App Store",
+        "AVAILABLE_ON": "Available on the",
+        "BENEFITS": "Benefits of Using Food.Farm",
+        "CHECK_ORDERS": "Check where your orders are in the process with real time tracking of all your orders in your dashboard. You can also easily access historic reports, as well as view planned orders for the future.",
+        "CHOOSE_KITCHEN": "Choose kitchen, offer, and set subsidies.  Send out invites.",
+        "CHOOSE_KITCHENS": "Your team place individual orders for the next working days.",
+        "COMPANY_ALREARY": "Is your company already on Food.Farm?",
+        "CITIES": "Cities",
+        "COMPANY_SIGNUP": "Sign up as company",
+        "COMPLETE_CONTROL": "Complete Control",
+        "CONSTANTLY_GROWING": "Continuously growing, constantly delicious",
+        "CONVENIENT": "Convenient",
+        "CORPORATE_FOOD": "Corporate food – with a personal touch",
+        "CREATE_ACCOUNT_0": "Create a free account, and pay only for what is ordered by the company or employees.",
+        "CREATE_ACCOUNT_1": "only for the food you order. No hidden costs.",
+        "CUSTOMERS": "Our customers",
+        "DISHES": "Dishes",
+        "DIVERSE": "Diverse",
+        "DOWNLOAD": "Download our app",
+        "DOWNLOAD_DESC": "Your employees decide what they want to eat",
+        "EAT_WITH_FOODFARM": "Eat with Food.Farm",
+        "ECONOMIC": "Economic",
+        "EMPOWER": "Empower your employees to order what they want",
+        "ENABLE_EMPLOYEES": "Enable employees to set their own criteria. Allergies? No problem. Low carb, high protein? You got it.",
+        "EVERYONE_GETS_MENU": "Everyone gets their own personal menu",
+        "FINE_TUNE": "Fine-tune the account to your needs, order in bulk as an office manager or let your employees order for themselves.",
+        "FLEXIBLE": "Flexible",
+        "FROM_ALL_PARTNERS": "From all our kitchen partners",
+        "GET_STARTED": "Get Started",
+        "GET_YOUR_FOOD": "Get your food",
+        "GOOGLE_PLAY": "Google Play",
+        "GREAT": "Great!",
+        "HAVE_A_LOOK": "Have a Look at Our Menu",
+        "INSIGHT_DRIVEN": "Insight Driven",
+        "INVITE_EMPLOYEES": "Invite employees",
+        "INVITE_MESSAGE": "Your employees recieve an email welcoming them to Food.Farm and they can download our app to tailor the menu further and easily design their own food subscription.",
+        "KEEP_TRACK_0": "Keep track of kitchens, subsidies, employees, orders",
+        "KEEP_TRACK_1": "and historic reports in your admin dashboard.",
+        "KEEP_TRACK_2": "Food admin has never been easier!",
+        "LET_US_KNOW": "Register and let us get to know your company.",
+        "MENU": "Menu",
+        "NEVER_HASSLE": "And never hassle with it again",
+        "NEVER_HASSLE_2": "It's quick. It's affordable. There’s something for everyone.",
+        "NON_BINDING": "Non-binding Subscription",
+        "NON_BINDING_SUBSCRIPTION": "Non-binding subscription",
+        "NO_HIDDEN_COSTS": "No hidden costs.",
+        "OR": "Or",
+        "ORDER": "Order",
+        "ORDER_THROUGH": "Order through our easy to use web and mobile apps, and have the food delivered to your office. No more need for your own canteen.",
+        "PERSONALIZED": "Personalized",
+        "PERSONAL_FILTERS": "We let them set their own personal filters, based on their own preferences",
+        "PRE_ORDERING": "By pre-ordering through Food.Farm you contribute to reducing general food waste and help saving the environment.",
+        "PUT_EMPLOYEE_IN_CONTROL": "Put the employee in control",
+        "QUICK_LOOK": "A quick look at what we have to offer",
+        "REGISTER": "Register",
+        "REMEMBER_VERIFY_EMAIL": "Remember to verify your email.",
+        "RESPONSIBLE": "Responsible",
+        "RESTAURANTS": "Partners",
+        "SEE_MENU": "See the full menu",
+        "SELECT_MENUS": "Select between menus from top kitchens",
+        "SELECT_OFFER": "Select offer",
+        "SEND_INFO": "send info to decision maker",
+        "SETUP_ONCE": "Set it up once",
+        "SET_IT_UP": "Set it up once",
+        "SET_SUBSIDIES": "Set subsidies and decide what days you want food delivered",
+        "SIGN_UP": "SIGN UP YOUR COMPANY",
+        "SINCE_AUTOMATE": "Since Food.Farm automate the ordering process we can offer quality food to a unbeatable price. Also, why pay for food you don´t eat?",
+        "SMART_AND_CONNECTED": "Smart and connected",
+        "START_AN_ACCOUNT": "Sign your team up for a business account.",
+        "SUCCESS": "We're looking forward to have you with us and will contact you ASAP to get you properly on board!",
+        "TRY_US": "Try us today",
+        "USE_CASE_1": "Let your office manager order directly from our marketplace",
+        "USE_CASE_2": "Use FoodFarm and let your employees order themselves!",
+        "WHY_NOT_TRY": "Why not try us? It's free.",
+        "WRITE_KITCHEN_EMAIL": "Write their email here to invite tem to Food.Farm",
+        "YOUR_ORDER": "Your order will be delivered to your working place on time.  Enjoy.",
+        "YOUR_ORDER_2": "We swing by your workplace daily to drop off your meals – always on time."
+      },
+      "FOR_COMPANIES": {
+        "YOUR_OFFICE_MEAL_DELIEVERED": "Your office meal, delivered",
+        "PERSONALIZED_DELICIOUS_MEALS": "Personalized, delicious meals delivered daily, straight to your workplace",
+        "AWESOME_MEAL_VARIETY": "Awesome meal variety",
+        "NO_MORE_SOGGY_SANDWICHES": "No more soggy sandwiches or boring meals; everyone will find something to love – all in one place!",
+        "FITS_BUDGET": "Fits any company budget",
+        "OUR_MEALS_START": "Our meals start at nominal prices and we’ve got flexible billing options for every budget. No hidden costs. No strings attached.",
+        "REMARKABLE_TIMESAVINGS": "Remarkable time savings",
+        "WAITING_IN_LINE": "Waiting in line at a canteen or heading out to buy food is a huge waste of resources. We bring back this time to your team.",
+        "FLEXIBLE_CUSTOM_ORDERS": "Flexible custom orders",
+        "ALLERGIES_GLUTEN_FREE": "Allergies? Gluten free? Forget one-size-fits-all. Your team select their individual meals to suit their specific taste buds and dietary needs.",
+        "ON_TIME_DELIEVERY": "On-time delivery",
+        "WE_BUNDLE_UP_YOUR_TEAM": "We bundle up your team’s orders and deliver them at once to your office. Your food arrives right on time, every time.",
+        "MINIMAL_FOOD_WASTE": "Minimal food waste",
+        "EACH_EMPLOYEE_GETS_THEIR_LUNCH": "Each employee gets their own individual lunch, so your company stops wasting money over-ordering food.",
+        "WHATS_ON_THE_MENU": "What's on the menu?",
+        "WE_PARTNER_WITH": "We partner with the best local gems in town",
+        "FRESH_TAKE_ON_OFFICE_FOOD": "A fresh take on office food, in three steps",
+        "WE_MEAN_IT": "We mean it when we say: Food.Farm makes office food delivery a piece of cake",
+        "START_FEEDING_YOUR_OFFICE": "Start feeding your office",
+        "FOOD_MANAGEMENT": "Food management made easy",
+        "FULL_CONTROL_TO_FUEL_BELLIES": "Full control and visibility to fuel your team's hungry bellies in no time",
+        "CENTRALIZED_REPORTING": "Centralized reporting",
+        "KEEP_TRACK_OF_EMPLOYEES_ORDERS": "Keep track of your employees’ orders and payment history in a single admin dashboard.",
+        "ADVANCE_PLANNING": "Advance planning",
+        "PRE_ORDER_YOUR_MEALS_WEEKS": "Pre-order your meals weeks – if not months – in advance and set up recurring orders, if needed.",
+        "GROUP_ORDERS": "Group orders",
+        "ORDER_IN_BULK": "Order in bulk as an office manager or let your employees order for themselves.",
+        "GET_THE_APP": "Get the Food.Farm app",
+        "ORDER_WITH_THE_APP": "Order with the tap of a button and get notified as soon as your food arrives!",
+        "WE_ARE_TRUSTED_BY_GREAT_TEAMS": "We are trusted by great teams",
+        "JOIN_THESE_GREAT_COMPANIES": "Join these great companies in serving your team food excellence"
+      },
+      "FOR_RESTAURANTS":{
+        "GROW_YOUR_BUSINESS": "Grow your restaurant's business",
+        "JOIN_THE_DOZENS_OF_RESTAURANTS": "Join the dozens of restaurants who work with us to grow their business, promote their brand and acquire new customers.",
+        "HOW_IS_FF_DIFFERENT": "How is Food.Farm different?",
+        "FORGET_COMPLEX_ORDERS": "Forget complex, last minute orders that put extra stress on your kitchen. <br> Food.Farm brings you revenue way before the daily lunch rush even begins.",
+        "GREATER_REACH": "Greater reach",
+        "GET_EXCLUSIVE_ACCESS": "Get exclusive access to offices around your city and sell to customers who can’t visit your premise during lunch time.",
+        "INCREASED_REVENUE": "Increased revenue",
+        "BY_PUSHING_THEIR_BRAND": "By pushing their brand into Food.Farm, our top restaurants make an additional 145 000 kr in revenue per month.",
+        "ADVANCED_PRODUCTION": "Advanced production",
+        "PLAN_YOUR_FOOD_PRODUCTION": "Plan your food production several days in advance and maintain full control over your ordering deadlines.",
+        "EASY_KITCHEN_MANAGEMENT": "Easy kitchen management",
+        "WITH_OUR_SIMPLE_CONTROL_PANEL": "With our simple control panel, manage incoming orders, productions, lead times and logistics on the go.",
+        "FOCUS_ON_FOOD": "Focus on the food",
+        "MAINTAIN_COMPLETE_CONTROL": "Maintain complete control of your operations and focus on what you do best. Forget dreary admin tasks, wrong deliveries, or customer complains.",
+        "FF_MARKETING": "Food.Farm-funded marketing",
+        "BENEFIT_FROM_THE_DIGITAL_MARKETING": "Benefit from the digital marketing we conduct to promote your brand to a targeted audience of business professionals.",
+        "HEAR_FROM_PARTNERS": "Hear from our restaurant partners",
+        "WE_PRIDE_WITH_WORKING": "We pride ourselves with working with the best local restaurants",
+        "READY_TO_TAKE_YOUR_BUSINESS": "Ready to take your business to the next level?",
+        "WE_ARE_ALWAYS_ON_THE_HUNT": "We're always on the hunt for great restaurants to partner with. Why not yours?",
+        "I_LAUNCHED_CAMEN_ON_FOOD": "I launched Camên on Food.Farm and immediately started receiving orders. Within only a couple of weeks, my capacity was maxed out on certain days. I am now considering employing staff to further grow Camên."
+      },
+      "ABOUT_US": {
+        "WE_BRING_FOOD": "We bring food happiness,<br> one hungry team at a time",
+        "WE_ARE_ON_A_MISSION": "We’re on a mission to revolutionize office food by replacing legacy canteens with an innovative workplace food service. Our team is committed to making it easy and convenient for business professionals to order custom-curated wholesome meals from top local restaurants and get them delivered daily, straight to their office. ",
+        "REDUCING_FOOD_WASTE": "Reducing food waste is a rule we live and die by. With Food.Farm, every employee gets their own individual meal. We eliminate the waste of over-ordering, so your company saves money.",
+        "GET_A_TASTE": "Get a taste of what we’re about",
+        "FUEL_YOUR_BUSY_TEAM": "Fuel your busy team’s hungry bellies from the best restaurants in town and save time and money.",
+        "INCREASE_YOUR_RESTAURANT_REVENUE": "Increase your restaurant revenue, while keeping full control over your food production.",
+        "FOR_COMPANIES": "For companies",
+        "FOR_RESTAURANTS": "For restaurants",
+        "READY_TO_BRING_YOUR_CANTEEN": "Ready to bring your canteen into the 21st century?",
+        "GET_IN_TOUCH": "Get in touch with our food gurus and let your team’s tastebuds rejoice!"
+      },
+      "PROP_TECH":{
+        "YOUR_SMART_FACILITY_MANAGEMENT_PARTNER": "Your smart facility management partner",
+        "IN_ADDITION_TO_RUNNING": "In addition to running our own meal-delivery marketplace, we cater to large companies within the fields of corporate real estate and facility management whom we license our proprietary solution to.",
+        "OUR_SOLUTION_GIVES": "Our solution gives our clients the ability to run their own digital marketplace by connecting their network of food buyers and sellers in an organized, efficient environment. ",
+        "WHO_DO_WE_CATER_TO": "Who do we cater to?",
+        "LARGE_CATERING_PROVIDERS": "Large catering providers",
+        "CORPORATE_REAL_STATE_COMPANIES": "Corporate real estate companies",
+        "FACILITY_MANAGEMENT_COMPANIES": "Facility management companies",
+        "WHAT_YOU_GET": "What you get",
+        "SELF_BRANDED_MARKETPLACE": "A self-branded marketplace powered by a state-of-the-art food management system",
+        "BRANDED_MARKETPLACE_WEBSITE": "Branded marketplace website",
+        "ABILITY_TO_ACQUIRE_KITCHENS": "Ability to acquire & onboard kitchens",
+        "ABILITY_TO_ACQUIRE_CLIENTS": "Ability to acquire & onboard business clients",
+        "ABILITY_TO_CREATE_SUB_REGIONS": "Ability to create and manage sub-regions",
+        "LOGISTICS_MANAGEMENTS_MODULE": "Logistics management module",
+        "KITCHEN_COMMISION_MODULE": "Kitchen commission management module",
+        "PAYMENT_MANAGEMENT_MODULE": "Payment management module",
+        "BENEFITS_FOR_YOUR_BUSINESS": "Benefits for your business",
+        "WE_UNDERSTAND_CHALLENGIES": "We understand the challenges associated with running a traditional corporate canteen, and have optimized our operational models to suit the needs of your business.",
+        "HIGHER_REVENUE_CANTEEN_CONTRIBUTIONS": "higher revenue & canteen contributions",
+        "FLEXIBLE_DIGITAL_BASED_INFRASTRUCTURE": "Flexible, digital-based infrastructure",
+        "LOWER_COSTS": "lower costs due to lack of production facilities",
+        "MINIMAL_FOOD_WASTE": "minimal food waste",
+        "HEAR_FROM_CLIENTS": "Hear from our corporate clients",
+        "WE_ARE_INCREDIBLY_SATISFIED": "We’re incredibly satisfied with the online marketplace that the Food.Farm team has built for us. So far, we’ve managed to connect many companies in the Aker Brygge region with over ten partner restaurants in the area. Our companies are happy to receive great food everyday, while our restaurants are making more business. This nifty marketplace solution has been a win-win situation for everyone.",
+        "READY_TO_PUT_OUR_TECH_TO_WORK": "Ready to put our technology to work?",
+        "GET_IN_TOUCH": "Get in touch with our friendly sales team"
+      },
+      "FOR_DRIVERS": {
+        "EARN_COMPETITIVE_PAY1": "Earn competitive pay for",
+        "EARN_COMPETITIVE_PAY2": "a few hours of delivery work each day",
+        "DELIVERY_DRIVER": "Delivery driver",
+        "HELP_US_ENSURE1": "Help us ensure that every one of our delicious meals",
+        "HELP_US_ENSURE2": "is delivered on time and serviced with a smile!",
+        "WHY_JOIN_OUR_FF_TEAM": "Why join our friendly Food.Farm team?",
+        "JOIN_OUR_TEAM": "Join our high-spirited team of go-getters and make some great money in your spare time.",
+        "MAKE_GREAT_MONEY": "Make great money",
+        "OUR_BILLING_MODELS_ENSURES": "Our billing model ensures a competitive fee for every delivery completed.",
+        "MINIMAL_TIME_COMMITMENT": "Minimal time commitment",
+        "DAILY_SHIFTS": "Daily shifts are generally 1-2 hours before lunch hours.",
+        "FLEXIBLE_HOURS": "Flexible hours",
+        "SHIFTS_ARE_USUALLY_DURING_THE_MORNING": "Shifts are usually during the morning, with afternoon hours also available.",
+        "ROLE_REQUIREMENTS": "Role requirements",
+        "CAR_OR_VAN": "Car or van with registration and insurance",
+        "VALID_DRIVERS_LICENSE": "Valid driver’s license in Norway",
+        "ABILITY_TO_LIFT": "Ability to lift 10 kg",
+        "SMARTPHONE_WITH_4G": "Smartphone with 4G access",
+        "THE_RIGHT_TO_WORK": "The right to work as self-employed in Norway",
+        "A_NORWEGIAN_BANK_ACCOUNT": "A Norwegian bank account in your name",
+        "MINIMUM_21_YO": "Minimum 21 years old",
+        "DEPENDABLE_COMMITTED_ON_THE_FLY": "Dependable, committed, on-the-fly problem solver",
+        "HEAR_FROM_DRIVERS": "Hear from our delivery driver",
+        "I_LOVE_WORKING_WITH_FF_TEAM": "I love working with the Food.Farm team. I enjoy the opportunity of meeting new people everyday, while getting a good pay for only a couple of working hours a day."
+      },
+      "FOOTER": {
+        "ABOUT": "About",
+        "CONNECT_WITH_US": "Connect with us",
+        "CONTACT_US": "Contact us",
+        "COPYRIGHT": "All images and content may not be used without permission",
+        "CUSTOMER_SERVICE": "Customer service",
+        "EMPLOYEES_SIGNUP": "Sign up as employee",
+        "FOOD_FARM_INC": "Food.Farm, Inc.{{year}}",
+        "LINKS": {
+          "ADMINS_AND_EMPLOYEES": "Admins and Employees",
+          "CONTACT_US": "Contact us",
+          "GIVE_GET": "Give {{ give }}, Get {{ get }}",
+          "GIVING_BACK": "Giving Back",
+          "HELP": "Help/FAQ",
+          "MENUS": "Menus",
+          "ORDER": "Order",
+          "OUR_STORY": "Our Story",
+          "REGIONS": "Regions",
+          "RESOURCES": "Resources",
+          "ABOUT_US": "About us",
+          "PROPRIETARY_TECHNOLOGY": "Proprietary technology",
+          "BLOG": "Blog",
+          "FOR_DRIVERS": "For drivers",
+          "FOR_REAL_ESTATE_COMPANIES": "For real estate companies"
+        },
+        "SHARE": "Share FOOD.FARM",
+        "YOU_SHOULD_KNOW_PIN": "you should know PIN-code",
+        "ANY_QUESTIONS" : "Any questions?",
+        "GET_TO_KNOW_US": "Get to know us",
+        "PARTNER_WITH_US": "Partner with us"
+      },
+      "HEADER": {
+        "CITIES": "Cities",
+        "COOK": "Cook",
+        "EAT": "Eat",
+        "FOR_COMPANIES": "For companies",
+        "FOR_RESTAURANTS": "For restaurants"
+      },
+      "INSIGHT_DRIVEN": {
+        "DESC_1": "If we know what you want to eat in advance, we know what to buy in advance. Getting to know your employees and learning about your prefferences makes it easier to plan for actual consumption and avoid food waste.",
+        "DESC_2": "A mere sideffect is that this also makes everything both cheaper and smarter.",
+        "DESC_3": "Its as easy as pie.",
+        "TITLE": "Estimated sales"
+      },
+      "MENU": {
+        "DESC": "Kitchen partnerships and menus",
+        "TODAYS_MENU": "Today's {{subscription}} menu"
+      },
+      "REGION": {
+        "OTHER_CITY": "Other City",
+        "CHOOSE_A_CITY": "Choose a city"
+      }
+    },
+    "KITCHENS": {
+      "BUTTONS": {
+        "ADD_DISH": "Add dish",
+        "ADD_INGREDIENT": "Add ingredient",
+        "ADD_NEW_CATEGORY": "Add new category",
+        "ADD_NEW_DISH": "Add new dish",
+        "ADD_NEW_USER": "ADD NEW USER",
+        "BACK_TO_MENU": "Back to menu",
+        "BACK_TO_WEEKLY_VIEW": "Back to weekly view",
+        "CHANGE_IMAGE": "Change image",
+        "COPY_PREVIOUS_WEEK": "Copy menu from previous week",
+        "EDIT_PERIOD": "Edit period",
+        "GET_INVOICE": "Get invoice",
+        "PRINT": "Print",
+        "REMOVE_DISH": "Remove dish",
+        "SAVE_NEW_DISH": "Save new dish",
+        "SEND_REQUEST": "Send request",
+        "SET": "Set",
+        "SET_FOR_WEEK": "Set for a whole week",
+        "SET_MENU": "Set menu",
+        "SET_RANDOM_MENU": "Set random dishes",
+        "SHOW_ACTIVE": "Show active",
+        "SHOW_INACTIVE": "Show inactive",
+        "SWITCH_CATEGORY": "Switch category"
+      },
+      "CATEGORY_DESC": "Category will be added by your local administrator",
+      "CATERING": "",
+      "CATERING_DETAILS": "Catering details",
+      "CATERING_REQUEST": "Catering request",
+      "CATERING_REQUEST_FROM": "from {{company}}",
+      "COMPANY_INFO": "Company info",
+      "CONTROLS": {
+        "DISH_TYPE": "Type",
+        "INGREDIENT_NAME": "Ingredient name",
+        "NETTO_PERCENT": "Netto percent",
+        "PRICE_FROM": "Price from",
+        "PRICE_TO": "Price to",
+        "UPLOAD_CATEGORY_IMAGE": "Upload category image"
+      },
+      "COUNT_PROBLEMS_WITH_ORDERS": "{{count}} problems with orders",
+      "DASHBOARD": "Dashboard",
+      "DELIVERIES": "Deliveries",
+      "DISH_TYPES": {
+        "COLD": "Cold",
+        "WARM": "Warm"
+      },
+      "ERRORS": {
+        "INVALID_RANGE": "Please enter price between category price range",
+        "REQUIRED": "Required"
+      },
+      "MENU": "Menu",
+      "ORDERS_POPUP": {
+        "ABOUT": "ABOUT",
+        "PACKAGING": "PACKAGING",
+        "PRODUCTS": "PRODUCTS"
+      },
+      "PRICE_DESCRIPTION": "You can set price from {{ min }} to {{ max }}",
+      "PRINT_POPOVER": {
+        "BOTH_PROD_AND_PACK": "Both Products list and Logistics receipt",
+        "FOOTER_MESSAGE": "You’ll be able to print products and packaging list when orders will be locked",
+        "PACKAGING_LIST": "Logistics receipt",
+        "PRODUCTS_LIST": "Products list"
+      },
+      "REPORTS": {
+        "CUSTOM": "Custom",
+        "PREORDER": "Preorder",
+        "SELECT_CUSTOM_PERIOD": "Select custom period",
+        "TITLE": "Reports"
+      },
+      "SEARCH_DISH": "Search dish",
+      "SETTINGS": {
+        "ABOUT": "About {{kitchen}}",
+        "CATEGORIES": "Categories",
+        "CHANGES_NEED_TO_APPROVE": "Your recent changes needs regional admin approve:",
+        "DEADLINES": {
+          "DEADLINE_TIME": "Deadline time",
+          "PICKUP_TIME": "Pickup time",
+          "TITLE": "Deadlines"
+        },
+        "DISCOUNTS": "Discounts",
+        "DISCOUNT_ALL": "Discount for all kitchen",
+        "DISCOUNT_SAVED": "Discount saved",
+        "DISHES": "Dishes",
+        "GENERAL_INFO": "General info",
+        "SUSPEND_PLANNER": "Suspend planner",
+        "TARGET": "Select discount target:",
+        "TITLE": "Settings",
+        "USERS": "Users"
+      },
+      "UPCOMING_CATERING": "Upcoming catering",
+      "VOTES": {
+        "NO_VOTES": "No votes",
+        "PLURAL": "votes",
+        "SINGULAR": "vote"
+      }
+    },
+    "KITCHEN_REGISTER": {
+      "BREAKFAST_SERVICE": "Breakfast service",
+      "CAPACITY": "Capacity",
+      "DELIVERY": "Kitchen Delivery",
+      "DINNER_SERVICE": "Dinner service",
+      "EVENT_CATERING": "Event catering",
+      "GREAT": "Great!",
+      "LUNCH_SERVICE": "Lunch service",
+      "NAME": "Register kitchen",
+      "OFFER": "WHAT WOULD YOUR KITCHEN LIKE TO OFFER",
+      "SIGN_UP_KITCHEN": "Sign up your restaurant",
+      "SUCCESS": "YOUR INFORMATION WAS SENT",
+      "SUCCESS_DESC": "Our regional administrator will contact you soon"
+    },
+    "LOGISTICS": {
+      "ALL_ASSIGNED": "All assigned",
+      "BUTTONS": {
+        "COLLAPSE": "Collapse",
+        "DRIVER_ROUTE": "Driver route",
+        "EXPAND": "Expand",
+        "MONDAY": "Next Monday",
+        "OK": "Everything is OK",
+        "RECALCULATE": "Recalculate",
+        "REPORT": "Report a problem",
+        "SEND_PROBLEM": "Send problem description",
+        "TODAY": "Today",
+        "TOMORROW": "Tomorrow"
+      },
+      "COUNT_PROBLEMS": "{{count}} problems with orders",
+      "DELETE_CONFIRMATION": "Would you like to delete logistics user?",
+      "DIRECT": "DIRECT",
+      "FROM_HUB": "FROM HUB",
+      "HUB": "Hub",
+      "HUB_NAME": "Hub name",
+      "LOCATIONS": "Locations",
+      "PLACEHOLDERS": {
+        "ENTER_NAME": "Enter person name"
+      },
+      "POSITION": "Current position",
+      "TO_HUB": "TO HUB"
+    },
+    "SHARED": {
+      "ALLERGY": {
+        "ADD": "Add allergy",
+        "PLURAL": "Allergies",
+        "SELECT": "Select allergy",
+        "SINGULAR": "Allergy"
+      },
+      "CATEGORIES": {
+        "PLURAL": "Categories",
+        "SINGULAR": "Category"
+      },
+      "COLLAPSE": "Collapse",
+      "COMPANIES": {
+        "PLURAL": "Companies",
+        "SINGULAR": "Company"
+      },
+      "COMPONENTS": {
+        "CALENDAR": "Calendar",
+        "DEFAULTS": {
+          "FOOTER_MESSAGE": "This will be your {{ subscription }} every {{ weekday }} until you cancel or change it",
+          "LOCKED": "Locked",
+          "NO_DEFAULT_DISHES": "NO DEFAULT DISHES"
+        },
+        "LOGGED_IN": "Logged in as {{title}}",
+        "PAGINATION": {
+          "CURRENT_LABEL": "You're on page",
+          "LABEL": "Pagination",
+          "NEXT_LABEL": "Next",
+          "PAGE_LABEL": "page",
+          "PREVIOUS_LABEL": "Previous"
+        },
+        "PRICE_RANGE": "{{from}} to {{to}}",
+        "SUSPEND": {
+          "MARK_AS_AVAILABLE": "Mark as available",
+          "MARK_AS_UNAVAILABLE": "Mark as unavailable",
+          "SELECT_RANGE": "Select date or dates range"
+        },
+        "TODAY": "Today",
+        "UPLOAD_AVATAR": "Upload avatar",
+        "UPLOAD_IMAGE": "Upload image",
+        "UPLOAD_IMAGE_FOR_APP": "Upload image for mobile app",
+        "UPLOAD_NEW_LOGO": "Upload new logo"
+      },
+      "DELIVERED": "Delivered",
+      "DISHES": {
+        "PLURAL": "dishes"
+      },
+      "DISH_COMPONENTS": {
+        "CARBO": "Carbo",
+        "FAT": "Fat",
+        "KCAL": "Kcal",
+        "KILOCALORIES": "Kilocalories",
+        "PROTEIN": "Protein",
+        "WEIGHT": "Weight,g"
+      },
+      "EMPLOYEES": {
+        "ALL": "All Employees"
+      },
+      "EXPAND": "Expand",
+      "FEEDBACKS": {
+        "DESCRIPTION": "Drop us a line to improve on",
+        "PLURAL": "Feedbacks",
+        "SEND": "Send feedback",
+        "SINGULAR": "Feedback"
+      },
+      "FILTERS": {
+        "ALL": "All",
+        "BUTTONS": {
+          "DOWNLOAD_PDF": "Download pdf"
+        },
+        "DATE": "Date",
+        "DESELECT_ALL": "Deselect all",
+        "EMPLOYEES": "Employees",
+        "GROUPED_BY": "Grouped by",
+        "GROUPINGS": {
+          "CATEGORY": "category",
+          "DATE": "date",
+          "EMPLOYEE": "employee",
+          "MEAL": "service",
+          "SERVICE": "service"
+        },
+        "SEARCH_CATEGORY": "Search category",
+        "SELECT_ALL": "Select All",
+        "SERVICE": "Service"
+      },
+      "INGREDIENTS": {
+        "PLURAL": "Ingredients",
+        "SINGULAR": "Ingredient"
+      },
+      "KITCHENS": {
+        "ADDED": "Added",
+        "ADD_TO_SERVICE": "Add to service",
+        "CHEF": "Chef",
+        "PLURAL": "Kitchens",
+        "SINGULAR": "Kitchen"
+      },
+      "LANGS": {
+        "EN": "en",
+        "NB": "no"
+      },
+      "MODES": {
+        "ADD_NEW": "Add new",
+        "EDIT": "Edit"
+      },
+      "NOTIFICATIONS": {
+        "KINDS": {
+          "ADMIN_CHARGE_FAILED": "Admin charge failed",
+          "ADMIN_CONFIRMATION": "Admin confirmation",
+          "ALLERGIES_MATCH": "Allergies match",
+          "APPROVED": "Approved",
+          "CATERING_REJECT": "Catering reject",
+          "CHARGE_FAILED": "Charge failed",
+          "CHARGE_FAILED_TWICE": "Charge failed twice",
+          "CHARGE_SUCCESS": "Charge success",
+          "CREDIT_SET": "Credit set",
+          "DISCOUNT_SET": "Discount set",
+          "FEEDBACK": "Feedback",
+          "GENERAL_SUSPEND": "General suspend",
+          "INACTIVE": "Inactive",
+          "INACTIVE_ORDERS": "Inactive orders",
+          "INVALID_ORDER": "Problems with order",
+          "KITCHENS_LIST_UPDATE": "Kitchens list update",
+          "KITCHEN_ADDED": "Kitchen added",
+          "KITCHEN_INACTIVE": "Kitchen inactive",
+          "KITCHEN_REMOVED": "Kitchen removed",
+          "KITCHEN_SUSPEND": "Kitchen suspend",
+          "KITCHEN_SUSPENDED": "Kitchen suspended",
+          "MEAL_ARRIVED": "Meal arrived",
+          "MENU_NOT_POPULATED": "Menu not populated",
+          "MENU_POPULATED": "Menu populated",
+          "NEW_CATEGORY_ADDED": "New category added",
+          "NOTIFY_NO_MENU": "Notify no menu",
+          "ORDER_REMIND": "Order remind",
+          "PENDING_COMPANY": "Pending company",
+          "PENDING_KITCHEN": "Pending kitchen",
+          "RATING": "Rating",
+          "SEND_INVOICE": "Send invoice",
+          "SEND_MESSAGE": "Send message",
+          "SEND_PRODUCTION_AND_PACKAGING_LIST": "Send production list and logistics receipt",
+          "SUBSIDY": "Subsidy"
+        }
+      },
+      "ORDERS": {
+        "PLURAL": "Orders"
+      },
+      "PICKED_UP": "Picked up",
+      "PICK_UP_AT": "Pick up at {{time}}",
+      "REGIONS": {
+        "PLURAL": "Regions"
+      },
+      "ROLES": {
+        "ADMIN": "Admin",
+        "DRIVER": "Driver",
+        "EMPLOYEE": "Employee",
+        "LOGISTICS": "Logistics"
+      },
+      "SEARCH_QUERY": "Search",
+      "SHIPMENTS": {
+        "STATUS": {
+          "DELIVERED": "delivered",
+          "FAILED": "failed",
+          "NEW": "new",
+          "PICKUP": "pickup",
+          "PROCESSED": "processed"
+        }
+      },
+      "STATES": {
+        "ACTIVE": "Active",
+        "INACTIVE": "Inactive"
+      },
+      "TIME_LEFT": " {{time}} left",
+      "TOTAL": "Total",
+      "YOU_PAY": "You pay"
+    },
+    "SIGN UP YOUR KITCHEN": "",
+    "SIGN_UP": {
+      "ALLERGY_MESSAGE": "If a future order is caught in the allergy filter",
+      "ALLERGY_MESSAGE_SUB": "FoodFarm will select a new dish for me",
+      "BUTTONS": {
+        "ADD_CARD": "Add credit card",
+        "FILL_DEFAULTS": "Fill in default orders",
+        "HIGH_TO_LOW": "High to low",
+        "LOW_TO_HIGH": "Low to high",
+        "SET_LATER": "Set it later",
+        "SKIP": "Skip",
+        "START_USING": "Start using foodfarm with subsidies limits",
+        "WANT_TO_RECEIVE_NOTIFICATIONS": "I want to receive notifications from foodfarm"
+      },
+      "CHECK_MANUALLY": "I want to check my orders manually",
+      "COMPANY_HAS_INVITED_YOU": "{{ company }} has invited you to join their group <br> This group is offering",
+      "NOTIFICATIONS": "Notifications",
+      "NOTIFICATIONS_MESSAGE": " We would like to send you emails when your food arrives, or if your default meal contains something you are allergic to<br> Does this sound relevant to you?",
+      "OR": "or",
+      "PRICE": "Price",
+      "SHOW_ME_ANYTHING": "Show me anything",
+      "SORTING": "Sorting",
+      "WHAT_WOULD_YOU_LIKE": "What would you like to eat?",
+      "YOU_CAN_CHANGE_LATER": "You can always change this later",
+      "YOU_CAN_CHANGE_SETTINGS": "You can always change this in your settings later"
+    },
+    "SORT": {
+      "BY_CREATION_DATE": "Sort by creation date",
+      "BY_DATE": "Sort by date (recently added first)",
+      "BY_KITCHEN": "Sort by kitchen",
+      "BY_NAME": "Sort by name",
+      "BY_PRICE_ASC": "Sort by price (cheapest first)",
+      "BY_PRICE_DESC": "Sort by price (expensive first)",
+      "BY_RATING": "Sort by rating (highest first)"
+    },
+    "SUBSCRIPTIONS": {
+      "BREAKFAST": "Breakfast",
+      "CATERING": "Catering",
+      "DINNER": "Dinner",
+      "FULL": "{{title}} Subscription",
+      "LUNCH": "Lunch",
+      "PLURAL": "Subscriptions",
+      "SINGULAR": "Subscription"
+    },
+    "SUBSIDIES": {
+      "COMPANY_IS_SUBSIDISING": "Your company is subsidising your ",
+      "COMPANY_IS_SUBSIDISING_EVERY_DAY": "every_day",
+      "FREE": "Free",
+      "MESSAGE": {
+        "FREE": "You pay full cost for your employees",
+        "NO": "Your employees will pay full cost"
+      },
+      "NO": "No",
+      "PERIODS": {
+        "DAILY": "per day",
+        "MONTHLY": "per month",
+        "WEEKLY": "per week"
+      },
+      "PLURAL": "Subsidies",
+      "SINGULAR": "Subsidy",
+      "SUBSCRIPTION_WITH_VALUE": "{{subscription}} with {{subsidy}}",
+      "UPDATE": "Subsidies update",
+      "WORK_OFFER": "Work offer"
+    },
+    "SUPER_ADMIN": {
+      "ALLERGY": {
+        "ADD": "Add allergy",
+        "PLURAL": "Allergies",
+        "SELECT": "Select allergy",
+        "SINGULAR": "Allergy"
+      },
+      "DASHBOARD": "Admin dashboard",
+      "DELETE_ALLERGY_CONF": "Would you like to delete allergy?",
+      "DELETE_REGION_CONF": "Would you like to delete region?",
+      "FINANCIAL_REPORT": "Financial report",
+      "PROSPECTIVE_ACC": {
+        "ACCOUNT": "Account",
+        "ADMIN_EMAIL": "Admin email",
+        "CITY": "City",
+        "COUNTRY": "Country",
+        "DELIVERY_COST": "Delivery cost",
+        "DELIVERY_TYPE": "Delivery type",
+        "DELIVERY_VAT": "Delivery vat",
+        "EMAIL": "Email",
+        "INVOICE_TEMPLATE": "Invoice template",
+        "LOCALE": "Locale",
+        "MIN_CHARGE": "Min employee charge",
+        "NAME": "Name",
+        "PHONE": "Phone",
+        "PLURAL": "Prospective Accounts",
+        "REGION": "Region",
+        "TYPE": "Type",
+        "VAT": "Vat"
+      }
+    },
+    "TOAST": {
+      "ERROR": {
+        "GEOLOCATION": "Your browser does not support geolocation to detect your region",
+        "GUARD": "You don't have permission to access to the area",
+        "NOT_ENOUGH_POINTS": "You have less than 2 points to visit.",
+        "REROUTE_FAILED": "Reroute calculations failed",
+        "STATUS_UPDATE_FAILED": "Status update failed",
+        "UNABLE_TO_GET_USER": "Unable to get user info"
+      },
+      "KITCHEN_ADMIN": {
+        "SUCCESS": {
+          "ADD_CATEGORY": "The category has been sent for approval"
+        }
+      },
+      "SUCCESS": {
+        "ADDED_TO_DEFAULTS": "Added to default orders",
+        "CARD_SAVED": "Credit Card saved.",
+        "CATEGORY_SAVED": "Category saved",
+        "CATERING_UPLOADED": "Catering information has been updated",
+        "CHANGES_SAVED": "Changes were saved.",
+        "CREATED": "Successfully created",
+        "FEEDBACK_SENT": "Feedback was sent successfully",
+        "IMAGE_UPLOADED": "Image uploaded",
+        "INVOICE_GENERATED": "Invoice was successfully generated",
+        "KITCHEN_ADDED": "Kitchen was successfully added",
+        "KITCHEN_REMOVED": "Kitchen was successfully removed",
+        "MENU_UPDATED": "Menu has been updated",
+        "ORG_NUMBER_SAVED": "Organization number saved. Wait for approve.",
+        "PASSWORD_CHANGED": "Password changed",
+        "PASSWORD_SET": "Password was set successfully",
+        "PAYPAL_SAVED": "Paypal agreement saved.",
+        "PERIODIC_UPDATED": "Periodic orders have been updated",
+        "PREFERENCES_UPDATED": "Your preferences have been updated successfully",
+        "REMOVED": "Successfully removed",
+        "RESET_LINK_SENT": "Reset link has been sent to your email",
+        "ROUTE_CHANGED": "Route has been changed",
+        "SETTINGS_UPDATED": "Settings were updated",
+        "SHARED_LOCATION_SAVED": "Shared location has been successfully saved",
+        "SHIPMENTS_ASSIGNED": "Shipments assigned to drivers",
+        "STATUS_UPDATED": "Status updated",
+        "SUBSIDIES_UPDATED": "Company's subsudies and kitchens have been successfully updated",
+        "UPDATED": "Successfully updated",
+        "USER_ADDED": "User was added",
+        "USER_UPDATED": "User was updated"
+      }
+    },
+    "USER": {
+      "AS_EMPLOYEE_AT_COMPANY": "As employee at {{ company }}",
+      "BUTTONS": {
+        "BACK_TO_MENU": "Back to menu",
+        "CLEAR_ALL": "Clear all",
+        "RATE": "Rate",
+        "SET_DEFAULTS": "Set/Edit Defaults",
+        "UNLOCK": "Unlock",
+        "VIEW_COMMENT": "View comment",
+        "VIEW_DETAILS": "View details"
+      },
+      "DEFAULT_BANNER": {
+        "DESC": "Get perfect dishes automatically and make sure <br> you don’t forget to make an order",
+        "TITLE": "Set your default everyday menu"
+      },
+      "DISH_PLURAL": "dishes",
+      "DISH_SINGULAR": "dish",
+      "FILTERS": "Filters",
+      "HOLIDAY_BANNER": {
+        "DESC": "Let us know when you're away so the kitchens plans<br> and estimates are as accurate as possible",
+        "TITLE": "Happy Holidays!"
+      },
+      "MEAL": {
+        "PLURAL": "Meals"
+      },
+      "MENU": {
+        "ALLERGY": "Allergy",
+        "COMPONENTS": {
+          "CARBO": "Carbo",
+          "FAT": "Fat",
+          "KCAL": "Kcal",
+          "PROTEIN": "Protein",
+          "WEIGHT": "Weight,g"
+        },
+        "CONFIRMATION": {
+          "CANCELLED": "Cancelled",
+          "DO_NOT_SHOW_NEXT_TIME": "Do not show confirmation popup next time. Order will be cancelled automatically.",
+          "TO_BE_DELIVERED": "to be delivered on <br> {{ date }}",
+          "YOUR_MEAL_FOR": "your {{meal}} for {{ date }}",
+          "YOU_HAVE_TIME": "You have until {{ time }} o'clock {{ day }} if you want to make changes"
+        },
+        "DAY": "Day",
+        "DAY_LOCKED": "Locked",
+        "DAY_LOCKED_DESC": "You have previously frozen this day",
+        "DAY_UNAVAILABLE": "Currently Unavailable",
+        "DAY_UNAVAILABLE_DESC": "Contact your company admin<br>(usually the HR person or your boss..)<br>to start ordering",
+        "PAST_DEADLINE": "Past deadline",
+        "RATE": "Rate",
+        "SET_PERIODIC": "Make this meal a default choice and it will be delivered every {{ date }}",
+        "VIEW_COMMENT": "View comment",
+        "WEEK": "Week"
+      },
+      "NOTIFICATIONS": {
+        "EMAIL": "Email",
+        "GENERAL_SUSPEND": {
+          "MULTIPLE": "from {{ startDate }} to {{ endDate }}",
+          "ONE": "on {{ startDate }}",
+          "TITLE": "FoodFarm is away on holiday"
+        },
+        "HIDE_PREVIOUS": "Hide previous",
+        "KITCHEN_REMOVED": "Kitchen has been removed from your {{ type }} on {{ weekDays }}",
+        "MARK_AS_READ": "Mark as read",
+        "NOTIFY_VIA": "Notify me via",
+        "PUSH": "Push",
+        "VIEW_PREVIOUS": "View previous"
+      },
+      "NO_DISHES": "No dishes",
+      "NO_PAYMENT_INFO": "No payment info",
+      "PAYMENT": "Payment",
+      "WELCOME": {
+        "COMPANY": "Enter company number and email",
+        "DESCRIPTION": "To be able to create your first order, please, enter additional data about your company",
+        "DETAILS": "Or enter company details",
+        "FIRST_ORDER": "For your first order!",
+        "ONE_STEP": "You are one step away from getting the great food",
+        "ORDER": "to order food and get an invoice once a month",
+        "PAY": "to pay for the dishes",
+        "USE_CARD": "Use your card",
+        "WAIT_FOR_APPROVAL": "Or wait for approval",
+        "YOUR_ORDER": "This is for your first order"
+      }
+    }
+  }
+}

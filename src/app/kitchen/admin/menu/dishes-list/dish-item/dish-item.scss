@@ -1,0 +1,116 @@
+@import '~assets/css/conf';
+
+.dish-item {
+  min-height: 80px;
+  padding: 10px 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  position: relative;
+  outline: none!important;
+  user-select: none;
+
+  .click-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    outline: none!important;
+    user-select: none;
+  }
+
+  .img{
+    height: 50px;
+    margin-right: 30px;
+    max-width: 50px;
+    flex-basis: 50px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    @include border-radius(50%);
+    img {
+      height: 50px;
+      width: 50px;
+      @include border-radius(50%);
+    }
+    .overlay{
+      text-align: center;
+      line-height: 52px;
+      display: none;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      @include border-radius(50%);
+
+      &.red{
+        background: rgba(217,48,16,.5);
+      }
+      &.green{
+        background: rgba(93, 185, 144,.5);
+      }
+      span{
+        line-height: 52px;
+        color: white;
+        font-size: 24px;
+      }
+    }
+  }
+  .txt {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    line-height: 1.2;
+    strong{
+      word-wrap: break-word;
+    }
+
+    >div:last-child{
+      padding-left: 15px;
+      margin-left: auto;
+    }
+  }
+
+  &:hover {
+    background: #ededed;
+    .img .overlay.green{display: none;}
+    .img .overlay.red{display: block;}
+  }
+  &.inactive:hover {
+    .img .overlay.green{display: block;}
+    .img .overlay.red{display: none;}
+  }
+}
+
+@media (max-width: $laptop) {
+  .dish-item{
+    padding-left: 20px;
+    padding-right: 20px;
+    .txt{
+      >div:first-child{
+        max-width: 75px;
+      }
+    }
+    .img{
+      margin-right: 20px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .dish-item {
+    min-height: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    .txt {
+      > div:first-child {
+        max-width: 140px;
+      }
+    }
+  }
+}

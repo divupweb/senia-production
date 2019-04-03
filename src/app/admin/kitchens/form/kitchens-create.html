@@ -1,0 +1,160 @@
+<div class="admin-kitchens">
+  <div class="i">
+    <main>
+      <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="main-inner">
+          <div class="heading">
+            <h2 translate="SHARED.KITCHENS.SINGULAR">Kitchen</h2>
+            <div class="heading-img">
+              <div class="img"><img [src]="imageDisplayUrl" alt="" *ngIf="imageDisplayUrl"></div>
+              <div class="upload">
+                <label>
+                  <input type="file" (change)="fileChange($event)" id='image' #file/>
+                  {{ 'SHARED.COMPONENTS.UPLOAD_NEW_LOGO' | translate }}
+                </label>
+              </div>
+              <div (click)="deleteImage()" *ngIf="imageDisplayUrl" class="remove"> {{ 'BUTTONS.REMOVE_LOGO' | translate }}</div>
+            </div>
+          </div>
+          <div>
+            <div class="row mb-2">
+              <div class="col-md-4">
+                <div class="form-group v3">
+                  <input formControlName="name" class="form-control">
+                  <label translate="CONTROLS.NAME">Name</label>
+                  <div class="alert alert-danger"
+                       *ngIf="form.get('name').touched && form.get('name').hasError('required')">
+                    {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.NAME' | translate } }}
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input type="email" formControlName="email" class="form-control">
+                  <label translate="CONTROLS.EMAIL">Email</label>
+                  <div class="alert alert-danger" *ngIf="form.get('email').touched && form.get('email').invalid">
+                    <div *ngIf="form.get('email').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                      translate: { field: 'CONTROLS.EMAIL' | translate } }}
+                    </div>
+                    <div *ngIf="form.get('email').hasError('invalidEmailAddress')"
+                         translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="phone">
+                  <label translate="CONTROLS.PHONE">Phone</label>
+                  <div class="alert alert-danger" *ngIf="form.get('phone').touched && form.get('phone').invalid">
+                    <div *ngIf="form.get('phone').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                      translate: { field: 'CONTROLS.PHONE' | translate } }}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="headChefName">
+                  <label translate="CONTROLS.HEAD_CHEF_NAME">Head Chef Name</label>
+                  <div class="alert alert-danger"
+                       *ngIf="form.get('headChefName').touched && form.get('headChefName').invalid && form.get('headChefName').hasError('required')">
+                    {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.HEAD_CHEF_NAME' | translate }
+                    }}
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4">
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="country">
+                  <label translate="CONTROLS.COUNTRY">Country</label>
+                  <div class="alert alert-danger" *ngIf="form.get('country').touched && form.get('country').invalid">
+                    <div *ngIf="form.get('country').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                      translate: { field: 'CONTROLS.COUNTRY' | translate } }}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="city">
+                  <label translate="CONTROLS.CITY">City</label>
+                  <div class="alert alert-danger" *ngIf="form.get('city').touched && form.get('city').invalid">
+                    <div *ngIf="form.get('city').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate:
+                      { field: 'CONTROLS.CITY' | translate } }}
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="address">
+                  <label translate="CONTROLS.ADDRESS">Address</label>
+                  <div class="alert alert-danger" *ngIf="form.get('address').touched && form.get('address').invalid">
+                    <div *ngIf="form.get('address').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                      translate: { field: 'CONTROLS.ADDRESS' | translate } }}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-8 form-group v3">
+                    <input class="form-control" formControlName="address2"
+                    >
+                    <label translate="CONTROLS.ADDRESS2">Address 2</label>
+                    <div class="alert alert-danger"
+                         *ngIf="form.get('address2').touched && form.get('address2').invalid">
+                      <div *ngIf="form.get('address2').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                        translate: { field: 'CONTROLS.ADDRESS2' | translate } }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-4 form-group v3">
+                    <input class="form-control" formControlName="zipCode"
+                           required>
+                    <label translate="CONTROLS.ZIP_CODE">Zip code</label>
+                    <div class="alert alert-danger" *ngIf="form.get('zipCode').touched && form.get('zipCode').invalid">
+                      <div *ngIf="form.get('zipCode').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                        translate: { field: 'CONTROLS.ZIP_CODE' | translate } }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-md-4">
+                <div>
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="bankAccount"
+                    >
+                    <label translate="CONTROLS.BANK_ACCOUNT">Bank account</label>
+                    <div class="alert alert-danger"
+                         *ngIf="form.get('bankAccount').touched && form.get('bankAccount').invalid">
+                      <div *ngIf="form.get('bankAccount').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                        translate: { field: 'CONTROLS.BANK_ACCOUNT' | translate } }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="vatNumber"
+                    >
+                    <label translate="CONTROLS.VAT_NUMBER">VAT number</label>
+                    <div class="alert alert-danger"
+                         *ngIf="form.get('vatNumber').touched && form.get('vatNumber').invalid">
+                      <div *ngIf="form.get('phone').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+                        translate: { field: 'CONTROLS.VAT_NUMBER' | translate } }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <footer class="main-footer">
+          <button color="primary" class="btn btn-big btn-green" type="submit" translate="BUTTONS.SUBMIT">Submit</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a [routerLink]="backLink" translate="BUTTONS.CANCEL">Cancel</a>
+
+          <div class="right">
+            <switch-checkbox class="text-center" formControlName="active">
+              {{ (form.get('active').value ? "SHARED.STATES.ACTIVE" : "SHARED.STATES.INACTIVE") | translate }}
+            </switch-checkbox>
+          </div>
+        </footer>
+      </form>
+    </main>
+  </div>
+</div>

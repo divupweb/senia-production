@@ -1,0 +1,48 @@
+@import '~assets/css/conf';
+.area-layout{
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-flow: row nowrap;
+  >main{
+    flex-grow: 1;
+    overflow-y: auto;
+    position: relative;
+    height: 100%;
+  }
+  >aside{
+    height: 100%;
+    flex: 0 0 330px;
+    max-width: 330px;
+    border-left: 1px solid $gray-light3;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: $laptop){
+  .area-layout>aside{
+    max-width: 230px;
+    flex: 0 0 230px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .area-layout {
+    height: auto;
+    > aside {
+      height: 60px;
+      width: 100px;
+      padding-top: 60px;
+      max-width: none;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9;
+      border-left: 0;
+      &.is-open{
+        height: 100%;
+        width: 300px;
+      }
+    }
+  }
+}

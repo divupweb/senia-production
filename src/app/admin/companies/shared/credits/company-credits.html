@@ -1,0 +1,69 @@
+<div class="popup-wrap" *ngIf="show">
+  <div class="popup" closePopup (onClosePopup)="close($event)">
+    <form [formGroup]="creditForm" (submit)="submit()" autocomplete="off">
+      <div class="popup-body">
+        <div class="mb-3 mt-3">
+          <div class="option-block">
+            <div class="custom-checkbox">
+              <label>
+                <input type="checkbox"
+                       [checked]="valueChecked(creditForm, 'credit', creditForm.controls.credit.value)"
+                       (change)="valueCheck(creditForm, 'credit', $event, creditForm.controls.credit.value)">
+                <i class=" fa fa-check-circle"></i>
+                <div class="txt">
+                  <strong class="uppercase" translate="SHARED.COMPANIES.SINGULAR">Company</strong>
+                  <div class="text-grey" translate="ADMIN.DISCOUNT.CREDIT_COMPANY" >Credit all company orders (NOK)</div>
+                </div>
+              </label>
+              <div class="form-group v3" [hidden]="!valueChecked(creditForm, 'credit')">
+                <input type="number" formControlName="credit" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="option-block">
+            <div class="custom-checkbox">
+              <label>
+                <input type="checkbox"
+                       [checked]="valueChecked(creditForm, 'employeeCredit')"
+                       (change)="valueCheck(creditForm, 'employeeCredit', $event)">
+                <i class=" fa fa-check-circle"></i>
+                <div class="txt">
+                  <strong class="uppercase" translate="ADMIN.COMPANY.EMPLOYEES">Employees</strong>
+                  <div class="text-grey" translate="ADMIN.DISCOUNT.CREDIT_EMPLPLOYEE">Credit each selected employee orders</div>
+                </div>
+              </label>
+              <div class="form-group v3" [hidden]="!valueChecked(creditForm, 'employeeCredit')">
+                <input type="number" formControlName="employeeCredit" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="employees-list">
+            <div class="employee">
+              <div class="custom-checkbox">
+                <label>
+                  <input type="checkbox" [checked]="allEmployeesChecked()" (change)="checkAllEmployees($event)">
+                  <i class=" fa fa-check-circle"></i>
+                  <div class="txt" translate="SHARED.EMPLOYEES.ALL">All employees</div>
+                </label>
+              </div>
+            </div>
+            <div *ngFor="let employee of employees" class="employee">
+              <div class="custom-checkbox">
+                <label>
+                  <input type="checkbox" [checked]="employeeChecked(employee.id)" (change)="toggleEmployee(employee.id, $event)">
+                  <i class=" fa fa-check-circle"></i>
+                  <div class="txt">{{employee.name}}</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <button class="btn btn-big btn-green" [disabled]="!formValid()" type="submit" translate="BUTTONS.SAVE">Save</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="close-popup" (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+      </footer>
+    </form>
+  </div>
+</div>

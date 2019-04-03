@@ -1,0 +1,39 @@
+<div class="popup-wrap" *ngIf="showPopup">
+  <div class="popup set-menu-popup"   tabindex="1" (keyup.esc)="close()" (clickOutside)="close($event)" >
+    <div class="popup-body-header">
+      <h3>{{ wizard.category.name }}</h3>
+      <div class="days-list">
+        <div *ngFor="let day of wizard.activeDays; let i = index" class="day">
+          <span [class.active]="day == true">{{ weekDays[i] }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="popup-body">
+      <div class="set-menu">
+        <div class="set-menu-top">
+          <input type="text" class="search-input" placeholder="{{ 'KITCHENS.SEARCH_DISH' | translate }}" [(ngModel)]="search">
+        </div>
+        <div class="set-menu-list">
+          <div>
+            <set-menu-item
+              *ngFor="let item of wizard.items  | nameFilter:search:searchColumn"
+              [item]="item"
+              (onChange)="wizard.onItemChange(item, $event)"></set-menu-item>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+      <div class="category-switcher">
+        <span class="text-grey" translate="KITCHENS.BUTTONS.SWITCH_CATEGORY">Switch category</span>
+        <span class="circle-arrow circle-arrow-left" (click)="wizard.previousCategory()">
+          <i class="fa fa-chevron-left"></i>
+        </span>
+        <span class="circle-arrow circle-arrow-right" (click)="wizard.nextCategory()">
+          <i class="fa fa-chevron-right"></i>
+        </span>
+      </div>
+    </footer>
+  </div>
+</div>

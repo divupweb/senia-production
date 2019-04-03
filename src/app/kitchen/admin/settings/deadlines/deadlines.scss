@@ -1,0 +1,79 @@
+@import '~assets/css/conf';
+// DEADLINES
+.deadlines{
+  padding: 0 20px;
+
+  header{
+    margin-bottom: 40px;
+  }
+  section{
+    margin-bottom: 60px;
+  }
+  &-row{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  &-col{
+    flex-basis: 18.5%;
+    max-width: 18.5%;
+  }
+  &-item{
+    height: 100%;
+    padding: 20px;
+    border: 1px solid #f2f2f2;
+    cursor: pointer;
+
+    &.empty{
+      .title{margin-bottom: 0;}
+      border-style: dashed;
+    }
+    &:hover{
+      border: 1px solid $gray-dark;
+    }
+  }
+  .sub{
+    margin-bottom: 20px;
+    color: $gray-text;
+    font-size: 16px;
+  }
+  .title{
+    font-family: $font-bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .weekdays{
+    font-size: 0;
+    div{
+      width: 36px;
+      height: 36px;
+      margin: 0 5px 2px 0;
+      line-height: 36px;
+      font-size: 10px;
+      text-align: center;
+      display: inline-block;
+      font-family: $font-bold;
+      text-transform: uppercase;
+      color: $main-green;
+      border: 1px solid $main-green;
+      @include border-radius(50%);
+
+      &.active{
+        background: $main-green;
+        color: white;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile){
+  .deadlines-row{
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .deadlines-col{
+    margin: 15px;
+    max-width: 400px;
+    min-width: 300px;
+  }
+}

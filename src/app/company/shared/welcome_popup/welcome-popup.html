@@ -1,0 +1,130 @@
+<div *ngIf="showPopup" class="popup-wrap" closePopup (onClosePopup)="closePopup($event)">
+  <div class="popup">
+    <div class="first-order" [@slideInOut]="option != -1">
+      <div class="dish" [class.empty-width]="option != -1">
+        <div class="your-order" translate="USER.WELCOME.YOUR_ORDER"></div>
+        <div class="one-step" translate="USER.WELCOME.ONE_STEP"></div>
+      </div>
+      <div class="popup-body">
+        <div class="container">
+          <div class="graph">
+            <img src="assets/images/ca/card.png" alt="">
+            <div class="or" translate="SIGN_UP.OR"></div>
+            <img src="assets/images/ca/invoice.png" alt="">
+          </div>
+          <div class="payments">
+            <div class="option" (click)="toggleOption(0)">
+              <a class="payment" translate="USER.WELCOME.USE_CARD"></a>
+              <div class="description" translate="USER.WELCOME.PAY"></div>
+            </div>
+            <div class="option" (click)="toggleOption(1)">
+              <a class="payment" translate="USER.WELCOME.COMPANY">Enter  company number and email</a>
+              <div class="description" translate="USER.WELCOME.ORDER"></div>
+            </div>
+          </div>
+        </div>
+
+        <footer>
+          <a class="close-popup" (click)="closePopup()">{{ 'BUTTONS.CLOSE' | translate }}</a>
+        </footer>
+      </div>
+    </div>
+    <div>
+      <header [hidden]="option == -1">
+        <h3 class="mt-2 mb-2" translate="USER.WELCOME.FIRST_ORDER"></h3>
+        <div class="description" translate="USER.WELCOME.DESCRIPTION"></div>
+      </header>
+      <div class="card-form" [@slideInOut]="option != 0">
+        <div class="popup-body" [class.empty-p]="option != 0">
+          <form [formGroup]="cardForm">
+            <div class="address mb-1">
+              <div class="form-group v3">
+                <input class="form-control" formControlName="address" type="text">
+                <label for="address" translate="CONTROLS.ADDRESS"></label>
+                <form-controll-errors [form]="cardForm" [controlName]="'address'"></form-controll-errors>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="zip_code" type="text">
+                    <label for="zip_code" translate="CONTROLS.ZIP_CODE"></label>
+                    <form-controll-errors [form]="cardForm" [controlName]="'zip_code'"></form-controll-errors>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group v3 mb-1">
+                    <input class="form-control" formControlName="floor" type="text">
+                    <label for="floor" translate="CONTROLS.FLOOR">Floor</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <footer [hidden]="option != 0">
+          <button class="btn btn-big btn-green add-card" type="button" (click)="editPayment($event, 'card')">{{ 'CONTROLS.ADD_CARD' | translate }}</button>
+          <!-- <div class="mb-3">
+            <button class="btn btn-big btn-green add-card" type="button" (click)="editPayment($event, 'paypal')">&nbsp;&nbsp;&nbsp;&nbsp;{{ 'CONTROLS.ADD_PAYPAL' | translate }}&nbsp;&nbsp;&nbsp;&nbsp;</button>
+            <br>
+          </div> -->
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="close-popup" (click)="toggleOption(-1)">{{ 'BUTTONS.CLOSE' | translate }}</a>
+        </footer>
+      </div>
+
+      <div class="company-form" [@slideInOut]="option != 1">
+        <div class="popup-body" [class.empty-p]="option != 1">
+          <form [formGroup]="companyForm" (submit)="submit()" autocomplete="off">
+            <div class="form-group v3">
+              <input class="form-control" formControlName="organization_number" (focus)="onFocus($event)" (blur)="onBlur($event)">
+              <label for="organization-number" translate="CONTROLS.ORGANIZATION_NUMBER">Organization number</label>
+              <form-controll-errors [form]="companyForm" [controlName]="'organization_number'"></form-controll-errors>
+              <div class="dropdown" [ngClass]="{open: showCompanyInfo}" (keyup.esc)="showCompanyInfo = false" tabindex="1">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <span class="dropdown-item" (click)="fillInCompanyInfo()">{{ companyInfo?.company_name }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group v3">
+              <input type="email" class="form-control" formControlName="email">
+              <label>{{ 'CONTROLS.INVOICE_EMAIL' | translate }}</label>
+              <form-controll-errors [form]="companyForm" [controlName]="'email'"></form-controll-errors>
+            </div>
+            <div class="form-group v3">
+              <input class="form-control" formControlName="name">
+              <label>{{ 'CONTROLS.NAME' | translate }}</label>
+              <form-controll-errors [form]="companyForm" [controlName]="'name'"></form-controll-errors>
+            </div>
+            <div class="address mb-1">
+              <div class="form-group v3">
+                <input class="form-control" formControlName="address" type="text">
+                <label for="address" translate="CONTROLS.ADDRESS">Address</label>
+                <form-controll-errors [form]="companyForm" [controlName]="'address'"></form-controll-errors>
+              </div>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="zip_code" type="text">
+                    <label for="zip_code" translate="CONTROLS.ZIP_CODE">Address</label>
+                    <form-controll-errors [form]="companyForm" [controlName]="'zip_code'"></form-controll-errors>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group v3 mb-1">
+                    <input class="form-control" formControlName="floor" type="text">
+                    <label for="floor" translate="CONTROLS.FLOOR">Floor</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <footer [hidden]="option != 1">
+          <button class="btn btn-green btn-big" type="button" (click)="submit()">{{ 'BUTTONS.SUBMIT' | translate }}</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <a class="close-popup" (click)="toggleOption(-1)">{{ 'BUTTONS.CLOSE' | translate }}</a>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

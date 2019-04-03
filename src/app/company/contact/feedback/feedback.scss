@@ -1,0 +1,60 @@
+@import '~assets/css/conf';
+
+.dashboard-popup {
+  &-wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 9999;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+  width: 420px;
+  max-height: 740px;
+  background: white;
+  letter-spacing: 0;
+  @include border-radius(4px);
+
+  &-body {
+    padding: 10px 30px 0;
+    @include border-radius(4px);
+
+    .i {
+      max-height: 620px;
+      overflow-y: auto;
+    }
+  }
+
+  footer {
+    height: 114px;
+    padding: 30px;
+    background: #f3f3f3;
+    font-size: 14px;
+    border-top: 1px solid #f5f5f5;
+    @include border-radius(0 0 4px 4px);
+    display: flex;
+    align-items: center;
+
+    a {
+      color: $gray-dark;
+    }
+
+    button+a {
+      margin-left: 30px;
+    }
+  }
+
+  h3 {
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+
+  textarea {
+    resize: none;
+  }
+}

@@ -1,0 +1,64 @@
+<div class="popup-wrap" tabindex="1" (keyup.esc)="close()" (clickOutside)="close($event)" *ngIf="showPopup">
+  <div class="popup">
+    <div class="popup-body">
+      <h3 class="mt-2" translate="KITCHENS.BUTTONS.ADD_NEW_CATEGORY">Add new category</h3>
+      <p class="text-grey" translate="KITCHENS.CATEGORY_DESC">Category will be added by your local administrator</p>
+      <form class="form" [formGroup]="form">
+        <div class="form-group v3">
+          <input type="text" class="form-control" formControlName="name">
+          <label translate="CONTROLS.NAME">Name</label>
+          <div *ngIf="form.get('name').touched && form.get('name').invalid &&  form.get('name').hasError('required')" class="alert alert-danger">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.NAME' | translate } }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group v3 col-sm-6">
+            <input type="number" class="form-control" formControlName="min_price">
+            <label translate="KITCHENS.CONTROLS.PRICE_FROM">Price from</label>
+            <div *ngIf="form.controls['min_price'].hasError('required') && form.controls['min_price'].touched" class="alert alert-danger">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'KITCHENS.CONTROLS.PRICE_FROM' | translate } }}
+            </div>
+          </div>
+          <div class="form-group v3 col-sm-6">
+            <input type="number" class="form-control" formControlName="max_price">
+            <label translate="KITCHENS.CONTROLS.PRICE_TO">Price to</label>
+            <div *ngIf="form.controls['max_price'].hasError('required') && form.controls['max_price'].touched" class="alert alert-danger">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'KITCHENS.CONTROLS.PRICE_TO' | translate } }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group v3">
+          <textarea rows="3" class="form-control" formControlName="description"></textarea>
+          <label translate="CONTROLS.DESCRIPTION">Description</label>
+          <div *ngIf="form.controls['description'].hasError('required') && form.controls['description'].touched" class="alert alert-danger">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.DESCRIPTION' | translate } }}
+          </div>
+        </div>
+        <div class="form-group v3" *ngIf="showBunch">
+          <div class="custom-checkbox">
+            <label>
+              <input type="checkbox" formControlName="bunch">
+              <i class="fa fa-check-circle"></i>
+              {{ 'CONTROLS.BUNCH' |translate }}
+            </label>
+          </div>
+        </div>
+        <div class="text-center">
+          <label class="uload-img" for="add_category_image" [ngStyle]="{'background-image': 'url(' + previewUrl + ')'}" (click)="checkImage()">
+            {{ 'KITCHENS.CONTROLS.UPLOAD_CATEGORY_IMAGE' | translate }}
+            <input type="file" (change)="fileChange($event)" id='add_category_image'>
+          </label>
+          <div *ngIf="form.get('_image').invalid && form.get('_image').touched && form.get('_image').hasError('required')" class="alert alert-danger">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.IMAGE' | translate } }}
+          </div>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <button type="submit" class="btn btn-big btn-green" (click)="onSubmit()">
+        {{ buttonTitle | translate }}
+      </button> &nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close($event)" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>

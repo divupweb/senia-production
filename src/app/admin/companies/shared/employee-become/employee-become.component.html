@@ -1,0 +1,18 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" closePopup (onClosePopup)="close($event)">
+    <div class="popup-body-header">
+      <h3 class="mt-2 mb-2" translate="ADMIN.COMPANIES.BECOME_EMPLOYEE"></h3>
+      <input type="text" class="search-input" placeholder="{{ 'SHARED.SEARCH_QUERY' | translate }}" [(ngModel)]="search">
+    </div>
+    <div class="popup-body">
+      <div class="employees mb-3">
+        <div class="item" *ngFor="let employee of employees | nameFilter:search" (click)="become(employee.id)">
+          <strong>{{ employee.name }}</strong>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <a (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+    </footer>
+  </div>
+</div>

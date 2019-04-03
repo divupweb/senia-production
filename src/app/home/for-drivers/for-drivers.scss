@@ -1,0 +1,176 @@
+@import '~assets/css/conf';
+
+.home-hero {
+  justify-content: space-between;
+  &:before {
+    display: none;
+  }
+  background-color: #f9f5e9;
+  min-height: 600px;
+  padding-bottom: 70px;
+  flex-direction: column;
+
+  .home-container {
+    height: auto;
+    &--flexed {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 2;
+      justify-content: space-between;
+    }
+  }
+
+  .home-hero-i {
+   @media(min-width: $mobile-sm) {
+     padding:{
+       top: 120px;
+     }
+   }
+    &:before, &:after {
+      content:"";
+      display: block;
+      background:{
+        image: url("/assets/images/home/bus-border.png");
+        position: center;
+        repeat: no-repeat;
+      }
+      height: 32px;
+      width: 100%;
+      margin: 30px auto;
+    }
+    &:after {
+      transform: rotateY(180deg);
+    }
+  }
+
+  h2 {
+    padding-top: 0;
+    margin-bottom: 50px;
+    font-family: $font-bold;
+  }
+
+  h3 {
+    line-height: 1.5;
+    position: relative;
+    z-index: 3;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  .hero-bottom {
+    transform: translateY(50%);
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 65px;
+    align-items: center;
+    max-width: 300px;
+    margin: auto;
+    margin-bottom: -67px;
+    @media(min-width: $mobile-sm) {
+      margin-bottom: -85px;
+    }
+    &:before, &:after {
+      content: "";
+      background-image: url(/assets/images/home/circled-angle.png);
+      width: 31px;
+      height: 25px;
+      display: block;
+      position: absolute;
+      top: 32px;
+      @media (min-width: $mobile-sm) {
+        top: 37px;
+      }
+    }
+    &:before {
+      right: -21px;
+      @media (min-width: $mobile-sm) {
+        right: -18px;
+      }
+    }
+    &:after {
+      left: -21px;
+      transform: rotateY(180deg);
+      @media (min-width: $mobile-sm) {
+        left: -18px;
+      }
+    }
+
+    .btn-big {
+      @media(min-width: $mobile-sm) {
+        padding: 30px 40px;
+      }
+    }
+  }
+}
+
+.benefits {
+  .row {
+    &--flexed {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  h4.eighty-percents-width {
+    max-width: 70%;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+
+  &.light-gray-bg {
+    background-color: $gray-light-blue;
+  }
+
+  @media(min-width: $mobile-sm) {
+    &.top-image-crossing {
+      padding-top: 170px;
+    }
+  }
+}
+
+.advantages {
+  background-image: url("/assets/images/home/driver_bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  color: $white;
+  position: relative;
+  padding:{
+    top: 120px;
+    bottom: 120px;
+  }
+
+  h2 {
+    color: $white;
+  }
+
+  &__wrap {
+    margin-top: 120px;
+  }
+}
+
+.opinions {
+  &__pic {
+    background-position: center;
+    background-size: 130%;
+    background-repeat: no-repeat;
+  }
+}
+
+.get-in-touch {
+  background-color: $sky-blue;
+  @media(min-width: $mobile-sm) {
+    padding-bottom: 300px;
+    background: $sky-blue url("/assets/images/home/keyboard-blue.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 365px;
+  }
+}

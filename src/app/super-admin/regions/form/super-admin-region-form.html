@@ -1,0 +1,190 @@
+<div class="heading">
+  <h2 [routerLink]="['..']">{{ 'SHARED.REGIONS.PLURAL' | translate }} / {{ inputMode | translate }}</h2>
+</div>
+<h3 class="title" translate="SUPER_ADMIN.PROSPECTIVE_ACC.REGION">Region</h3>
+
+<div class="row two-col-form">
+  <div class="col-lg-6">
+    <form *ngIf="accountForm" [formGroup]="accountForm" autocomplete="off">
+      <div class="form-group v2 mb-2">
+        <input formControlName="name" class="form-control">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.NAME">Name</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'name'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="country" class="form-control">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.COUNTRY">Country</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'country'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.COUNTRY'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="city" class="form-control">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.CITY">City</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'city'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.CITY'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="vat" class="form-control" type="number">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.VAT">Vat</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'vat'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.VAT'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="deliveryCost" class="form-control" type="number">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_COST">Delivery Cost</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'deliveryCost'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_COST'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="deliveryVat" class="form-control">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_VAT">Delivery Vat</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'deliveryVat'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_VAT'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="minCharge" class="form-control" type="number">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.MIN_CHARGE">Min employee charge</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'minCharge'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.MIN_CHARGE'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <select formControlName="locale" class="form-control">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang">
+            {{ ('SHARED.LANGS.' + lang|uppercase) | translate }}
+          </option>
+        </select>
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.LOCALE">Locale</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'locale'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.LOCALE'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <select formControlName="timeZone" class="form-control">
+          <option *ngFor="let timeZone of timeZones" [value]="timeZone">
+            {{ timeZone }}
+          </option>
+        </select>
+        <label translate="CONTROLS.TIME_ZONE"></label>
+        <form-controll-errors [form]="accountForm" [controlName]="'timeZone'"></form-controll-errors>
+      </div>
+
+      <div *ngIf="showAdmin" class="form-group v2 mb-2">
+        <input formControlName="adminEmail" class="form-control">
+        <label translate="SUPER_ADMIN.PROSPECTIVE_ACC.ADMIN_EMAIL">Admin email</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'adminEmail'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.ADMIN_EMAIL'"></form-controll-errors>
+      </div>
+
+      <div class="mb-2">
+        <label>{{ "SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_TYPE" | translate }}:</label>
+        <div class="list-inline">
+          <span *ngFor="let type of deliveryTypes; let i = index">
+            <div class="custom-radio">
+              <label>
+                <input type="radio"
+                       [value]="i"
+                       formControlName="delivery"
+                       name="delivery">
+
+                <i class="fa fa-check-circle"></i>
+                {{deliveryTypes[i]}}
+              </label>
+            </div>
+          </span>
+        </div>
+        <form-controll-errors [form]="accountForm" [controlName]="'delivery'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_TYPE'"></form-controll-errors>
+      </div>
+
+      <div class="mb-2">
+        <label>{{ 'SUPER_ADMIN.PROSPECTIVE_ACC.INVOICE_TEMPLATE' | translate }}: </label>
+        <div class="list-inline">
+          <span *ngFor="let type of templates; let i = index">
+            <div class="custom-radio">
+              <label>
+                <input type="radio"
+                       formControlName="template"
+                       [value]="i"
+                       name="template">
+
+                <i class="fa fa-check-circle"></i>
+                {{templates[i]}}
+              </label>
+            </div>
+          </span>
+        </div>
+        <form-controll-errors [form]="accountForm" [controlName]="'template'" [translation]="'SUPER_ADMIN.PROSPECTIVE_ACC.INVOICE_TEMPLATE'"></form-controll-errors>
+      </div>
+      <div class="mb-2">
+        <label>{{ 'CONTROLS.CURRENCY' | translate }}: </label>
+        <select class="form-control currency" formControlName="currency">
+          <option value="{{ item }}" *ngFor="let item of currencyList">{{ item }}</option>
+        </select>
+        <form-controll-errors [form]="accountForm" [controlName]="'currency'"></form-controll-errors>
+      </div>
+
+      <div class="mb-2">
+        <label>{{ 'CONTROLS.CALENDAR_ID' | translate }}: </label>
+        <input type="text" class="form-control" formControlName="calendarId">
+        <form-controll-errors [form]="accountForm" [controlName]="'calendarId'"></form-controll-errors>
+      </div>
+
+      <div class="custom-checkbox">
+        <label>
+          <input type="checkbox" class="form-control" formControlName="showKitchenRating">
+          {{ 'CONTROLS.SHOW_KITCHEN_RATING' | translate }}
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+        </label>
+        <form-controll-errors [form]="accountForm" [controlName]="'calendarId'"></form-controll-errors>
+      </div>
+
+      <div>
+        <image-box *ngIf="accountForm.get(['image', 'displayUrl']).value" [imageUrl]="accountForm.get(['image', 'displayUrl']).value" (onDelete)="deleteImage('image')"></image-box>
+        <image-upload *ngIf="!accountForm.get(['image', 'displayUrl']).value" [upload-url]="imageUploadUrl()" (onResponse)="fileUpload($event, 'image')"></image-upload>
+        <form-controll-errors [form]="accountForm" [controlName]="['image', 'id']" [translation]="'CONTROLS.IMAGE'"></form-controll-errors>
+      </div>
+
+      <div class="form-group v2 mb-2">
+        <input formControlName="email" class="form-control" type="email">
+        <label translate="CONTROLS.INVOICE_EMAIL">Invoice email</label>
+        <form-controll-errors [form]="accountForm" [controlName]="'email'"></form-controll-errors>
+      </div>
+      <div class="custom-checkbox">
+        <label>
+          <input type="checkbox" class="form-control" formControlName="enterprise">
+          {{ 'CONTROLS.ENTERPRISE_REGION' | translate }}
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+        </label>
+        <form-controll-errors [form]="accountForm" [controlName]="'enterprise'"></form-controll-errors>
+      </div>
+      <div class="form-group v2 mb-2">
+        <input formControlName="subsidyMaxValue" class="form-control" type="number">
+        <label translate="CONTROLS.SUBSIDY_MAX_VALUE"></label>
+        <form-controll-errors [form]="accountForm" [controlName]="'subsidyMaxValue'"></form-controll-errors>
+      </div>
+
+      <h3>{{ 'CONTROLS.LANDING_PAGE_SETTINGS' | translate }}</h3>
+      <div [formGroup]="accountForm.get('settings')">
+        <div class="custom-checkbox">
+          <label>
+            <input type="checkbox" class="form-control" formControlName="landingEmployee">
+            {{ 'CONTROLS.LANDING_EMPLOYEE' | translate }}
+            <i aria-hidden="true" class="fa fa-check-circle"></i>
+          </label>
+          <form-controll-errors [form]="accountForm.get('settings')" [controlName]="landingEmployee"></form-controll-errors>
+        </div>
+
+        <div class="custom-checkbox">
+          <label>
+            <input type="checkbox" class="form-control" formControlName="landingCompany">
+            {{ 'CONTROLS.LANDING_COMPANY' | translate }}
+            <i aria-hidden="true" class="fa fa-check-circle"></i>
+          </label>
+          <form-controll-errors [form]="accountForm.get('settings')" [controlName]="landingCompany"></form-controll-errors>
+        </div>
+      </div>
+      <h3><h3>{{ 'CONTROLS.ACCOUNT_LOGO' | translate }}</h3></h3>
+      <div>
+        <image-box *ngIf="accountForm.get(['logo', 'displayUrl']).value" [imageUrl]="accountForm.get(['logo', 'displayUrl']).value" (onDelete)="deleteImage('logo')"></image-box>
+        <image-upload *ngIf="!accountForm.get(['logo', 'displayUrl']).value" [upload-url]="logoUploadUrl()" (onResponse)="fileUpload($event, 'logo')"></image-upload>
+        <form-controll-errors [form]="accountForm" [controlName]="['logo', 'id']" [translation]="'CONTROLS.IMAGE'"></form-controll-errors>
+      </div>
+
+
+      <div class="text-right">
+        <a [routerLink]="['..']" class="btn btn-gray" translate="BUTTONS.CANCEL">Cancel</a>
+        <button color="primary" type="submit" class="btn btn-green" translate="BUTTONS.SUBMIT" (click)="submitForm()">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>

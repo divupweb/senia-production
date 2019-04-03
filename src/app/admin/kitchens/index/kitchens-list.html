@@ -1,0 +1,135 @@
+<user-menu>
+  <div class="heading">
+    <div class="user-menu-links">
+      <custom-checkbox [(ngModel)]="adminState.activeOnly" (change)="onActiveOnlyChange($event)"><span class="txt">Show active only</span></custom-checkbox>
+    </div>
+  </div>
+</user-menu>
+
+<div class="heading space-between">
+  <button class="btn btn-green btn-big" (click)="goToCreateForm()" translate="BUTTONS.ADD_NEW">
+    &nbsp;&nbsp;&nbsp;Add new&nbsp;&nbsp;&nbsp;
+  </button>
+  <div>
+    <sort-component [sortOrder]="sortOrder" (onSelect)="onSortSelect($event)" [items]="sortItems"></sort-component>
+  </div>
+  <form [formGroup]="queryForm">
+    <div class="heading-search">
+      <input class="form-control" formControlName="query" #query placeholder="Search">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+  </form>
+</div>
+
+
+<table class="table table-main table-lines table-stripes">
+  <thead>
+    <tr>
+      <th>
+        <div class="select-all custom-checkbox">
+          <label>
+          <input type="checkbox" (change)="toggleAll()" [checked]="selectedAll">
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+          <div class="txt">All</div>
+        </label>
+        </div>
+        <div class="d-inline" (click)="changeOrder('name')">
+          <span translate="CONTROLS.NAME">Name</span>
+          <sort-mark [column]="'name'" [sortOrder]="sortOrder"></sort-mark>
+        </div>
+      </th>
+      <th (click)="changeOrder('address')">
+        <span translate="CONTROLS.ADDRESS">Address</span>
+        <sort-mark [column]="'address'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th (click)="changeOrder('phone')">
+        <span translate="CONTROLS.PHONE">Phone</span>
+        <sort-mark [column]="'phone'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th (click)="changeOrder('active')">
+        <span translate="CONTROLS.STATUS">Phone</span>
+        <sort-mark [column]="'active'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th class="orders-cell" (click)="changeOrder('orders_count')">
+        <span translate="CONTROLS.ORDERS">Orders</span>
+        <sort-mark [column]="'orders_count'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th class="nowrap text-right"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let kitchen of kitchens | paginate: paginationConfig"  [ngClass]="{'active': kitchen.selected}">
+      <td>
+        <div class="table-img-checkbox">
+          <label>
+          <span class="table-icon placeholder">
+            <img [src]="kitchen.displayUrl" alt="">
+            <span class="checkbox-overlay">
+              <input type="checkbox" (change)="selectKitchen(kitchen)" [checked]="kitchen.selected">
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
+              <i class="circle"></i>
+            </span>
+          </span>
+          <span class="table-item-name" (click)="becomeKitchen(kitchen.id, $event)">{{ kitchen.name }}</span>
+        </label>
+        </div>
+
+      </td>
+      <td>{{ kitchen.address }}</td>
+      <td>{{ kitchen.phone }}</td>
+      <td class="status" [ngClass]="{'status-active': kitchen.active, 'status-inactive': !kitchen.active }">
+        {{ (kitchen.active ? "SHARED.STATES.ACTIVE" : "SHARED.STATES.INACTIVE") | translate }}
+      </td>
+      <td>
+        <div class="progress-horizontal">
+          <div class="txt">
+            {{ kitchen.ordersCount }}
+          </div>
+          <div class="progress-wrap" *ngIf="isFinite(kitchen.ordersPercentage)">
+            <progress class="progress progress-blue progress-animated" max="100" [value]="kitchen.ordersPercentage">
+              <span style="color:white; white-space:nowrap;"></span>
+            </progress>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="nowrap">
+          <a (click)="showEdit(kitchen.id)">{{ 'BUTTONS.EDIT' | translate }}</a>
+          <div class="table-extra">
+            <div (click)="openItemPopover(kitchen.id)" class="table-extra-dots"><i></i><i></i><i></i></div>
+            <div class="table-extra-popover" *ngIf="popover == kitchen.id" closePopup (onClosePopup)="closeItemPopover($event)">
+              <a class="item" (click)="sendMesssage.open(service, kitchen.id, 'Kitchen')">
+                <span translate="BUTTONS.SEND_MESSAGE"></span>
+              </a>
+              <a class="item" (click)="showDiscountPopup(kitchen.id)">
+                <span translate="ADMIN.COMPANIES.DISCOUNTS"></span>
+                <span class="info"></span>
+              </a>
+              <a class="item" (click)="generateInvoice.open(service, kitchen.id)">
+                <span translate="ADMIN.COMPANIES.GENERATE_INVOICE"></span>
+                <span class="info"></span>
+              </a>
+              <a class="item" (click)="becomeKitchen(kitchen.id)">
+                <span translate="BUTTONS.BECOME"></span>
+                <span class="info"></span>
+              </a>
+              <footer>
+                <span class="txt" translate="SHARED.STATES.ACTIVE" *ngIf="kitchen.active"></span>
+                <span class="txt" translate="SHARED.STATES.INACTIVE" *ngIf="!kitchen.active"></span>
+                <switch-checkbox [ngModel]="kitchen.active" (change)="changeKitchenState(kitchen, $event)"></switch-checkbox>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="pull-right">
+  <admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id"></admin-pagination>
+</div>
+
+<kitchen-interest-discount [(show)]="showDiscount" [kitchenId]="selectedKitchenId"></kitchen-interest-discount>
+<send-message #sendMesssage></send-message>
+<generate-invoice #generateInvoice></generate-invoice>

@@ -1,0 +1,40 @@
+section {
+  margin-bottom: 50px;
+}
+
+.menu-row {
+  background: white;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0 -15px;
+
+  .menu-col {
+    flex-basis: 280px;
+    max-width: 280px;
+    min-width: 100px;
+    margin: 0 15px;
+  }
+}
+
+@media (max-width: $laptop-sm) {
+  .menu-row {
+    .menu-col {
+      margin: 0 5px;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .menu-row {
+    .menu-col {
+      margin: 0 5px;
+    }
+  }
+}
+
+@media (max-width: $mobile-sm) {
+  .menu-row {
+    justify-content: center;
+  }
+}

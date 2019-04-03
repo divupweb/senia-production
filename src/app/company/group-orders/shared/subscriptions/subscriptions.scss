@@ -1,0 +1,103 @@
+@import '~assets/css/conf';
+
+.subscription {
+  display: inline-block;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-size: 20px;
+  font-family: $font-bold;
+  cursor: pointer;
+
+  .txt{
+    opacity: .5;
+  }
+
+  + .subscription{
+    margin-left: 45px;
+  }
+
+  .subscription-amount{
+    line-height: 1;
+    vertical-align: middle;
+    text-align: center;
+    height: 25px;
+    padding: 5px 0 0 1px;
+    margin-top: -5px;
+    min-width: 25px;
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    @include border-radius(50%);
+    font-family: $font-normal;
+    border: 1px solid;
+
+    .repeat{
+      left: -2px;
+      top: -4px;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      visibility: hidden;
+    }
+
+    &.periodic{
+      border-color: transparent!important;
+      .repeat{
+        visibility: visible;
+      }
+    }
+  }
+
+  &.breakfast{
+    .subscription-amount{color: $breakfast;
+                  border-color: $breakfast;
+                  #repeat-icon{stroke: $breakfast}
+                }
+  }
+  &.lunch{
+    .subscription-amount{color: $lunch;
+                  border-color: $lunch;
+                  #repeat-icon{stroke: $lunch}
+                }
+  }
+  &.dinner{
+    .subscription-amount{color: $dinner;
+                  border-color: $dinner;
+                  #repeat-icon{stroke: $dinner}
+                }
+  }
+  &.catering{
+    .subscription-amount{color: $catering;
+                   border-color:$catering;
+                   #repeat-icon{stroke: $catering}
+                 }
+  }
+  &.active {
+    cursor: default;
+
+    .txt{
+      opacity: 1;
+    }
+  }
+}
+
+@media (max-width: $mobile-sm) {
+
+  :host{
+    display: flex;
+  }
+  .subscription {
+    display: inline-flex;
+    flex-flow: column-reverse nowrap;
+    align-items: center;
+
+    +.subscription{
+      margin-left: 30px;
+    }
+    .txt{
+      margin-top: 10px;
+    }
+  }
+}
+

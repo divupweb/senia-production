@@ -1,0 +1,22 @@
+<aside *ngIf="showStatusBar" class="logistics-aside">
+  <div class="logistics-calendar-aside">
+    <div *ngFor="let dayData of daysData; let i = index">
+      <span class="seprtr">
+        <span>{{ dayData[0] }}</span>
+      </span>
+      <div *ngFor="let shipment of dayData.slice(1)" class="item" [ngClass]="{'warning': shipment.status == 'failed'}">
+        <div class="img">
+          <img [src]="shipment.display_url" alt="" *ngIf="shipment.display_url">
+          <div [ngClass]="{'warning-icon': shipment.status == 'failed'}"></div>
+        </div>
+        <div class="txt">
+          <div class="time">{{ shipment.time | shortTime }}</div>
+          <div class="name">{{ shipment.driver }}</div>
+          <div class="descr">{{ shipment.extended_status }}</div>
+          <a *ngIf="shipment.status == 'failed'" class="btn details-btn" (click)="openPopup(shipment)" translate="BUTTONS.VIEW_DETAILS">View Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <failure-logistics-popup *ngIf="selectedShipment" [shipment]="selectedShipment" [(show)]="showPopup"></failure-logistics-popup>
+</aside>

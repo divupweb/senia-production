@@ -1,0 +1,58 @@
+@import '~assets/css/conf';
+
+.admin-info {
+  margin: 30px;
+  padding-top: 40px;
+  line-height: 1.2;
+  border-top: 1px solid #777;
+
+  .img {
+    max-width: 50px;
+    overflow: hidden;
+    @include border-radius(50%);
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .title {
+    color: white;
+  }
+
+  h3 {
+    margin: 30px 0 5px;
+  }
+
+  a {
+    color: $gray-text;
+  }
+
+  .tel {
+    text-decoration: none;
+  }
+
+  p {
+    color: $gray-text;
+  }
+}
+
+@media (max-width: $laptop) {
+  .admin-info {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: $laptop-sm) {
+  .admin-info {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+@media (max-width: $mobile) {
+  .admin-info {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

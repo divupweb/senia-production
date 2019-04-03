@@ -1,0 +1,12 @@
+input-debounce + .dropdown.open {
+  .dropdown-menu {
+    top: -26px;
+    padding: 0;
+    width: 100%!important;
+    overflow: auto;
+    height: auto!important;
+    .dropdown-item{
+      padding: 13px 30px;
+    }
+  }
+}

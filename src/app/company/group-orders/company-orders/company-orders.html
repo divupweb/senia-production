@@ -1,0 +1,57 @@
+<div class="group-orders">
+  <main class="group-orders-main">
+    <div class="top-main">
+      <line-calendar-weekly *ngIf="available" [daysInfo]="calendarInfo" [startDay]="available?.date" (daySelect)="onDaySelect($event)" (weekChange)="onWeekChange($event)" [disableWeekend]="!anyCatering"></line-calendar-weekly>
+    </div>
+    <div class="i">
+      <div class="content-main">
+        <div class="mt-2">
+          <subscriptions [subscriptions]="subscriptions" [active]="activeSubscription" (onSelect)="onSubscriptionSelect($event)"></subscriptions>
+        </div>
+        <carousel-slider #kitchenCarousel [items]="kitchens" [favorites]="favorites" [selected]="item" (onSelect)="onKitchenSelect($event)"></carousel-slider>
+        <div *ngIf="deadline">
+          <div class="order-message" *ngIf="deadline.soon">
+            <div class="text-red upper-first font-weight-bold" translate="COMPANY.ORDERS.DEADLINE_SOON"
+                 [translateParams]="{subscription: ('SUBSCRIPTIONS.' + activeSubscription|uppercase)|translate}">
+            </div>
+            <div class="sub">
+              {{ 'SHARED.TIME_LEFT'| translate: { time: deadline.timeLeft | duration } }}
+            </div>
+          </div>
+          <div class="order-message" *ngIf="deadline.passed">
+            <div class="text-red" translate="COMPANY.ORDERS.DEADLINE_PASSED">Order time for this kitchen is over</div>
+            <div class="sub" translate="COMPANY.ORDERS.DEADLINE_PASSED_SUB">Please, select another kitchen or another date</div>
+          </div>
+          <div>
+            <menu-item *ngFor="let item of menu" [item]="item" (onAddToCard)="onMenuAddToCard($event)" [deadline]="deadline"></menu-item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside class="group-orders-aside" [class.is-open]="userMenu.isAsideOpen">
+    <div class="aside-mobile-header">
+      <div class="hamburger-icon is-open" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <span class="toggle-aside-icon" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <i class="fa fa-shopping-cart"></i>
+      </span>
+      <div class="txt">Cart</div>
+    </div>
+    <div class="i">
+      <div class="top-aside">
+        <cart-total [cart]="cart" [isCatering]="isCatering" (onCateringUpdate)="onCartSubmit($event)"></cart-total>
+      </div>
+      <div class="content-aside" *ngIf="!!cart">
+        <cart-information #cateringInformation *ngIf="isCatering" [cart]="cart" [disabled]="!deadline || deadline.passed"></cart-information>
+        <cart [items]="cart.orders"></cart>
+      </div>
+    </div>
+  </aside>
+  <i class="mobile-overlay" [class.is-open]="userMenu.isAsideOpen || userMenu.isMenuOpen"></i>
+</div>

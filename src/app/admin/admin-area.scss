@@ -1,0 +1,33 @@
+@import '~assets/css/conf';
+@import '~assets/css/shared-elements/area-layout';
+
+.navbar-region {
+  color: $gray-text;
+  line-height: 55px;
+  margin: 0 30px;
+}
+
+h2 {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.sub-title {
+  color: $gray-text;
+  font-size: 18px;
+  line-height: 1;
+}
+
+section {
+  margin: 30px 0 70px;
+}
+
+header{
+  >
+  .i{
+    display: flex;
+    flex-flow: row nowrap;
+
+    .right{margin-left: auto;}
+  }
+}

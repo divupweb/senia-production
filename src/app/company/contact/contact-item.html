@@ -1,0 +1,13 @@
+<div class="admin-info">
+  <div class="img" *ngIf="contact?.displayUrl">
+    <img [src]="contact.displayUrl" alt="{{ 'COMPANY.CONTACT.YOUR_LOCAL_ADMIN' | translate }}">
+  </div>
+  <div class="admin-info-txt">
+    <h3 class="title" translate="COMPANY.CONTACT.YOUR_LOCAL_ADMIN">Your local admin</h3>
+    <p>{{ contact?.name }}</p>
+    <p>{{ contact?.email }}</p>
+    <p><a href="tel:{{ contact?.phone}}" class="tel">mob. {{ contact?.phone }}</a></p>
+    <p><a (click)="popup.open()" translate="SHARED.FEEDBACKS.SEND">Send feedback</a></p>
+    <feedback #popup ></feedback>
+  </div>
+</div>

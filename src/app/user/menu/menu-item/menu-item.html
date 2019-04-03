@@ -1,0 +1,81 @@
+<rating-popup #rating
+              [menuItem]="menuItem"
+              [date]="date"></rating-popup>
+<div [ngClass]="{ 'active': active }">
+  <div class="menu-item" [ngClass]="customClass">
+    <div class="menu-item-top-img"
+       [ngStyle]="{'background-image': 'url(' + menuItem.menuUrl + ')'}"
+       [ngClass]="{'deadline-passed': menuItem.deadlinePassed }">
+    </div>
+    <div class="menu-item-info">
+      <div class="info-i">
+        <div class="kitchen-name">{{menuItem.kitchenName}}</div>
+        <div class="dish-name" (click)="info.apply(menuItem).show()"><span>{{menuItem.name}}</span></div>
+        <div class="deadline red">{{ 'DEADLINE.SINGULAR' | translate }} {{ menuItem.deadlineDueTime | fullDate: 'HH:mm dddd (DD MMMM)' }}</div>
+        <div class="descr">
+          {{menuItem.description}}
+        </div>
+        <div class="details">
+          <!--<a><span translate="USER.BUTTONS.VIEW_DETAILS">View details</span></a>-->
+        </div>
+        <div class="price">{{ menuItem.price | currencyFormat  }}</div>
+
+        <div class="bottom text-center">
+          <div *ngIf="showButtons" class="ammount-control">
+            <button (click)='catchCard(decQuantity)' class="btn-ammount" [disabled]="menuItem.quantity == 0"><span class="minus">-</span></button>
+            <span class="value">{{menuItem.quantity}}</span>
+            <button (click)='catchCard(incQuantity)' class="btn-ammount"><span class="plus">+</span></button>
+          </div>
+          <div *ngIf="menuItem.rating">
+            <button class="btn btn-white btn-big btn-block" (click)="rating.show()" *ngIf="!menuItem?.rating?.id" translate="USER.BUTTONS.RATE">Rate</button>
+            <div *ngIf="menuItem?.rating?.id">
+              <rating [readonly]="true" [ngModel]="menuItem.rating.score"></rating>
+              <div class="text-green" *ngIf="menuItem?.rating?.comment">
+                <a (click)="rating.show()">
+                  <i class="fa fa-comment-o text-green" aria-hidden="true"></i>
+                  {{ 'USER.BUTTONS.VIEW_COMMENT' | translate}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-item-img"
+    [ngClass]="{ 'deadline-passed': menuItem.deadlinePassed, periodic: menuItem.periodic, allergy: menuItem.userAllergies.length > 0 }"
+    [ngStyle]="{'background-image': 'url(' + menuItem.menuUrl + ')'}">
+      <h2 class="image-text">{{menuItem.category}}</h2>
+      <div class="allergies" *ngIf="menuItem.userAllergies.length > 0 && !menuItem.deadlinePassed">
+        <div *ngFor="let allergy of menuItem.userAllergies" class="allergy-item">
+          <div class="allergy-img" title="{{allergy.name}}"
+               [ngStyle]="{'background-image': 'url(' + allergy.display_url + ')'}">
+          </div>
+          <div class="allergy-title">
+            <div class="text-grey" translate="USER.MENU.ALLERGY">Allergy</div>
+            <strong>{{allergy.name}}</strong>
+          </div>
+        </div>
+      </div>
+      <div class="deadline-passed-overlay">
+        <span class="b64-icon-lock"></span>
+        <div class="mt-2" translate="USER.MENU.PAST_DEADLINE">Past deadline</div>
+      </div>
+    </div>
+  </div>
+</div>
+<menu-item-popover
+  [subscription]="subscription"
+  [date]="date"
+  [menuItem]="menuItem" #confirmation (onCancel)="cancel()" (onConfirm)="confirm()"
+  [customClass]="customClass">
+</menu-item-popover>
+<dish-info-popup [date]="date"
+                 [subscription]="subscription"
+                 [showButtons]="showButtons"
+                 (onConfirm)="popupConfirm($event)"
+                 (onSettingsChange)="onSettingsChange($event)"
+                 [user]="user"
+                 (onPeriodicSet)="periodicSet($event)"
+                 #info>
+
+</dish-info-popup>

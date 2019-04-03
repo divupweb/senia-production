@@ -1,0 +1,108 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector">
+      <li *ngFor='let subscription of subscriptions'>
+        <a href="javascript:void(0);"
+           (click)="selectSubscription(subscription)"
+           [ngClass]="{'router-link-active': selectedSubscription == subscription}">
+          {{ ('SUBSCRIPTIONS.' + subscription|uppercase) | translate }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</user-menu>
+<div class="orders">
+  <div class="orders-top" [class.scrolled]="scrolled">
+    <div class="orders-top-i">
+      <div>
+        <div class="orders-date">
+          <div>
+            <span (click)="backToday()" class="calendar-btn">
+              <i aria-hidden="true" class="fa fa-calendar-check-o"></i>
+            </span>
+
+            <div class="circle-arrow circle-arrow-left" (click)="selectWeek(-1)" [class.disabled]="!back">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="date">{{ selectedWeek | daysRange }}</div>
+
+          <div>
+            <div class="circle-arrow circle-arrow-right" (click)="selectWeek(1)" [class.disabled]="!forward">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+
+            <span (click)="showPicker = !showPicker" class="calendar-btn">
+              <i class="fa fa-calendar"></i>
+              <div class="datepicker">
+                <div class="datepicker-dropdown">
+                  <datepicker [hidden]="!showPicker"
+                              [(ngModel)]="pickedDate"
+                              (ngModelChange)="dateCalendarPicked()"
+                              [startingDay]="1"
+                              [showWeeks]="false"></datepicker>
+                </div>
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="data && data.kitchens" class="orders-row">
+        <div class="header-orders-col">
+          <div *ngIf="data.kitchens" class="mb-1"><strong>{{data.kitchens.length}} {{'SHARED.KITCHENS.PLURAL' | translate | lowercase}}</strong></div>
+          <div class="text-grey mb-1">
+            <span class="b64-icon-truck"></span>
+            {{data.total_deliveries.shipments}} {{ 'ADMIN.REPORTS.DELIVERIES' | translate }}
+          </div>
+          <div class="text-grey">
+            <span class="b64-icon-cup"></span>
+            {{data.total_deliveries.items}} {{ 'ADMIN.REPORTS.ITEMS' | translate }}
+          </div>
+        </div>
+        <div *ngFor="let date of data.dates; let i = index" class="orders-col">
+          <div class="orders-day header">
+            <div class="row-1">
+              <div><strong>{{ date | wkDay}}</strong></div>
+              <div><span class="text-grey">{{ date | dayMonth }}</span></div>
+            </div>
+            <div class="row-2">
+              <div class="row-2-inner">
+                <span class="b64-icon-truck"></span>
+                <div class="text-green">{{data.day_deliveries[i]['shipments']}}</div>
+              </div>
+              <div class="row-2-inner">
+                <span class="b64-icon-cup"></span>
+                <div class="text-grey">{{data.day_deliveries[i]['items']}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="orders-content">
+    <div *ngFor="let kitchen of data.kitchens" class="orders-row">
+      <div class="title-orders-col">
+        <img [src]="kitchen.logo" alt="">
+        <strong>{{kitchen.name}}</strong>
+      </div>
+      <div *ngFor="let day of kitchen.days" class="orders-col">
+        <div class="orders-day">
+          <div class="orders-day-i">
+            <div class="left">
+              <span *ngIf="day">{{day.shipments}}</span>
+              <span *ngIf="!day">0</span>
+            </div>
+            <div class="right">
+              <span *ngIf="day">{{day.items}} <span *ngIf="day && !day.passed" style="color: red">*</span></span>
+
+              <span *ngIf="!day">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="admin-dashboard">
+  <main class="dashboard-main">
+    <div class="dashboard-main-top">
+      <line-calendar (daySelect)="onDaySelect($event)"></line-calendar>
+    </div>
+    <div class="dashboard-main-content">
+      <pending-carousel></pending-carousel>
+      <div class="dashboard-days" *ngFor="let data of dailyData;">
+        <day-item-component *ngFor="let subscription of data | keys;" [data]="data" [subscription]="subscription" class="dashboard-day-wrap"></day-item-component>
+      </div>
+    </div>
+  </main>
+</div>

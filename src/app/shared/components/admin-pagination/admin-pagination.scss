@@ -1,0 +1,9 @@
+@import '~assets/css/conf';
+
+.pagination-wrap {
+  ul.ng2-pagination {
+    li.current, li a {
+      border-radius: 20px !important;
+    }
+  }
+}

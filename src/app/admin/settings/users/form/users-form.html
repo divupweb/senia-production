@@ -1,0 +1,95 @@
+<form [formGroup]="form" (submit)="submitForm()" autocomplete="off">
+  <div class="popup-wrap">
+    <div class="popup" closePopup (onClosePopup)="backToList($event)">
+      <div class="popup-body">
+
+        <div class="text-center mt-3">
+          <div class="logo-upload mb-3">
+            <div>
+              <div class="logo-upload-placeholder">
+                <div class="heading-img">
+                  <div class="img">
+                    <img [src]="imageDisplayUrl" *ngIf="imageDisplayUrl">
+                  </div>
+                  <div class="logo-controls">
+                    <div class="upload">
+                      <label for="image">
+                        {{ 'SHARED.COMPONENTS.UPLOAD_NEW_LOGO' | translate }}
+                      </label>
+                      <input type="file" (change)="fileChange($event)" id="image" #file/>
+                    </div>
+                    <a (click)="deleteImage()" *ngIf="imageDisplayUrl" class="remove">{{ 'BUTTONS.REMOVE_LOGO' | translate }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group v3">
+          <input type="text" class="form-control" formControlName="firstName">
+          <label translate="CONTROLS.FIRST_NAME">First Name</label>
+          <div class="alert alert-danger" *ngIf="form.get('firstName').touched">
+            <div *ngIf="form.get('firstName').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.FIRST_NAME' | translate } }}
+            </div>
+            <div *ngIf="form.hasError('firstName')"> {{ form.getError('firstName')}}</div>
+          </div>
+        </div>
+        <div class="form-group v3">
+          <input type="text" class="form-control" formControlName="lastName">
+          <label translate="CONTROLS.LAST_NAME">Last Name</label>
+          <div class="alert alert-danger" *ngIf="form.get('lastName').touched">
+            <div *ngIf="form.get('lastName').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.LAST_NAME' | translate } }}
+            </div>
+            <div *ngIf="form.hasError('lastName')"> {{ form.getError('lastName')}}</div>
+          </div>
+        </div>
+        <div class="form-group v3">
+          <input type="text" class="form-control" formControlName="email">
+          <label translate="CONTROLS.EMAIL">Email</label>
+          <div class="alert alert-danger" *ngIf="form.get('email').touched">
+            <div *ngIf="form.get('email').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+              translate: { field: 'CONTROLS.EMAIL' | translate } }}
+            </div>
+            <div *ngIf="form.get('email').hasError('invalidEmailAddress')"
+                 translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect
+            </div>
+            <div *ngIf="form.hasError('email')">{{'CONTROLS.EMAIL' | translate}} {{ form.getError('email')}}</div>
+          </div>
+        </div>
+        <div class="form-group v3">
+          <input type="password" class="form-control" formControlName="password">
+          <label translate="CONTROLS.PASSWORD">Password</label>
+          <div class="alert alert-danger" *ngIf="form.get('password').touched">
+            <div *ngIf="form.get('password').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.PASSWORD' | translate } }}
+            </div>
+            <div *ngIf="form.hasError('password')"> {{ 'CONTROLS.PASSWORD' | translate}} {{ form.getError('password')}}</div>
+          </div>
+        </div>
+        <div class="form-group v3 mb-3">
+          <select class="form-control" formControlName="role">
+            <option [attr.selected]="option == role" value="{{ option | lowercase }}" *ngFor="let option of roles">
+              {{ ('SHARED.ROLES.'+ option|uppercase) |translate}}
+            </option>
+          </select>
+          <label translate="CONTROLS.ROLE">Role</label>
+          <i class="fa fa-caret-down"></i>
+          <div class="alert alert-danger" *ngIf="form.get('role').touched">
+            <div *ngIf="form.get('role').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.ROLE' | translate } }}
+            </div>
+            <div *ngIf="form.hasError('role')"> {{ 'CONTROLS.ROLE' | translate}} {{ form.getError('role')}}</div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <button class="btn btn-green btn-big" translate="BUTTONS.SAVE">Save</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a (click)="backToList()" translate="BUTTONS.CLOSE">Close</a>
+      </footer>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,66 @@
+@import '~assets/css/conf';
+.discount{
+  max-width: 390px;
+  padding: 0 20px;
+  margin: 60px auto;
+}
+
+.slct-control{
+  min-width: 100px;
+  padding-right: 30px;
+  display: inline-block;
+  position: relative;
+  border-bottom: 1px solid rgba(0,0,0,.15);
+  .title{
+    color: $gray-text;
+  }
+  .fa{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+  &-popover{
+    width: 380px;
+    position: absolute;
+    top: 55px;
+    left: -11px;
+    z-index: 3;
+    box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+}
+
+.custom-checkbox{
+  .txt{
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.employees-list{
+  .employee .custom-checkbox label{
+    white-space: nowrap;
+    .txt{
+      white-space: normal;
+    }
+  }
+}
+
+
+.select-all{
+  border-bottom: 1px solid $gray-light3;
+}
+
+
+.date-select{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+
+  .days-amount{
+    line-height: 30px;
+    color: $main-green;
+    font-size: 16px;
+  }
+}

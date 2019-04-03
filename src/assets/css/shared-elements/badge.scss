@@ -1,0 +1,21 @@
+@import "~assets/css/variables";
+@import "~assets/css/mixins";
+
+.badge {
+    padding: 0 5px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 19px;
+    text-align: center;
+    color: white;
+    border-radius: 50px;
+    display: inline-block;
+  &.gray{
+    background: $gray-dark;
+  }
+
+  &.green{
+    background: $main-green;
+  }
+}

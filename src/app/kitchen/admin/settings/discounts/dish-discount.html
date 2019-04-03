@@ -1,0 +1,101 @@
+<div class="discount">
+  <div class="mb-3 mt-3">
+    <div class="form-group">
+      <div class="mb-1"><strong class="uppercase" translate="KITCHENS.SETTINGS.TARGET">Select discount target:</strong></div>
+      <div class="custom-radio">
+        <label>
+          <input type="radio"
+                 [checked]="dishType()"
+                 (change)="setDishType()"
+                 value="'dishes'"
+                 name="form-role-selected">
+
+          <i class="fa fa-check-circle"></i>
+          {{'KITCHENS.SETTINGS.DISHES' | translate }}
+        </label>
+      </div>
+      &nbsp;&nbsp;&nbsp;
+      <div class="custom-radio">
+        <label>
+          <input type="radio"
+                 [checked]="categoryType()"
+                 (change)="setCategoriesType()"
+                 value="'categories'"
+                 name="form-role-selected">
+
+          <i class="fa fa-check-circle"></i>
+          {{'KITCHENS.SETTINGS.CATEGORIES' | translate }}
+        </label>
+      </div>
+    </div>
+    <form [formGroup]="discountForm" autocomplete="off">
+      <div class="date-select mb-3">
+        <div class="slct-control">
+          <div class="title" translate="SHARED.FILTERS.DATE">Date</div>
+          <div (click)="openPicker()" class="selected-items">{{ range[0] | dayMonth }} - {{ range[1] | dayMonth }}</div>
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="slct-control-popover" *ngIf="showPicker">
+            <range-calendar (onSelectRange)="pickerChange($event)"
+                            [selectedStart]="range[0]"
+                            [selectedEnd]="range[1]"></range-calendar>
+          </div>
+        </div>
+        <div *ngIf="rangeLength" class="days-amount">{{rangeLength}} {{'CALENDAR.DAYS' | translate}}</div>
+      </div>
+      <div class="option-block mb-2">
+        <div><strong class="uppercase" translate="SHARED.KITCHENS.SINGULAR">Kitchen</strong></div>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="form-group percent-input v3">
+              <input type="number" formControlName="percent" class="form-control">
+              <label>{{'KITCHENS.SETTINGS.DISCOUNT_ALL' | translate}} {{(dishType() ? 'KITCHENS.SETTINGS.DISHES' : 'KITCHENS.SETTINGS.CATEGORIES') | translate}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="employees-list">
+        <div class="select-all mb-1">
+          <div class="custom-checkbox">
+            <label>
+              <input type="checkbox" [checked]="allItemsChecked()" (change)="checkAllItems($event)">
+              <i class=" fa fa-check-circle"></i>
+              &nbsp;
+              <div class="txt" >
+                {{'SHARED.FILTERS.ALL' | translate}} {{(dishType() ? 'KITCHENS.SETTINGS.DISHES' : 'KITCHENS.SETTINGS.CATEGORIES') | translate}}
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div *ngIf="dishType()">
+          <div  *ngFor="let dish of dishes" class="employee">
+            <div class="custom-checkbox">
+              <label>
+                <input type="checkbox" [checked]="itemChecked(dish.id)" (change)="toggleItem(dish.id, $event)">
+                <i class=" fa fa-check-circle"></i>
+                &nbsp;
+                <div class="txt">{{dish.name}}</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="categoryType()">
+          <div *ngFor="let category of categories" class="employee">
+            <div class="custom-checkbox">
+              <label>
+                <input type="checkbox" [checked]="itemChecked(category.id)" (change)="toggleItem(category.id, $event)">
+                <i class=" fa fa-check-circle"></i>
+                <div class="txt">{{category.name}}</div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <footer class="text-right">
+    <button class="btn btn-big btn-green" [disabled]="!formValid()" (click)="submit()" translate="BUTTONS.SAVE">Save</button>
+  </footer>
+</div>

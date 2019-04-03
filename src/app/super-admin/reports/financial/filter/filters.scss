@@ -1,0 +1,317 @@
+@import '~assets/css/conf';
+// SLCT-CONTROL
+.slct-control {
+  height: 46px;
+  padding: 3px 0;
+  position: relative;
+  border-bottom: 1px solid #eaeaea;
+  line-height: 1.2;
+  cursor: pointer;
+  @include user-select(none);
+
+  .title {
+    font-size: 16px;
+    font-family: $font-bold;
+    text-transform: uppercase;
+  }
+
+  .selected-items {
+    color: $gray-text;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 82%;
+  }
+
+  .fa-caret-down {
+    position: absolute;
+    right: 15px;
+    top: 20px;
+  }
+}
+
+.slct-control-popover {
+  width: 270px;
+  background: white;
+  padding: 30px;
+  max-height: 380px;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
+
+  input {
+    width: 100%;
+    height: 50px;
+    padding: 0 10%;
+    line-height: 50px;
+    border: 1px solid #4a4a4a;
+    font-size: 14px;
+    outline: none;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 9px 8px;
+    border-color: transparent transparent #ffffff transparent;
+  }
+
+  .slct-control-content {
+    max-height: 210px;
+    margin-left: -30px;
+    margin-right: -30px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .custom-checkbox {
+      padding: 7px 30px;
+      width: 100%;
+
+      label {
+        width: 100%;
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+      }
+
+      &:not(.checked) .txt {
+        opacity: 0.5;
+      }
+
+      .fa-check-circle {
+        order: 2;
+        margin-left: auto;
+      }
+
+      &:hover {
+        background: #f3f3f3;
+      }
+    }
+  }
+
+  &.calendar-wrap {
+    width: 417px;
+    max-height: 424px;
+    padding: 0;
+
+    .range-calendar {
+      border: 0 !important;
+    }
+  }
+}
+
+.grouping {
+  &-item {
+    padding: 13px 20px;
+    border: 1px solid #ccc;
+    position: relative;
+
+    &.checked {
+      background: #f3f3f3;
+    }
+
+    .custom-checkbox,
+    .custom-checkbox label {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      .fa-check-circle {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    + .grouping-item {
+      margin-top: 8px;
+    }
+  }
+
+  &-tags {
+    margin: 3px 0;
+  }
+
+  &-tag {
+    min-width: 17px;
+    min-height: 17px;
+    padding: 2px 4px 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    color: white;
+    text-transform: uppercase;
+    @include border-radius(3px);
+
+    &:nth-child(1) {
+      background: $breakfast;
+    }
+
+    &:nth-child(2) {
+      background: $lunch;
+    }
+
+    &:nth-child(3) {
+      background: $dinner;
+    }
+  }
+}
+
+.filter-tabs {
+  height: 50px;
+  margin: 10px 0 30px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+
+  .item {
+    flex: 0 0 25%;
+    border: 1px solid darken($main-green, 20%);
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    .item-i {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .tab-icon {
+        width: 30px;
+        flex: 0 0 30px;
+        height: 30px;
+        background-image: url('~assets/images/filter-tabs-icons.png');
+        background-repeat: no-repeat;
+        background-position-x: 0;
+      }
+    }
+    &:nth-child(1) {
+      .tab-icon {
+        background-position-y: 0
+      }
+    }
+    &:nth-child(2) {
+      .tab-icon {
+        background-position-y: -30px
+      }
+    }
+    &:nth-child(3) {
+      .tab-icon {
+        background-position-y: -60px
+      }
+    }
+    &:nth-child(4) {
+      .tab-icon {
+        background-position-y: -90px
+      }
+    }
+    + .item {
+      border-left: 0;
+    }
+    &:first-child {
+      border-radius: 5px 0 0 5px;
+      .item-i {
+        border-radius: 5px 0 0 5px;
+      }
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+      .item-i {
+        border-radius: 0 5px 5px 0;
+      }
+    }
+    &.active {
+      .item-i {
+        background: $main-green;
+      }
+      &:hover {
+        .item-i {
+          background: $main-green;
+        }
+      }
+    }
+    &:hover {
+      .item-i {
+        background: #f3f3f3;
+      }
+    }
+    input[type="checkbox"] {
+      position: absolute;
+      top: -999px;
+      left: -999px;
+      &:checked + .item-i {
+        cursor: default;
+        background: $main-green;
+
+        .tab-icon {
+          background-position-x: -30px;
+        }
+        &:hover {
+          background: $main-green;
+        }
+      }
+    }
+  }
+}
+
+.tab-tooltip {
+  width: 90px;
+  padding: 6px 12px 4px;
+  background: $gray-dark;
+  color: #c1c1c1;
+  position: absolute;
+  z-index: 100500;
+  font-size: 12px;
+  line-height: 1.1;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 110%;
+  box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .35);
+  display: none;
+  border-radius: 3px;
+  > div:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    border-color: $gray-dark transparent transparent;
+  }
+}
+
+.item:hover .tab-tooltip {
+  display: block;
+}
+
+@media (max-width: $mobile) {
+  .grouping-item {
+    padding: 5px 20px;
+    & + .grouping-item {
+      margin-top: 3px;
+    }
+  }
+}

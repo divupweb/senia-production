@@ -1,0 +1,55 @@
+<div class="basket-top">
+  <button type="button" class="btn btn-block btn-big" [class.btn-green]="cart.activeButton" *ngIf="cart.showButton" (click)="updateCatering()" [disabled]="!deadline || deadline.passed || !cart.activeButton">{{ cart.buttonText | translate }}</button>
+  <div *ngIf="!empty">
+    <div class="dish-amount">
+      <span>{{ cart.total.dishes }}</span>
+      <circle-progress class="circle-progress-red" #circleProgTotal *ngIf="deadline && deadline.soon"
+                    [percent]="deadline.progress"
+                    [boxSize]="50"
+                    [radius]="24"
+                    [lowColor]="'red'"
+                    [middleColor]="'red'"
+                    [interColor]="'red'"
+                    [highColor]="'red'"
+                    [border]="1"
+                    [time]="0">
+      </circle-progress>
+    </div>
+    <div class="basket-info">
+      <div class="txt">
+        <div class="message" *ngIf="!isCatering">{{ message }}</div>
+        <div class="time-left" *ngIf="!isCatering && deadline && !deadline.passed">
+          {{ 'SHARED.TIME_LEFT'| translate: {time: deadline.timeLeft | duration } }}
+        </div>
+        <div class="total-price" [ngClass]="{'text-center': isCatering}">{{ cart.total.sum | currencyFormat  }}</div>
+      </div>
+      <div class="total-amount" *ngIf="!isCatering">{{ cart.total.amount }}</div>
+    </div>
+  </div>
+
+  <div *ngIf="empty">
+    <div class="dish-amount">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <circle-progress class="circle-progress-red" #circleProgTotalEmpty *ngIf="deadline && deadline.soon"
+                    [percent]="deadline.progress"
+                    [boxSize]="50"
+                    [radius]="24"
+                    [lowColor]="'red'"
+                    [middleColor]="'red'"
+                    [interColor]="'red'"
+                    [highColor]="'red'"
+                    [border]="1"
+                    [time]="0">
+      </circle-progress>
+    </div>
+    <div class="basket-info">
+      <div class="txt">
+        <div class="empty-basket"><strong translate="COMPANY.ORDERS.BASKET_IS_EMPTY">Your basket is empty</strong></div>
+        <div class="message" *ngIf="!isCatering">{{ message }}</div>
+        <div class="time-left" *ngIf="!isCatering && deadline && !deadline.passed">
+          {{ 'SHARED.TIME_LEFT'| translate: {time: deadline.timeLeft | duration } }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

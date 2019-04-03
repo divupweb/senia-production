@@ -1,0 +1,35 @@
+<div class="basket-item" [ngClass]="{ deadline: soon(), locked: locked() }">
+  <i class="fa fa-clock-o" aria-hidden="true"></i>
+  <div class="img">
+    <img [src]="cartItem.displayUrl" >
+    <circle-progress class="circle-progress-red" #circleProgMenuItem *ngIf="soon()"
+                     [percent]="deadline.progress"
+                     [boxSize]="50"
+                     [radius]="24"
+                     [lowColor]="'red'"
+                     [middleColor]="'red'"
+                     [interColor]="'red'"
+                     [highColor]="'red'"
+                     [border]="1"
+                     [time]="0">
+    </circle-progress>
+    <div class="overlay overlay-locked" *ngIf="passed()">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+    </div>
+    <div class="overlay red" (click)="remove()" *ngIf="allowRemove"> × </div>
+  </div>
+  <div class="txt">
+    <div class="dish">{{ cartItem.name }}</div>
+    <div class="kitchen">{{ cartItem.kitchen.name }}</div>
+    <div class="price">{{ cartItem.price | currencyFormat  }}</div>
+  </div>
+  <div class="basket-counter">
+    <div class="counter-ctrl" (click)="inc()" *ngIf="showButtons()">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </div>
+    <div class="counter-amount">{{ cartItem.quantity }}</div>
+    <div class="counter-ctrl" (click)="dec()" *ngIf="showButtons()">
+      <i class="fa fa-minus" aria-hidden="true" ></i>
+    </div>
+  </div>
+</div>

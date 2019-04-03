@@ -1,0 +1,62 @@
+@import '~assets/css/conf';
+@import '../menu-row';
+
+.menu-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 0 -15px;
+
+
+  .menu-col {
+    flex-basis: 280px;
+    max-width: 280px;
+    min-width: 100px;
+    margin: 0 15px;
+  }
+}
+.dish {
+  height: 50px;
+  border: 1px dashed #e5e5e5;
+  color: $gray-text;
+  padding: 0 15px;
+  line-height: 50px;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    border: 1px solid $gray-dark;
+    color: $gray-dark;
+
+    &.disabled {
+      cursor: default;
+      border: 1px dashed #e5e5e5;
+      color: $gray-text;
+    }
+  }
+
+  &.dish-added {
+    background: #f9f5f0;
+    border-style: solid;
+  }
+
+  .txt {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media (max-width: $laptop-sm){
+  .menu-row {
+    .menu-col {
+      margin: 0 5px;
+    }
+  }
+}
+
+@media (max-width: $mobile-sm){
+  .menu-row {
+    justify-content: center;
+  }
+}

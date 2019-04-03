@@ -1,0 +1,207 @@
+@import '~assets/css/conf';
+
+.group-orders{
+  background: #f9f5f0;
+  display: flex;
+  flex-flow: row nowrap;
+  height: calc(100vh - 60px);
+
+
+  &-main{
+    min-width: 1px;
+    height: 100%;
+    padding-top: 146px;
+    position: relative;
+    flex: 1;
+
+    >.i{
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+  .top-main{
+    height: 146px;
+    background: white;
+    border-bottom: 1px solid #efebe6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .content-main{
+    padding: 0 20px;
+  }
+
+
+
+
+  &-aside{
+    height: 100%;
+    padding-top: 146px;
+    position: relative;
+    border-left: 1px solid #efebe6;
+
+    flex-basis: 330px;
+    max-width: 330px;
+
+    >.i{
+      height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+  }
+  .top-aside{
+    height: 146px;
+    border-bottom: 1px solid #efebe6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.subscription {
+  display: inline-block;
+  vertical-align: middle;
+  opacity: .5;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-size: 20px;
+  font-family: $font-bold;
+  cursor: pointer;
+
+
+
+  + .subscription{
+    margin-left: 45px;
+  }
+
+  .subscription-amount{
+    line-height: 1;
+    vertical-align: middle;
+    text-align: center;
+    height: 25px;
+    padding: 5px 0 0 0;
+    margin-top: -5px;
+    min-width: 25px;
+    position: relative;
+    font-size: 14px;
+    display: inline-block;
+    @include border-radius(50%);
+    font-family: $font-normal;
+    border: 1px solid;
+
+    .repeat{
+      left: -2px;
+      top: -4px;
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      visibility: hidden;
+    }
+
+    &.periodic{
+      border-color: transparent!important;
+      .repeat{
+        visibility: visible;
+      }
+    }
+  }
+
+  &.breakfast{
+    .subscription-amount{color: $breakfast;
+                  border-color: $breakfast;
+                  #repeat-icon{stroke: $breakfast}
+                }
+  }
+  &.lunch{
+    .subscription-amount{color: $lunch;
+                  border-color: $lunch;
+                  #repeat-icon{stroke: $lunch}
+                }
+  }
+  &.dinner{
+    .subscription-amount{color: $dinner;
+                  border-color: $dinner;
+                  #repeat-icon{stroke: $dinner}
+                }
+  }
+  &.catering{
+    .subscription-amount{color: $catering;
+                   border-color:$catering;
+                   #repeat-icon{stroke: $catering}
+                 }
+  }
+  &.active {
+    opacity: 1;
+    cursor: default;
+  }
+}
+
+.order-message{
+  padding: 15px;
+  margin-bottom: 40px;
+  text-align: center;
+  height: 170px;
+  border: 1px solid #d9d9d9;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .sub{
+    color: $gray-text;
+    font-size: 14px;
+  }
+}
+
+
+
+@media (max-width: $laptop){
+  .group-orders-aside{
+    flex-basis: 230px;
+    max-width: 230px;
+  }
+}
+
+
+@media (max-width: $mobile) {
+  .group-orders-aside {
+    height: 60px;
+    padding: 0;
+    width: 100px;
+    max-width: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9;
+    border-left: 0;
+
+    > .i{
+      display: none;
+      background: #f9f5f0;
+    }
+
+    &.is-open{
+      height: 100%;
+      width: 300px;
+      padding-top: 150px;
+      > .i{
+        display: block;
+      }
+    }
+  }
+  .group-orders {
+    height: auto;
+    .top-aside{
+      height: 150px;
+    }
+    .top-main{
+      position: relative;
+    }
+  }
+  .group-orders-main{
+    padding-top: 0;
+  }
+}

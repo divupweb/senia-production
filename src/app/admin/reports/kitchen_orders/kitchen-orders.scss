@@ -1,0 +1,189 @@
+@import '~assets/css/conf';
+@import '~assets/css/base64-icons';
+
+.orders{
+  padding-top: 290px;
+    position: relative;
+
+  &-top{
+    height: 290px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    .calendar-btn{
+      position: relative;
+      .datepicker-dropdown{
+        right: -4px;
+        top: 27px;
+      }
+    }
+    .circle-arrow-left{
+      margin-left: 35px;
+    }
+    .circle-arrow-right{
+      margin-right: 35px;
+    }
+    &-i{
+      margin-left: 342px;
+      padding: 0 20px;
+      background: white;
+    }
+  }
+  &-content{
+    overflow-x: hidden;
+    padding: 20px 20px 0;
+
+    .orders-row{
+      position: relative;
+      &:after{
+        content: "";
+        position: absolute;
+        height: 1px;
+        background: #f3f3f3;
+        top: 0;
+        left: 15px;
+        right: 15px;
+      }
+    }
+  }
+
+  .orders-row{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+  }
+  .header-orders-col{
+    flex-basis: 300px;
+    max-width: 300px;
+    padding: 25px 30px;
+    margin: 0 15px;
+    border: 1px solid #e5e5e5;
+
+    strong{font-size: 20px}
+  }
+  .title-orders-col{
+    flex-basis: 300px;
+    max-width: 300px;
+    margin: 0 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    img{
+      @include border-radius(50%);
+      flex-basis: 50px;
+      max-width: 50px;
+      height: 50px;
+      margin-right: 30px;
+
+    }
+  }
+
+  .orders-col{
+    flex: 1;
+    max-width: 280px;
+    min-width: 100px;
+    margin: 0 15px;
+  }
+}
+.orders-date{
+  height: 140px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  .date{
+    width: 400px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-family: $font-bold;
+  }
+}
+.orders-day{
+  $transition: all 0.2s ease-in-out;
+  height: 110px;
+  padding: 0 30px;
+
+  transition: $transition;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  .orders-day-i{
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    text-align: center;
+    >div{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+    }
+  }
+  .left{
+    flex: 1;
+    color: $main-green;
+  }
+  .right{
+    flex: 1;
+    border-left: 1px dashed #f3f3f3;
+  }
+
+  &.header{
+    height: 150px;
+    background: #f3f3f3;
+  }
+
+  .row-1{
+    margin-bottom: 15px;
+    strong{
+      font-size: 20px;
+      line-height: 1.2;
+    }
+  }
+  .row-2{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+    .row-2-inner{
+      flex: 1;
+      text-align: center;
+      + .row-2-inner{
+        border-left: 1px solid #ccc;
+      }
+    }
+  }
+
+  &.active{
+    background: $main-green;
+
+    .text-grey,
+    .text-green{
+      color: white!important;
+    }
+  }
+}
+.scrolled .orders-day,
+.scrolled .header-orders-col{
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+@media (max-width: $laptop){
+  .orders-top-i{
+    margin-left: 230px;
+  }
+}
+
+@media (max-width: $laptop-sm){
+  .orders-top-i{
+    margin-left: 80px;
+  }
+}

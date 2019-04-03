@@ -1,0 +1,8 @@
+<div infinite-scroll (scrolled)="onScroll()"  [scrollWindow]="false" class="search-results">
+  <div class="notification-item" *ngFor="let item of notifications" [ngSwitch]="item.kind" (click)="notificationPopup.open(item)">
+    <feedback *ngSwitchCase="'feedback'" [item]="item"></feedback>
+    <default *ngSwitchDefault [item]="item"></default>
+  </div>
+</div>
+
+<notification-popup #notificationPopup></notification-popup>

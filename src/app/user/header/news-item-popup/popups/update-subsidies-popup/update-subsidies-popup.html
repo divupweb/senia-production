@@ -1,0 +1,19 @@
+<div class="popup update-subsidies-popup" tabindex="3">
+  <div class="popup-body">
+    <div class="inclined-tag" translate="SUBSIDIES.WORK_OFFER">Work offer</div>
+    <div class="title" translate="SUBSIDIES.UPDATE">Subsidies update</div>
+    <div *ngFor="let subsidy of subsidies">
+      <div class="meal">{{ subsidy | subscription }}</div>
+      <div class="price">{{ subsidy.representation  }}</div>
+    </div>
+    <p class="text-grey">{{ 'SUBSIDIES.COMPANY_IS_SUBSIDISING' | translate }}
+      <span *ngFor="let subsidy of allSubsidies"><br>
+        {{ subsidy | subscription }} - {{ subsidy.representation }}
+      </span>
+    </p>
+  </div>
+  <footer>
+    <a class="btn btn-green btn-big" [routerLink]="['/user/periodic-orders']">{{'BUTTONS.EDIT' | translate }} {{ buttonName | translate }}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a (click)="close($event)" translate="BUTTONS.CLOSE">Close</a>
+  </footer>
+</div>

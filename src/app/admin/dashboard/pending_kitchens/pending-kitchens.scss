@@ -1,0 +1,63 @@
+@import '~assets/css/conf';
+@import '~assets/css/shared-elements/statuses';
+
+:host{
+
+}
+.kitchen-update{
+  display: flex;
+  flex-flow: column nowrap;
+  height: 500px;
+
+  .bottom{
+    flex: 0 0 auto;
+  }
+}
+.pending-wrap{
+  padding: 50px;
+  border: 1px solid $gray-light;
+  margin-bottom: 50px;
+}
+.pending-kitchens{
+  padding: 30px;
+}
+.body{
+  display: flex;
+  flex-flow: row wrap;
+  &-left{flex: 1 1 auto;}
+  &-right{flex: 1 1 auto;display: flex;}
+}
+h2{
+  font-size: 56px;
+  margin-bottom: 60px;
+}
+.datetime{
+  font-size: 12px;
+  font-family: $font-bold;
+  .time{color: $main-green}
+  &>*{display: block;}
+}
+.field{
+  margin-bottom: 15px;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 16px;
+  strong{
+    flex: 0 0 180px;
+  }
+  .value{
+    color: $gray-text;
+  }
+}
+.bottom{
+  padding-top: 30px;
+  flex: 0 0 100%;
+  margin-top: auto;
+  text-align: right;
+}
+
+@media (max-width: $mobile) {
+  .pending-wrap{
+    padding: 15px;
+  }
+}

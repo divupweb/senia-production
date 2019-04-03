@@ -1,0 +1,28 @@
+@import '~assets/css/conf';
+
+.header-content {
+  position: relative;
+}
+
+.user-container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 100px 0;
+}
+
+.footer-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: white;
+  }
+}

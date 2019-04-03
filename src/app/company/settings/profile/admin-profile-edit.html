@@ -1,0 +1,53 @@
+<form *ngIf="form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-group v3">
+    <input class="form-control" formControlName="firstName" placeholder="{{ 'CONTROLS.FIRST_NAME' |  translate }}">
+    <div class="alert alert-danger" *ngIf="form.controls.firstName.touched && form.controls.firstName.invalid">
+      <div *ngIf="form.get('firstName').hasError('required')">
+        {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.FIRST_NAME' | translate } }}
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="form.errors?.firstName?.length > 0">
+      <div *ngFor="let error of form.errors?.firstName">{{ 'CONTROLS.FIRST_NAME' | translate }} {{ error }}</div>
+    </div>
+  </div>
+
+  <div class="form-group v3">
+    <input class="form-control" formControlName="lastName" placeholder="{{ 'CONTROLS.LAST_NAME' | translate }}">
+    <div class="alert alert-danger" *ngIf="form.controls.lastName.touched && form.controls.lastName.invalid">
+      <div *ngIf="form.get('lastName').hasError('required')">
+        {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.LAST_NAME' | translate } }}
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="form.errors?.firstName?.length > 0">
+      <div *ngFor="let error of form.errors?.firstName">{{ 'CONTROLS.FIRST_NAME' | translate }} {{ error }}</div>
+    </div>
+  </div>
+
+  <div class="form-group v3">
+    <input type="email" class="form-control" formControlName="email" placeholder="{{ 'CONTROLS.EMAIL' | translate }}">
+    <div class="alert alert-danger" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+      <div *ngIf="form.get('email').hasError('required')">
+        {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.EMAIL' | translate } }}
+      </div>
+      <div *ngIf="form.controls.email.errors?.invalidEmailAddress"  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect</div>
+    </div>
+    <div class="alert alert-danger" *ngIf="form.errors?.email?.length > 0">
+      <div *ngFor="let error of form.errors?.email">{{ 'CONTROLS.EMAIL' | translate }} {{ error }}</div>
+    </div>
+  </div>
+  <div class="form-group v3">
+    <input class="form-control" formControlName="phone" placeholder=" {{ 'CONTROLS.PHONE' | translate }}">
+    <div class="alert alert-danger" *ngIf="form.controls.phone.touched && form.controls.phone.invalid">
+      <div *ngIf="form.get('phone').hasError('required')">
+        {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.PHONE' | translate } }}
+      </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="form.errors?.phone?.length > 0">
+      <div *ngFor="let error of form.errors?.phone">{{ 'CONTROLS.PHONE' | translate }} {{ error }}</div>
+    </div>
+  </div>
+
+  <div class="form-group v3">
+    <button color="primary" class="btn btn-green btn-big btn-block" [disabled]="!form.valid" type="submit" translate="BUTTONS.SUBMIT">Submit</button>
+  </div>
+</form>

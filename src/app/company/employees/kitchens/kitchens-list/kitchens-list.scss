@@ -1,0 +1,44 @@
+@import '~assets/css/conf';
+@import '../../shared/common';
+
+
+
+
+
+.subsidy {
+  font-size: 16px;
+  .txt {
+    text-transform: capitalize;
+  }
+
+  &+.subsidy {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: $laptop){
+  :host{
+    display: block;
+    overflow: hidden;
+    margin: 0 -20px;
+  }
+  header{
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: $mobile){
+  .subsidy {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: $mobile-xs){
+  .right{
+    flex-shrink: 0;
+    width: 100px;
+  }
+  .subsidy {
+    margin-left: 10px;
+  }
+}

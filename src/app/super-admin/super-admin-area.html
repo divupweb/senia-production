@@ -1,0 +1,64 @@
+<user-menu></user-menu>
+<div class="al-sidebar" [class.is-open]="userMenu.isMenuOpen">
+  <div class="al-sidebar-i">
+    <div class="al-sidebar-heading">
+      <div class="hamburger-icon" [class.is-open]="userMenu.isMenuOpen" (click)="userMenu.isMenuOpen = !userMenu.isMenuOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <a [routerLink]="['regions']" class="logo">
+        <img src="assets/images/logo-white.svg"  width="170" alt="Food Farm">
+      </a>
+    </div>
+    <ul class="al-sidebar-list nav" (click)="userMenu.close()">
+      <li>
+        <a title="{{ 'SHARED.REGIONS.PLURAL' | translate }}" [routerLink]="['regions']" routerLinkActive="router-link-active" >
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="SHARED.REGIONS.PLURAL">Regions</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'SUPER_ADMIN.ALLERGY.PLURAL' | translate }}" [routerLink]=" ['allergies'] " routerLinkActive="router-link-active" >
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="SUPER_ADMIN.ALLERGY.PLURAL">Allergies</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'SHARED.INGREDIENTS.PLURAL' | translate }}" [routerLink]=" ['ingredients'] " routerLinkActive="router-link-active">
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="SHARED.INGREDIENTS.PLURAL">Ingredients</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'SUPER_ADMIN.PROSPECTIVE_ACC.PLURAL' | translate }}" [routerLink]="['prospective-accounts']" routerLinkActive="router-link-active" >
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="SUPER_ADMIN.PROSPECTIVE_ACC.PLURAL">Prospective Accounts</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'SUPER_ADMIN.FINANCIAL_REPORT' | translate }}" [routerLink]="['reports', 'financial']" routerLinkActive="router-link-active">
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="SUPER_ADMIN.FINANCIAL_REPORT">Financial report</span>
+        </a>
+      </li>
+      <li *ngIf="userMenu.isMenuOpen">
+        <a href="" title="{{ 'BUTTONS.LOG_OUT' | translate }}" (click)="auth.submitLogout()">
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="BUTTONS.LOG_OUT">Log out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <footer>
+    <lang-switcher [customClass]="{ 'sidebar': true }"></lang-switcher>
+  </footer>
+</div>
+
+<div class="al-main" (click)="userMenu.close()">
+  <div class="al-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

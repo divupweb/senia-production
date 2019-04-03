@@ -1,0 +1,11 @@
+<div class="dropdown" [class.open]="show" (keyup.esc)="close($event)" (clickOutside)="close($event)" tabindex="1">
+  <span class="txt" (click)="open()">
+    {{ active.name |translate}}
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </span>
+  <ul class="dropdown-menu">
+    <li class="dropdown-item" *ngFor="let i of items" (click)="onSortSelect(i)" [class.disabled]="i == active">
+      {{ i.name | translate}}
+    </li>
+  </ul>
+</div>

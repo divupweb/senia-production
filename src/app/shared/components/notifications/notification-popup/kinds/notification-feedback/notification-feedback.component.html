@@ -1,0 +1,14 @@
+<div class="popup-body">
+  <div class="feedback">
+    <div class="img">
+      <img [src]="item?.information?.item?.displayUrl" *ngIf="item?.information?.item?.displayUrl">
+    </div>
+    <div class="txt">
+      <div class="mb-1">
+        <strong>{{ item?.information?.item?.name}}</strong>
+      </div>
+      <p class="content-text">{{ item.message }}</p>
+      <div class="date">{{ item.createdAt | calendarTime }} {{ item.createdAt | shortTime }}</div>
+    </div>
+  </div>
+</div>

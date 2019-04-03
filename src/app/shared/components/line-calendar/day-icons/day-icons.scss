@@ -1,0 +1,49 @@
+@import '~assets/css/conf';
+
+:host{
+  font-size: 10px;
+  display: block;
+  position: absolute;
+  bottom: -7px;
+  z-index: 2;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 5px;
+
+  .breakfast .fa{color: $breakfast}
+  .lunch .fa{color: $lunch}
+  .dinner .fa{color: $dinner}
+  .catering .fa{color: $catering}
+
+  .fa{
+    margin: 0 1px;
+  }
+  .fa-lock{
+    font-size: 14px;
+    color: $red;
+    position: relative;
+    bottom: -2px;
+  }
+  >div{
+    position: relative;
+    z-index: 2;
+    span{
+      line-height: 17px;
+    }
+  }
+  &:before{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    height: 6px;
+    top: 6px;
+    background: transparent;
+  }
+
+  &:before{left: 1px;right: 1px}
+}
+
+
+@media (max-width: $mobile) {
+
+}

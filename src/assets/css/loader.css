@@ -1,0 +1,89 @@
+.loader, .loader:after, .loader:before {
+  border-radius: 50%;
+  width: 2.5em;
+  height: 2.5em;
+  -webkit-animation: load7 1.8s infinite ease-in-out;
+  animation: load7 1.8s infinite ease-in-out
+}
+
+.loader {
+  color: #6ec39d;
+  font-size: 10px;
+  margin: 10px auto;
+  position: relative;
+  text-indent: -9999em;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-animation-delay: -.16s;
+  animation-delay: -.16s
+}
+
+.loader:after, .loader:before {
+  content: '';
+  position: absolute;
+  top: 0
+}
+
+.loader:before {
+  left: -3.5em;
+  -webkit-animation-delay: -.32s;
+  animation-delay: -.32s
+}
+
+.loader:after {
+  left: 3.5em
+}
+
+@-webkit-keyframes load7 {
+  0%, 100%, 80% {
+    box-shadow: 0 2.5em 0 -1.3em
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0
+  }
+}
+
+@keyframes load7 {
+  0%, 100%, 80% {
+    box-shadow: 0 2.5em 0 -1.3em
+  }
+  40% {
+    box-shadow: 0 2.5em 0 0
+  }
+}
+
+.logo {
+  height: 25px
+}
+
+app {
+  display: block;
+  opacity: 1;
+  transition: opacity 3s ease-in-out 1s;
+}
+
+app:empty {
+  opacity: 0;
+}
+
+app:empty+.static {
+  opacity: 1;
+  z-index: 2;
+}
+
+.static {
+  display: flex;
+  /*display: none;*/
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  z-index: -1;
+  transition: z-index 5s ease-in-out, opacity 2s ease-in-out 1s;
+  background: white;
+}

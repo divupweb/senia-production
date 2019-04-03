@@ -1,0 +1,85 @@
+@import '~assets/css/conf';
+
+:host {
+  padding-top: 15px;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  background: white;
+  margin: 15px 0;
+  z-index: 2;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.1);
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 9px 10px 9px;
+    border-color: transparent transparent white transparent;
+  }
+}
+
+.body-wrap {
+  outline: none;
+}
+
+.body {
+  max-height: 460px;
+  overflow-y: auto;
+}
+
+footer {
+  height: 60px;
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+
+  > div+div {
+    margin-left: 30px;
+    opacity: 0.7;
+  }
+
+  span {
+    text-decoration: underline;
+  }
+
+  .amount {
+    padding: 0 5px;
+    min-width: 16px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 19px;
+    text-align: center;
+    background: $gray-dark;
+    color: white;
+    border-radius: 50px;
+    display: inline-block;
+  }
+
+  &:before {
+    content: "";
+    height: 1px;
+    left: 30px;
+    right: 30px;
+    top: 0;
+    display: block;
+    background: #f3f3f3;
+    position: absolute;
+  }
+
+  .disabled {
+    text-decoration: none;
+    opacity: 0.4;
+    cursor: default;
+  }
+}

@@ -1,0 +1,25 @@
+@import '~assets/css/conf';
+
+:host{
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100vh;
+}
+
+weekly-range {
+  min-width: 710px;
+}
+
+.defaults-button-wrap{
+  padding-top: 47px;
+}
+
+.menu-header-week{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+}
+
+.content{
+  overflow-y: auto;
+}

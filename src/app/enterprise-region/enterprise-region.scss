@@ -1,0 +1,63 @@
+@import '~assets/css/conf';
+$transition: all .2s ease-in-out;
+
+:host{
+  display: block;
+  background: #f9f5f0 url(/assets/images/home/bg_pattern_eat.png) repeat;
+}
+.enterprise-region-body{
+  padding-top: 300px;
+}
+.platform-card{
+  height: 150px;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px 0 transparentize(black,.9);
+  line-height: 1.2;
+  text-decoration: none;
+  color: $gray-dark;
+  transition: $transition;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  &-img{
+    margin: -10px 0 20px;
+  }
+  &-txt{
+    >* {display:block;}
+    .text-grey{
+      font-size: 12px;
+    }
+    strong{
+      font-size: 18px;
+    }
+  }
+  &:hover{
+    transform: translateY(-2px);
+    box-shadow: 0px 10px 30px 0px transparentize(black,.75);
+  }
+}
+@media (max-width: 767px){
+  .enterprise-region-body{
+    padding-top: 50px;
+  }
+  .home-vertical-gap{
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}
+@media (max-width: 580px) {
+  .enterprise-region-body .set-up h2 {
+    margin-top: 70px;
+  }
+}
+@media (max-width: 480px) {
+  .enterprise-region-body .set-up h2 {
+    margin-top: 70px;
+  }
+}
+
+.home-vertical-gap-bottom{
+  padding-bottom: 110px;
+}

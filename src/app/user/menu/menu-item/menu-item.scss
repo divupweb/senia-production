@@ -1,0 +1,306 @@
+@import '~assets/css/conf';
+
+:host {
+  position: relative;
+
+  &.reverse{
+    display: block;
+  }
+}
+.menu-item{
+  height: 450px;
+  margin-bottom: 30px;
+  background: #fff;
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  .active & {
+    z-index: 3; // in order to be higher than overlay
+  }
+  &.reverse{
+    flex-direction: row-reverse; // to swap image and info
+  }
+
+  &.own-kitchen {
+    padding-top: 50px;
+    padding-right: 10px;
+    position: relative;
+
+    .day {
+      display: none;
+    }
+    .menu-item-top-img {
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: block;
+      left: 50%;
+      position: absolute;
+      top: -120px;
+      transform: translateX(-50%);
+    }
+    .menu-item-img {
+      display: none;
+    }
+  }
+}
+
+.menu-item-info{
+  flex-basis: 300px;
+  max-width: 300px;
+  padding: 30px 40px 18px;
+  .info-i{
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+
+    .bottom{
+      margin-top: auto;
+    }
+  }
+  .kitchen-name{
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: $gray-text;
+    font-family: $font-bold;
+  }
+  .dish-name{
+    max-width: 99%;
+    margin-bottom: 10px;
+    font-size: 36px;
+    line-height: 1.2;
+    font-family: $font-bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 45px;
+    cursor: pointer;
+    >span{
+      background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABQQEBkSGScXFycyJh8mMi4mJiYmLj41NTU1NT5EQUFBQUFBRERERERERERERERERERERERERERERERERERERET/2wBDARUZGSAcICYYGCY2JiAmNkQ2Kys2REREQjVCRERERERERERERERERERERERERERERERERERERERERERERERERET/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAX/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AJIAP//Z') 0 29px repeat-x;
+    }
+
+    &:hover{
+      >span{
+        background: transparent;
+      }
+    }
+  }
+  .descr{
+    margin-top: 10px;
+    font-size: 14px;
+    color: #a29b9b;
+    max-height: 115px;
+    padding-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    &:after{
+      content: "";
+      height: 30px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: absolute;
+      background: linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,0.5) 29%,rgba(255,255,255,1) 100%);
+    }
+  }
+  .price{
+    margin-top: 20px;
+    font-size: 30px;
+  }
+}
+
+.menu-item-top-img{
+  width: 190px;
+  height: 190px;
+  @include border-radius(50%);
+  display: none;
+}
+
+.menu-item-img{
+  flex: 1;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .image-text{
+    max-width: 90%;
+    overflow: hidden;
+    padding: 20px;
+    text-overflow: ellipsis;
+    color: #fff;
+    margin: 0;
+    font-size: 60px;
+    line-height: 1;
+    text-transform: uppercase;
+    text-shadow: 1px 3px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  .deadline-passed-overlay{
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba($gray-dark, .8);
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    text-transform: uppercase;
+    .fa-lock{
+      font-size: 140px;
+    }
+  }
+  &.periodic{
+    &:before{
+      content: "";
+      width: 101px;
+      height: 101px;
+      background: url($icons) -2px -299px no-repeat;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .reverse &{
+      &:before{
+        left: 0;
+        background: url($icons) 0 -504px no-repeat;
+      }
+    }
+  }
+
+  &.deadline-passed{
+    .deadline-passed-overlay{
+      visibility: visible;
+    }
+  }
+}
+.allergy-tag{
+  padding: 3px 25px 1px;
+  line-height: 39px;
+  background: $purple;
+  color: #fff;
+  display: inline-block;
+  @include border-radius(2px);
+}
+.allergies{
+  padding: 30px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  white-space: nowrap;
+  user-select: none;
+  .allergy-tag{margin: 5px;}
+}
+
+// Should be moved to separate component
+.ammount-control{
+  margin: 20px auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+
+  .btn-ammount{
+    font: 100 30px/1 Helvetica, sans-serif;
+    width: 50px;
+    height: 50px;
+    min-width: 0;
+    padding: 0;
+    position: relative;
+    display: inline-block;
+    border: none;
+    outline: none;
+    background: $main-green;
+    color: white;
+    @include border-radius(50%);
+    span{
+      line-height: 1;
+      position: absolute;
+
+      &.plus{top: 8px;left: 15px;}
+      &.minus{top: 8px;left: 21px;}
+    }
+    &:disabled{
+      background: #f3f3f3;
+      color: #a29b9b;
+
+      + span{
+        color: #c1c1c1;
+      }
+    }
+  }
+}
+
+.red {
+  color: $red;
+}
+
+.allergy-item {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  background: #de4a39;
+  @include border-radius(50%);
+
+  .allergy-img{
+    height: 100%;
+    filter: invert(100%);
+    background-position: 50%;
+    background-size: 96%;
+    background-repeat: no-repeat;
+  }
+
+  .allergy-title{
+    width: 74px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    display: none;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    background: $gray-dark;
+    border-radius: 3px;
+    top: -60px;
+    box-shadow: -1px 2px 10px 0px rgba(0,0,0,0.5);
+    .text-grey{
+      font-size: 12px;
+    }
+    strong{
+      color: white;
+    }
+
+    &:after{
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translate(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 5px 0 5px;
+      border-color: $gray-dark transparent transparent transparent;
+    }
+  }
+  &:hover{
+    .allergy-title{
+      display: block;
+    }
+  }
+}
+

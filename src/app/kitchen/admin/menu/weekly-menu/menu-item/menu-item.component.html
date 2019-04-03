@@ -1,0 +1,11 @@
+<section>
+  <category-image [item]="item" [setMenu]="setMenu"></category-image>
+  <div *ngIf="dishItems" class="menu-row">
+    <div class="menu-col" *ngFor="let dishItem of dishItems">
+      <div class="dish" [ngClass]="{'dish-added': !!dishItem.dish, 'disabled': dishItem.passed}">
+        <span class="txt" (click)="openPopup(dishItem)">{{ dishItem.dish | addDish }}</span>
+        <dishes-popup *ngIf="dishItem.showPopup == true" [(showPopup)]="dishItem.showPopup" [category]="item.category" [dish]="dishItem.dish" (onDishSelect)="onSelect(dishItem, $event)"></dishes-popup>
+      </div>
+    </div>
+  </div>
+</section>

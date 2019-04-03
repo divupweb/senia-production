@@ -1,0 +1,207 @@
+<div class="driver-area">
+  <div class="driver-area-layout">
+    <header [ngClass]="{'nav-opened': navOpened}">
+      <div class="header-i">
+        <div class="driver-nav-toogle" (click)="navOpened = !navOpened;" [ngClass]="{'nav-opened': navOpened}">
+          <span></span>
+        </div>
+        <h1 *ngIf="selectedSubscription">
+          {{ ('SUBSCRIPTIONS.' + selectedSubscription|uppercase) | translate }}
+          <span *ngIf="selectedDate && selectedDate != dates[0]">({{selectedDate}})</span>
+        </h1>
+        <div class="logout" (click)="auth.submitLogout()" translate="BUTTONS.LOG_OUT">Log out</div>
+      </div>
+      <div class="driver-nav">
+        <div *ngFor="let sub of subscriptions"
+             (click)="selectSubscription(sub)"
+             [ngClass]="{'selected': selectSubscription == sub }"
+             class="driver-nav-item">
+          {{('SUBSCRIPTIONS.' +  sub | uppercase) | translate }}
+        </div>
+        <div *ngFor="let label of dateLabels; let i = index"
+             (click)="selectSubscription(selectedSubscription, dates[i])"
+             [ngClass]="{'selected': selectedDate == dates[i] }"
+             class="driver-nav-item">
+          {{('LOGISTICS.BUTTONS.' +  label | uppercase) | translate }}
+        </div>
+      </div>
+    </header>
+    <div class="map">
+      <div class="map-preload">
+        <div>
+          <i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+        </div>
+      </div>
+      <div class="map-container">
+        <div id="gmap" frameborder="0" allowfullscreen></div>
+      </div>
+    </div>
+    <div class="adresses" [ngClass]="{'adresses-expanded': adressesExpanded}">
+      <span class="main-adresses-tag" (click)="expandMap()">
+        <i class="fa fa-caret-up" aria-hidden="true"></i>
+        <span class="expand" translate="LOGISTICS.BUTTONS.EXPAND">Expand</span>
+        <span class="collapse" translate="LOGISTICS.BUTTONS.COLLAPSE">Collapse</span>
+      </span>
+      <div class="addresses-i">
+        <div class="adderesses-list">
+          <div *ngIf="directLocations.length > 0">
+            <h3>{{"LOGISTICS.DIRECT" | translate}}</h3>
+            <div *ngFor="let location of directLocations; let i = index"
+                 [ngClass]="{ 'completed': isCompleted(location) , 'warning': location.is_kitchen, 'fail': isFailed(location)}"
+                 class="adderesses-list-item">
+              <div class="status">
+                <div class="dot"></div>
+              </div>
+              <div class="info" (click)="buildRouteHere(location)">
+                <div  class="name">
+                  <span *ngIf="!isCompleted(location, 'direct')" class="index">{{i+1}}. </span>
+                  <span *ngIf="location.is_kitchen">{{location.name}}</span>
+                  <span *ngIf="!location.is_kitchen">{{location.company.name}}</span>
+                </div>
+                <div *ngIf="location.is_kitchen" class="address">{{location.address}}</div>
+                <div *ngIf="!location.is_kitchen" class="address">{{location.company.address}}</div>
+                <span *ngIf="location.is_kitchen" class="warning-info">{{location.pickup_time}}</span>
+              </div>
+              <div class="controls">
+                <a *ngIf="location.is_kitchen || location.hub"
+                   href="{{'tel:' + location.phone}}" class="ctrl ctrl-1"></a>
+                <a *ngIf="!location.is_kitchen" href="{{'tel:' + location.company.phone}}"
+                   class="ctrl ctrl-1"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'direct')" class="ctrl ctrl-2"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'direct')" class="ctrl ctrl-3"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'direct')" class="ctrl ctrl-4"></a>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="toHubLocations.length > 0">
+            <h3>{{"LOGISTICS.TO_HUB" | translate}} {{toHubLocations[toHubLocations.length - 1].name}}</h3>
+            <div *ngFor="let location of toHubLocations; let i = index"
+                [ngClass]="{ 'completed': isCompleted(location, 'to_hub'),
+                             'hub': location.hub,
+                             'warning': location.is_kitchen,
+                             'fail': isFailed(location)}"
+                 class="adderesses-list-item">
+              <div class="status">
+                <div class="dot"></div>
+              </div>
+              <div class="info" (click)="buildRouteHere(location)">
+                <div class="name">
+                  <span *ngIf="!isCompleted(location, 'to_hub')">{{i+1}}. </span>
+                  {{location.name}}</div>
+                <div *ngIf="location.is_kitchen" class="address">{{location.address}}</div>
+                <span *ngIf="location.is_kitchen" class="warning-info">{{location.pickup_time}}</span>
+              </div>
+              <div class="controls">
+                <a href="{{'tel:' + location.phone}}" class="ctrl ctrl-1"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'to_hub')" class="ctrl ctrl-2"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'to_hub')" class="ctrl ctrl-3"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'to_hub')" class="ctrl ctrl-4"></a>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="fromHubLocations.length > 0">
+            <h3>{{"LOGISTICS.FROM_HUB" | translate}} {{fromHubLocations[0].name}}</h3>
+            <div *ngFor="let location of fromHubLocations; let i = index"
+                 [ngClass]="{ 'completed': isCompleted(location, 'from_hub'),
+                              'hub': location.hub,
+                              'warning': location.is_kitchen,
+                              'fail': isFailed(location)}"
+                 class="adderesses-list-item">
+              <div class="status">
+                <div class="dot"></div>
+              </div>
+              <div class="info" (click)="buildRouteHere(location)">
+                <div *ngIf="location.hub" class="name">
+                  <span *ngIf="!isCompleted(location, 'from_hub')">{{i+1}}. </span>
+                  {{location.name}}
+                </div>
+                <span *ngIf="location.hub" class="warning-info">{{location.pickup_time}}</span>
+
+                <div *ngIf="!location.hub" class="name">
+                  <span *ngIf="!isCompleted(location, 'from_hub')">{{i+1}}. </span>
+                  {{location.company.name}}
+                </div>
+                <div *ngIf="!location.hub" class="address">{{location.company.address}}</div>
+              </div>
+              <div class="controls">
+                <a href="{{'tel:' + location.phone}}" class="ctrl ctrl-1"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'from_hub')" class="ctrl ctrl-2"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'from_hub')" class="ctrl ctrl-3"></a>
+                <a (click)="showLocationsDetailsPopup(location, 'from_hub')" class="ctrl ctrl-4"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order details -->
+  <div class="driver-area-popup" *ngIf="showSelectedLocation">
+    <div class="driver-area-close">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      {{ 'BUTTONS.CLOSE' | translate }}
+    </div>
+    <form [formGroup]="statusForm" autocomplete="off">
+      <div class="body">
+        <div class="order-details">
+          <h2 *ngIf="!selectedLocation.hub">{{selectedLocation.shipments_count}} dishes</h2>
+          <ul>
+            <li *ngFor="let name of selectedLocation.kitchen">{{name}}</li>
+          </ul>
+          <hr>
+          <div class="contact-person">
+            <h2 translate="CONTROLS.CONTACT_PERSON">Contact person</h2>
+            <div *ngIf="selectedLocation.is_kitchen || selectedLocation.hub" class="name">
+              {{selectedLocation.contact_name}}
+            </div>
+            <div *ngIf="!selectedLocation.is_kitchen && !selectedLocation.hub" class="name">
+              {{selectedLocation.company.contact_name}}
+            </div>
+            <a *ngIf="selectedLocation.is_kitchen || selectedLocation.hub"
+               href="{{'tel:' + selectedLocation.phone}}"
+               class="ctrl ctrl-1"></a>
+            <a *ngIf="!selectedLocation.is_kitchen && !selectedLocation.hub"
+               href="{{'tel:' + selectedLocation.company.phone}}"
+               class="ctrl ctrl-1"></a>
+          </div>
+          <input formControlName="name" type="text" class="input" placeholder="{{ 'LOGISTICS.PLACEHOLDERS.ENTER_NAME' | translate }}">
+        </div>
+      </div>
+      <footer>
+        <div class="mb-1">
+          <button (click)="submitLocationStatus(true)" class="btn btn-green" translate="LOGISTICS.BUTTONS.OK">Everything is OK</button>
+        </div>
+        <div>
+          <button (click)="reportIssue($event)" class="btn btn-transparent" translate="LOGISTICS.BUTTONS.REPORT">Report a problem</button>
+        </div>
+        <div>
+          <button (click)="showSelectedLocation = false" class="btn btn-transparent" translate="BUTTONS.CANCEL">Cancel</button>
+        </div>
+      </footer>
+    </form>
+  </div>
+
+  <!-- Report a problem popup 2 -->
+  <div class="driver-area-popup" *ngIf="showIssuePopup">
+    <form [formGroup]="statusForm" autocomplete="off">
+      <div class="driver-area-close">
+        <i class="fa fa-times" aria-hidden="true"></i>
+        {{ 'BUTTONS.CLOSE' | translate }}
+      </div>
+      <div class="body">
+        <textarea formControlName="message" rows="3" class="input" placeholder="Enter problem text"></textarea>
+      </div>
+      <footer>
+        <div class="mb-1">
+          <button (click)="submitLocationStatus(false)" class="btn btn-green" translate="LOGISTICS.BUTTONS.SEND_PROBLEM">Send problem description</button>
+        </div>
+        <div>
+          <button (click)="goBackToSuccess($event)" class="btn btn-transparent" translate="BUTTONS.BACK">Back</button>
+        </div>
+      </footer>
+    </form>
+  </div>
+</div>

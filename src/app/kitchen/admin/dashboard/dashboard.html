@@ -1,0 +1,124 @@
+<user-menu></user-menu>
+<div class="kitchen-admin-dashbord">
+  <main class="dashbord-main">
+    <div class="dashbord-main-top">
+      <line-calendar (daySelect)="onDaySelect($event)"></line-calendar>
+    </div>
+    <div class="dashbord-main-content">
+    <catering-request *ngIf="cateringData"
+                      [requests]="cateringData.categing_requests"
+                      [isEmployee]="isEmployee"
+                      (onPopupShow)="openPopup(null, null, 'catering', 'showDetailsPopup', $event)"
+                      (onAccept)="acceptCateringRequest($event)"
+                      (onReject)="rejectCateringRequest($event)"></catering-request>
+
+      <div class="dashboard-days">
+        <div *ngFor="let data of subscriptionsData" class="dashboard-day-wrap">
+          <div class="dashboard-day completed {{data.subscription}}">
+            <div class="info">
+              <div class="date" *ngIf="(data.date|isToday)"> {{ data.date | calendarTime }}</div>
+              <div class="date" *ngIf="!(data.date|isToday)">{{ data.date | dayMonth }}</div>
+              <div class="text-green">
+                {{ 'SHARED.PICK_UP_AT'| translate: { time: data.pickup_time | shortTime } }}
+              </div>
+              <div *ngIf="data.error_count > 0" class="problems">
+                {{ 'KITCHENS.COUNT_PROBLEMS_WITH_ORDERS' | translate: { count: data.error_count } }}
+              </div>
+            </div>
+            <h3 class="account" *ngIf="data.account"> {{ data.account }}</h3>
+            <h2>{{ ('SUBSCRIPTIONS.' + data.subscription | uppercase) | translate }}</h2>
+            <div class="order-details">
+              <div>{{data.orders}} {{'SHARED.ORDERS.PLURAL' | translate }}</div>
+              <div>{{data.dishes}} {{'SHARED.DISHES.PLURAL' | translate}}</div>
+            </div>
+            <div class="mt-1" *ngIf="data.ratings">
+              <rating [(ngModel)]="data.score" [readonly]="true"></rating>
+              <span class="votes-amount">
+                <a (click)="openPopup(data.date, data.account_id, data.subscription, 'showRatingPopup')">{{data.ratings}} {{'KITCHENS.VOTES.PLURAL' | translate }}</a>
+              </span>
+            </div>
+            <footer *ngIf="0 < data.orders">
+              <div
+                      [ngClass]="{'btn-green': data.deadline_passed, 'btn-gray': !data.deadline_passed}"
+                      class="btn btn-big btn-block mb-2 print-button">
+                <print-popover [printable]="data.deadline_passed"
+                               [isEmployee]="isEmployee"
+                               [subscription]="data.subscription"
+                               [accountId]="data.account_id"
+                               [date]="data.date"
+                               [dueTime]="data.due_time"
+                               [window]="window"></print-popover>
+                {{ 'KITCHENS.BUTTONS.PRINT' | translate }}
+              </div>
+              <a class="btn-block text-center"
+                 (click)="openPopup(data.date, data.account_id, data.subscription, 'showDetailsPopup', null, data.deadline_passed)"
+                 translate="BUTTONS.VIEW_DETAILS">
+                View details
+              </a>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="cateringData && cateringData.upcoming_catering.length > 0">
+        <h3 translate="KITCHENS.UPCOMING_CATERING">Upcoming catering</h3>
+        <div class="dashboard-days">
+          <div *ngFor="let cateringOrder of cateringData.upcoming_catering" class="dashboard-day-wrap">
+            <div class="dashboard-day catering">
+              <h3 *ngIf="cateringOrder.account">{{ cateringOrder.account }}</h3>
+              <div class="info">
+                <div class="day">{{cateringOrder.date}}</div>
+                <div class="date" translate="SHARED.PICK_UP_AT" [translateParams]="{time: cateringOrder.start_time}">
+                </div>
+              </div>
+              <h2 translate="KITCHENS.CATERING">Catering</h2>
+              <div class="order-details">
+                <div>{{cateringOrder.dishes}} {{'SHARED.DISHES.PLURAL' | translate}}</div>
+              </div>
+              <footer>
+                <button (click)="printCateringOrder(cateringOrder)" class="btn btn-green btn-big btn-block mb-2 print-button">
+                  {{ 'KITCHENS.BUTTONS.PRINT' | translate }}
+                </button>
+                <a (click)="openPopup(null, null,  'catering', 'showDetailsPopup', cateringOrder.order_id, data.deadline_passed)"
+                    class="btn-block text-center"
+                   translate="BUTTONS.VIEW_DETAILS">
+                   View details
+                 </a>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside [class.is-open]="userMenu.isAsideOpen">
+    <div class="aside-mobile-header">
+      <div class="hamburger-icon is-open" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <span class="toggle-aside-icon" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <div class="txt">Messages</div>
+    </div>
+    <notifications [isEmployee]="isEmployee"></notifications>
+  </aside>
+  <i class="mobile-overlay" [class.is-open]="userMenu.isAsideOpen || userMenu.isMenuOpen"></i>
+</div>
+
+<kitchen-ratings-popup [date]="popupDate"
+                       [subscription]="popupSubscription"
+                       [isEmployee]="isEmployee"
+                       [(show)]="showRatingPopup"></kitchen-ratings-popup>
+
+<kitchen-details-popup [date]="popupDate"
+                       [subscription]="popupSubscription"
+                       [accountId]="accountId"
+                       [isEmployee]="isEmployee"
+                       [cateringOrderId]="cateringOrderId"
+                       [deadlinePassed]="deadlinePassed"
+                       [(show)]="showDetailsPopup"></kitchen-details-popup>

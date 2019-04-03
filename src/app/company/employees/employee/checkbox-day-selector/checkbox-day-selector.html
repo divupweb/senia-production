@@ -1,0 +1,6 @@
+<label *ngFor="let day of days, let i = index">
+  <input type="checkbox" [checked]="dayChecked(i)" (change)="changeDay(i, $event)" [disabled]="dayDisabled(i)">
+  <div>
+    {{day}}
+  </div>
+</label>

@@ -1,0 +1,9 @@
+<range-calendar #calendar [disabledDays]="suspendedDays"
+                (onSelectRange)="onSelect($event)"
+                (ondDaySelect)="onSelect($event)"></range-calendar>
+<footer>
+  <button class="btn btn-red btn-big" (click)="freeze()" [disabled]="selectedRange.length == 0" translate="BUTTONS.FREEZE">Freeze</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button class="btn btn-green btn-big" (click)="open()" [disabled]="selectedRange.length == 0" translate="BUTTONS.OPEN">Open</button>
+</footer>
+

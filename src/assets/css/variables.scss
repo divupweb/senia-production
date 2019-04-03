@@ -1,0 +1,34 @@
+$main-green: #6ec39d;
+$sky-blue: #ccf2f8;
+$black: #000;
+$white: #fff;
+$gray-dark: #4a4a4a;
+$gray-dark2: #3e3e3e;
+$gray-light: #d8d8d8;
+$gray-blue: #e1e2e7;
+$gray-light-blue: #f0f0f4;
+$gray-light2: #f9f9f9;
+$gray-border: #979797;
+$gray-light3: #f2f2f2;
+$red: #d93010;
+$purple: #3d1a44;
+$gray-text: #9b9b9b;
+$font-normal: 'avenirbook', sans-serif;
+$font-bold: 'avenirheavy', sans-serif;
+
+// icon sprite root
+$icons: '/assets/images/icons.png';
+
+// Responsive
+$laptop: 1440px;
+$laptop-sm: 1280px;
+$mobile: 1024px;
+$mobile-md: 991px;
+$mobile-sm: 768px;
+$mobile-xs:  480px;
+
+// Meal colors
+$breakfast: #749eeb;
+$lunch: $main-green;
+$dinner: #d0c064;
+$catering: #c3886e;

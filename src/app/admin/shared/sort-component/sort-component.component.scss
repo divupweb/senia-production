@@ -1,0 +1,71 @@
+@import '~assets/css/conf';
+
+.custom-dropdown {
+  position: relative;
+
+  .txt {
+    padding-right: 15px;
+    position: relative;
+  }
+
+  strong {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .fa-caret-down {
+    position: absolute;
+    right: 0;
+    top: 2px;
+  }
+}
+
+.custom-dropdown-popover {
+  width: 190px;
+  padding: 20px 0;
+  position: absolute;
+  top: 36px;
+  right: -16px;
+  font-size: 16px;
+  background: white;
+  text-align: left;
+  font-family: $font-normal;
+  z-index: 2;
+  box-shadow: 0 0 27px 4px rgba(0, 0, 0, 0.2);
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 9px 8px 8px;
+    border-color: transparent transparent #ffffff transparent;
+  }
+
+  .item {
+    padding: 0 30px;
+    line-height: 43px;
+    text-decoration: none;
+    display: block;
+
+    &:hover {
+      background: $gray-light3;
+    }
+
+    &.active {
+      color: $gray-light;
+    }
+  }
+
+  footer {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 30px 0;
+    border-top: 1px solid $gray-light;
+  }
+}

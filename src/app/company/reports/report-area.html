@@ -1,0 +1,20 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector" *ngIf="!width.isMobile()">
+      <li *ngFor='let subscription of subscriptions'>
+        <a [routerLink]="['./', subscription ]" routerLinkActive="router-link-active">{{('SUBSCRIPTIONS.' + subscription|uppercase)|translate}}</a>
+      </li>
+      <li>
+        <a [routerLink]="['custom']" routerLinkActive="router-link-active" translate="COMPANY.REPORTS.CUSTOM">custom</a>
+      </li>
+    </ul>
+    <div class="heading-selector-mobile" *ngIf="width.isMobile()">
+      <select [(ngModel)]="selectedLink" (change)="goTo($event.target.value)">
+        <option [value]="subscription" *ngFor='let subscription of subscriptions'>{{ ('SUBSCRIPTIONS.' + subscription|uppercase)|translate }}</option>
+        <option [value]="'custom'"> {{"KITCHENS.REPORTS.CUSTOM" | translate}}</option>
+      </select>
+    </div>
+  </div>
+</user-menu>
+
+<router-outlet></router-outlet>

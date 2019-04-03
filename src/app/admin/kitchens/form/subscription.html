@@ -1,0 +1,77 @@
+<div class="subscription-component">
+  <header>
+    <div class="left">
+      <div class="custom-checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="subscription.active" [checked]="subscription.active" [disabled]="readOnly">
+          <i class="fa fa-check-circle"></i>
+          {{ ('SUBSCRIPTIONS.' + title|uppercase)|translate }}
+        </label>
+      </div>
+    </div>
+    <div class="right">
+      <div class="add-kitchens-ctrl" [ngClass]="{'opened': showCategorySelect}">
+        <span *ngIf="!showCategorySelect && subscription.active" (click)="toggleCategorySelect(true)" translate="ADMIN.KITCHEN.BUTTONS.ADD">Add categories</span>
+        <span *ngIf="showCategorySelect" (click)="toggleCategorySelect(false)" translate="BUTTONS.CLOSE">Close</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="main" *ngIf="subscription.active">
+    <div>
+      <div class="row">
+        <div class="col-sm-6 form-group v3">
+          <input class="form-control" [(ngModel)]="subscription.capacity" type="number" [disabled]="readOnly">
+          <label translate="CONTROLS.CAPACITY">Capacity</label>
+        </div>
+        <div class="col-sm-6 form-group v3">
+          <input class="form-control" [(ngModel)]="subscription.interestPercent" type="number" [disabled]="readOnly">
+          <label translate="CONTROLS.INTEREST_PERCENT">Interest (%)</label>
+        </div>
+      </div>
+      <div class="delivery-option">
+        <span [ngClass]="{'active': subscription.kitchenDelivery}">{{ 'CONTROLS.KITCHEN_DELIVERY' | translate }}</span>
+        <div class="switcher">
+          <label>
+            <input type="checkbox" class="ios-switch green bigswitch" [(ngModel)]="subscription.kitchenDelivery"  [disabled]="readOnly">
+            <div><div></div></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group mt-1">
+        <div *ngIf="categories.length > 0">
+          <div *ngFor="let kdc of subscription.kitchenDishCategoriesAttributes">
+            <div class="category-list-item" *ngIf="kdc.active">
+              <div class="img" (click)="toggleDishCategory(kdc, false)">
+                <img [src]="getCategory(kdc).display_url" alt="">
+                <div class="close-overlay">
+                  <i class="fa fa-times" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="txt">
+                <strong>{{ getCategory(kdc).name }}</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="category-popup" *ngIf="showCategorySelect" (clickOutside)="toggleCategorySelect(false)" (keyup.esc)="toggleCategorySelect(false)" tabindex="1" (setFocus)="true">
+    <div class="category-popup-search">
+      <input type="text" placeholder="{{ 'SHARED.FILTERS.SEARCH_CATEGORY' | translate }}" [(ngModel)]="search" />
+    </div>
+    <div class="category-popup-list">
+      <div *ngFor="let category of categoriesWithoutAdded | nameFilter:search">
+        <div class="category-list-item" (click)="addDishCategory(category.id, true)">
+          <div class="img">
+            <img [src]="category.display_url" alt="">
+          </div>
+          <div class="name"><strong>{{ category.name }}</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

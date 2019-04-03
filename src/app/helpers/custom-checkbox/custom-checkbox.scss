@@ -1,0 +1,81 @@
+@import '~assets/css/conf';
+
+.custom-checkbox{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1.2;
+  label{
+    @include user-select(none);
+    cursor: pointer;
+    margin-bottom: 0;
+    display: inline-block;
+    .fake-checkbox{
+      width: 17px;
+      height: 17px;
+      position: relative;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      background: #fff;
+      border: 1px solid $gray-border;
+      @include border-radius(50%);
+    }
+
+    input[type="radio"],
+    input[type="checkbox"]{
+      position: absolute;
+      left: -999999px
+    }
+    .fa-check-circle{
+      color: #d8d8d8;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    input[type="checkbox"]:checked + .fa-check-circle,
+    input[type="radio"]:checked + .fa-check-circle{
+      color: $gray-dark;
+    }
+
+    input[type="checkbox"] + .fa-check-circle{
+      width: 16px;
+    }
+    input[type="checkbox"] + .fa-check-circle:before{
+      content: " ";
+      border: 1px solid #cac8c8;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      position: relative;
+      top: 0;
+      line-height: 1;
+    }
+    input[type="checkbox"]:checked + .fa-check-circle:before{
+      content: "\f058";
+      width: auto;
+      height: auto;
+      border-radius: 0;
+      display: flex;
+      top: 0;
+      border: 1px solid transparent;
+    }
+
+    &.checkbox-white{
+      input[type="checkbox"]:checked + .fa-check-circle,
+      input[type="radio"]:checked + .fa-check-circle{
+        color: white;
+      }
+    }
+  }
+
+  &__inner-wrap {
+    display: flex;
+  }
+
+  &__txt {
+    margin-left: 15px;
+  }
+}

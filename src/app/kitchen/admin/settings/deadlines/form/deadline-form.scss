@@ -1,0 +1,60 @@
+@import '~assets/css/conf';
+
+.sub{
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: $gray-text;
+}
+.weekdays-selector{
+  margin: 30px 0;
+  display: flex;
+  justify-content: space-between;
+  div{
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-transform: uppercase;
+    color: $main-green;
+    border: 1px solid $main-green;
+    @include border-radius(50%);
+  }
+  input{
+    position: absolute;
+    left: -1000px;
+
+    &:checked + div{
+      background: $main-green;
+      color: white;
+    }
+  }
+  >label{
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    &:hover{
+      div{
+        color: white;
+        background: $gray-dark;
+        border-color: $gray-dark;
+      }
+      input:checked + div{
+        background: $main-green;
+        color: white;
+        border-color: $main-green;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile){
+  .weekdays-selector > label,
+  .weekdays-selector div{
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+}

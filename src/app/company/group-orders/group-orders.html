@@ -1,0 +1,21 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector" *ngIf="!width.isMobile()">
+      <li>
+        <a [routerLink]=" ['orders'] " routerLinkActive="router-link-active" translate="COMPANY.COMPANY_ORDERS">Company Orders</a>
+      </li>
+      <li>
+        <a [routerLink]=" ['defaults'] " routerLinkActive="router-link-active" translate="COMPANY.COMPANY_DEFAULTS">Company Defaults</a>
+      </li>
+    </ul>
+
+    <div class="heading-selector-mobile" *ngIf="width.isMobile()">
+      <select [(ngModel)]="selectedLink" (change)="goTo($event.target.value)">
+        <option [value]="'orders'">{{"COMPANY.COMPANY_ORDERS" | translate}}</option>
+        <option [value]="'defaults'">{{"COMPANY.COMPANY_DEFAULTS" | translate}}</option>
+      </select>
+    </div>
+
+  </div>
+</user-menu>
+<router-outlet></router-outlet>

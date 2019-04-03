@@ -1,0 +1,1337 @@
+{
+  "nb": {
+    "ADMIN": {
+      "ADMIN_PROFILE": "Admin Profile",
+      "BUTTONS": {
+        "APPROVE_KITCHEN": "Approve kitchen"
+      },
+      "COMPANIES": {
+        "ACTIVE_ONLY": "Vis bare aktiv",
+        "BECOME_EMPLOYEE": "Bli som ansatt",
+        "CANTEEN_APPLIED_SINCE": "Vil være anvendt siden {{ date }}",
+        "CREDITS": "Kreditert",
+        "DISCOUNTS": "Rabatter",
+        "DROP_SPOT": "Drop spot",
+        "GENERATE_INVOICE": "Generer faktura",
+        "SEND_MESSAGE": {
+          "TEXT": "Melding",
+          "TITLE": "Sende melding"
+        },
+        "SHARED_LOCATION": {
+          "COMPANY_QUERY": "Legg til firma (søk etter navn eller adresse)",
+          "SHARED": "delt",
+          "TITLE": "Del leveringskostnader"
+        }
+      },
+      "COMPANY": {
+        "BACK": "",
+        "CONTACT_INFO": "Kontakt info",
+        "EMPLOYEES": "Ansatte",
+        "ETG": "Etg",
+        "LOCATION": "Sted",
+        "ORG_NUMBER": "Org. nummer",
+        "SUBSIDY_PER_EMPLOYEE": "Subsidie pr ansatt"
+      },
+      "COMPANY_EMPLOYEES": "Bedriftsansatte",
+      "COMPANY_ORDERS": "Bedriftsbestillinger",
+      "CONTACT_INFO": "Kontaktinfo",
+      "CONTROLS": {
+        "OWN_PICTURES": "Egne bilder"
+      },
+      "DASHBOARD": {
+        "BUTTONS": {
+          "ADD_MANUAL_ORDERS": "Legg til manuelle bestillinger",
+          "MANUAL_ORDERS": "Manuelle bestillinger",
+          "VIEW_REPORT": "Se rapport"
+        },
+        "COUNT_PROBLEMS_WITH_ORDERS": "{{count}} problemer med bestillinger",
+        "MANUAL": {
+          "OWNER": "Eier",
+          "SEARCH_FOR_DISH": "Søk etter matrett",
+          "SEARCH_FOR_OWNER": "Søk etter selskap eller ansatte",
+          "SKIP_CHARGE": "Hopp lade"
+        },
+        "TITLE": "DASHBOARD"
+      },
+      "DELETE_CATEGORY_CONF": "Vil du slette kategorien",
+      "DELETE_COMPANY_CONF": "Vil du slette bedriften?",
+      "DELETE_KITCHEN_CONF": "Vil du slette kjøkkenet?",
+      "DELETE_LOCATION_CONF": "Vil du slette stedet?",
+      "DISCOUNT": {
+        "CREDIT_COMPANY": "Kreditt alle bedriftsordrer (NOK)",
+        "CREDIT_EMPLPLOYEE": "Kreditt hver valgt ansatt ordre",
+        "DISCOUNT_COMPANY": "Rabatt for alle bedriftsordrer",
+        "DISCOUNT_EMPLPLOYEE": "Rabatt for alle ansatte ordrer",
+        "DISCOUNT_KITCHEN": "Nytt kjøkkeninteresseprosent"
+      },
+      "DISH_CATEGORIES": "Matrettkategorier",
+      "FINANCIAL_REPORT": "Finansiell rapport",
+      "INVOICES": {
+        "DETAILED": "Detaljert faktura",
+        "INVOICE": "Faktura"
+      },
+      "KITCHEN": {
+        "BUTTONS": {
+          "ADD": "Legg til kategorier",
+          "ADD_REGION": "Legg til regionen",
+          "BACK_TO_THE_LIST": "Tilbake til kjøkken liste",
+          "REMOVE_REGION": "Fjern regionen",
+          "SET_INTEREST": "Sett rente"
+        },
+        "DEFAULT_REGION": "Standard regionen",
+        "NEW_CATEGORY": "Ny kategori",
+        "SUSPENDS": "Suspenderer",
+        "UPDATE": "Oppdater!"
+      },
+      "KITCHEN_ORDERS": "Kjøkkenbestillinger",
+      "LOCATION": "Sted",
+      "LOGISTICS": "Logistikktimeplan",
+      "LOGISTIC_USERS": "Logistikkbrukere",
+      "PENDING_COMPANIES": "Bedrifter til godkjenning",
+      "PENDING_COMPANY": "Bedrifter til godkjenning",
+      "PENDING_KITCHEN": "Kjøkken til godkjenning",
+      "PENDING_KITCHENS": "Kjøkken til godkjenning",
+      "PENDING_SLIDER": {
+        "TITLE": "{{ count }} Bedrift og kjøkken til godkjenning"
+      },
+      "PROFILE": "Profil",
+      "RELATED_KITCHEN": "Relaterte kjøkken",
+      "REPORTS": {
+        "BACK": "Tilbake til statistikk",
+        "CARD_CHARGES": "Kort avgifter",
+        "COMPANY_INVOICES": "Bedrift fakturaer",
+        "CREDIT": "Kreditert",
+        "DELIVERED": "Levert",
+        "DELIVERIES": "Leveranser",
+        "DELIVERY": "Leveranse",
+        "DISCOUNT": "Rabbat",
+        "ITEMS": "Varelinjer",
+        "KITCHEN_INVOICES": "Kjøkken fakturaer",
+        "ONE_DELIVERY_COST": "En levering kostnad",
+        "PICKED_UP": "Hentet",
+        "PROFIT": "Profitt",
+        "QUANTITY": "Antall",
+        "SIGNATURE": "Signatur",
+        "TO_BE_CHARGED": "Å bli belastet",
+        "TO_BE_PAID": "Å være betalt"
+      },
+      "SELECT_RELATED_KITCHEN": "Velg relatert kjøkken",
+      "SEND_MESSAGE": {
+        "ALL_EMPLOYEES": "Alle ansatte",
+        "COMPANY_ADMIN": "Selskap",
+        "COMPANY_ADMIN_DESCRIPTION": "Send melding til bedriftsadministrator",
+        "COMPANY_EMPLOYEES_DESCRIPTION": "Send melding til firmaets ansatte",
+        "EMPLOYEES": "Medarbeidere",
+        "KITCHEN_ADMIN": "Kjøkken",
+        "KITCHEN_ADMIN_DESCRIPTION": "Send melding til kjøkkenadministrator",
+        "KITCHEN_EMPLOYEES_DESCRIPTION": "Send melding til kjøkkenansatte",
+        "PLACEHOLDER": "Skriv inn teksttekst",
+        "SEND": "Sende",
+        "SEND_NEW": "Send ny melding",
+        "TO": "Til"
+      },
+      "SETTINGS": {
+        "GENERAL_INFO": "Generell info",
+        "SUSPEND_PLANNER": "Suspendér planlegger",
+        "TITLE": "Innstillinger",
+        "USERS": "Brukere"
+      },
+      "SHARED_LOCATIONS": "Delte steder",
+      "SINGULAR": "Admin",
+      "SORT": {
+        "COLUMNS": {
+          "ACTIVE": "Aktiv",
+          "ADDRESS": "Adresse",
+          "CREATED_AT": "Opprettet på",
+          "DROP_SPOT": "Drop Spot",
+          "FLOOR": "Gulv",
+          "NAME": "Navn",
+          "ORDERS_COUNT": "Bestillinger",
+          "PHONE": "Telefon",
+          "USERS_COUNT": "Brukere"
+        },
+        "FILTERED_BY": "Filtrert av"
+      },
+      "SUSPENDS": {
+        "DELETE_MESSAGE": "Vil du slette suspenderingen?",
+        "EVENTS": "Eventer",
+        "TITLE": "Suspenderinger"
+      }
+    },
+    "BUTTONS": {
+      "ACCEPT": "Aksepter",
+      "ADD": "Legg til",
+      "ADD_CATEGORY": "Legg til kategori",
+      "ADD_NEW": "Legg til ny",
+      "APPROVE": "Godkjenn",
+      "BACK": "Tilbake",
+      "BECOME": "Bli",
+      "BECOME_A_DRIVER": "Søk nå!",
+      "BECOME_A_RESTAURANT_PARTNER": "BLI EN PARTNERRESTAURANT",
+      "CANCEL": "Avlys",
+      "CHANGE_PASSWORD": "Endre passord",
+      "CLOSE": "Lukk",
+      "COMPANY_ADMIN": "Gå til firmaets admin",
+      "CONFIRM": "Bekreft",
+      "DECLINE": "Avslå",
+      "DEFAULTS": "Standarder",
+      "DISCOUNT": "Rabbat",
+      "EDIT": "Redigér",
+      "FORGOT": "Glemt",
+      "FREEZE": "Frys",
+      "GENERATE": "Generér",
+      "GENERATE_INVOICE": "Generér faktura",
+      "GET_STARTED": "KOM I GANG",
+      "LOG_IN": "Logg inn",
+      "LOG_OUT": "Logg ut",
+      "NEXT": "Neste",
+      "MARKETPLACE": "Markedet",
+      "OPEN": "Åpne",
+      "REGISTER": "Registrer",
+      "REJECT": "Avvis",
+      "REMOVE": "Fjern",
+      "REMOVE_IMAGE": "Fjern bilde",
+      "REMOVE_LOGO": "Fjern logo",
+      "SAVE": "Lagre",
+      "SAVE_AND_UPDATE": "Lagre & oppdatér",
+      "SAVE_CHANGES": "Lagre endringer",
+      "SELL_FOOD_WITH_US": "SELG MAT MED OSS",
+      "SEND": "Send",
+      "SEND_MESSAGE": "Sende melding",
+      "SHARE": "Delt",
+      "SHOW_ME_THE_FOOD": "VIS MEG MENYENE",
+      "SIGN_UP": "Registrer",
+      "SUBMIT": "Send inn",
+      "TRANSFER": "Overføre",
+      "VIEW_DETAILS": "Se detaljer",
+      "VIEW_MENU": "Se meny",
+      "YES": "Ja"
+    },
+    "CALENDAR": {
+      "DAYS": "dager",
+      "LAST_MONTH": "Siste måned",
+      "LAST_WEEK": "Siste uken",
+      "SHORT_DAYS": "d",
+      "SHORT_HOURS": "t",
+      "SHORT_MINUTES": "m",
+      "TODAY": "Idag",
+      "TOMORROW": "Imorgen",
+      "W": "U",
+      "YESTERDAY": "Igår"
+    },
+    "COMPANY": {
+      "COMPANY_DEFAULTS": "Bedrift standarder",
+      "COMPANY_ORDERS": "Bedriftsbestillinger",
+      "CONTACT": {
+        "YOUR_LOCAL_ADMIN": "Din lokale admin"
+      },
+      "DASHBOARD": {
+        "COUNT_COMPANY_ORDERS": "{{ count }} bedriftsbestillinger",
+        "COUNT_EMPLOYEE_ORDERS": "{{ count }} ansattbestillinger",
+        "COUNT_PROBLEMS": "{{count}} problemer",
+        "DELIVERED_WITH_PROBLEM": "Levert av {{ driver }} med noen problemer",
+        "ORDERED": "Bestilt",
+        "PICKED_UP_BY_DRIVER": "Hentet av {{ driver }}",
+        "PRODUCING": "Lager",
+        "TITLE": "Dashboard"
+      },
+      "DEFAULT_WEEKDAYS_SUBSCRIPTION": "Standard {{weekDay}}s {{subscription}}",
+      "EMPLOYEES": {
+        "ADD_KITCHENS": "Legg til kjøkken på siden",
+        "ADMIN": "Admin",
+        "AVAILABILITY": "Tilgjengelighet",
+        "BUTTONS": {
+          "ADD_EMPLOYEE": "Legg til ny ansatt",
+          "INVITE": "Inviter ansatt",
+          "REMOVE_EMPLOYEE": "Fjern ansatt",
+          "RESET_SETTINGS": "Resett innstillinger til standard",
+          "SETTINGS_FOR_ALL": "Innstillinger for alle ansatte"
+        },
+        "COMPANY_PIN": "Bedriftens PIN: {{pin_code}}",
+        "NOT_AVAILABLE": "{{ subscription }} er ikke tilgjengelig",
+        "SEARCH_EMPLOYEE": "Søk ansatt",
+        "SETTINGS_FOR_ALL": "Innstillinger for <br>alle ansatte",
+        "YOU": "Deg"
+      },
+      "EMPLOYEES_ORDERS": "Ansattes bestillinger",
+      "FROM_KITCHEN": "fra {{ kitchen }}",
+      "KITCHENS": {
+        "BUTTONS": {
+          "ADD": "Legg til kjøkken",
+          "MARK_AS_FAVORITE": "Merk som favoritt",
+          "REMOVE_FROM_FAVORITE": "Fjern fra favoritter"
+        },
+        "CONFIRMATION": {
+          "DESC": "Ansattbestillinger innstillingsoppdatering"
+        },
+        "DELIVERY_COST": {
+          "ESTIMATED": "Estimert leveringskostnad",
+          "MAX": "maks {{ max }} ({{ amount }} kjøkken x {{ cost }})",
+          "MIN": "min {{ cost }} (leveranse fra 1 kjøkken)"
+        },
+        "ON_LEAVE": {
+          "CONFIRMATION": "Vil du forlate siden?",
+          "DESC": "Alle forandringer vil gå tapt."
+        },
+        "ON_UPDATE": {
+          "CONFIRMATION": "Vil du fortsette?",
+          "DESC": "Alle ansatte vil oppdateres om forandringene."
+        },
+        "SEARCH_KITCHEN": "Søk kjøkken"
+      },
+      "ORDERS": {
+        "BASKET_IS_EMPTY": "Din handlekurv er tom",
+        "BUTTONS": {
+          "ADD": "Legg til &nbsp;<span>i kurven</span>",
+          "ADDED": "Lagt til &nbsp;<span>i kurven</span>",
+          "EDIT_ORDER": "Endre bestiling",
+          "ORDER_CATERING": "Bestill catering"
+        },
+        "DEADLINE_PASSED": "Bestillingstid for kjøkkenet er over",
+        "DEADLINE_PASSED_SUB": "Vennligst velg et annet kjøkken eller annen dato",
+        "DEADLINE_SOON": "{{ subscription }} bestillinger for dette kjøkkenet vil snart låses",
+        "END_TIME": "Sluttid",
+        "START_TIME": "Starttid"
+      },
+      "ORDERS_REPORT": "Bestillingsrapport",
+      "REPORTS": {
+        "CUSTOM": "Egentilpasset",
+        "PREORDER": "Førbestilling",
+        "SEARCH_EMPLOYEE": "Søk ansatt"
+      },
+      "SETTINGS": {
+        "ADMIN_PROFILE": "Admin Profile",
+        "GENERAL_INFO": "Generell info",
+        "SUSPEND_PLANNER": "Suspendér planlegger",
+        "TITLE": "Innstillinger"
+      },
+      "SUBSCRIPTION_IS_LOCKED": "{{subscription}} er låst",
+      "SUBSCRIPTION_WILL_BE_LOCKED_AT": "{{subscription}} vil låses {{time}}"
+    },
+    "CONTROLS": {
+      "ACCOUNT_LOGO": "Konto-logoen",
+      "ADDRESS": "Adresse",
+      "ADDRESS2": "Adresse 2",
+      "ADD_CARD": "Legg til kort",
+      "ADD_CREDIT_CARD": "Please wait for Food.farm approve or add credit card here or settings page.",
+      "ADD_PAYPAL": "Legg til paypal",
+      "AGREE_FF": "Jeg er enig i Food.Farm ",
+      "ADMIN_PASSWORD": "Admin passord",
+      "APPROVED": "Godkjent",
+      "BECOME_FF_DRIVER": "VÆRE EN FOOD.FARM LEVERANDØR DRIVER I DAG",
+      "BANK_ACCOUNT": "Bankkonto",
+      "BUNCH": "Gruppe pakket",
+      "CALENDAR_ID": "Calendar ID",
+      "CANTEEN": "Digital kantine",
+      "CAPACITY": "Kapasitet",
+      "CHANGE": "Endre",
+      "CHARGE_PERIOD": "Oppladningsperiode",
+      "CHOOSE_A_CITY": "Velg by",
+      "CITY": "By",
+      "COMMENT": "Kommentar",
+      "COMMENT_OPT": "Kommentar (valgfri)",
+      "COMPANY_ALREADY_ACCOUNT": "Din bedrift er allerede på Food.Farm?",
+      "COMPANY_NAME": "Bedriftsnavn",
+      "COMPANY_PHONE": "Bedriftstelefon",
+      "CONFIRM_PASSWORD": "",
+      "CONTACT_PERSON": "Kontaktperson",
+      "COOKIES": "Vi benytter cookies for din brukeropplevelse. Se vår cookie erklæring for mer informasjon om våre egne og tredjeparts cookies, og hvordan du kan avslå (opt-out) og slette cookies. Ved videre navigering på nettsiden, anses dette som en aksept av plasseringen og bruken av cookies.",
+      "COOKIES_POLICY": "Cookies erklæring",
+      "COUNTRY": "Land",
+      "CREDITS": "Credits",
+      "CURRENCY": "Valuta",
+      "DATE": "Dato",
+      "DELIVERY": "Leveranse",
+      "DELIVERY_ADDRESS": "Leveranseadresse",
+      "DELIVERY_ADDRESS_2": "Leveranseadresse 2",
+      "DESCRIPTION": "Beskrivelse",
+      "DROP_SPOT_NAME": "DropSpot Name",
+      "EMAIL": "Epost",
+      "EMAILS": "Epost",
+      "ENTERPRISE_REGION": "Enterprise regionen",
+      "ERRORS": {
+        "INCORRECT": {
+          "EMAIL": "E-post er feil",
+          "MESSAGE": "Ugyldig {{field}} felt"
+        },
+        "MATCH": {
+          "PASSWORD": "Passordet matcher ikke"
+        },
+        "REQUIRED": {
+          "ADDRESS": "Vennligst sett inn adresse",
+          "CITY": "Vennligst sett inn bynavn",
+          "CONFIRM_PASSWORD": "Vennligst bekreft passord",
+          "EMAIL": "Vennligst sett inn epost",
+          "FIRST_NAME": "Vennligst skriv inn fornavn",
+          "LAST_NAME": "Vennligst skriv inn etternavn",
+          "MESSAGE": "Vennligst sett inn {{ field }}",
+          "MUST_AGREE": "Du må være enig",
+          "NAME": "Vennligst sett inn navn",
+          "ORGANIZATION_NUMBER": "Vennligst sett inn organisasjonsnummer",
+          "PASSWORD": "Vennligst sett inn passord",
+          "ZIP_CODE": "Vennligst sett inn postnummer"
+        }
+      },
+      "EVERY_WEEK": "Belaste hver uke",
+      "FIRST_NAME": "Fornavn",
+      "FLOOR": "Etasje",
+      "HAVE_ACCOUNT": "Har du allerede en konto?",
+      "HEAD_CHEF_NAME": "Hovedkokks navn",
+      "IMAGE": "Bilde",
+      "INTEREST_PERCENT": "Rente (%)",
+      "INVOICE_DELAY": "Faktura forsinkelse",
+      "INVOICE_EMAIL": "Faktura epost",
+      "INVOICE_MONTHLY": "Faktura månedlig",
+      "INVOICE_TWICE_A_MONTH": "Faktura to måneder",
+      "INVOCIE_WEEKLY": "Faktura ukentlig",
+      "KITCHEN_DELIVERY": "Kjøkken leveranse",
+      "KITCHEN_NAME": "Kjøkkennavn",
+      "LANDING_COMPANY": "Bedriftsseksjon på destinasjonsside",
+      "LANDING_EMPLOYEE": "Medarbeideravsnitt på destinasjonssiden",
+      "LANDING_PAGE_SETTINGS": "Landing page settings",
+      "LAST_NAME": "Etternavn",
+      "LEARN_MORE": "Lære mer",
+      "LAST_NAME_OPTIONAL": "Etternavn (valgfritt)",
+      "MAX_PRICE": "Makspris",
+      "MOBILE": "Mobil",
+      "NAME": "Navn",
+      "NEW": "Ny",
+      "NEW_PASSWORD": "Nytt passord",
+      "NO_PAYMENT": "Ingen betalingsinformasjon",
+      "NO_PAYPAL": "Ingen PayPal info",
+      "NUMBER_OF_EMPLOYEES": "Antall ansatte",
+      "OLD_PASSWORD": "Gammelt passord",
+      "ONCE_MONTH": "Belaste en gang i måneden",
+      "ORDERS": "Bestillinger",
+      "ORGANIZATION_NUMBER": "Organisasjonsnummer",
+      "PASSWORD": "Passord",
+      "PASSWORD_CONF": "Passordbekreftelse",
+      "PAYMENT_DETAILS": "Betalingsdetaljer",
+      "PAYPAL": "Paypal",
+      "PHONE": "Telefon",
+      "PIN": "PIN",
+      "PIN_CODE": "PIN kode",
+      "PRICE": "Pris",
+      "PRICE_RANGE": "Prisintervall",
+      "PRIVACY_POLICY": "Personvernerklæring",
+      "PROFIT_MARGIN": "Profittmargin, %",
+      "RECEIVE_OCCASIONAL": "Jeg vil gjerne motta e-post med informasjon som Food.Farm mener jeg ville være interessert i.",
+      "REGION": "Region",
+      "RETYPE_PASSWORD": "Gjenta passord",
+      "ROLE": "Rolle",
+      "SEARCH": {
+        "KITCHEN": ""
+      },
+      "SHOW_ACCOUNTS": "Vis tilgjengelige kontoer",
+      "SHOW_KITCHEN_RATING": "Vis kjøkkenets rating",
+      "SIGN_UP_PIN": "Registrer deg med din PIN-kode",
+      "SKIP_CARD": "Ikke lade kortet",
+      "STATUS": "Status",
+      "SUBSIDY_MAX_VALUE": "Tilskudd maks verdi",
+      "SUSPEND_PERIODS": "Avbryt perioder",
+      "TERMS_OF_SERVICE": "Generelle vilkår for medlemskap i Tjenesten",
+      "TIME_ZONE": "Tidssone",
+      "TOC": "Vi har oppdatert brukervilkårene for å overholde EUs personvernforordning (GDPR). For å fortsette å bruke Food.Farm, vennligst aksepter våre nye vilkår innen 25. mai 2015. For mer informasjon, gå til brukervilkårene.",
+      "TWICE_MONTH": "Belaste to ganger i måneden",
+      "USERS": "BRUKERE",
+      "VAT_NUMBER": "MVA nummer",
+      "WORK_EMAIL": "Jobb e-post",
+      "ZIP_CODE": "Postnummer"
+    },
+    "DEADLINE": {
+      "SINGULAR": "Frist"
+    },
+    "EMPLOYEE_CONFIRMATION": {
+      "ENTER_NEW_PASSWORD": "Skriv nytt passord",
+      "TOC": {
+        "LINK": "vilkår og betingelser",
+        "TEXT_BEFORE": "Ved å sende inn følgende skjema sier jeg meg enig i"
+      }
+    },
+    "EMPLOYEE_REGISTER": {
+      "BUTTONS": {
+        "BACK_TO_WEBSITE": "Tilbake til web"
+      },
+      "TOC": {
+        "LINK": "vilkår og betingelser",
+        "TEXT_AFTER": "",
+        "TEXT_BEFORE": "Jeg er enig i"
+      }
+    },
+    "ENTERPRISE": {
+      "ARE_YOU_COMPANY": "Maten du liker, levert rett til din arbeidsplass",
+      "ARE_YOU_EMPLOYEE": "For ansatte",
+      "OPEN_IN_BROWSER_0": "Åpne web-versjonen i",
+      "OPEN_IN_BROWSER_1": "nettlesere",
+      "POWERED_BY": "Drevet av",
+      "POWERED_BY_0": "",
+      "POWERED_BY_1": "",
+      "SELECT_WAY": "Velg praktisk måte å bestille mat",
+      "SIGN_UP": {
+        "COMPANY": "Bedrift"
+      }
+    },
+    "HOME": {
+      "ADD_KITCHEN": {
+        "DESC": "Skriv deres epost her for å invitere dem til Food.Farm",
+        "TITLE": "Legg til ditt favorittkjøkken"
+      },
+      "CITIES": {
+        "FIND_FOOD_FARM": "Finn Food.Farm i din by",
+        "IN": "Food.Farm i",
+        "IN_OSLO": "i Oslo",
+        "MADE_WITH": "Food.Farm AS © 2016-2018. Laget med",
+        "NORWAY": "Norge",
+        "OSLO": "Оslo",
+        "RESTAURANTS": "Partnere",
+        "SELECT_CITY": "Velg by",
+        "START_ORDERING": "Og start bestillingen av digg mat fra våre partnere"
+      },
+      "COMPANY": {
+        "DROP_YOUR_DETAILS": "Så hyggelig! Da trenger vi litt info slik at du kan begynne å bestille god mat på jobb.",
+        "SIGN_UP": "Sign up your company",
+        "WHOS_HUNGRY": "Sulten?",
+        "BRING_FOOD": "La oss få god mat på kontoret ditt!",
+        "PLEASE_PROVIDE_THE_CONTACT_DETAILS": "Vennligst oppgi kontaktinformasjonen til beslutningstakeren du vil at vi skal nå ut til."
+      },
+      "CONTACT_FORM": {
+        "EMAIL": "Epost",
+        "MESSAGE": "Din melding",
+        "NAME": "Din Navn",
+        "PHONE": "Telefon",
+        "SEND": "Send melding",
+        "SUCCESS": "DIN INFO ER SENDT",
+        "SUCCESS_DESC": "Vår regionale administrator vil kontakte deg snart",
+        "TITLE": "Kontakt oss"
+      },
+      "COOK": {
+        "BENEFITS": "Fordeler med Food.Farm",
+        "BENEFITS_DESC": "Her er et kjapt blikk på hva vi tilbyr",
+        "BEN_1": "Salg & Markedsføring",
+        "BEN_1_DESC": "Å bruke Food.Farm som plattform gjør at du kan få mest mulig ut av ditt kjøkken og øke salget. Vi står for markedsføringen, du gjør det du er best på, nemlig å lage mat!",
+        "BEN_2": "Logistikk",
+        "BEN_2_DESC": "Lar du oss ta logistikken kan du slappe av, vel vitende om at maten din blir hentet og levert til rett sted og rett tid.",
+        "BEN_3": "Admin & betaling",
+        "BEN_3_DESC": "Med Food.Farm får du både forutsigbarhet i ordregangen og full kontroll på betalingene. Bruk mindre tid på papirarbeid og mer tid på å lage mat!",
+        "COOK": "LAG MAT",
+        "EST_SALES": "Forutsigbarhet = Smarte Produksjonslinjer",
+        "GET_MONEY": "FÅ PENGER",
+        "GET_READY": "Og forbered deg på et salgsboost",
+        "LET_US_KNOW": "La oss bli kjent med nettopp ditt kjøkken.",
+        "MARKETPLACE_DESC": "Ditt mattilbud fortjener å bli ordentlig presentert",
+        "PAPERWORK": "Vi gjør det nødvendige papirarbeidet.",
+        "REGISTER": "Registrér",
+        "REGISTER_KITCHEN": "Registrér ditt kjøkken",
+        "SEE_MARKETPLACE": "Se Vår Markedsplass for Kjøkken",
+        "SET_MENU": "Sett din egen meny og priser og start matlagingen. Ikke vær bekymret for leveringen.",
+        "SIGN_UP_KITCHEN": "MELD PÅ DITT KJØKKEN",
+        "WHY_NOT_TRY_US": "Prøv oss. Det er gratis.",
+        "WITH": "Lag mat med Food.Farm"
+      },
+      "DELIVERY": {
+        "CHECK_IF": "Sjekk om vi er i din by",
+        "DESC": "Vi tar ikke individuelle bestillinger i hele byen.. Og det er en bra ting! Vi leverer mat til et minimum antall mennesker som deler adresse, som f.eks. folk i samme firma eller kontorbygg.. Dette gjør at vi får maten frem raskere (og varmere) slik sparer vi også byen og miljøet for unødvendig trafikk.",
+        "EVERYBODY_WINS": "-Alle vinner.",
+        "GROUPED_DELIVERY": "Gruppelevering",
+        "REGISTER_FIRST": "eller registrer for å bli den første"
+      },
+      "DOWNLOAD": {
+        "ANDROID": "Last ned vår Android app",
+        "DESC": "Dine ansatte bestemmer hva de vil spise",
+        "IOS": "Last ned vår iOS app",
+        "TITLE": "Last ned vår app"
+      },
+      "EAT": {
+        "ACCESS_TO_KITCHENS": "Med tilgang til alle våre kjøkken kan du velge fra en rekke cuisiner. Si farvel til kjedelig mat!",
+        "ADD_KITCHEN": "Legg til ditt favorittkjøkken",
+        "ANDROID_APP": "Android app på",
+        "AND_NEVER_HASSLE": "og aldri stress med det igjen",
+        "APP_STORE": "App Store",
+        "AVAILABLE_ON": "Tilgjengelig på",
+        "BENEFITS": "Fordeler med Food.Farm",
+        "CHECK_ORDERS": "Sjekk hvor i prosessen din bestilling er med sanntidstracking av alle dine bestillinger i dashboardet. Du kan også se historikken, så vel som planlagte bestillinger i fremtiden.",
+        "CHOOSE_KITCHEN": "Velg kjøkken, tilbud, og sett subsidier. <br> Send ut invitasjoner.",
+        "CHOOSE_KITCHENS": "Hver ansatt bestiller sine egne lunsjmåltider for uken.",
+        "CITIES": "Byer",
+        "COMPANY_ALREARY": "Er din bedrift allerede på Food.Farm?",
+        "COMPANY_SIGNUP": "Registrer din bedrift",
+        "COMPLETE_CONTROL": "Komplett Kontroll",
+        "CONSTANTLY_GROWING": "Utvikles kontinuerlig, konstant velsmakende",
+        "CONVENIENT": "PRAKTISK",
+        "CORPORATE_FOOD": "Bedriftsmat - på personlig vis",
+        "CREATE_ACCOUNT_0": "Lag gratis konto, velg betaling og betal",
+        "CREATE_ACCOUNT_1": "kun for den maten du bestiller. Ingen skjulte kostnader.",
+        "CUSTOMERS": "VÅRE KUNDER",
+        "DISHES": "Matretter",
+        "DIVERSE": "VARIERT",
+        "DOWNLOAD": "Last ned vår app",
+        "DOWNLOAD_DESC": "Dine ansatte bestemmer hva de vil spise",
+        "EAT_WITH_FOODFARM": "Spis med Food.Farm",
+        "ECONOMIC": "ØKONOMISK",
+        "EMPOWER": "Gi dine ansatte friheten til å bestille det de vil ha",
+        "ENABLE_EMPLOYEES": "De ansatte styrer kriteriene. Allergier? Lav karbo og høyt proteininnhold? Null problem.",
+        "EVERYONE_GETS_MENU": "Alle får sin egen, personlige meny",
+        "FINE_TUNE": "Finjustér din konto for å møte deres behov og bestill til alle som office manager eller la dine ansatte bestille selv.",
+        "FLEXIBLE": "FLEKSIBELT",
+        "FROM_ALL_PARTNERS": "Fra våre kjøkkenpartnere",
+        "GET_STARTED": "KOM I GANG",
+        "GET_YOUR_FOOD": "Lunsj levert på jobben",
+        "GOOGLE_PLAY": "Google Play",
+        "GREAT": "Flott!",
+        "HAVE_A_LOOK": "Se Våre Menyer",
+        "INSIGHT_DRIVEN": "Innsiktsdrevet",
+        "INVITE_EMPLOYEES": "Inviter ansatte",
+        "INVITE_MESSAGE": "Dine ansatte får en velkomstepost fra Food.Farm og de kan laste ned vår app for å skreddersy menyen sin og designe sitt eget matabonnement.",
+        "KEEP_TRACK_0": "Hold track på kjøkken, subsidier, ansatte, bestillinger",
+        "KEEP_TRACK_1": "og historikk i ditt admin dashboard.",
+        "KEEP_TRACK_2": "Mat har aldri vært lettere!",
+        "LET_US_KNOW": "Registrer og la oss bli kjent med din bedrift.",
+        "MENU": "Meny",
+        "NEVER_HASSLE": "Og aldri stress med det igjen",
+        "NEVER_HASSLE_2": "Dine ansatte fortjener god lunsj.",
+        "NON_BINDING": "Uten Bindingstid",
+        "NON_BINDING_SUBSCRIPTION": "Bindingsfritt abonnement",
+        "NO_HIDDEN_COSTS": "Ingen skjulte kostnader.",
+        "OR": "Eller",
+        "ORDER": "BESTILL",
+        "ORDER_THROUGH": "Bestill med vår brukervennlige netsside eller app, og få maten levert på kontoret med en valgfrihet kantina aldri kan gi deg.",
+        "PERSONALIZED": "SKREDDERSYDD",
+        "PERSONAL_FILTERS": "Vi lar dem sette sine egne personlige filtre, basert på deres egne preferanser",
+        "PRE_ORDERING": "Med planlagte bestillinger via Food.Farm er du med på å senke matkastingen, redusere svinn og bidra til å redde miljøet",
+        "PUT_EMPLOYEE_IN_CONTROL": "Den ansatte har kontroll",
+        "QUICK_LOOK": "Her er et kjapt blikk på hva vi tilbyr",
+        "REGISTER": "Registrer din bedrift",
+        "REMEMBER_VERIFY_EMAIL": "Husk å verifisere din epost.",
+        "RESPONSIBLE": "ANSVARLIG",
+        "RESTAURANTS": "Partnere",
+        "SEE_MENU": "Se hele menyen",
+        "SELECT_MENUS": "Velg mellom menyer fra toppkjøkken",
+        "SELECT_OFFER": "Velg tilbud",
+        "SEND_INFO": "send info til sjefen",
+        "SETUP_ONCE": "Sett det opp en gang",
+        "SET_IT_UP": "Sett opp idag",
+        "SET_SUBSIDIES": "Sett subsidier og bestem dagene mat skal leveres",
+        "SIGN_UP": "MELD PÅ DITT FIRMA",
+        "SINCE_AUTOMATE": "Siden Food.Farm har automatisk bestillingsprosess, kan vi tilby kvalitetsmat til uslåelige priser. Hvorfor betale for mat som ikke blir spist?",
+        "SMART_AND_CONNECTED": "Smart og sammenkoblet",
+        "START_AN_ACCOUNT": "Lag en bedriftskonto for ditt firma.",
+        "SUCCESS": "Vi ser frem til å ha dere med ossog kontakter dere ASAP for å få dere ordentlig ombord!",
+        "TRY_US": "PRØV OSS IDAG",
+        "USE_CASE_1": "Deres kontoransvarlig bestiller <br>direkte fra vår markedsplass",
+        "USE_CASE_2": "Dine ansatte bruker FoodFarm  <br>og bestiller selv!",
+        "WHY_NOT_TRY": "Prøv oss. Det er gratis.",
+        "WRITE_KITCHEN_EMAIL": "Skriv deres epost for å invitere dem til Food.Farm",
+        "YOUR_ORDER": "Din bestilling leveres på din arbeidsplass på tiden.",
+        "YOUR_ORDER_2": "Din favorittmat blir levert rett til arbeidsplassen din."
+      },
+      "FOR_COMPANIES": {
+        "YOUR_OFFICE_MEAL_DELIEVERED": "Maten du liker, levert rett til din arbeidsplass",
+        "PERSONALIZED_DELICIOUS_MEALS": "Alle fortjener en god lunsj på jobben",
+        "AWESOME_MEAL_VARIETY": "Stort matutvalg",
+        "NO_MORE_SOGGY_SANDWICHES": "Livet er for kort til å spise kjedelige matpakker! Med Food.Farm finner alle noe de liker.",
+        "FITS_BUDGET": "Passer til alle budsjett",
+        "OUR_MEALS_START": "Våre måltider har gunstige priser, og vi tilbyr fleksible faktureringsalternativer for alle budsjett. Ingen skjulte kostnader. Ingen forpliktelser.",
+        "REMARKABLE_TIMESAVINGS": "Tidsbesparende",
+        "WAITING_IN_LINE": "Å stå i kantinekø eller gå ut for å kjøpe mat er sløsing med både tid og ressurser. Vi tar oss av lunsjen, og du får mer tid til andre ting!",
+        "FLEXIBLE_CUSTOM_ORDERS": "Fleksibilitet i bestillinger",
+        "ALLERGIES_GLUTEN_FREE": "Allergier? Glutenfri? Null problem. Teamet ditt velger sine måltider for å dekke sine spesifikke kostbehov.",
+        "ON_TIME_DELIEVERY": "Levering i tide",
+        "WE_BUNDLE_UP_YOUR_TEAM": "Vi samler alle ordrer og kjører dem  direkte til ditt kontor. Maten kommer til rett tid, hver gang.",
+        "MINIMAL_FOOD_WASTE": "Mindre matsvinn",
+        "EACH_EMPLOYEE_GETS_THEIR_LUNCH": "Med planlagte bestillinger er du med på å minske matkastingen og redusere svinn.",
+        "WHATS_ON_THE_MENU": "Hva er på menyen?",
+        "WE_PARTNER_WITH": "Bestill lunsj, catering- og overtidsmat rett til pulten din.",
+        "FRESH_TAKE_ON_OFFICE_FOOD": "Slik fungerer det",
+        "WE_MEAN_IT": "Gi dine ansatte friheten til å bestille det de vil ha på et par klikk.",
+        "START_FEEDING_YOUR_OFFICE": "REGISTRER DIN BEDRIFT",
+        "FOOD_MANAGEMENT": "Bestilling av mat har aldri vært lettere!",
+        "FULL_CONTROL_TO_FUEL_BELLIES": "Full kontroll og synlighet over bestillinger",
+        "CENTRALIZED_REPORTING": "Sentralisert rapportering",
+        "KEEP_TRACK_OF_EMPLOYEES_ORDERS": "Hold orden på dine ansattes bestillinger og betalingshistorikk i et enkelt panel.",
+        "ADVANCE_PLANNING": "Forhåndsplanlegging",
+        "PRE_ORDER_YOUR_MEALS_WEEKS": "Forhåndsbestill dine måltider uker eller måneder i forveien. Legg inn  gjentagende bestillinger.",
+        "GROUP_ORDERS": "Gruppe bestillinger",
+        "ORDER_IN_BULK": "Bestill for alle som kontoradministrator eller la dine ansatte bestille selv.",
+        "GET_THE_APP": "Last ned vår app",
+        "ORDER_WITH_THE_APP": "Enkel bestilling gjennom et par tastetrykk",
+        "WE_ARE_TRUSTED_BY_GREAT_TEAMS": "Noen av våre kunder",
+        "JOIN_THESE_GREAT_COMPANIES": "Våre kunder er alle typer bedrifter fra startups til etablerte tungvektere i markedet."
+      },
+      "FOR_RESTAURANTS":{
+        "GROW_YOUR_BUSINESS": "Utvid din restaurants virksomhet",
+        "JOIN_THE_DOZENS_OF_RESTAURANTS": "Bli en av de mange restaurantene som jobber med oss, ved å skaffe nye kunder og øke bedriftens omsetning.",
+        "HOW_IS_FF_DIFFERENT": "Hvordan er Food.Farm annerledes?",
+        "FORGET_COMPLEX_ORDERS": "Glem vanskelige, siste-liten-bestillinger som stresser kjøkkenet ditt. Food.Farm gir deg inntekter før det daglige lunsjrushet begynner.",
+        "GREATER_REACH": "Større kundebase",
+        "GET_EXCLUSIVE_ACCESS": "Få eksklusiv tilgang til kontorer rundt om i byen, og selg til kunder som ikke kan besøke lokalene dine i lunsjtiden.",
+        "INCREASED_REVENUE": "Økt inntekt",
+        "BY_PUSHING_THEIR_BRAND": "Ved å registrere seg hos Food.Farm, tjener våre topprestauranter ytterligere 145 000 kr i omsetning per måned.",
+        "ADVANCED_PRODUCTION": "Full kontroll",
+        "PLAN_YOUR_FOOD_PRODUCTION": "Planlegg matlaging flere dager i forkant og få full kontroll over dine bestillingsfrister.",
+        "EASY_KITCHEN_MANAGEMENT": "Enkel kjøkkenbehandling",
+        "WITH_OUR_SIMPLE_CONTROL_PANEL": "Med vårt enkle kontrollpanel, administrerer du bestillinger, produksjoner og logistikk når du er på farten.",
+        "FOCUS_ON_FOOD": "Fokus på matlaging",
+        "MAINTAIN_COMPLETE_CONTROL": "Ha god kontroll på gjøremålene dine og fokuser på det du gjør best. Glem kjedelige administrasjonsoppgaver, feilleveranser eller kundeklager.",
+        "FF_MARKETING": "Food.Farm-finansiert markedsføring",
+        "BENEFIT_FROM_THE_DIGITAL_MARKETING": " Dra nytte av den digitale markedsføringen vi utfører for å fremme ditt varemerke til forretningsfolk.",
+        "HEAR_FROM_PARTNERS": "Et par ord fra våre partnerrestauranter",
+        "WE_PRIDE_WITH_WORKING": "Vi er stolte av å jobbe med de beste lokale restaurantene",
+        "READY_TO_TAKE_YOUR_BUSINESS": "Klar til å ta bedriften til et nytt nivå?",
+        "WE_ARE_ALWAYS_ON_THE_HUNT": "Vi er alltid på utkikk etter gode kjøkken å starte et partnerskap med. Hvorfor ikke din?",
+        "I_LAUNCHED_CAMEN_ON_FOOD": "Jeg lanserte Camên på Food.Farm og begynte umiddelbart å motta bestillinger. Innen bare et par uker ble min maksimale kapasitet møtt. Jeg vurderer nå å ansette medarbeidere for å få møtt etterspørselen og for å få Camên til å ytterlige vokse som kjøkken."
+      },
+      "ABOUT_US": {
+        "WE_BRING_FOOD": "Vi tilbyr bedriftsmat på personlig vis.",
+        "WE_ARE_ON_A_MISSION": "Vi ønsker å revolusjonere kontormat ved å erstatte vanlige kantiner med en nyskapende mattjeneste for arbeidsplassen. Vårt team vil gjøre det enkelt og praktisk for forretningsfolk å bestille tilpassede og sunne måltider fra de beste lokale restaurantene og få dem levert daglig, rett til kontoret.",
+        "REDUCING_FOOD_WASTE": "Å redusere matsvinn er en regel vi lever etter. Med Food.Farm får hver medarbeider sitt eget individuelle måltid. Vi eliminerer sløsing med overbestilling slik at firmaet sparer penger.",
+        "GET_A_TASTE": "Få en smak av hva vi tilbyr",
+        "FUEL_YOUR_BUSY_TEAM": "Gi ditt sultne team tilgang til de beste lokale restaurantene i byen og spar både tid og penger.",
+        "INCREASE_YOUR_RESTAURANT_REVENUE": "Øk restaurantinntektene dine, og få full kontroll over dine bestillingsfrister.",
+        "FOR_COMPANIES": "For selskaper",
+        "FOR_RESTAURANTS": "For restauranter",
+        "READY_TO_BRING_YOUR_CANTEEN": "Klar til å få din kantine inn i det 21. århundre?",
+        "GET_IN_TOUCH": "Kom i kontakt med våre matguruer, og la smaksløkene dine glede seg!"
+      },
+      "PROP_TECH":{
+        "YOUR_SMART_FACILITY_MANAGEMENT_PARTNER": "Din facilty management partner",
+        "IN_ADDITION_TO_RUNNING": "I tillegg til å drifte vår egen matleveringsplattform, imøtekommer vi store bedrifter innen mat- og eiendomsbransjen ved å lisensiere vår løsning.",
+        "OUR_SOLUTION_GIVES": "Vi gir dermed våre kunder muligheten til å drifte sin egen digitale kantine ved å koble sitt eget nettverk av restauranter og bedriftskunder.",
+        "WHO_DO_WE_CATER_TO": "Hvem tilbyr vi vår løsning?",
+        "LARGE_CATERING_PROVIDERS": "Store cateringleverandører",
+        "CORPORATE_REAL_STATE_COMPANIES": "Eiendomsbedrifter",
+        "FACILITY_MANAGEMENT_COMPANIES": "Facility management bedrifter",
+        "WHAT_YOU_GET": "Hva tilbyr vi?",
+        "SELF_BRANDED_MARKETPLACE": "Vi tilbyr våre bedriftskunder en selvbetjent markedsplass som er drevet av et moderne matstyringssystem.",
+        "BRANDED_MARKETPLACE_WEBSITE": "Nettside for deres varemerke",
+        "ABILITY_TO_ACQUIRE_KITCHENS": "Mulighet til å anskaffe og on-boarde kjøkken",
+        "ABILITY_TO_ACQUIRE_CLIENTS": "Mulighet til å anskaffe og on-boarde bedrifter",
+        "ABILITY_TO_CREATE_SUB_REGIONS": "Mulighet til å opprette og administrere egne regioner",
+        "LOGISTICS_MANAGEMENTS_MODULE": "Styringsmodul for logistikk",
+        "KITCHEN_COMMISION_MODULE": "Styringsmodul for kjøkkenbehandling",
+        "PAYMENT_MANAGEMENT_MODULE": "Styringsmodul for betalinger",
+        "BENEFITS_FOR_YOUR_BUSINESS": "Fordeler for din bedrift",
+        "WE_UNDERSTAND_CHALLENGIES": "Vi forstår utfordringer ved å styre en vanlig bredriftskantine, og vi har derfor skreddersydd en løsning som løser din bedrift sine behov.",
+        "HIGHER_REVENUE_CANTEEN_CONTRIBUTIONS": "Høyere inntekter",
+        "FLEXIBLE_DIGITAL_BASED_INFRASTRUCTURE": "Enkel digital infrastruktur",
+        "LOWER_COSTS": "Lavere matlaging- og produksjonskostnader",
+        "MINIMAL_FOOD_WASTE": "Mindre matsvinn",
+        "HEAR_FROM_CLIENTS": "Hør fra våre bedriftskunder",
+        "WE_ARE_INCREDIBLY_SATISFIED": "Vi er utrolig fornøyd med den digitale kantinen som Food.Farm-teamet har bygget for oss. Hittil har vi klart å koble mange bedriftskunder i Aker Brygge med over ti partnerrestauranter i området. Våre selskaper er glade for å få god mat hver dag, mens våre restauranter får flere kunder. Denne smarte markedsplass-løsningen har vært en vinn-vinn-situasjon for alle parter.",
+        "READY_TO_PUT_OUR_TECH_TO_WORK": "Klar til å ta i bruk vår løsning?",
+        "GET_IN_TOUCH": "Kom i kontakt med vårt salgsteam på "
+      },
+      "FOR_DRIVERS": {
+        "EARN_COMPETITIVE_PAY1": "Tjen konkurransedyktig lønn for",
+        "EARN_COMPETITIVE_PAY2": "et par timers leveringsarbeid hver dag.",
+        "DELIVERY_DRIVER": "Våre sjåfører",
+        "HELP_US_ENSURE1": "Hjelp oss å sørge for at hvert enkelt av våre",
+        "HELP_US_ENSURE2": "deilige måltider leveres i tide og betjenes med et smil.",
+        "WHY_JOIN_OUR_FF_TEAM": "Hvorfor bli med i vårt Food.Farm-team?",
+        "JOIN_OUR_TEAM": "Bli med i vårt team av stå-på-mennesker og tjen noen gode penger på fritiden.",
+        "MAKE_GREAT_MONEY": "Tjen bra",
+        "OUR_BILLING_MODELS_ENSURES": "Få konkurransedyktige vilkår per levering.",
+        "MINIMAL_TIME_COMMITMENT": "Minimal tidsforpliktelse",
+        "DAILY_SHIFTS": "Daglige skift er vanligvis 1-2 timer i lunsjtiden.",
+        "FLEXIBLE_HOURS": "Fleksibel arbeidstid",
+        "SHIFTS_ARE_USUALLY_DURING_THE_MORNING": "Skift er vanligvis om morgenen, men av og til også noen ettermiddager.",
+        "ROLE_REQUIREMENTS": "Dette trenger du",
+        "CAR_OR_VAN": "Bil eller varebil med gyldig registrering og forsikrin",
+        "VALID_DRIVERS_LICENSE": "Gyldig norsk førerkort",
+        "ABILITY_TO_LIFT": "Mulighet til å løfte 10 kg",
+        "SMARTPHONE_WITH_4G": "Smarttelefon med 4G tilgang",
+        "THE_RIGHT_TO_WORK": "Retten til å jobbe som selvstendig næringsdrivende i Norge",
+        "A_NORWEGIAN_BANK_ACCOUNT": "En norsk bankkonto",
+        "MINIMUM_21_YO": "Minimum 21 år gammel",
+        "DEPENDABLE_COMMITTED_ON_THE_FLY": "Pålitelig, engasjert, løsningsorientert",
+        "HEAR_FROM_DRIVERS": "Noen ord fra våre sjåfører",
+        "I_LOVE_WORKING_WITH_FF_TEAM": "Jeg elsker å jobbe med Food.Farm-teamet. Jeg nyter muligheten til å møte nye mennesker hver dag, mens jeg får en god lønn for bare et par arbeidstimer om dagen."
+      },
+      "FOOTER": {
+        "ABOUT": "Om oss",
+        "CONNECT_WITH_US": "Sosiale medier",
+        "CONTACT_US": "Kontakt oss",
+        "COPYRIGHT": "Alt innhold og bilder kan ikke brukes uten tillatelse",
+        "CUSTOMER_SERVICE": "Kundeservicee",
+        "EMPLOYEES_SIGNUP": "Registrer som ansatt",
+        "FOOD_FARM_INC": "Food.Farm AS. {{year}}",
+        "LINKS": {
+          "ADMINS_AND_EMPLOYEES": "Admins og Ansatte",
+          "CONTACT_US": "Kontakt oss",
+          "GIVE_GET": "Gi {{ give }}, Få {{ get }}",
+          "GIVING_BACK": "Gi tilbake",
+          "HELP": "Hjelp/FAQ",
+          "MENUS": "Menyer",
+          "ORDER": "Bestilling",
+          "OUR_STORY": "Vår Historie",
+          "REGIONS": "Regioner",
+          "RESOURCES": "Resursses",
+          "ABOUT_US": "Om oss",
+          "PROPRIETARY_TECHNOLOGY": "Vår teknologi",
+          "BLOG": "Blogg",
+          "FOR_DRIVERS": "For sjåfører",
+          "FOR_REAL_ESTATE_COMPANIES": "For eiendomsbedrifter"
+        },
+        "SHARE": "Share FOOD.FARM",
+        "YOU_SHOULD_KNOW_PIN": "you should know PIN-code",
+        "ANY_QUESTIONS" : "Kontakt oss",
+        "GET_TO_KNOW_US": "Bli kjent med oss",
+        "PARTNER_WITH_US": "Bli vår partner"
+      },
+      "HEADER": {
+        "CITIES": "Byer",
+        "COOK": "Lag mat",
+        "EAT": "Spis",
+        "FOR_COMPANIES": "For bedrifter",
+        "FOR_RESTAURANTS": "For restauranter"
+      },
+      "INSIGHT_DRIVEN": {
+        "DESC_1": "Hvis vi vet hva du vil spise i forveien, vet vi hva vi må kjøpe inn på forhånd. Å bli kjent med dine ansatte og deres preferanser gjør det lettere å planlegge faktisk konsumering og med det unngå svinn.",
+        "DESC_2": "En liten bivirkning av dette er at alt blir både billigere og smartere.",
+        "DESC_3": "Lett som en plett. Eller omelette.",
+        "TITLE": "Estimert salg"
+      },
+      "MENU": {
+        "DESC": "Kjøkkenpartnerskap og menyer",
+        "TODAYS_MENU": "Dagens {{subscription}} meny"
+      },
+      "REGION": {
+        "OTHER_CITY": "Andre byer"
+      }
+    },
+    "KITCHENS": {
+      "BUTTONS": {
+        "ADD_DISH": "Legg til matrett",
+        "ADD_INGREDIENT": "Legg til ingrediens",
+        "ADD_NEW_CATEGORY": "Legg til kategori",
+        "ADD_NEW_DISH": "Legg til ny matrett",
+        "ADD_NEW_USER": "Legg til ny bruker",
+        "BACK_TO_MENU": "Tilbake til meny",
+        "BACK_TO_WEEKLY_VIEW": "Tilbake til ukeoversikt",
+        "CHANGE_IMAGE": "Endre bilde",
+        "COPY_PREVIOUS_WEEK": "Kopiér meny fra forrige uke",
+        "EDIT_PERIOD": "Endre periode",
+        "GET_INVOICE": "Få faktura",
+        "PRINT": "Print",
+        "REMOVE_DISH": "Fjern matrett",
+        "SAVE_NEW_DISH": "Lagre ny matrett",
+        "SEND_REQUEST": "Send forespørsel",
+        "SET": "Sett",
+        "SET_FOR_WEEK": "Sett for hele uka",
+        "SET_MENU": "Sett meny",
+        "SET_RANDOM_MENU": "Sett tilfeldig matrett",
+        "SHOW_ACTIVE": "Vis aktive",
+        "SHOW_INACTIVE": "Vis inaktive",
+        "SWITCH_CATEGORY": "Bytt kategori"
+      },
+      "CATEGORY_DESC": "Kategori legges til av lokal administrator",
+      "CATERING": "Catering",
+      "CATERING_DETAILS": "Cateringdetaljer",
+      "CATERING_REQUEST": "Cateringforespørsel",
+      "CATERING_REQUEST_FROM": "fra {{company}}",
+      "COMPANY_INFO": "Bedriftsinfo",
+      "CONTROLS": {
+        "DISH_TYPE": "Type",
+        "INGREDIENT_NAME": "Ingrediensnavn",
+        "NETTO_PERCENT": "Netto prosent",
+        "PRICE_FROM": "Pris fra",
+        "PRICE_TO": "Pris til",
+        "UPLOAD_CATEGORY_IMAGE": "Last opp kategoribilde"
+      },
+      "COUNT_PROBLEMS_WITH_ORDERS": "{{count}} problemer med bestillinger",
+      "DASHBOARD": "Dashboard",
+      "DELIVERIES": "Leveranser",
+      "DISH_TYPES": {
+        "COLD": "Kaldt",
+        "WARM": "Varm"
+      },
+      "ERRORS": {
+        "INVALID_RANGE": "Vennligst bruk pris fra kategoriens prisintervall",
+        "REQUIRED": "Påkrevd"
+      },
+      "MENU": "Meny",
+      "ORDERS_POPUP": {
+        "ABOUT": "Om oss",
+        "PACKAGING": "PAKKING",
+        "PRODUCTS": "PRODUKTER"
+      },
+      "PRICE_DESCRIPTION": "Du kan sette prisen mellom {{ min }} og {{ max }}",
+      "PRINT_POPOVER": {
+        "BOTH_PROD_AND_PACK": "Både produktliste og logistikkvittering",
+        "FOOTER_MESSAGE": "Du vil kunne printe produkt- og pakkliste bestillingene er låst",
+        "PACKAGING_LIST": "Logistikk kvittering",
+        "PRODUCTS_LIST": "Produktliste"
+      },
+      "REPORTS": {
+        "CUSTOM": "Spesialtilpasset",
+        "PREORDER": "Førbestilling",
+        "SELECT_CUSTOM_PERIOD": "Velg tilpasset periode",
+        "TITLE": "Rapporter"
+      },
+      "SEARCH_DISH": "Søk bedrift",
+      "SETTINGS": {
+        "ABOUT": "Om {{kitchen}}",
+        "CATEGORIES": "Kategorier",
+        "CHANGES_NEED_TO_APPROVE": "Nye endringer trenger godkjenning fra regional admin:",
+        "DEADLINES": {
+          "DEADLINE_TIME": "Utløpsfristens tid",
+          "PICKUP_TIME": "Hentetid",
+          "TITLE": "Frister"
+        },
+        "DISCOUNTS": "Rabatter",
+        "DISCOUNT_ALL": "Rabatt for alt kjøkken",
+        "DISCOUNT_SAVED": "Rabatter lagret",
+        "DISHES": "Servise",
+        "GENERAL_INFO": "Generell info",
+        "SUSPEND_PLANNER": "Suspendér planlegger",
+        "TARGET": "Velg rabattmål:",
+        "TITLE": "Innstillinger",
+        "USERS": "Brukere"
+      },
+      "UPCOMING_CATERING": "Kommende catering",
+      "VOTES": {
+        "NO_VOTES": "Ingen stemmer",
+        "PLURAL": "stemmer",
+        "SINGULAR": "stemme"
+      }
+    },
+    "KITCHEN_REGISTER": {
+      "BREAKFAST_SERVICE": "Frokostservice",
+      "CAPACITY": "Kapasitet",
+      "DELIVERY": "Kjøkkenlevering",
+      "DINNER_SERVICE": "Middagservice",
+      "EVENT_CATERING": "Event catering",
+      "GREAT": "Flott!",
+      "LUNCH_SERVICE": "Lunchservice",
+      "NAME": "Registrer kjøkken",
+      "OFFER": "Hva vil ditt kjøkken tilby",
+      "SIGN_UP_KITCHEN": "MELD PÅ DIN RESTAURANT",
+      "SUCCESS": "DIN INFO ER SENDT",
+      "SUCCESS_DESC": "Vår regionale administrator vil kontakte deg snart"
+    },
+    "LOGISTICS": {
+      "ALL_ASSIGNED": "Alle tildelt",
+      "ALL_LOCATIONS": "Alle steder",
+      "BUTTONS": {
+        "COLLAPSE": "Kollaps",
+        "DRIVER_ROUTE": "Kjørerute",
+        "EXPAND": "Ekspandér",
+        "MONDAY": "Neste mandag",
+        "OK": "Alt er OK",
+        "RECALCULATE": "Rekalkulér",
+        "REPORT": "Meld inn problem",
+        "SEND_PROBLEM": "Send problembeskrivelse",
+        "TODAY": "I dag",
+        "TOMORROW": "I Morgen"
+      },
+      "COUNT_PROBLEMS": "{{count}} problemer med bestillinger",
+      "DELETE_CONFIRMATION": "Vil du slette logistikkbrukeren?",
+      "DIRECT": "DIREKTE",
+      "FROM_HUB": "FRA HUB",
+      "HUB": "Hub",
+      "HUB_NAME": "Navnavn",
+      "LOCATIONS": "Steder",
+      "PLACEHOLDERS": {
+        "ENTER_NAME": "Skriv inn personnavn"
+      },
+      "POSITION": "Nåværende posisjon",
+      "TO_HUB": "TIL HUB"
+    },
+    "SHARED": {
+      "ALLERGY": {
+        "ADD": "Legg til allergi",
+        "PLURAL": "Allergier",
+        "SELECT": "Velg allergi",
+        "SINGULAR": "Allergi"
+      },
+      "CATEGORIES": {
+        "PLURAL": "Kategorier",
+        "SINGULAR": "Kategori"
+      },
+      "COLLAPSE": "Skjul",
+      "COMPANIES": {
+        "PLURAL": "Bedrifter",
+        "SINGULAR": "Bedrift"
+      },
+      "COMPONENTS": {
+        "CALENDAR": "Kalender",
+        "DEFAULTS": {
+          "FOOTER_MESSAGE": "Dette blir din {{ subscription }} hver {{ weekday }} til du sletter eller endrer den",
+          "LOCKED": "Låst",
+          "NO_DEFAULT_DISHES": "Ingen standardmatretter"
+        },
+        "LOGGED_IN": "Logget inn som {{title}}",
+        "PAGINATION": {
+          "CURRENT_LABEL": "Du er på side",
+          "LABEL": "Sidenummer",
+          "NEXT_LABEL": "Neste",
+          "PAGE_LABEL": "side",
+          "PREVIOUS_LABEL": "Forrige"
+        },
+        "PRICE_RANGE": "{{from}} og {{to}}",
+        "SUSPEND": {
+          "MARK_AS_AVAILABLE": "Merk som ledig",
+          "MARK_AS_UNAVAILABLE": "Merk som opptatt",
+          "SELECT_RANGE": "Velg dato eller datointervall"
+        },
+        "TODAY": "Idag",
+        "UPLOAD_AVATAR": "Last opp avatar",
+        "UPLOAD_IMAGE": "Last opp bilde",
+        "UPLOAD_IMAGE_FOR_APP": "Last opp bilde for mobilapp",
+        "UPLOAD_NEW_LOGO": "Last opp ny logo"
+      },
+      "DELIVERED": "Levert",
+      "DISHES": {
+        "PLURAL": "matretter"
+      },
+      "DISH_COMPONENTS": {
+        "CARBO": "Karbo",
+        "FAT": "Fett",
+        "KCAL": "Kcal",
+        "KILOCALORIES": "Kilokalorier",
+        "PROTEIN": "Protein",
+        "WEIGHT": "Vekt,g"
+      },
+      "EMPLOYEES": {
+        "ALL": "Alle Ansatte"
+      },
+      "EXPAND": "Utvid",
+      "FEEDBACKS": {
+        "DESCRIPTION": "Dropp oss en en tilbakemelding så vi blir bedre",
+        "PLURAL": "Tilbakemeldinger",
+        "SEND": "Send tilbakemelding",
+        "SINGULAR": "Tilbakemelding"
+      },
+      "FILTERS": {
+        "ALL": "Alle",
+        "BUTTONS": {
+          "DOWNLOAD_PDF": "Last ned pdf"
+        },
+        "DATE": "Dato",
+        "DESELECT_ALL": "Fjern alle markeringer",
+        "EMPLOYEES": "Ansatte",
+        "GROUPED_BY": "Gruppert etter",
+        "GROUPINGS": {
+          "CATEGORY": "Kategori",
+          "DATE": "dato",
+          "EMPLOYEE": "ansatt",
+          "MEAL": "Måltid",
+          "SERVICE": "service"
+        },
+        "SEARCH_CATEGORY": "Søk kategori",
+        "SELECT_ALL": "Velg alle",
+        "SERVICE": "Service"
+      },
+      "INGREDIENTS": {
+        "PLURAL": "Ingrediens",
+        "SINGULAR": "Ingredienser"
+      },
+      "KITCHENS": {
+        "ADDED": "Lagt til",
+        "ADD_TO_SERVICE": "Legg til service",
+        "CHEF": "Kokk",
+        "PLURAL": "Kjøkken",
+        "SINGULAR": "Kjøkken"
+      },
+      "LANGS": {
+        "EN": "en",
+        "NB": "no"
+      },
+      "MODES": {
+        "ADD_NEW": "Legg til ny",
+        "EDIT": "Redigér"
+      },
+      "NOTIFICATIONS": {
+        "KINDS": {
+          "ADMIN_CHARGE_FAILED": "Administrasjonskostnad mislyktes",
+          "ADMIN_CONFIRMATION": "Admin-bekreftelse",
+          "ALLERGIES_MATCH": "Allergier matcher",
+          "APPROVED": "Godkjent",
+          "CATERING_REJECT": "Catering avslå",
+          "CHARGE_FAILED": "Charge mislyktes",
+          "CHARGE_FAILED_TWICE": "Charge mislyktes to ganger",
+          "CHARGE_SUCCESS": "Charge suksess",
+          "CREDIT_SET": "Kreditt sett",
+          "DISCOUNT_SET": "Rabatt sett",
+          "FEEDBACK": "Tilbakemelding",
+          "GENERAL_SUSPEND": "Generell oppsigelse",
+          "INACTIVE": "Inaktiv",
+          "INACTIVE_ORDERS": "Inaktive bestillinger",
+          "INVALID_ORDER": "Problemer med bestillinger",
+          "KITCHENS_LIST_UPDATE": "Kjøkkenlisteoppdatering",
+          "KITCHEN_ADDED": "Kjøkken lagt til",
+          "KITCHEN_INACTIVE": "Kjøkken inaktivt",
+          "KITCHEN_REMOVED": "Kjøkken fjernet",
+          "KITCHEN_SUSPEND": "Kjøkken henge",
+          "KITCHEN_SUSPENDED": "Kjøkken suspendert",
+          "MEAL_ARRIVED": "Måltid ankom",
+          "MENU_NOT_POPULATED": "Menyen er ikke fylt",
+          "MENU_POPULATED": "Meny befolket",
+          "NEW_CATEGORY_ADDED": "Ny kategori lagt til",
+          "NOTIFY_NO_MENU": "Ikke varsle en meny",
+          "ORDER_REMIND": "Bestill påminnelse",
+          "PENDING_COMPANY": "Venter selskap",
+          "PENDING_KITCHEN": "Venter på kjøkken",
+          "RATING": "Vurdering",
+          "SEND_INVOICE": "Send faktura",
+          "SEND_MESSAGE": "Sende melding",
+          "SEND_PRODUCTION_AND_PACKAGING_LIST": "Send produksjonsliste og logistikk kvittering",
+          "SUBSIDY": "Subsidie"
+        }
+      },
+      "ORDERS": {
+        "PLURAL": "Bestillinger"
+      },
+      "PICKED_UP": "Hentet",
+      "PICK_UP_AT": "Hentes {{time}}",
+      "REGIONS": {
+        "PLURAL": "Regioner"
+      },
+      "ROLES": {
+        "ADMIN": "Admin",
+        "DRIVER": "Sjåfør",
+        "EMPLOYEE": "Ansatt",
+        "LOGISTICS": "Logistikk"
+      },
+      "SEARCH_QUERY": "Søkeord",
+      "SHIPMENTS": {
+        "STATUS": {
+          "DELIVERED": "levert",
+          "FAILED": "feilet",
+          "NEW": "ny",
+          "PICKUP": "henting",
+          "PROCESSED": "behandlet"
+        }
+      },
+      "STATES": {
+        "ACTIVE": "Aktiv",
+        "INACTIVE": "Inaktiv"
+      },
+      "TIME_LEFT": " {{time}} igjen",
+      "TOTAL": "Total",
+      "YOU_PAY": "Du betaler"
+    },
+    "SIGN UP YOUR KITCHEN": "",
+    "SIGN_UP": {
+      "ALLERGY_MESSAGE": "Hvis en fremtidig bestilling trigger et allergifilter",
+      "ALLERGY_MESSAGE_SUB": "vil FoodFarm velge meg en ny matrett",
+      "BUTTONS": {
+        "ADD_CARD": "Legg til kredittkort",
+        "FILL_DEFAULTS": "Fyll ut standardbestillinger",
+        "HIGH_TO_LOW": "Høy til lav",
+        "LOW_TO_HIGH": "Lav til høy",
+        "SET_LATER": "Fylll ut senere",
+        "SKIP": "Skipp",
+        "START_USING": "Begynn å bruke Foodfarm med subsidiegrenser",
+        "WANT_TO_RECEIVE_NOTIFICATIONS": "Jeg vil ha notifikasjoner fra Foodfarm"
+      },
+      "CHECK_MANUALLY": "Jeg vil sjekke mine bestillinger manuelt",
+      "COMPANY_HAS_INVITED_YOU": "{{ company }} har invitert deg til å joine deres gruppe <br> Denne gruppen tilbyr",
+      "NOTIFICATIONS": "Notifikasjons",
+      "NOTIFICATIONS_MESSAGE": " Vi vil sende deg epost når maten din kommer, eller hvis standardmåltidet inneholder noe du er allergisk mot<br> Høres det relevant ut?",
+      "OR": "eller",
+      "PRICE": "Pris",
+      "SHOW_ME_ANYTHING": "",
+      "SORTING": "Sortering",
+      "WHAT_WOULD_YOU_LIKE": "Hva vil du spise?",
+      "YOU_CAN_CHANGE_LATER": "Du kan alltids forandre på det senere",
+      "YOU_CAN_CHANGE_SETTINGS": "Du kan alltids forandre dette i innstillinger senere"
+    },
+    "SORT": {
+      "BY_CREATION_DATE": "Sortér etter opprettelsesdato",
+      "BY_DATE": "Sortér etter dato (nyeste lagt til først)",
+      "BY_KITCHEN": "Sortér etter kjøkken",
+      "BY_NAME": "Sortér etter navn",
+      "BY_PRICE_ASC": "Sortér etter pris (billigste først)",
+      "BY_PRICE_DESC": "Sortér etter pris (dyreste først)",
+      "BY_RATING": "Sortér etter rating (høyeste først)"
+    },
+    "SUBSCRIPTIONS": {
+      "BREAKFAST": "Frokost",
+      "CATERING": "Catering",
+      "DINNER": "Middag",
+      "FULL": "{{title}} Abonnement",
+      "LUNCH": "Lunsj",
+      "PLURAL": "Abonnementer",
+      "SINGULAR": "Abonnement"
+    },
+    "SUBSIDIES": {
+      "COMPANY_IS_SUBSIDISING": "Din bedrift subsidierer din",
+      "COMPANY_IS_SUBSIDISING_EVERY_DAY": "hver dag",
+      "FREE": "Gratis",
+      "MESSAGE": {
+        "FREE": "Du betaler full kostnad for dine ansatte",
+        "NO": "Dine ansatte betaler full pris"
+      },
+      "NO": "Nei",
+      "PERIODS": {
+        "DAILY": "per dag",
+        "MONTHLY": "per måned",
+        "WEEKLY": "per uke"
+      },
+      "PLURAL": "Subsidier",
+      "SINGULAR": "Subsidie",
+      "SUBSCRIPTION_WITH_VALUE": "{{subscription}} med {{subsidy}}",
+      "UPDATE": "Subsidieoppdatering",
+      "WORK_OFFER": "Jobb tilbud"
+    },
+    "SUPER_ADMIN": {
+      "ALLERGY": {
+        "ADD": "Legg til allergi",
+        "PLURAL": "Allergier",
+        "SELECT": "Velg allergi",
+        "SINGULAR": "Allergi"
+      },
+      "DASHBOARD": "Admin dashboard",
+      "DELETE_ALLERGY_CONF": "Vil du slette allergien?",
+      "DELETE_REGION_CONF": "Vil du slette regionen?",
+      "FINANCIAL_REPORT": "Finansiell rapport",
+      "PROSPECTIVE_ACC": {
+        "ACCOUNT": "Konto",
+        "ADMIN_EMAIL": "Admin epost",
+        "CITY": "City",
+        "COUNTRY": "Land",
+        "DELIVERY_COST": "Leveringskostnad",
+        "DELIVERY_TYPE": "Leveringstype",
+        "DELIVERY_VAT": "Levering MVA",
+        "EMAIL": "Epost",
+        "INVOICE_TEMPLATE": "Faktura mal",
+        "LOCALE": "Lokale",
+        "MIN_CHARGE": "Minimum ansattbelastning",
+        "NAME": "Navn",
+        "PHONE": "Telefon",
+        "PLURAL": "Konto prospekter",
+        "REGION": "Region",
+        "TYPE": "Type",
+        "VAT": "MVA"
+      }
+    },
+    "TOAST": {
+      "ERROR": {
+        "GEOLOCATION": "Nettleseren din støtter ikke geolokasjon for å oppdage din region",
+        "GUARD": "Du har ikke tillatelse til å få tilgang til dette området",
+        "NOT_ENOUGH_POINTS": "Du har mindre enn 2 popoeng til besøk.",
+        "REROUTE_FAILED": "Re-rutingskalkulasjon feilet",
+        "STATUS_UPDATE_FAILED": "Statusoppdatering feilet",
+        "UNABLE_TO_GET_USER": "Kan ikke hente brukerinfo"
+      },
+      "KITCHEN_ADMIN": {
+        "SUCCESS": {
+          "ADD_CATEGORY": "Kategorien er sendt for godkjenning"
+        }
+      },
+      "SUCCESS": {
+        "ADDED_TO_DEFAULTS": "Lagt til i standardbestillinger",
+        "CARD_SAVED": "Kredittkort lagret.",
+        "CATEGORY_SAVED": "Kategori lagret",
+        "CATERING_UPLOADED": "Catering info er oppdatert",
+        "CHANGES_SAVED": "Endringer lagret.",
+        "CREATED": "Opprettet",
+        "FEEDBACK_SENT": "Feedback ble sendt",
+        "IMAGE_UPLOADED": "Bilde lastet opp",
+        "INVOICE_GENERATED": "Faktura generert",
+        "KITCHEN_ADDED": "Kjøkken lagt til",
+        "KITCHEN_REMOVED": "Kjøkken fjernet",
+        "MENU_UPDATED": "Menyen er oppdatert",
+        "ORG_NUMBER_SAVED": "Organisasjonsnummer lagret. Vent til godkjenning.",
+        "PASSWORD_CHANGED": "Passord endret",
+        "PASSWORD_SET": "Passord opprettet",
+        "PAYPAL_SAVED": "Paypal avtalen lagret.",
+        "PERIODIC_UPDATED": "Periodiske bestillinger oppdaterte",
+        "PREFERENCES_UPDATED": "Dine preferanser er oppdaterte",
+        "REMOVED": "Fjernet",
+        "RESET_LINK_SENT": "Reset link sendt til din epost",
+        "ROUTE_CHANGED": "Ruten er endret",
+        "SETTINGS_UPDATED": "Innstillinger oppdatert",
+        "SHARED_LOCATION_SAVED": "Felles sted har blitt lagret",
+        "SHIPMENTS_ASSIGNED": "Leveranser tildelt sjåførene",
+        "STATUS_UPDATED": "Status oppdatert",
+        "SUBSIDIES_UPDATED": "Bedriftens subsidier og kjøkken er oppdatert",
+        "UPDATED": "Oppdatert",
+        "USER_ADDED": "Brukeren er lagt til",
+        "USER_UPDATED": "Brukeren er oppdater"
+      }
+    },
+    "USER": {
+      "AS_EMPLOYEE_AT_COMPANY": "Som ansatt ved {{ company }}",
+      "BUTTONS": {
+        "BACK_TO_MENU": "Tilbake til meny",
+        "CLEAR_ALL": "Tøm alle",
+        "RATE": "Rate",
+        "SET_DEFAULTS": "Sett/Endre Standard",
+        "UNLOCK": "Lås opp",
+        "VIEW_COMMENT": "Se kommentar",
+        "VIEW_DETAILS": "Se detaljer"
+      },
+      "DEFAULT_BANNER": {
+        "DESC": "Få perfekte matretter automatisk pass på <br> at du ikke glemmer å bestille",
+        "TITLE": "Sett din standard hverdagsmeny"
+      },
+      "DISH_PLURAL": "matretter",
+      "DISH_SINGULAR": "matrett",
+      "FILTERS": "Filtre",
+      "HOLIDAY_BANNER": {
+        "DESC": "Fortell oss at du er vekk så kjøkkenenes planer<br> og estimater er så nøyaktige som mulig",
+        "TITLE": "God ferie!"
+      },
+      "MEAL": {
+        "PLURAL": "Måltider"
+      },
+      "MENU": {
+        "ALLERGY": "Allergi",
+        "COMPONENTS": {
+          "CARBO": "Karbo",
+          "FAT": "Fett",
+          "KCAL": "Kcal",
+          "PROTEIN": "Protein",
+          "WEIGHT": "Vekt,g"
+        },
+        "CONFIRMATION": {
+          "CANCELLED": "Avlyst",
+          "DO_NOT_SHOW_NEXT_TIME": "Ikke vis bekreftelses popup neste gang. Bestillingen kanselleres automatisk.",
+          "TO_BE_DELIVERED": "vil bli levert <br> {{ date }}",
+          "YOUR_MEAL_FOR": "ditt {{meal}} for {{ date }}",
+          "YOU_HAVE_TIME": "Du har frem til {{ time }} o'clock {{ day }} å gjøre endringer"
+        },
+        "DAY": "Dag",
+        "DAY_LOCKED": "Låst",
+        "DAY_LOCKED_DESC": "Du har tidligere fryst denne dagen",
+        "DAY_UNAVAILABLE": "Utilgjengelig akkurat nå",
+        "DAY_UNAVAILABLE_DESC": "Kontakt din bedriftsadmin<br>(vanligvis en HR- eller sjefsperson..)<br>for å begynne bestillingen",
+        "PAST_DEADLINE": "Utløpsfrist passert",
+        "RATE": "Rate",
+        "SET_PERIODIC": "Gjør dette måltidet til standardvalg og det vil bli levert hver {{ date }}",
+        "VIEW_COMMENT": "Se kommentar",
+        "WEEK": "Uke"
+      },
+      "NOTIFICATIONS": {
+        "EMAIL": "Epost",
+        "GENERAL_SUSPEND": {
+          "MULTIPLE": "fra {{ startDate }} til {{ endDate }}",
+          "ONE": "på {{ startDate }}",
+          "TITLE": "FoodFarm er borte på ferie"
+        },
+        "HIDE_PREVIOUS": "Gjem tidligere",
+        "KITCHEN_REMOVED": "Kjøkkenet er fjernet fra din {{ type }} på {{ weekDays }}",
+        "MARK_AS_READ": "Merk som lest",
+        "NOTIFY_VIA": "Si fra til meg via",
+        "PUSH": "Push",
+        "VIEW_PREVIOUS": "Se forrige"
+      },
+      "NO_DISHES": "Ingen matretter",
+      "NO_PAYMENT_INFO": "Ingen betalingsinfo",
+      "PAYMENT": "Betaling",
+      "WELCOME": {
+        "COMPANY": "Skriv inn firmanummer og e-post",
+        "DESCRIPTION": "For å kunne opprette din første bestilling, vennligst skriv inn ytterligere data om bedriften din",
+        "DETAILS": "Eller sett inn bedriftsinfo",
+        "FIRST_ORDER": "For din første bestilling!",
+        "ONE_STEP": "Du er ett skritt unna å få god mat",
+        "ORDER": "for å bestille mat og fåfaktura en gang i måneden",
+        "PAY": "for å betale for maten",
+        "USE_CARD": "Bruk kortet ditt",
+        "WAIT_FOR_APPROVAL": "Vent til godkjennelse",
+        "YOUR_ORDER": "Dette er for din første bestilling"
+      }
+    }
+  }
+}

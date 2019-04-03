@@ -1,0 +1,11 @@
+<user-header>
+  <div class="mode-switcher">
+    <div [routerLink]="['..', 'menu']"><i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;{{'USER.BUTTONS.BACK_TO_MENU' | translate}}</div>
+  </div>
+</user-header>
+
+<div class="content">
+  <div class="al-user-container">
+    <default-orders #defaultOrders [saveByPopup]="true"></default-orders>
+  </div>
+</div>

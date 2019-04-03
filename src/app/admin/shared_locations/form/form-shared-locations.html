@@ -1,0 +1,95 @@
+<div class="al-content">
+  <div class="top">
+    <a [routerLink]="backLink" translate="SHARED.CATEGORIES.PLURAL">Categories</a>&nbsp;<span>/ {{ inputMode | translate }}</span>
+  </div>
+
+  <form [formGroup]="locationForm" (submit)="submit()" autocomplete="off">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.name.value}">
+          <input formControlName="name" id="name" type="text" class="form-control" required>
+          <label translate="CONTROLS.NAME">Name</label>
+        </div>
+        <div class="form-group v2 mb-3" [ngClass]="{'md-input-has-value': locationForm.controls.description.value}">
+          <textarea formControlName="description" id="description" type="text" class="form-control" rows="2"></textarea>
+          <label translate="CONTROLS.DESCRIPTION">Description</label>
+        </div>
+
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.country.value}">
+              <input formControlName="country" id="country" type="text" class="form-control" required>
+              <label translate="CONTROLS.COUNTRY">Country</label>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.city.value}">
+              <input formControlName="city" id="city" type="text" class="form-control" required>
+              <label translate="CONTROLS.CITY">City</label>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.address.value}">
+              <input formControlName="address" id="address" type="text" class="form-control" required>
+              <label translate="CONTROLS.ADDRESS">Address</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.address2.value}">
+              <input formControlName="address2" id="address2" type="text" class="form-control">
+              <label translate="CONTROLS.ADDRESS2">Address 2</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.floor.value}">
+              <input formControlName="floor" id="floor" type="number" class="form-control">
+              <label translate="CONTROLS.FLOOR">Floor</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group v2" [ngClass]="{'md-input-has-value': locationForm.controls.zipCode.value}">
+              <input formControlName="zipCode" id="zipCode" type="text" class="form-control" required>
+              <label translate="CONTROLS.ZIP_CODE">Zip Code</label>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="col-sm-6">
+        <div class="companies-list">
+          <div formArrayName="companies">
+            <div *ngFor="let company of locationForm.controls.companies.controls; let i = index">
+              <div [formGroupName]="i">
+                <div class="checkbox">
+                  <div class="custom-checkbox">
+                    <label>
+                      <input type="checkbox"
+                             formControlName="active">
+                      <i aria-hidden="true" class="fa fa-check-circle"></i>
+                      <span class="txt">{{formCompanies[i].name}}</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <div class="text-right mt-3 pull-right">
+        <button class="btn" type="button" [routerLink]="backLink" translate="BUTTONS.CANCEL">Cancel</button>
+        <button class="btn" type="submit" [ngClass]="{'btn-green': locationForm.valid}" translate="BUTTONS.SAVE">Save</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,247 @@
+@import '~assets/css/conf';
+@import '~assets/css/base64-icons';
+
+.admin-dashboard {
+  height: calc(100vh - 60px);
+  letter-spacing: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  h3 {
+    font-size: 36px;
+    text-transform: none;
+    margin-top: 60px;
+    padding: 0 30px;
+  }
+  .dashboard-main {
+    padding-top: 140px;
+    flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+
+    &-top {
+      height: 140px;
+      background: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &-content {
+      height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+  }
+
+  .dashboard-days {
+    padding: 0 15px;
+    display: flex;
+    flex-flow: row wrap;
+
+    .dashboard-day-wrap {
+      height: 490px;
+      max-width: 400px;
+      min-width: 300px;
+      flex-shrink: 0;
+      flex-grow: 1;
+      border: 15px solid white;
+    }
+  }
+
+  .tag-label {
+    padding: 5px 5px 4px 5px;
+    font-size: 9px;
+    line-height: 1;
+    font-family: $font-bold;
+    color: white;
+    background: $red;
+    text-transform: uppercase;
+    display: inline-block;
+    position: relative;
+    cursor: default;
+    position: absolute;
+    @include user-select(none);
+    @include border-radius (0 2px 2px 0);
+
+    &:before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border: 0 solid transparent;
+      border-left-width: 6px;
+      border-right-width: 0px;
+      border-top: 5px solid black;
+      bottom: -5px;
+      left: 0;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      height: 3px;
+      left: 6px;
+      right: 3px;
+      bottom: -3px;
+      background: rgba(0, 0, 0, .15);
+      @include border-radius (0 0 2px 0);
+    }
+
+    &.red {
+      background: #de4a43;
+      &:before {
+        border-top-color: #c56863;
+      }
+    }
+    &.blue {
+      background: #7ea5ec;
+      &:before {
+        border-top-color: #819ac6;
+      }
+    }
+    &.green {
+      background: #42c448;
+      &:before {
+        border-top-color: #5ca45c;
+      }
+    }
+  }
+
+  .dashboard-aside {
+    padding: 10px;
+  }
+
+  .dashboard-day {
+    height: 100%;
+    padding: 13%;
+    padding-bottom: 20px;
+    border-top: 2px solid $gray-light;
+    border-left: 1px solid $gray-light;
+    border-right: 1px solid $gray-light;
+    border-bottom: 1px solid $gray-light;
+    overflow: hidden;
+    cursor: default;
+    @include user-select(none);
+
+    display: flex;
+    flex-flow: column nowrap;
+
+    .info {
+      height: 51px;
+      font-size: 12px;
+      line-height: 1.2;
+      font-family: $font-bold;
+      position: relative;
+      .day {
+      }
+      .date {
+      }
+      .problems {
+        font-size: 14px;
+        margin-top: 3px;
+        color: $red
+      }
+      .fa-clock-o {
+        color: $red;
+        position: absolute;
+        left: -25px;
+        top: 16px;
+      }
+    }
+
+    h2 {
+      margin: 30px 0 5px;
+      font-family: $font-bold;
+      font-size: 50px;
+      line-height: 1;
+      text-transform: none;
+    }
+    footer {
+      margin-top: auto;
+
+      .print-button {
+        position: relative;
+
+        &:disabled {
+          opacity: 1;
+        }
+
+        &:hover {
+          print-popover {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &.completed {
+      background: #f3f3f3;
+    }
+    &.breakfast {
+      border-top-color: $breakfast;
+    }
+    &.lunch {
+      border-top-color: $lunch;
+    }
+    &.dinner {
+      border-top-color: $dinner;
+    }
+    &.catering {
+      border-top-color: $catering;
+    }
+  }
+}
+.row-2 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  margin-top: 24px;
+  .row-2-inner {
+    flex: 1;
+    text-align: center;
+    + .row-2-inner {
+      border-left: 1px solid #ccc;
+    }
+  }
+  .txt{
+    font-family: $font-bold;
+    font-size: 16px;
+  }
+}
+.dashboard-icon {
+  width: 40px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.2;
+  svg {
+    .breakfast &{fill:$breakfast;}
+    .lunch &{fill:$lunch;}
+    .dinner & {fill:$dinner;}
+  }
+}
+.dashboard-aside {
+  padding: 10px;
+}
+
+@media (max-width: $mobile){
+  .admin-dashboard {
+    height: auto;
+    .dashboard-days {
+      justify-content: center;
+      padding: 0;
+      .dashboard-day-wrap {
+        height: 400px;
+      }
+    }
+    .dashboard-main{
+      padding-top: 0;
+    }
+    .dashboard-main-content{
+      height: auto;
+    }
+    .dashboard-main-top{
+      position: relative;
+    }
+  }
+}

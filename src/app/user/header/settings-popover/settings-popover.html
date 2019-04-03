@@ -1,0 +1,82 @@
+<div class="body">
+  <div class="settings-item">
+    <div class="left">
+      <h3 translate="SHARED.COMPANIES.SINGULAR">Company</h3>
+      <div class="text-grey">{{ company?.name }}</div>
+      <div class="text-grey">{{ company?.address }} {{ company?.zip_code }} {{ company?.city }}</div>
+    </div>
+  </div>
+  <div class="settings-item" *ngIf="subsidies && subsidies.length > 0">
+    <div class="left">
+      <h3 translate="SUBSIDIES.PLURAL">Subsidies</h3>
+      <div class="text-grey">
+        {{ 'USER.AS_EMPLOYEE_AT_COMPANY' | translate: { company: company?.name } }}
+      </div>
+    </div>
+    <div class="right">
+      <div class="price" *ngFor="let item of subsidies">
+        {{ item | subscription }} {{ item.representation }}
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{highlight: highlightPayment}">
+    <div class="settings-item">
+      <div class="left">
+        <h3 translate="USER.PAYMENT">Payment</h3>
+        <div class="text-grey" *ngIf="!creditCard" translate="USER.NO_PAYMENT_INFO">No payment info</div>
+        <div class="text-grey" *ngIf="creditCard"> {{ creditCard.masked_pan }}</div>
+      </div>
+      <div class="right">
+        <button (click)="editCard()" class="btn btn-big btn-white">
+          &nbsp;&nbsp;&nbsp;{{ (creditCard ? 'BUTTONS.EDIT' : 'BUTTONS.ADD') | translate }}&nbsp;&nbsp;&nbsp;
+        </button>
+      </div>
+    </div>
+    <div *ngIf="!creditCard && false" class="settings-item">
+      <div class="left">
+        <h3>Paypal</h3>
+        <div class="text-grey" *ngIf="!paypal" translate="USER.NO_PAYMENT_INFO">No payment info</div>
+        <div class="text-grey" *ngIf="paypal"> {{ paypal.email }}</div>
+      </div>
+      <div class="right">
+        <button (click)="editPaypal()" class="btn btn-big btn-white">
+          &nbsp;&nbsp;&nbsp;{{ (paypal ? 'BUTTONS.EDIT' : 'BUTTONS.ADD') | translate }}&nbsp;&nbsp;&nbsp;
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="settings-item">
+    <div class="left">
+      <h3 class="mb-1" translate="USER.NOTIFICATIONS.NOTIFY_VIA">Notify me via</h3>
+      <div class="custom-checkbox">
+        <label>
+            <input type="checkbox" [(ngModel)]="settings.email_notification">
+            <i aria-hidden="true" class="fa fa-check-circle"></i>
+            <span class="txt text-grey" translate="USER.NOTIFICATIONS.EMAIL">My time to order is running out (Email)</span>
+        </label>
+      </div>
+      <div class="custom-checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="settings.push_notification">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt text-grey" translate="USER.NOTIFICATIONS.PUSH">My time to order is running out (Push)</span>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="settings-item">
+    <div class="left">
+      <h3 translate="USER.FILTERS">Filters</h3>
+      <div class="text-grey">
+        {{ 'USER.AS_EMPLOYEE_AT_COMPANY' | translate: { company: company?.name } }}
+      </div>
+      <allergies-select [allergyIds]="user.allergy_ids" [customClass]="{ 'vertical-items': true }"></allergies-select>
+    </div>
+  </div>
+  <div class="lang text-center">
+    <lang-switcher></lang-switcher>
+  </div>
+</div>
+<footer>
+  <button class="btn btn-green btn-big" (click)="save()">&nbsp;&nbsp;&nbsp;{{'BUTTONS.SAVE_AND_UPDATE' | translate}}&nbsp;&nbsp;&nbsp;</button>
+</footer>

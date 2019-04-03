@@ -1,0 +1,242 @@
+@import '~assets/css/conf';
+
+
+.orders-report{
+  padding-top: 240px;
+    position: relative;
+
+  &-top{
+    height: 240px;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    &-i{
+      margin-left: 342px;
+      padding: 0 20px;
+      background: white;
+    }
+  }
+  &-content{
+    overflow-y: auto;
+    overflow-x: auto;
+    padding: 0 20px;
+  }
+
+  .orders-report-row{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    margin: 0 -15px;
+    }
+  .orders-report-col{
+    flex-basis: 280px;
+    max-width: 280px;
+    min-width: 100px;
+    margin: 0 15px;
+  }
+}
+.orders-report-date{
+  height: 140px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  .date{
+    font-size: 30px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-family: $font-bold;
+  }
+}
+.orders-report-day{
+  $transition: all 0.2s ease-in-out;
+  height: 100px;
+  padding: 0 15px;
+  background: #f3f3f3;
+  transition: $transition;
+
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  .row-1,
+  .row-2{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .row-1{
+    font-size: 20px;
+  }
+  .row-2{
+    strong{
+      color: $main-green;
+      text-align: right;
+    }
+  }
+
+  &.active{
+    background: $main-green;
+
+    .text-grey,
+    .text-green{
+      color: white!important;
+    }
+  }
+}
+.scrolled .orders-report-day{
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1), 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+.orders-report-title{
+  margin: 60px 0 15px;
+  font-size: 30px;
+}
+.date{
+  text-align: center;
+}
+.orders-list{
+  border-top: 1px solid $gray-dark;
+
+  .item{
+    height: 110px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    + .item{
+      border-top: 1px solid #f3f3f3;
+    }
+    img{
+      max-width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      margin-right: 10%;
+      @include border-radius(50%);
+    }
+    .txt{
+      color: $gray-text;
+      white-space: nowrap;
+      overflow: hidden;
+      line-height: 1.2;
+      padding-right: 15px;
+      position: relative;
+      strong{
+        display: block;
+        color: $gray-dark;
+      }
+
+      &:after{
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 15px;
+        top: 0;
+        bottom: 0;
+        background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+        background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+        background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+      }
+    }
+    .preorder-txt{
+        color: $red;
+      font-size: 12px;
+    }
+    .price{
+      font-size: 18px;
+      margin-left: auto;
+      text-align: right;
+      .subsidy{
+        font-size: 14px;
+        color: $main-green;
+        font-family: $font-bold;
+      }
+    }
+
+    &.preorder{
+      img{
+        opacity: .5;
+      }
+    }
+  }
+}
+
+.datepicker{
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  .datepicker-dropdown{
+    right: -2px;
+    left: auto;
+  }
+}
+
+@media (max-width: $laptop){
+  .orders-list .item img{
+    display: none;
+  }
+  .orders-report-top-i{
+    margin-left: 230px;
+  }
+
+  .orders-report-day{
+    height: 120px;
+    .row-1{
+      flex-direction: column;
+    }
+    .row-2{
+      flex-direction: column-reverse;
+      strong{
+        text-align: left;
+      }
+    }
+  }
+}
+
+@media (max-width: $laptop-sm){
+  .orders-report-top-i{
+    margin-left: 80px;
+  }
+  .orders-report .orders-report-col{
+    margin: 0 5px;
+  }
+}
+
+@media (max-width: $mobile){
+  .orders-report-top-i{
+    margin-left: 0;
+  }
+  .orders-report-date .date{
+    font-size: 18px;
+  }
+  .circle-arrow-right{
+    margin-right: 5px;
+  }
+  .circle-arrow-left{
+    margin-left: 5px;
+  }
+}
+@media (max-width: $mobile-sm){
+  .orders-report {
+    padding-top: 0;
+    .orders-report-row {
+      justify-content: center;
+    }
+  }
+  .orders-report-day .row-1{
+    flex-direction: row;
+  }
+  .orders-report-top{
+    top: 0;
+    position: relative;
+  }
+  .orders-report-title{
+    text-align: center;
+  }
+}

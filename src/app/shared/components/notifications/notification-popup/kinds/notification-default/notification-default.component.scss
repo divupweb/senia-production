@@ -1,0 +1,14 @@
+@import '~assets/css/conf';
+
+.date{
+  margin-bottom: 3px;
+  font-size: 12px;
+  color: $main-green;
+}
+
+.content-text{
+  color: $gray-text;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

@@ -1,0 +1,41 @@
+@import '~assets/css/conf';
+
+.popup-wrap{
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.popup{
+  margin: 4vh 0;
+  display: flex;
+  flex-flow: column nowrap;
+  .sort-select{
+    padding: 13px 0 20px;
+  }
+  .title{
+    font-family: $font-bold;
+    font-size: 36px;
+    line-height: 1;
+  }
+  .popup-body{
+    max-height: 500px;
+  }
+}
+.defaults-item{
+  height: 110px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  border-bottom: 1px solid #f3f3f3;
+  position: relative;
+  img{
+    flex-basis: 50px;
+    max-width: 50px;
+    margin-right: 30px;
+    @include border-radius(50%);
+  }
+  .txt{
+    line-height: 1.3;
+  }
+}

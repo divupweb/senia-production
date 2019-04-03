@@ -1,0 +1,82 @@
+<div class="general-info">
+    <form [formGroup]="form" (ngSubmit)="save()">
+
+      <div class="text-center mt-3">
+        <div class="logo-upload mb-3">
+          <div>
+            <div class="logo-upload-placeholder">
+              <div class="heading-img">
+                <div class="img">
+                  <img [src]="imageDisplayUrl" *ngIf="imageDisplayUrl">
+                </div>
+                <div class="logo-controls">
+                  <div class="upload">
+                    <label for="image">
+                      {{ 'SHARED.COMPONENTS.UPLOAD_NEW_LOGO' | translate }}
+                    </label>
+                    <input type="file" (change)="fileChange($event)" id="image" #file/>
+                  </div>
+                  <a (click)="deleteImage()" *ngIf="imageDisplayUrl" class="remove">{{ 'BUTTONS.REMOVE_LOGO' | translate }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group v3">
+        <input class="form-control" formControlName="firstName">
+        <label translate="CONTROLS.FIRST_NAME">First Name</label>
+        <div class="alert alert-danger" *ngIf="form.get('firstName').touched">
+          <div *ngIf="form.get('firstName').hasError('required')">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.FIRST_NAME' | translate } }}
+          </div>
+          <div *ngIf="form.hasError('firstName')"> {{ form.getError('firstName')}}</div>
+        </div>
+      </div>
+
+      <div class="form-group v3">
+        <input class="form-control"formControlName="lastName">
+        <label translate="CONTROLS.LAST_NAME">Last Name</label>
+        <div class="alert alert-danger" *ngIf="form.get('lastName').touched">
+          <div *ngIf="form.get('lastName').hasError('required')">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.LAST_NAME' | translate } }}
+          </div>
+          <div *ngIf="form.hasError('lastName')"> {{ form.getError('lastName')}}</div>
+        </div>
+      </div>
+
+      <div class="form-group v3 mb-2">
+        <input type="email" class="form-control" formControlName="email">
+        <label translate="CONTROLS.EMAIL">Email</label>
+        <div class="alert alert-danger" *ngIf="form.get('email').touched">
+          <div *ngIf="form.get('email').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+            translate: { field: 'CONTROLS.EMAIL' | translate } }}
+          </div>
+          <div *ngIf="form.get('email').hasError('invalidEmailAddress')"
+               translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect
+          </div>
+          <div *ngIf="form.hasError('email')">{{'CONTROLS.EMAIL' | translate}} {{ form.getError('email')}}</div>
+        </div>
+      </div>
+      <div class="form-group v3">
+        <input class="form-control" formControlName="phone">
+        <label translate="CONTROLS.PHONE">Phone</label>
+        <div class="alert alert-danger" *ngIf="form.get('phone').touched">
+          <div *ngIf="form.get('phone').hasError('required')">{{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'|
+            translate: { field: 'CONTROLS.PHONE' | translate } }}
+          </div>
+          <div *ngIf="form.hasError('phone')">{{'CONTROLS.PHONE' | translate}} {{ form.getError('phone')}}</div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="mb-3">
+          <a (click)="changePassword.show($event)" translate="BUTTONS.CHANGE_PASSWORD"></a>
+        </div>
+        <button class="btn btn-green btn-big" type="submit" translate="BUTTONS.SAVE">Save</button>
+      </footer>
+    </form>
+  </div>
+<change-password #changePassword (onSuccess)="changePassword.close($event)" closePopup (onClosePopup)="changePassword.close($event)">
+</change-password>

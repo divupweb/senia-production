@@ -1,0 +1,42 @@
+<div class="calendar-control-wrap" [class.weekly]="weekly">
+  <div class="calendar-control-title" *ngIf="showMonth">{{monthShown}}</div>
+  <span *ngIf="showCalendarIcons" (click)="backToday()" class="calendar-btn today">
+    <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+    <span class="line-calendar-tooltip">{{ 'SHARED.COMPONENTS.TODAY' | translate }}</span>
+  </span>
+
+  <div class="calendar-control">
+    <a class="arrow left" *ngIf="showCalendarIcons" (click)="scrollDates('back')">
+      <i class="fa fa-chevron-left" aria-hidden="true"></i>
+    </a>
+    <div class="calendar-control-days">
+
+      <div class="calendar-control-day" *ngFor="let day of daysShown"
+          (click)="selectDay(day.date, day.disabled)"
+          [ngClass]="{ 'weekend': day.weekend, 'selected': isSelected(day.date), 'disabled': day.disabled, 'passed': daysCanBePassed && (day.iso_date|isPassed) }">
+        <day-icons [icons]="day.info"></day-icons>
+        <div class="number">{{day.number}}</div>
+        <div class="weekday">{{day.weekday}}</div>
+      </div>
+
+    </div>
+    <a class="arrow right" *ngIf="showCalendarIcons" (click)="scrollDates('forward')">
+      <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </a>
+  </div>
+
+  <div class="datepicker" *ngIf="showCalendarIcons">
+    <span (click)="showPicker = !showPicker" class="calendar-btn">
+      <i class="fa fa-calendar"></i>
+      <span class="line-calendar-tooltip">{{ 'SHARED.COMPONENTS.CALENDAR' | translate }}</span>
+    </span>
+    <div class="datepicker-dropdown">
+      <datepicker [hidden]="!showPicker"
+                  [(ngModel)]="calendarDate"
+                  (ngModelChange)="dateCalendarPicked()"
+                  [startingDay]="1"
+                  [formatDay]="'D'"
+                  [showWeeks]="false"></datepicker>
+    </div>
+  </div>
+</div>

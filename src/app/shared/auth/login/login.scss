@@ -1,0 +1,21 @@
+@import '~assets/css/conf';
+
+//.popup-wrap{
+//  position: absolute;
+//}
+
+.form-control{
+
+}
+.has-forgot-pass{
+  position: relative;
+  .form-control{
+    padding-right: 80px;
+  }
+
+  .forgot-pass-link{
+    position: absolute;
+    right: 15px;
+    top: 16px;
+  }
+}

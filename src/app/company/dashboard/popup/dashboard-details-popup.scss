@@ -1,0 +1,204 @@
+@import '~assets/css/conf';
+.dashboard-popup{
+  &-wrap{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+    z-index: 9999;
+
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  width: 420px;
+  max-height: 90vh;
+  position: relative;
+  background: white;
+  display: flex;
+  flex-flow: column nowrap;
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
+  @include border-radius(4px);
+
+
+  &-body{
+    overflow-y: auto;
+    @include border-radius(4px);
+
+    .i{
+      height: 100%;
+      padding: 0 30px;
+      overflow-y: auto;
+    }
+  }
+  footer{
+    flex-basis: 114px;
+    max-height: 114px;
+    padding: 30px;
+    bottom: 0;
+    width: 100%;
+    background: #f3f3f3;
+    font-size: 14px;
+    border-top: 1px solid #e7e7e7;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    @include border-radius(0 0 4px 4px);
+    a{color: $gray-dark;}
+
+    button+a{
+      margin-left: 30px;
+    }
+  }
+  h3{
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  textarea{
+    resize: none;
+  }
+  .dashboard-popup-list{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+
+    .item{
+      width: 100%;
+      padding: 30px 0;
+      line-height: 1.2;
+
+      &-i{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+      }
+
+
+      + .item{border-top: 1px solid #f3f3f3;}
+    }
+
+    .left{
+      flex-basis: 80px;
+      max-width: 80px;
+      flex-shrink: 0;
+
+      .img{
+        display: inline-block;
+        position: relative;
+      }
+      img{
+        width: 50px;
+        height: 50px;
+        display: block;
+        @include border-radius(50%);
+      }
+
+      .fa-exclamation-circle{
+        color: $red;
+        line-height: 1;
+        background: white;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        border: 2px solid white;
+        line-height: 12px;
+        @include border-radius(50%);
+      }
+    }
+    .middle{
+      flex-grow: 1;
+      color: $gray-text;
+    }
+    .right{
+      padding-top: 15px;
+      font-size: 18px;
+      font-family: $font-bold;
+      text-align: right;
+
+      flex-basis: 100px;
+      max-width: 100px;
+      flex-shrink: 0;
+    }
+    .warning-txt{
+      color: $red;
+      font-family: $font-bold;
+    }
+    .total{
+      text-align: right;
+      margin-left: auto;
+      font-family: $font-bold;
+      .price{font-size: 18px; text-transform: uppercase;}
+      .subsidy{color: $main-green}
+    }
+    .issue-details{
+      padding: 30px;
+      margin-top: 30px;
+      border: 1px solid $red;
+      font-size: 16px;
+      position: relative;
+
+      &:after{
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 17px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 8px 8px 8px;
+        border-color: transparent transparent white transparent;
+      }
+      &:before{
+        content: "";
+        position: absolute;
+        top: -9px;
+        left: 17px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 8px 8px 8px;
+        border-color: transparent transparent $red transparent;
+      }
+    }
+    .name{
+      font-family: $font-bold;
+      color: $gray-dark;
+    }
+    .small{
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+
+  &.ordered{
+    .order-title{
+      padding: 15px 0;
+      font-size: 30px;
+      border-bottom: 1px solid $gray-dark;
+    }
+  }
+}
+
+
+@media (max-width: $mobile-xs){
+  .dashboard-popup-body .i{
+    padding: 0 15px;
+  }
+  .dashboard-popup{
+    width: 90vw;
+    max-height: 80vh;
+    .dashboard-popup-list .item{
+      padding: 15px 0;
+    }
+    footer{
+      padding: 15px;
+      flex-basis: 90px;
+      max-height: 80px;
+    }
+  }
+}

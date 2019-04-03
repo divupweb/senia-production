@@ -1,0 +1,256 @@
+@import '~assets/css/conf';
+
+.f18 {
+  font-size: 18px;
+}
+
+.f16 {
+  font-size: 16px;
+}
+
+.header-content {
+  position: relative;
+}
+
+h2 {
+  margin: 0;
+}
+.allergies-wrap{
+  max-width: 530px;
+  margin: 0 auto 55px;
+}
+.sub-text {
+  margin-bottom: 90px;
+  font-size: 24px;
+  font-family: $font-bold;
+  color: #a29b9b;
+}
+
+.footer-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    color: white;
+  }
+}
+
+.user-container {
+  max-width: 600px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.payment-heading {
+  text-align: center;
+  padding: 0 0 22px;
+  margin-bottom: 30px;
+  font-size: 16px;
+  border-bottom: 1px solid lighten($gray-text, 30);
+
+  h2 {
+    margin: 0;
+  }
+}
+
+section {
+  padding: 100px 0;
+}
+// SUBSIDY INFO
+
+.subsidy-info {
+  margin-bottom: 90px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.subsidy-info-item {
+  flex-basis: 170px;
+  max-width: 170px;
+  min-width: 170px;
+  + .subsidy-info-item{margin-left: 10px;}
+  .title {
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    border-bottom: 3px solid;
+    font-size: 20px;
+    color: white;
+    text-transform: uppercase;
+  }
+
+  .subsidy {
+    color: #a29b9b;
+    font-size: 16px;
+  }
+
+  &.breakfast {
+    .title {
+      border-bottom-color: $breakfast;
+    }
+  }
+
+  &.lunch {
+    .title {
+      border-bottom-color: $lunch;
+    }
+  }
+
+  &.dinner {
+    .title {
+      border-bottom-color: $dinner;
+    }
+  }
+}
+// END SUBSIDY INFO
+
+.sorting {
+  display: flex;
+  flex-flow: row nowrap;
+
+  .sorting-item {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    padding: 30px;
+    text-align: center;
+    flex: 1;
+    overflow: hidden;
+
+    &.low {
+      .sorting-icon {
+        transform: scale(-1, 1);
+      }
+    }
+
+    +.sorting-item {
+      margin-left: 30px;
+    }
+
+    i {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-radius: 7px;
+      border: 1px solid #dadada;
+      transition: border-color 0.2s ease-in-out;
+    }
+
+    input[type=radio] {
+      position: absolute;
+      left: -1000px;
+
+      &:checked + i {
+        border-color: $gray-dark;
+      }
+    }
+
+    &:hover {
+      i {
+        border-color: lighten($gray-dark, 40);
+      }
+    }
+  }
+
+  strong {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: $font-bold;
+  }
+}
+
+.choice-btn {
+  line-height: 70px;
+  border: 1px solid lighten($gray-dark, 60);
+  border-radius: 7px;
+  font-size: 16px;
+  font-family: $font-bold;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease-in-out;
+
+  &.active {
+    // border-color: $gray-dark;
+    background-color: $main-green;
+
+    &:hover {
+      border-color: $gray-dark;
+    }
+  }
+
+  &:hover {
+    border-color: lighten($gray-dark, 40);
+  }
+}
+
+.options-block {
+  text-align: center;
+  border: 1px solid lighten($gray-dark, 60);
+  border-radius: 7px;
+  transition: border-color 0.2s ease-in-out;
+
+  .top {
+    margin: 0 30px;
+    line-height: 70px;
+    font-size: 16px;
+    font-family: $font-bold;
+    text-transform: uppercase;
+    border-bottom: 1px solid lighten($gray-dark, 60);
+  }
+
+  .list {
+    display: inline-block;
+    padding: 15px 0;
+    text-align: left;
+
+    .txt {
+      color: $gray-text;
+    }
+
+    .custom-checkbox {
+      label {
+        padding-left: 1px;
+      }
+
+      .fa-check-circle {
+        margin-right: 7px;
+      }
+    }
+  }
+
+  .active {
+    background: $gray-dark;
+  }
+
+  &:hover {
+    border-color: lighten($gray-dark, 40);
+  }
+}
+@media (max-width: $mobile - 168px) {
+  .subsidy-info {
+    display: block;
+    text-align: center;
+
+    .subsidy-info-item {
+      display: inline-block;
+    }
+  }
+
+  .choice-btn,
+  .options-block .top {
+    font-size: 13px;
+    line-height: 1.2;
+    padding: 15px;
+  }
+
+  .sorting .sorting-item+.sorting-item {
+    margin-left: 15px;
+  }
+}

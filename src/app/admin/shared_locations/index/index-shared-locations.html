@@ -1,0 +1,38 @@
+<div class="heading">
+  <h2 translate="ADMIN.SHARED_LOCATIONS">Shared Locations</h2>
+</div>
+<div class="mb-1">
+  <button class="btn btn-green" (click)="goToCreateForm()" ><i class="fa fa-plus"></i> {{ 'SHARED.MODES.ADD_NEW' | translate }}</button>
+</div>
+
+<table class="table table-lines table-main">
+  <thead>
+    <tr>
+      <th translate="CONTROLS.NAME">Name</th>
+      <th translate="CONTROLS.ADDRESS">Address</th>
+      <th translate="SHARED.COMPANIES.PLURAL">Companies</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let location of locations">
+    <td>
+      <span class="table-item-name">{{location.name}}</span>
+    </td>
+    <td>{{location.full_address}}</td>
+    <td>
+      <div *ngFor="let company of location.companies">{{company.name}}</div>
+    </td>
+    <td>
+      <section layout-sm="column" layout-align="center center" layout-wrap>
+        <span class="btn remove-btn btn-mini" (click)="showConfirm(location.id)" translate="BUTTONS.REMOVE">
+          remove
+        </span>
+        <button class="btn btn-mini btn-white" aria-label="Edit" (click)="goToUpdateForm(location.id)">
+          &nbsp;{{ 'BUTTONS.EDIT' | translate }}
+        </button>
+      </section>
+    </td>
+  </tr>
+  </tbody>
+</table>

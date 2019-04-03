@@ -1,0 +1,129 @@
+<div *ngIf="orderedData" class="dashboard-popup-wrap">
+  <div class="dashboard-popup ordered">
+    <div class="dashboard-popup-body">
+      <div class="i">
+        <div *ngFor="let employeeData of orderedData" class="dashboard-popup-list">
+          <div class="order-title">{{employeeData[0]}}</div>
+          <div *ngFor="let dish of employeeData[1].dishes" class="item">
+            <div class="item-i">
+              <div class="left">
+                <img src="{{dish.display_url}}" alt="">
+              </div>
+              <div class="middle">
+                <div class="name">{{dish.dish}}</div>
+                <div> {{'COMPANY.FROM_KITCHEN' | translate: { kitchen: dish.kitchen } }}</div>
+              </div>
+              <div class="right">
+                <span *ngIf="dish.quantity > 1">{{dish.quantity}} x </span>{{dish.item_price | currencyFormat }}
+              </div>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-i">
+              <div class="total">
+                <div class="price">{{ 'SHARED.TOTAL' | translate | uppercase }}: {{employeeData[1].total | currencyFormat }}</div>
+                <div class="subsidy">{{ 'SUBSIDIES.PLURAL' | translate }}: {{employeeData[1].subsidy | currencyFormat }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><a (click)="cancelPopup()" translate="BUTTONS.CLOSE">Close</a></footer>
+  </div>
+</div>
+
+<div *ngIf="producingData" class="dashboard-popup-wrap" >
+  <div class="dashboard-popup">
+    <div class="dashboard-popup-body">
+      <div class="i">
+        <div class="dashboard-popup-list">
+          <div *ngFor="let kitchen of producingData" class="item">
+            <div class="item-i">
+              <div class="left"><img src="{{kitchen.display_url}}" alt=""></div>
+              <div class="middle">
+                <div class="name">{{kitchen.kitchen}}</div>
+                <div *ngFor="let dish of kitchen.dishes">{{dish}}</div>
+              </div>
+              <div class="right text-green">
+                <div class="small">{{ kitchen.date | dayMonth }}</div>
+                {{ kitchen.date | shortTime }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><a (click)="cancelPopup()" translate="BUTTONS.CLOSE">Close</a></footer>
+  </div>
+</div>
+
+<div *ngIf="pickupData" class="dashboard-popup-wrap">
+  <div class="dashboard-popup">
+    <div class="dashboard-popup-body">
+      <div class="i">
+        <div class="dashboard-popup-list">
+          <div *ngFor="let kitchen of pickupData" class="item">
+            <div class="item-i">
+              <div class="left">
+                <img src="{{kitchen.display_url}}" alt="">
+              </div>
+              <div class="middle">
+                <div class="name">{{kitchen.kitchen}}</div>
+                <div *ngIf="kitchen.driver"
+                     translate="COMPANY.DASHBOARD.PICKED_UP_BY_DRIVER"
+                     [translateParams]="{ driver: kitchen.driver }"></div>
+              </div>
+              <div *ngIf="kitchen.date" class="right text-green">
+                <div class="small">{{ kitchen.date | dayMonth }}</div>
+                {{ kitchen.date | shortTime }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><a (click)="cancelPopup()" translate="BUTTONS.CLOSE">Close</a></footer>
+  </div>
+</div>
+
+<div *ngIf="deliveredData" class="dashboard-popup-wrap">
+  <div class="dashboard-popup">
+    <div class="dashboard-popup-body">
+      <div class="i">
+        <div class="dashboard-popup-list">
+          <div *ngFor="let kitchen of deliveredData" class="item">
+            <div class="item-i">
+              <div class="left">
+                <div class="img">
+                  <img src="{{kitchen.display_url}}" alt="">
+                  <i *ngIf="kitchen.errors" class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="middle">
+                <div class="name">{{kitchen.kitchen}}</div>
+                <div *ngIf="kitchen.errors"
+                     class="warning-txt"
+                     translate="COMPANY.DASHBOARD.DELIVERED_WITH_PROBLEM"
+                     [translateParams]="{ driver: kitchen.driver }"></div>
+                <div *ngIf="kitchen.dishes"><div *ngFor="let dish of kitchen.dishes">{{dish}}</div></div>
+              </div>
+              <div *ngIf="kitchen.date" class="right text-green">
+                <div class="small">{{ kitchen.date | dayMonth }}</div>
+                {{ kitchen.date | shortTime }}
+              </div>
+            </div>
+            <div *ngIf="kitchen.errors" class="issue-details">
+              {{kitchen.errors}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><a (click)="cancelPopup()" translate="BUTTONS.CLOSE">Close</a></footer>
+  </div>
+</div>
+
+
+
+

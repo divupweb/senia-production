@@ -1,0 +1,61 @@
+@import '~assets/css/conf';
+
+.form-group.v3.in-table{
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+.form-group.in-auth{
+  position: relative;
+  .form-control{
+    height: 50px;
+    line-height: 50px;
+    border-radius: 0;
+    &:active,
+    &:focus{
+      border-color: rgba(0,0,0,.15);
+    }
+
+    + label{
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      font-size: 16px;
+      color: #999;
+    }
+
+    &.ng-valid{
+      + label{
+        display: none;
+      }
+    }
+  }
+
+  &:after{
+    content: "";
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 23px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 5px 5px 0 5px;
+    border-color: $gray-dark transparent transparent transparent;
+  }
+}
+
+
+@media (max-width: $mobile-xs) {
+  .form-group.in-auth {
+    position: relative;
+    .form-control {
+      height: 40px;
+      line-height: 40px;
+    }
+
+    &:after{
+      top: 18px;
+    }
+  }
+}

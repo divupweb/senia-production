@@ -1,0 +1,36 @@
+<form  [formGroup]="detailsForm" (submit)="save()" autocomplete="off">
+  <div class="two-col-form">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group v2" >
+          <input formControlName="address" id="name" type="text" class="form-control" required>
+          <label translate="CONTROLS.ADDRESS">Address</label>
+        </div>
+
+        <div class="form-group v2 mb-3">
+          <input formControlName="email" id="email" type="text" class="form-control" required>
+          <label translate="CONTROLS.EMAIL">Email</label>
+        </div>
+
+        <div class="form-group v2 mb-3">
+          <input formControlName="vatNumber" id="vatNumber" type="text" class="form-control" required>
+          <label translate="CONTROLS.VAT_NUMBER">Vat Number</label>
+        </div>
+
+        <div class="form-group v2 mb-3">
+          <input formControlName="bankAccount" id="bankAccount" type="text" class="form-control" required>
+          <label translate="CONTROLS.BANK_ACCOUNT">Bank Account</label>
+        </div>
+
+        <div class="form-group v2 mb-3">
+          <input formControlName="contactPerson" id="contactPerson" type="text" class="form-control" required>
+          <label translate="CONTROLS.CONTACT_PERSON">Contact Person</label>
+        </div>
+
+        <div class="text-right mt-3">
+          <button class="btn" type="submit" [disabled]="!detailsForm.valid" [ngClass]="{'btn-green': detailsForm.valid}" translate="BUTTONS.SAVE">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

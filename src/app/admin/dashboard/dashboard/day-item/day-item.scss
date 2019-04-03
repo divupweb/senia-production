@@ -1,0 +1,204 @@
+@import '~assets/css/conf';
+@import '~assets/css/base64-icons';
+
+
+.dashboard-day {
+  height: 100%;
+  padding: 13%;
+  padding-bottom: 20px;
+  border-top: 2px solid $gray-light;
+  border-left: 1px solid $gray-light;
+  border-right: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  cursor: default;
+  position: relative;
+  @include user-select(none);
+
+  display: flex;
+  flex-flow: column nowrap;
+
+  .info {
+    height: 51px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: $font-bold;
+    position: relative;
+    .day {
+    }
+    .date {
+    }
+    .problems {
+      font-size: 14px;
+      margin-top: 3px;
+      color: $red
+    }
+    .fa-clock-o {
+      color: $red;
+      position: absolute;
+      left: -25px;
+      top: 16px;
+    }
+  }
+
+  h2 {
+    margin: 30px 0 5px;
+    font-family: $font-bold;
+    font-size: 50px;
+    line-height: 1;
+    text-transform: none;
+  }
+  footer {
+    margin-top: auto;
+
+    .manual-order{
+      &:hover{
+        .manual-orders-popover{
+          display: block;
+        }
+      }
+    }
+  }
+
+  &.completed {
+    background: #f3f3f3;
+  }
+  &.breakfast {
+    border-top-color: $breakfast;
+  }
+  &.lunch {
+    border-top-color: $lunch;
+  }
+  &.dinner {
+    border-top-color: $dinner;
+  }
+  &.catering {
+    border-top-color: $catering;
+  }
+}
+.row-2 {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  margin-top: 24px;
+  .row-2-inner {
+    flex: 1;
+    text-align: center;
+    + .row-2-inner {
+      border-left: 1px solid #ccc;
+    }
+  }
+  .txt{
+    font-family: $font-bold;
+    font-size: 16px;
+  }
+}
+.dashboard-icon{
+  width: 40px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 1.2;
+  svg {
+    .breakfast &{fill:$breakfast;}
+    .lunch &{fill:$lunch;}
+    .dinner & {fill:$dinner;}
+  }
+}
+
+.manual-orders-popover{
+  text-align: left;
+  background: white;
+  box-shadow: 0 0 27px 4px rgba(0,0,0,.2);
+  display: none;
+  position: relative;
+  &-wrap{
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    padding-bottom: 40px;
+  }
+  .item{
+    padding: 0 15px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    overflow: hidden;
+
+    .txt{
+      flex: 0 0 auto;
+    }
+    .img{
+      margin-right: 15px;
+    }
+    .counter{
+      background: white;
+      &:before{
+        content: "";
+        position: absolute;
+        width: 20px;
+        left: -20px;
+        top: 0;
+        bottom: 0;
+        background: linear-gradient(rgba(255,255,255,.6) 0%, rgba(255,255,255,1) 100% );
+      }
+    }
+    &:hover{
+      .counter{
+        background: darken($gray-light3, 1%);
+        &:before{
+          content: "";
+          position: absolute;
+          width: 20px;
+          left: -20px;
+          top: 0;
+          bottom: 0;
+          background: linear-gradient(transparentize(darken($gray-light3, 1%), .4) 0%, transparentize(darken($gray-light3, 1%), 1) 100%);
+        }
+      }
+    }
+  }
+  .content{
+    max-height: 330px;
+    overflow-y: auto;
+  }
+  .footer{
+    border-top: 1px solid #e6e6e6;
+    text-align: center;
+    padding: 20px;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 8px 9px 0 8px;
+    border-color: white transparent transparent;
+  }
+}
+.box-icon {
+  background-position: 0px -43px;
+  width: 30px;
+  height: 27px;
+  display: inline-block;
+  background-image: url('~assets/images/print-icons.png');
+  background-repeat: no-repeat;
+  cursor: pointer;
+  margin-top: -30px;
+}
+
+@media (max-width: $mobile) {
+  .dashboard-day h2{
+    font-size: 40px;
+  }
+  .dashboard-day-wrap {
+    flex-basis: 300px;
+    min-width: 300px;
+  }
+  .row-2{
+    margin-top: 15px;
+  }
+}

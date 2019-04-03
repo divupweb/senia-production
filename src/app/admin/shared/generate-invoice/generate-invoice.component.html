@@ -1,0 +1,51 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup"  closePopup (onClosePopup)="close($event)">
+    <div class="popup-body">
+      <div class="generate-invoice">
+        <ng-container [ngSwitch]="stage">
+          <!-- Select month  -->
+          <ng-container *ngSwitchCase="0">
+            <div class="month-select">
+              <header>
+                <span (click)="changeYear(-1)" class="circle-arrow circle-arrow-left">
+                  <i class="fa fa-chevron-left"></i>
+                </span>
+                <strong class="year">{{ year }}</strong>
+                <span (click)="changeYear(1)" class="circle-arrow circle-arrow-left">
+                  <i class="fa fa-chevron-right"></i>
+                </span>
+              </header>
+              <div class="alert alert-danger" role="alert" *ngIf="error">
+                {{ error }}
+              </div>
+              <div class="months">
+                <div class="day" *ngFor="let month of months" [ngClass]="{disabled: month.disabled}" (click)="loadInvoice(month)">{{ month.day | month }}</div>
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Loader -->
+          <ng-container *ngSwitchCase="1">
+            <img class="mb-2" src="/assets/images/generating.gif">
+            <span class="text-grey">Generating...</span>
+          </ng-container>
+
+          <!-- Urls -->
+          <ng-container *ngSwitchCase="2">
+            <div class="invoice-links">
+              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+              <div class="invoice-links-txt">
+                <div *ngFor="let invoice of invoices">
+                  <a [href]="invoice.url" target="_blank" >{{ invoice.name | translate }} {{invoice.date}}</a>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <footer>
+      <a (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+    </footer>
+  </div>
+</div>

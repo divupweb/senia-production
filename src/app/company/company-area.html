@@ -1,0 +1,97 @@
+<spinner></spinner>
+
+<user-menu></user-menu>
+<div class="al-sidebar" [class.is-open]="userMenu.isMenuOpen">
+  <div class="al-sidebar-i">
+    <div class="al-sidebar-heading">
+      <div class="hamburger-icon" [class.is-open]="userMenu.isMenuOpen" (click)="userMenu.isMenuOpen = !userMenu.isMenuOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <a [routerLink]="['dashboard']" class="logo">
+        <img src="assets/images/logo-white.svg"  width="170" alt="Food Farm">
+      </a>
+    </div>
+    <div class="al-sidebar-image-wrap">
+
+      <div class="user-controls-mobile" *ngIf="user">
+        <div>{{ userTitle }}</div>
+        <a *ngIf="state.companyAdmin()" (click)="navigateMarketplace()" translate="BUTTONS.MARKETPLACE">Marketplace</a>
+        <a (click)="auth.submitLogout()" translate="BUTTONS.LOG_OUT">Log out</a>
+      </div>
+
+      <div class="al-sidebar-image">
+        <div class="logo-upload-placeholder">
+          <div class="logo-box" *ngIf="displayUrl">
+            <img [src]="displayUrl"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="al-sidebar-list nav" (click)="userMenu.close()">
+      <li>
+        <a title="{{'COMPANY.DASHBOARD.TITLE' | translate}}" [routerLink]=" ['dashboard'] " routerLinkActive="router-link-active">
+          <span class="sidebar-list-icon dashboard-icon"></span>
+          <span class="sidebar-list-txt" translate="COMPANY.DASHBOARD.TITLE">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'COMPANY.EMPLOYEES_ORDERS' | translate}}" [routerLink]=" ['employees'] " routerLinkActive="router-link-active">
+          <span class="sidebar-list-icon employees-orders-icon"></span>
+          <span class="sidebar-list-txt" translate="COMPANY.EMPLOYEES_ORDERS">Employees Orders</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'COMPANY.COMPANY_ORDERS' | translate}}" [routerLink]=" ['group-oders'] " routerLinkActive="router-link-active">
+          <span class="sidebar-list-icon company-orders-icon"></span>
+          <span class="sidebar-list-txt" translate="COMPANY.COMPANY_ORDERS">Company orders</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'COMPANY.ORDERS_REPORT' | translate}}" [routerLink]=" ['report'] " routerLinkActive="router-link-active" >
+          <span class="sidebar-list-icon report-icon"></span>
+          <span class="sidebar-list-txt" translate="COMPANY.ORDERS_REPORT">Orders report</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'COMPANY.SETTINGS.TITLE' | translate}}" [routerLink]=" ['settings'] " routerLinkActive="router-link-active">
+          <span class="sidebar-list-icon settings-icon"></span>
+          <span class="sidebar-list-txt" translate="COMPANY.SETTINGS.TITLE">Settings</span>
+        </a>
+      </li>
+      <contact-item [class.is-open]="userMenu.isMenuOpen"></contact-item>
+      <li>
+        <footer>
+        <lang-switcher [customClass]="{ 'sidebar': true }"></lang-switcher>
+        </footer>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="al-main" style="padding-bottom: 0!important;">
+  <div class="al-content" style="padding: 0!important;">
+    <router-outlet></router-outlet>
+    <div *ngIf="!!company && company.can_edit_orders != true">
+      <compamy-welcome-popup ></compamy-welcome-popup>
+      <div *ngIf="displayConversionCode">
+        <script type="text/javascript">
+        /* <![CDATA[ */
+          var google_conversion_id = 960726120;
+          var google_conversion_label = "19npCKDx4YIBEOiIjsoD";
+          var google_remarketing_only = false;
+          /* ]]> */
+        </script>
+        <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+        <noscript>
+          <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/960726120/?label=19npCKDx4YIBEOiIjsoD&amp;guid=ON&amp;script=0"/>
+          </div>
+        </noscript>
+      </div>
+    </div>
+  </div>
+</div>

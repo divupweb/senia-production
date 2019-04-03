@@ -1,0 +1,80 @@
+<div class="suspend-calendar-top"><span
+  translate="SHARED.COMPONENTS.SUSPEND.SELECT_RANGE">Select date or dates range</span></div>
+<div class="suspend-calendar">
+  <header>
+    <div class="header-i">
+      <div>
+        <a class="circle-arrow circle-arrow-left" (click)="changeMonth(-1)" *ngIf="isChangeMonth(-1)">
+          <i class="fa fa-chevron-left"></i>
+        </a>
+      </div>
+      <div>
+        <strong class="month-title">{{monthTitle}}</strong>
+      </div>
+      <div>
+        <a class="circle-arrow circle-arrow-right" (click)="changeMonth(1)" *ngIf="isChangeMonth(1)">
+          <i class="fa fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+  <table class="table">
+    <tr>
+      <th *ngFor="let item of weekDays">{{ item }}</th>
+    </tr>
+    <tr *ngFor="let weekDays of days">
+      <td *ngFor="let day of weekDays"
+          (click)="clickDay(day)"
+          class="calendar-day"
+          [ngClass]="{active: day.today,
+                      weekend: day.weekend,
+                      disabled: day.suspend,
+                      empty: day.empty,
+                      selected: day.selected,
+                      between: day.betweenSelected,
+                      another: day.another,
+                      update: day.update,
+                      event: day.events?.length > 0
+                    }">
+        <div class="event-tooltip" *ngIf="day.events?.length > 0">
+          <span *ngFor="let event of day.events"> {{ event.summary}}</span>
+        </div>
+
+        <span class="date">{{day.number}}</span>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+        <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="full-form mt-3">
+  <div *ngIf="fullForm">
+    <div class="text-center mt-3 mb-3">
+      <image-box *ngIf="imageDisplayUrl" [imageUrl]="imageDisplayUrl" (onDelete)="deleteImage()"></image-box>
+      <image-upload *ngIf="!imageDisplayUrl" [upload-url]="imageUploadUrl"
+                    (onResponse)="fileUpload($event)"></image-upload>
+    </div>
+    <div class="form-group v3">
+      <input [(ngModel)]="name" type="text" class="form-control">
+      <label translate="CONTROLS.NAME">Name</label>
+    </div>
+    <div class="form-group v3 mb-3">
+      <textarea [(ngModel)]="description" type="text" class="form-control" rows="2"></textarea>
+      <label translate="CONTROLS.DESCRIPTION">Description</label>
+    </div>
+  </div>
+
+  <footer class="text-center">
+    <button class="btn btn-big btn-block btn-green mb-2"
+            (click)="delete()"
+            [disabled]="!selectedStart" translate="SHARED.COMPONENTS.SUSPEND.MARK_AS_AVAILABLE">
+      Mark as available
+    </button>
+    <button [disabled]="!selectedStart"
+            (click)="create()"
+            class="btn btn-big btn-block btn-red" translate="SHARED.COMPONENTS.SUSPEND.MARK_AS_UNAVAILABLE">
+      Mark as unavailable
+    </button>
+  </footer>
+</div>

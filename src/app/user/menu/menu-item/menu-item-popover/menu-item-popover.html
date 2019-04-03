@@ -1,0 +1,44 @@
+<div *ngIf="state">
+<div class="menu-item-popover" [ngClass]="customClass">
+  <div class="popover-icon confirm" [ngClass]="{ 'confirm': menuItem.quantity, 'cancel': !menuItem.quantity }"></div>
+
+  <div *ngIf="menuItem.quantity == 0">
+    <div class="title" translate="USER.MENU.CONFIRMATION.CANCELLED">Cancelled</div>
+    <div *ngIf="isLast()">
+      <strong>
+        {{ 'USER.MENU.CONFIRMATION.YOUR_MEAL_FOR' | translate: { date: (date | fullDate),
+        meal: ('SUBSCRIPTIONS.' + subscription|uppercase)|translate} }}
+      </strong>
+    </div>
+    <div *ngIf="!isLast()">
+      <strong>
+        {{ 'USER.MENU.CONFIRMATION.YOUR_MEAL_FOR'| translate: { date:(date | fullDate), meal: menuItem.name } }}
+      </strong>
+    </div>
+    <div class="text-grey">
+      {{ 'USER.MENU.CONFIRMATION.YOU_HAVE_TIME' | translate: { time: menuItem.deadlineDueTime | fullDate: 'HH',
+      day: menuItem.deadlineDueTime | fullDate: 'dddd'} }}
+    </div>
+  </div>
+  <div class="mb-2 mt-1" *ngIf="menuItem.quantity > 0">
+    <div class="title">{{ menuItem.quantity }} {{ menuItem.name }}</div>
+    <div><strong [innerHTML]="'USER.MENU.CONFIRMATION.TO_BE_DELIVERED'| translate: { date: date | fullDate }"></strong></div>
+  </div>
+  <div class="show-option" *ngIf="false">
+    <div class="custom-checkbox">
+      <label>
+        <input type="checkbox">
+        <i class="fa fa-check-circle" aria-hidden="true"></i>
+        <span class="txt text-grey" translate="USER.MENU.CONFIRMATION.DO_NOT_SHOW_NEXT_TIME"></span>
+      </label>
+    </div>
+  </div>
+  <div class="mb-2">
+    <button class="btn btn-green btn-big btn-block" (click)="confirm()" translate="BUTTONS.CONFIRM">Confirm</button>
+  </div>
+  <div>
+    <a (click)="cancel()" translate="BUTTONS.CANCEL">Cancel</a>
+  </div>
+</div>
+<div class="overlay"></div>
+</div>

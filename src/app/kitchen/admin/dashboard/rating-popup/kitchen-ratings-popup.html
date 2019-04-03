@@ -1,0 +1,22 @@
+<div *ngIf="showValue && ratings" class="popup-wrap">
+  <div class="popup">
+    <div class="popup-body">
+      <div class="i">
+        <div class="announcement" *ngFor="let rating of ratings">
+          <div class="announcement-i">
+            <div class="img">
+              <img [src]="rating.display_url">
+            </div>
+            <div class="txt">
+              <div class="date-time">{{rating.dish_name}}</div>
+              <p>{{rating.owner}}</p>
+              <div><rating [(ngModel)]="rating.score" [readonly]="true"></rating></div>
+            </div>
+          </div>
+          <div *ngIf="rating" class="comment">{{rating.comment}}</div>
+        </div>
+      </div>
+    </div>
+    <footer><a (click)="cancelPopup()" translate="BUTTONS.CLOSE">Close</a></footer>
+  </div>
+</div>

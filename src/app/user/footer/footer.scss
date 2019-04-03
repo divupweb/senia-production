@@ -1,0 +1,14 @@
+@import '~assets/css/conf';
+
+:host{
+  background: white;
+  margin-top: 20px;
+  height: 80px;
+  border-top: 1px solid #ece9e4;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  z-index: 3;
+}
+a{color: $gray-dark}

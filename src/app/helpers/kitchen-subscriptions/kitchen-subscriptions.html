@@ -1,0 +1,9 @@
+<div class="heading">
+  <ul class="heading-selector">
+    <li *ngFor="let subscription of subscriptions"
+        [ngClass]="{'router-link-active': subscription == selectedSubscription}"
+        (click)="onSelect(subscription)">
+        {{ subscription }}
+    </li>
+  </ul>
+</div>

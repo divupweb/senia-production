@@ -1,0 +1,34 @@
+<table class="table table-main table-lines table-stripes">
+  <thead>
+  <tr>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.TYPE">Type</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.NAME">Name</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.EMAIL">Email</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.PHONE">Phone</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.COUNTRY">Country</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.CITY">City</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.ACCOUNT">Account</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of items | paginate: paginationConfig">
+    <td>{{ item.type }}</td>
+    <td>{{ item.name }}</td>
+    <td>{{ item.email }}</td>
+    <td>{{ item.phone }}</td>
+    <td>{{ item.country }}</td>
+    <td>{{ item.city }}</td>
+    <td>{{ item.account }}</td>
+    <td>
+      <button (click)="remove(item.id)" class="btn btn-mini remove-btn" translate="BUTTONS.REMOVE">
+        remove
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="text-right">
+  <admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id"></admin-pagination>
+</div>

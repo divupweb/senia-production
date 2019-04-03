@@ -1,0 +1,37 @@
+<user-menu>
+  <div class="heading">
+    <ul *ngIf="!width.isMobile()" class="heading-selector">
+      <li>
+        <a (click)="goTo('general')" [routerLink]="['general']" routerLinkActive="router-link-active"
+           translate="KITCHENS.SETTINGS.GENERAL_INFO">General Info</a>
+      </li>
+      <li>
+        <a (click)="goTo('deadlines')" [routerLink]="['deadlines']" routerLinkActive="router-link-active"
+           translate="KITCHENS.SETTINGS.DEADLINES.TITLE">Deadlines</a>
+      </li>
+      <li>
+        <a (click)="goTo('suspend-planner')" [routerLink]="['suspend-planner']" routerLinkActive="router-link-active"
+           translate="KITCHENS.SETTINGS.SUSPEND_PLANNER">Suspend Planner</a>
+      </li>
+      <li>
+        <a (click)="goTo('users')" [routerLink]="['users']" routerLinkActive="router-link-active"
+           translate="KITCHENS.SETTINGS.USERS">users</a>
+      </li>
+      <li>
+        <a (click)="goTo('discounts')" [routerLink]="['discounts']" routerLinkActive="router-link-active"
+           translate="KITCHENS.SETTINGS.DISCOUNTS">Discounts</a>
+      </li>
+    </ul>
+    <div class="heading-selector-mobile" *ngIf="width.isMobile()">
+      <select [(ngModel)]="selectedLink" (change)="goTo($event.target.value)">
+        <option [value]="'general'">{{"KITCHENS.SETTINGS.GENERAL_INFO" | translate}}</option>
+        <option [value]="'deadlines'">{{"KITCHENS.SETTINGS.DEADLINES.TITLE" | translate}}</option>
+        <option [value]="'suspend-planner'">{{"KITCHENS.SETTINGS.SUSPEND_PLANNER" | translate}}</option>
+        <option [value]="'users'">{{"KITCHENS.SETTINGS.USERS" | translate}}</option>
+        <option [value]="'discounts'">{{"KITCHENS.SETTINGS.DISCOUNTS" | translate}}</option>
+      </select>
+    </div>
+  </div>
+</user-menu>
+
+<router-outlet></router-outlet>

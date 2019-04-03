@@ -1,0 +1,19 @@
+<div class="collapsable-item" >
+  <div class="header">
+    <div class="img"><img [src]="company.displayUrl" [alt]="company.name"></div>
+    <strong (click)="select(company)">{{ company.name }}</strong>
+    <div class="toggle" [ngClass]="{'collapsed' : collapsed}" (click)="toggle()" *ngIf="hasEmployees()">
+      <i class="fa fa-chevron-down" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="body" [@slideInOut]="!collapsed" *ngIf="hasEmployees()">
+    <ul>
+      <li *ngFor="let employee of company.employees" (click)="select(employee)">
+        <a>{{ employee.name }}</a>
+        <div class="info">
+          {{ employee.email }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

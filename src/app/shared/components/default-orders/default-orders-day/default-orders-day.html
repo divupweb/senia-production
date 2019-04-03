@@ -1,0 +1,30 @@
+<div class="i" [class.locked]="item.locked">
+  <div class="menu-item-info">
+    <i class="fa fa-lock" aria-hidden="true"></i>
+    <div *ngIf="!item.locked; else locked">
+      <div *ngIf="item.count > 0; else noDishes">
+        <ng-template ngFor let-subscription [ngForOf]="item.subscriptions">
+          <h3 *ngIf="subscription.count > 0">{{ ('SUBSCRIPTIONS.' + subscription.subscription|uppercase) | translate | uppercase }}</h3>
+          <default-order-item *ngFor="let order of subscription.orders" [item]="order"></default-order-item>
+        </ng-template>
+      </div>
+      <ng-template #noDishes>
+        <h3 translate="SHARED.COMPONENTS.DEFAULTS.NO_DEFAULT_DISHES">
+          NO DEFAULT DISHES
+        </h3>
+      </ng-template>
+      <div>
+        <button class="btn btn-green btn-big" (click)="edit()" translate="BUTTONS.EDIT">Edit</button>
+      </div>
+    </div>
+    <ng-template #locked>
+      <div>
+        <h3 translate="SHARED.COMPONENTS.DEFAULTS.LOCKED">Locked</h3>
+      </div>
+    </ng-template>
+  </div>
+  <div class="menu-item-day">
+    <strong>{{ item.weekday }}</strong>
+    <div class="sub" *ngIf="item.count > 0">{{ item.count }} {{ item.count | i18nPlural: {'=1': 'USER.DISH_SINGULAR'|translate, 'other': 'USER.DISH_PLURAL'|translate} }}</div>
+  </div>
+</div>

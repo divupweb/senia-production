@@ -1,0 +1,22 @@
+.home-hero{
+  background: #ecf5e2 url(/assets/images/home/bg_pattern_cities.png) repeat;
+  position: relative;
+
+  .hero-img{
+    max-height: 430px;
+    position: relative;
+  }
+  .home-container{
+    z-index: 2;
+    position: relative;
+  }
+}
+.banner-block+.banner-block{margin-top: 10px;}
+
+@media (max-width: 480px){
+  .home-hero{
+    .hero-img{
+      background-size: cover!important;
+    }
+  }
+}

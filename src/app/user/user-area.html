@@ -1,0 +1,10 @@
+<cookie-law *ngIf="showGdpr" (isSeen)="gdprSeen($event)" position="top" #cookieLaw name="cookieGdprSeen" expiration="3650">
+  {{'CONTROLS.TOC' | translate }}
+  <a (click)="openPP()">{{'CONTROLS.LEARN_MORE' | translate }}</a>
+</cookie-law>
+<privacy-policy></privacy-policy>
+<div class="user-area">
+  <div class="al-user-main gray-bg">
+    <router-outlet></router-outlet>
+  </div>
+</div>

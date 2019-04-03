@@ -1,0 +1,150 @@
+@import '~assets/css/conf';
+
+// GENERAL INFO
+.general-info{
+  max-width: 390px;
+  padding: 0 20px;
+  margin: 60px auto;
+  line-height: 1.2;
+
+  &-top{
+    padding: 30px;
+    background: #f9f5f0;
+  }
+}
+
+// SUBSCRIPTION
+.subscription-item{
+  border: 1px solid $gray-light;
+  margin-top: 30px;
+
+  >div{
+    height: 110px;
+    padding-left: 30px;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+
+  .form-group{
+    width: 95px;
+    flex-basis: 95px;
+    align-self: center;
+  }
+  .checkbox{
+    margin-left: auto;
+
+    .custom-checkbox{
+      height: 100%;
+      label{
+        height: 100%;
+        padding-left: 90px;
+        padding-right: 30px;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+      }
+    }
+  }
+
+  &.disabled{
+    background: #f3f3f3;
+  }
+}
+
+.logo-upload{
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  .logo-upload-placeholder{
+    width: 110px;
+    height: 110px;
+    background: $gray-light;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .sub{
+    color: $gray-text;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .logo-controls{
+    font-size: 16px;
+    .rm{color: $red;cursor: pointer;}
+
+    .upload-label{
+      cursor: pointer;
+      position: relative;
+      text-decoration: underline;
+      overflow: hidden;
+      margin: 0 15px 0 0;
+      display: inline-block;
+      vertical-align: middle;
+      label{
+        margin: 0 10px 0 0;
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      input[type="file"]{
+        position: absolute;
+        left: -1000px;
+        opacity: 0;
+      }
+      &:hover{
+        label{
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.logo-box {
+  position: relative;
+  display: inline-block;
+
+  img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 1px solid $gray-light;
+  }
+  i {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}
+
+.mobile-app-img-upload{
+  margin: 30px 0 40px;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+  position: relative;
+  input[type="file"]{
+    position: absolute;
+    left: -1000px;
+  }
+  .mobile-app-img{
+    height: 210px;
+    margin-bottom: 10px;
+    border: 1px solid $gray-light;
+    &.no-img {
+      img{display: none;}
+      background: transparent url('~assets/images/mobile-app-img-upload.jpg') center bottom no-repeat;
+    }
+  }
+}
+
+
+
+
+
+
+

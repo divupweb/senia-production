@@ -1,0 +1,174 @@
+@import '~assets/css/conf';
+
+//TODO
+home-for-companies + home-footer {
+  footer {
+    z-index: auto;
+  }
+  .download-app__wrap {
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+
+footer{
+  padding:{
+    top: 100px;
+  }
+  background: #303235;
+  color: $white;
+  z-index: 2;
+  position: relative;
+  .footer-i{
+    max-width: 1140px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &.download-app__wrap {
+      justify-content: center;
+      padding: {
+        top: 40px;
+        bottom: 40px;
+      }
+    }
+    @media(min-width: $mobile-sm) {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    h6, p { margin-bottom: 10px;}
+    a {text-decoration: none;}
+
+    .footer__item {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+        @media(min-width: $mobile-sm) {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+  //.copyright{
+  //  font-family: $font-bold;
+  //}
+  .sign-in{
+    p{font-size: 14px}
+    text-align: center;
+  }
+  .social{
+    text-align: right;
+    a{color: white;text-decoration: none;transition: all 0.2s ease-in-out;&+a{margin-left: 25px;}}
+    .fa{font-size: 24px;color: white;transition: all 0.2s ease-in-out;&:hover{color:$gray-text}}
+  }
+  .footer__bottom {
+    padding: {
+     top: 20px;
+     bottom: 20px;
+      left: 15px;
+      right: 15px;
+    }
+    background-color: #292b2d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @media(min-width: $mobile-sm) {
+      padding:{
+        left: 0;
+        right: 0;
+      }
+    }
+    a{color:$white;}
+  }
+
+  .download-app-btn {
+    &-wrap {
+      display: inline-block;
+      vertical-align: middle;
+      margin-top: 20px;
+      @media(min-width: $mobile-sm) {
+        margin-top: 0;
+      &:not(:first-child) {
+          padding-left: 20px;
+        }
+      }
+    }
+
+    width: 220px;
+    height: 50px;
+    padding: 8px 20px 8px 60px;
+    display: inline-block;
+    border-radius: 25px;
+    vertical-align: middle;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid $main-green;
+
+    .txt--wrap {
+      display: block;
+      margin-left: 15px;
+    }
+
+    .small-txt {
+      display: block;
+      font-size: 12px;
+      line-height: 1.2;
+      color: $gray-text;
+    }
+    .big-txt {
+      display: block;
+      color: white;
+      font-size: 18px;
+      line-height: 1.2;
+      font-family: $font-bold;
+    }
+
+    &.appstore {
+      background: url(/assets/images/home/apple-logo--green.png) 24px 9px no-repeat;
+    }
+    &.googleplay {
+      background: url(/assets/images/home/googleplay-logo--green.png) 23px 12px no-repeat;
+    }
+
+    & + .download-app-btn {
+      margin-left: 20px;
+    }
+
+    &:hover {
+      border-color: transparentize($main-green, .7);
+    }
+  }
+
+  .icon.icon-love {
+    color: #f84646;
+    font-size: 20px;
+    display: inline-block;
+    line-height: 1;
+  }
+}
+
+
+
+// ******* RESPONSIVE STYLES *******
+
+
+@media (max-width: 767px) {
+  footer{
+    text-align: center;
+    .footer-i{
+      padding-top: 30px;
+      padding-bottom: 30px;
+      justify-content: space-around;
+    }
+    .social{
+      text-align: center;
+    }
+  }
+}

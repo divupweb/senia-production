@@ -1,0 +1,22 @@
+@import '~assets/css/conf';
+@import '../shared/common';
+
+footer {
+  padding: 0 20px;
+  position: absolute;
+  height: 110px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(0,0,0,.05);
+  display: flex;
+  align-items: center;
+}
+@media (max-width: $mobile){
+  footer{
+    height: 60px;
+    position: fixed;
+    z-index: 3;
+    background: #f9f5f0;
+  }
+}

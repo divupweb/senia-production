@@ -1,0 +1,37 @@
+<div class="popup-wrap" *ngIf="state" (keyup.esc)="close()">
+  <div class="popup">
+    <header>
+      <div class="left">
+        <div class="img" [ngStyle]="{ 'background-image': 'url(' + menuItem.displayUrl+ ')' }"></div>
+        <div class="txt">
+          <div><strong>{{ menuItem.name}}</strong></div>
+          <div class="text-grey">{{ menuItem.kitchenName}}</div>
+          <div class="text-green">{{menuItem.price | currencyFormat  }}</div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="big">{{ date | fullDate: 'DD'}}</div>
+        <div class="text-grey">{{ date | wkDay}}</div>
+      </div>
+    </header>
+    <div class="popup-body">
+      <div class="rating-wrap">
+        <rating [ngModel]="menuItem.rating.score" [max]="max" (onLeave)="score = $event" [readonly]="!isNew()" class="rating-big"></rating>
+      </div>
+      <div class="form-group v2 mb-3" *ngIf="isNew()">
+        <textarea cols="30" rows="5" class="form-control"
+                  ([value])="comment"
+                  (change)="comment = $event.target.value"></textarea>
+        <label translate="CONTROLS.COMMENT_OPT">Comment (optional)</label>
+      </div>
+      <div *ngIf="!isNew()" class="comment text-center mb-2">
+        {{ menuItem.rating.comment }}
+      </div>
+    </div>
+    <footer>
+      <div class="btn btn-green btn-big" (click)="save()" *ngIf="isNew()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ 'BUTTONS.SEND' | translate }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+    </footer>
+  </div>
+</div>

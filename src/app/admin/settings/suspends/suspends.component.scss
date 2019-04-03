@@ -1,0 +1,26 @@
+@import '~assets/css/conf';
+
+.suspends{
+  height: calc(100vh - 60px);
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  main{
+    flex: 1 0 auto;
+    overflow-y: auto;
+  }
+  aside{
+    flex: 0 0 330px;
+    max-width: 330px;
+    overflow-y: auto;
+    border-left: 1px solid $gray-light3;
+  }
+}
+@media (max-width: $laptop) {
+  .suspends{
+    aside{
+      flex: 0 0 230px;
+      max-width: 230px;
+    }
+  }
+}

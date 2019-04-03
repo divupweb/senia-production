@@ -1,0 +1,85 @@
+@import '~assets/css/conf';
+
+.basket-top{
+  height: 100%;
+  padding: 45px 0 15px 90px;
+  position: relative;
+  letter-spacing: 0;
+  background: white;
+  .btn{
+    min-width: 130px;
+  }
+  .dish-amount{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #f2f2f2;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    margin-top: -25px;
+    font-size: 18px;
+    line-height: 50px;
+    text-align: center;
+    cursor: default;
+
+    @include border-radius(50%);
+    @include user-select(none);
+
+    .fa-shopping-cart{
+      font-size: 23px;
+      line-height: 50px;
+      z-index: 2;
+      position: relative;
+    }
+    circle-progress{
+      left: -1px;
+      top: -1px;
+    }
+
+    span{
+      position: relative;
+      z-index: 2;
+    }
+  }
+  .txt{
+    font-size: 14px;
+    line-height: 1.2;
+    letter-spacing: 0;
+    flex-grow: 1;
+    padding-right: 10px;
+
+    .message{
+      font-family: $font-bold;
+    }
+    .time-left{
+      color: $gray-text;
+    }
+    .total-price{
+      color: $main-green;
+    }
+  }
+  .total-amount{
+    flex-basis: 40px;
+    flex-shrink: 0;
+    font-size: 14px;
+    text-align: center;
+  }
+  .basket-info{
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: $laptop) {
+  .basket-top .txt{font-size: 13px;}
+}
+
+@media (max-width: $mobile) {
+  .basket-top{
+    padding: 75px 0 10px 90px;
+    .dish-amount{
+      top: 70%;
+    }
+  }
+}

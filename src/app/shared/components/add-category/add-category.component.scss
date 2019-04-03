@@ -1,0 +1,23 @@
+.uload-img {
+  margin: 15px 0 20px;
+  padding-top: 150px;
+  display: inline-block;
+  background-size: contain;
+  background-position: top center;
+  background-repeat: no-repeat;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+
+  input[type="file"] {
+    position: absolute;
+    left: -1000px;
+    visibility: hidden;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

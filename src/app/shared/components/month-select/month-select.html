@@ -1,0 +1,16 @@
+<div *ngIf="active" class="month-select">
+  <span (click)="previousPeriod()" class="change-day">
+    <i class="fa fa-caret-left" aria-hidden="true"></i>
+  </span>
+
+  <div class="period dropdown dropup" [ngClass]="{'open': showDropdown}" (clickOutside)="closeDropdown()" (keyup.esc)="closeDropdown($event)" tabindex="1">
+    <span class="dropdown-toggle month" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="openDropdown()">{{ period | fullMonth }}</span>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <span class="dropdown-item" *ngFor="let month of months" (click)="selectMonth(month)">{{ month | fullMonth }}</span>
+    </div>
+  </div>
+
+  <span (click)="nextPeriod()" class="change-day">
+    <i class="fa fa-caret-right" aria-hidden="true"></i>
+  </span>
+</div>

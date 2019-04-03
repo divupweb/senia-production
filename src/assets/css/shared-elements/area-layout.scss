@@ -1,0 +1,59 @@
+@import "../variables";
+@import "../mixins";
+// Admin area
+.al-sidebar-list {
+  margin-top: 20px;
+
+  li {
+    margin-bottom: 8px;
+    a {
+      display: inline-block;
+      vertical-align: middle;
+      padding: 5px 30px;
+      font-size: 18px;
+      color: $gray-text;
+      text-decoration: none;
+      text-transform: uppercase;
+      cursor: pointer;
+      position: relative;
+
+      &.router-link-active {
+        color: #fff;
+        font-family: $font-bold, Arial;
+      }
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
+}
+
+.al-container {
+  max-width: 940px;
+  margin: 0 auto;
+  position: relative;
+}
+
+@media (max-width: $laptop) {
+
+}
+@media (max-width: $laptop-sm) {
+  .al-sidebar {
+    .al-sidebar-list {
+      li a {
+        padding-left: 70px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .al-sidebar {
+    .al-sidebar-list {
+      li a {
+        padding-left: 60px;
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+@import '~assets/css/conf';
+
+.logistics-dashboard{
+  padding-left: 0;
+  padding-right: 0;
+  height: calc(100vh - 60px);
+}
+
+// GENERAL LOGISTICS LAYOUT
+.logistics-container{
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+
+  .logistics-main{
+    flex-grow: 1;
+    height: 100%;
+    overflow-y: auto;
+  }
+}
+
+// LOGISTICS CALENDAR
+$calendar-days-height: calc(100vh - 200px);
+
+.line-calendar-wrap{
+  padding-bottom: 10px;
+}
+
+.logistics-calendar{
+  min-width: 518px;
+
+  &-controls{
+    height: 140px;
+  }
+  &-days{
+    height: $calendar-days-height;
+    min-height: 525px;
+    padding: 0 15px;
+
+    display: flex;
+    flex-flow: row wrap;
+
+    .day{
+      flex-basis: 33.33333%;
+      max-width: 33.33333%;
+      max-height: 50%;
+      border: 15px solid #fff;
+      letter-spacing: 0;
+
+      .day-inner{
+        height: 100%;
+        padding: 14%;
+        border: 1px solid #d9d9d9;
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+      }
+
+      h2{
+        margin: 0;
+        font-family: $font-bold;
+        font-size: 50px;
+        text-transform: none;
+        letter-spacing: -2px;
+      }
+      .btn{
+        min-width: 0;
+      }
+      .date,
+      .time,
+      .issues{
+        font-size: 12px;
+        line-height: 1.2;
+        font-family: $font-bold;
+        margin-bottom: 2px;
+      }
+      .time{
+        color: $main-green;
+      }
+      .issues{
+        color: #de4a43;
+        font-size: 14px;
+      }
+      .orders-ammount{
+        font-size: 24px;
+        letter-spacing: -1px;
+        color: #a29b9b;
+      }
+
+      &.past,
+      &.future{
+        .btn{
+          background: transparent;
+          border-color: $main-green;
+          color: $main-green;
+        }
+      }
+
+      &.past{
+        .day-inner{
+          background: $gray-light3;
+        }
+      }
+      &.future{
+        .day-inner{
+          background: #fef0c2;
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 1500px){
+  .logistics-calendar-days{
+    .day{
+      h2{
+        font-size: 35px;
+      }
+      .orders-ammount{
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile){
+  .logistics-calendar{
+    min-width: 0;
+  }
+  .logistics-calendar-days {
+    justify-content: center;
+    padding: 0;
+    min-height: 0;
+    height: auto;
+    .day {
+      max-width: 400px;
+      min-width: 300px;
+      flex-shrink: 0;
+      flex-grow: 1;
+    }
+  }
+}
+
+@media (max-width: $mobile-sm){
+  .logistics-calendar-days {
+    padding: 0 15px;
+    .day {
+      border-width: 7px;
+    }
+  }
+}

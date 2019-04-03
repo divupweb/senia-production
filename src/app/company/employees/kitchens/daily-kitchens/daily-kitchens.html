@@ -1,0 +1,18 @@
+<div *ngIf="dailyData">
+  <section *ngFor="let item of dailyData.data">
+    <header>
+      <h2>{{ item.weekday }}</h2>
+    </header>
+    <div class="company-kitchens-days row">
+      <div class="col-md-4" *ngFor="let daySubscription of item.subscriptions">
+        <kitchens-day
+          [subscription]="daySubscription.subscription"
+          [dki]="daySubscription.dki"
+          [kitchens]="kitchens[daySubscription.subscription.subscription_type]"
+          (onKitchenAdd)="onKitchenAdd(item.day, $event)"
+          (onKitchenRemove)="onKitchenRemove(item.day, $event)"
+          ></kitchens-day>
+      </div>
+    </div>
+  </section>
+</div>

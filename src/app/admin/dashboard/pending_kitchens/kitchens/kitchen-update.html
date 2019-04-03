@@ -1,0 +1,61 @@
+<!--<div>-->
+<!--<p class="text-muted" translate="ADMIN.KITCHEN.UPDATE">Update!</p>-->
+<!--</div>-->
+<div class="kitchen-update">
+  <div class="top">
+    <div class="datetime">
+      <span class="month"> {{kitchenUpdate.updated_at | dayMonth }}</span>
+      <span class="time">{{ kitchenUpdate.updated_at | shortTime }}</span>
+    </div>
+    <h2>{{ 'ADMIN.PENDING_KITCHEN' | translate }}</h2>
+  </div>
+
+  <div class="body">
+    <div class="body-left">
+      <div class="field">
+        <strong translate="CONTROLS.KITCHEN_NAME">Kitchen name</strong>
+        <div class="value">{{ kitchen.name }}</div>
+      </div>
+      <div class="field" *ngIf="differentValues(kitchen, kitchenUpdate, 'head_chef_name')">
+        <strong translate="CONTROLS.HEAD_CHEF_NAME">Head Chef Name</strong>
+        <div class="value">{{ kitchenUpdate.head_chef_name }}</div>
+      </div>
+      <div class="field" *ngIf="differentValues(kitchen, kitchenUpdate, 'description')">
+        <strong translate="CONTROLS.DESCRIPTION">Description</strong>
+        <div class="value">{{ kitchenUpdate.description }}</div>
+      </div>
+      <div class="field" *ngIf="differentValues(kitchen, kitchenUpdate, 'bank_account')">
+        <strong translate="CONTROLS.BANK_ACCOUNT">Bank account</strong>
+        <div class="value">{{ kitchenUpdate.bank_account }}</div>
+      </div>
+      <div class="field" *ngIf="differentValues(kitchen, kitchenUpdate, 'vat_number')">
+        <strong translate="CONTROLS.VAT_NUMBER">VAT number</strong>
+        <div class="value">{{ kitchenUpdate.vat_number }}</div>
+      </div>
+      <div
+        *ngIf="kitchenUpdate.kitchen_subscriptions_attributes && kitchenUpdate.kitchen_subscriptions_attributes.length > 0">
+        <div>
+          <div *ngFor="let subscription of kitchenUpdate.kitchen_subscriptions_attributes">
+            <subscription [subscription]="subscription" [oldSubscription]="getOldSubscription(kitchen, subscription.type)"
+                          [dishCategories]="dishCategories">
+            </subscription>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="kitchenUpdate.suspend_periods_attributes && kitchenUpdate.suspend_periods_attributes.length > 0">
+        <div>
+          <h3 translate="ADMIN.KITCHEN.SUSPENDS"></h3>
+          <ul>
+            <li *ngFor="let suspend of kitchenUpdate.suspend_periods_attributes">{{ suspend.date }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <button (click)="approveUpdate()" class="btn btn-big btn-green">Approve</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <button (click)="rejectUpdate()" class="btn btn-big btn-red">Reject</button>
+  </div>
+</div>

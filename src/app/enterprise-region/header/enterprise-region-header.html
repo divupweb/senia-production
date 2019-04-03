@@ -1,0 +1,11 @@
+<header [class.scrolled]="scrolled">
+  <div class="header-i">
+    <a routerLink="./" class="logo">
+      <img [src]="logo" alt="">
+    </a>
+    <div class="right">
+      <span class="text-grey">{{ 'ENTERPRISE.POWERED_BY_0' | translate }} <a [routerLink]="['/']" class="text-grey">{{ 'ENTERPRISE.POWERED_BY_1' | translate }}</a></span>
+      <a class="btn btn-auth" (click)="loginForm.request()" translate="BUTTONS.LOG_IN">Log in</a>
+    </div>
+  </div>
+</header>

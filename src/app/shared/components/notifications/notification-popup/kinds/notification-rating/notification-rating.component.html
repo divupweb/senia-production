@@ -1,0 +1,19 @@
+<div class="popup-body">
+  <div class="i">
+    <div class="announcement">
+      <div class="announcement-i">
+        <div class="img">
+          <img [src]="information.displayUrl">
+        </div>
+        <div class="txt">
+          <div class="date-time">{{ information.dishName }}</div>
+          <p>{{ information.owner }}</p>
+          <div>
+            <rating [(ngModel)]="information.score" [readonly]="true"></rating>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="information" class="comment">{{ information.comment }}</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<table class="table table-main table-lines table-stripes">
+  <thead>
+  <tr>
+    <th translate="SHARED.COMPANIES.SINGULAR">Company</th>
+    <th translate="SHARED.FEEDBACKS.SINGULAR">Feedback</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let feedback of feedbacks | paginate: paginationConfig"
+      class="feedback"
+      [ngClass]="{'unread': !feedback.is_read}" >
+    <td>
+      <span class="company-name">{{ feedback.information.item.name }}</span>
+    </td>
+    <td>
+      {{ feedback.message }}
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div class="text-right">
+  <admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id"></admin-pagination>
+</div>

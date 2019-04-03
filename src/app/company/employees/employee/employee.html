@@ -1,0 +1,62 @@
+<form [formGroup]="employeeForm" (submit)="submit()" autocomplete="off" (change)="formChange($event)">
+  <section>
+    <header class="mb-3">
+      <h2 *ngIf="isNew()" translate="SHARED.MODES.ADD_NEW">Add new</h2>
+      <h2 *ngIf="!isNew()" translate="SHARED.MODES.EDIT">Edit</h2>
+    </header>
+    <div class="row">
+      <div class="col-sm-4 form-group v3">
+        <input type="text" class="form-control" formControlName="firstName" required>
+        <label translate="CONTROLS.FIRST_NAME">First Name</label>
+        <form-controll-errors [form]="employeeForm" [controlName]="'firstName'"></form-controll-errors>
+      </div>
+      <div class="col-sm-4 form-group v3">
+        <input type="text" class="form-control" formControlName="lastName">
+        <label translate="CONTROLS.LAST_NAME">Last Name</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4 form-group v3">
+        <input type="email" class="form-control" formControlName="email" required>
+        <label translate="CONTROLS.EMAIL">Email</label>
+        <form-controll-errors [form]="employeeForm" [controlName]="'email'"></form-controll-errors>
+      </div>
+      <div class="col-sm-4 form-group v3">
+        <input type="text" class="form-control" formControlName="phone">
+        <label translate="CONTROLS.PHONE">Phone</label>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <subsidies [items]="employeeSubsidies" (onUpdate)="formChange($event)"></subsidies>
+  </section>
+
+  <section>
+    <header class="mb-3">
+      <h2 translate="COMPANY.EMPLOYEES.AVAILABILITY">Availability</h2>
+    </header>
+    <div class="row availability">
+
+      <div class="col-sm-4" *ngFor="let type of [breakfastTitle, lunchTitle, dinnerTitle]">
+        <h3>{{ ('SUBSCRIPTIONS.' + type | uppercase) | translate }}</h3>
+        <checkbox-day-selector [allowedDays]="allowedDays(type)" [employeeSubscription]="employeeSubscriptions[type]" *ngIf="allowedDays(type).length > 0">
+        </checkbox-day-selector>
+        <div class="not-available" *ngIf="allowedDays(type).length == 0">
+          <strong translate="COMPANY.EMPLOYEES.NOT_AVAILABLE" [translateParams]="{ subscription: ('SUBSCRIPTIONS.' + type|uppercase)|translate }"></strong>
+          <div class="text-grey" translate="COMPANY.EMPLOYEES.ADD_KITCHENS">Add kitchens on the page</div>
+          <div><a [routerLink]="[employee.id ? '../../kitchens' : '../kitchens']" translate="COMPANY.EMPLOYEES.BUTTONS.SETTINGS_FOR_ALL">Settings for all employees</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <button class="btn btn-big" [ngClass]="{ 'btn-green': isFormDirty && employeeForm.valid, 'btn-gray-green': !isFormDirty }" type="submit" translate="BUTTONS.SAVE_CHANGES">Save changes</button> &nbsp;&nbsp;&nbsp;
+    <button class="btn btn-red btn-big" type="button" (click)="removeEmployee()" *ngIf="canBeRemoved()" translate="COMPANY.EMPLOYEES.BUTTONS.REMOVE_EMPLOYEE">
+          Remove Employee
+        </button>
+    <a href="javascript:void(0)" (click)="resetSettings()" class="pull-right" translate="COMPANY.EMPLOYEES.BUTTONS.RESET_SETTINGS">Reset settings to default</a>
+  </footer>
+</form>

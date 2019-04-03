@@ -1,0 +1,90 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup dish-info-popup">
+    <header class="dish-info-header"
+            [ngClass]="{ 'periodic': periodic }"
+            [ngStyle]="{ 'background-image': 'url(' + menuItem.menuUrl + ')' }">
+
+      <div class="header-controls">
+        <div class="kitchen-info">
+          <div class="txt">
+            <div class="name">{{ menuItem.kitchenName }}</div>
+            <div class="text-grey">
+              <i class="b64-icon-chef"></i>
+              {{ menuItem.chefName }}
+            </div>
+          </div>
+          <div *ngIf="showButtons" class="ammount-control">
+            <button (click)='catchCard(decQuantity)' class="btn-ammount" [disabled]="menuItem.quantity == 0"><span class="minus">-</span></button>
+            <span class="value">{{menuItem.quantity}}</span>
+            <button (click)='catchCard(incQuantity)' class="btn-ammount"><span class="plus">+</span></button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="popup-body">
+
+      <div class="dish-info-top">
+        <div class="dish-name">{{menuItem.name}}</div>
+        <div class="price">{{ menuItem.price | currencyFormat  }}</div>
+      </div>
+      <div> {{ date | fullDate: 'dddd (DD MMMM)' }}</div>
+      <div class="deadline mb-1">{{ 'DEADLINE.SINGULAR' | translate }}  {{ menuItem.deadlineDueTime | fullDate: 'HH:mm dddd (DD MMMM)' }}</div>
+      <div class="text-grey">{{menuItem.description}}</div>
+      <div class="mt-2">
+        <div class="allergies" *ngIf="menuItem.userAllergies.length > 0">
+          <div class="allergy" *ngFor="let allergy of menuItem.userAllergies">
+            <div class="allergy-img" title="{{allergy.name}}"
+                 [ngStyle]="{ 'background-image': 'url(' + allergy.display_url + ')' }">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="make-default" *ngIf="!periodic && showButtons">
+        <div class="custom-checkbox">
+          <label>
+            <input type="checkbox" (click)="catchCard(setPeriodic)" [disabled]="menuItem.periodic">
+            <i class=" fa fa-check-circle"></i>
+
+            <span class="txt" translate="USER.MENU.SET_PERIODIC" [translateParams]="{ date: (date|wkDay)}">
+            </span>
+          </label>
+        </div>
+      </div>
+      <div class="composition" *ngIf="menuItem._category?.dish && components.length > 0">
+        <table>
+          <tr>
+            <th translate="USER.MENU.COMPONENTS.WEIGHT">Weight,g</th>
+            <th translate="USER.MENU.COMPONENTS.KCAL">Kcal</th>
+            <th translate="USER.MENU.COMPONENTS.PROTEIN">Protein</th>
+            <th translate="USER.MENU.COMPONENTS.CARBO">Carbo</th>
+            <th translate="USER.MENU.COMPONENTS.FAT">Fat</th>
+          </tr>
+          <tr>
+            <td>{{ menuItem._category?.dish.weight }}</td>
+            <td>{{ menuItem._category?.dish.kilocalories }}</td>
+            <td>{{ menuItem._category?.dish.protein }}</td>
+            <td>{{ menuItem._category?.dish.carbo }}</td>
+            <td>{{ menuItem._category?.dish.fat }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="ingredients" *ngIf="components.length > 0">
+        <div class="mb-1">
+          <h3 translate="SHARED.INGREDIENTS.PLURAL">Ingredients</h3>
+          <span class="lbl green">{{ components.length }}</span>
+          <span class="lbl red" *ngIf="allergicComponents.length > 0"> {{ allergicComponents.length }}</span>
+        </div>
+        <div class="ingredients-item" *ngFor="let component of components" [ngClass]="{ 'red': component.allergic }">
+          {{ component?.ingredient?.name }}
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div *ngIf="showButtons">
+        <button class="btn btn-big btn-green"  (click)="onConfirm.emit(menuItem)" translate="BUTTONS.CONFIRM">Confirm</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>

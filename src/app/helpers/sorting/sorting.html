@@ -1,0 +1,4 @@
+<div class="sorting">
+  <i *ngIf="!active" class="fa fa-sort" aria-hidden="true" (click)="setActive()"></i>
+  <i *ngIf="active" class="fa" [ngClass]="{'fa-sort-asc': _direction , 'fa-sort-desc': !_direction }" (click)="changeDirection()" aria-hidden="true"></i>
+</div>

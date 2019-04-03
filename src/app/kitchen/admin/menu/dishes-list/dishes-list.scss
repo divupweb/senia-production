@@ -1,0 +1,97 @@
+@import '~assets/css/conf';
+
+:host {
+  height: 100%;
+  display: block;
+  margin: 10px 0;
+  overflow-y: auto;
+  background: white;
+}
+
+.aside-title {
+  position: relative;
+  padding: 50px 30px 0;
+
+  .title {
+    text-transform: uppercase;
+    font-family: $font-bold;
+    font-size: 30px;
+    line-height: 1;
+  }
+}
+
+.aside-search {
+  padding: 10%;
+
+  input {
+    width: 100%;
+    height: 50px;
+    padding: 0 30px;
+    line-height: 50px;
+    border: 1px solid #ece9e4;
+    font-size: 14px;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+}
+
+header {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+footer {
+  padding: 0 30px;
+  font-size: 14px;
+  line-height: 28px;
+  background: white;
+  text-align: center;
+  position: absolute;
+  height: 110px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  border-top: 1px solid rgba(0,0,0,.05);
+
+  .show-inactive{
+    margin: 7px 0 6px;
+    line-height: 1.3;
+    display: block;
+  }
+}
+
+@media (max-width: $laptop) {
+  footer {padding: 0 20px;}
+}
+
+@media (max-width: $mobile) {
+  header {
+    top: 20px;
+  }
+  .aside-search {
+    padding: 5px 20px 10px;
+
+    input {
+      width: 100%;
+      height: 30px;
+      padding: 0 15px;
+      line-height: 30px;
+    }
+  }
+  .aside-title {
+    padding: 50px 20px 0;
+    .title {
+      display: none;
+    }
+  }
+  footer{
+    height: 90px;
+  }
+}

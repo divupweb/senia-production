@@ -1,0 +1,36 @@
+<div class="menu-list-item">
+  <div class="inner">
+    <div class="left">
+      <div class="name">
+        {{ item.dish.name }}
+      </div>
+    </div>
+    <div class="right">
+      <div class="select-day">
+        <div class="day-wrap" *ngFor="let day of item.days, let i = index">
+          <div class="day selected" *ngIf="day.active == true">
+            <span>{{ weekDays[i] }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hover-inner">
+    <div class="left">
+      <div class="name">
+        {{ item.dish.name }}
+      </div>
+      <a class="text-grey" (click)="setWholeWeek($event)" translate="KITCHENS.BUTTONS.SET_FOR_WEEK">
+        Set for a whole week
+      </a>
+    </div>
+    <div class="right">
+      <div class="select-day">
+        <label class="day" *ngFor="let day of weekDays; let i = index" [class.passed]="item.days[i].passed">
+          <input type="checkbox" [ngModel]="item.days[i].active" (ngModelChange)="onDayChange(item.days[i], $event)" [disabled]="item.days[i].passed || item.days[i].active">
+          <span>{{ day }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

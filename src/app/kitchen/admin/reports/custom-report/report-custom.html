@@ -1,0 +1,108 @@
+<main [ngClass]="{ 'bg-loader': isLoading }">
+  <div *ngIf="grouping == 'category_date_service'">
+    <section *ngFor="let category of report;">
+      <header>
+        <div class="name">{{category.category_name}}</div>
+        <div class="result">
+          <div class="result-total">{{'SHARED.TOTAL'| translate}}: {{ category.total | currencyFract }}</div>
+        </div>
+      </header>
+      <div *ngFor="let date of category.dates">
+        <div class="custom-report-row" *ngFor="let service of date.services; let $m_index = index;">
+          <div class="title {{ service.service_name }}">
+            <div class="date" *ngIf="$m_index == 0">{{ date.day | dayMonth }}</div>
+            <div class="day" *ngIf="$m_index == 0">{{ date.day | wkDay}}</div>
+            <div class="meal" [hidden]="$m_index != 0">
+              {{( 'SUBSCRIPTIONS.' + service.service_name | uppercase) | translate }}
+            </div>
+          </div>
+          <div class="mid-content">
+            <div class="item" *ngFor="let dish of service.dishes; let $d_index = index;">
+              <img src="{{dish.display_url}}" alt="">
+              <div class="txt">
+                <div class="preorder-txt" *ngIf="!dish.locked" translate="KITCHENS.REPORTS.PREORDER">Preorder</div>
+                <div class="name">{{dish.dish}}</div>
+                <div class="sub">{{dish.category_name}}</div>
+              </div>
+              <div class="result">
+                <div class="result-total">
+                  <span *ngIf="dish.quantity > 1">{{dish.quantity}} x</span>
+                  {{ dish.item_price | currencyFract }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="result">
+            <div class="result-total">
+              {{ service.total | currencyFract }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div *ngIf="grouping == 'date_category_service'">
+    <section *ngFor="let date of report">
+      <header>
+        <div class="name">{{ date.day | dayMonth }}</div>
+        <div class="result">
+          <div class="result-total">{{ 'SHARED.TOTAL'| translate }}: {{ date.total | currencyFract }}</div>
+          <div class="result-sub"></div>
+        </div>
+      </header>
+      <div *ngFor="let category of date.categories; let $index = index;">
+        <div class="custom-report-row" *ngFor="let service of category.services; let $first = first;">
+          <div class="title {{ service.service_name }}">
+            <div class="meal">
+              {{( 'SUBSCRIPTIONS.' + service.service_name | uppercase) | translate }}
+            </div>
+          </div>
+          <div class="mid-content">
+            <div class="item" *ngFor="let dish of service.dishes;">
+              <img src="{{ dish.display_url }}">
+              <div class="txt">
+                <div class="preorder-txt" *ngIf="!dish.locked" translate="KITCHENS.REPORTS.PREORDER">Preorder</div>
+                <div class="name">{{ dish.dish}}</div>
+                <div class="sub">{{ dish.category_name }}</div>
+              </div>
+              <div class="result">
+                <div class="result-total">
+                  <span *ngIf="dish.quantity > 1">{{dish.quantity}} x</span>
+                  {{ dish.item_price | currencyFract }}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="result">
+            <div class="result-total">
+              {{ service.total | currencyFract }}
+            </div>
+            <div class="result-sub"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<aside [class.is-open]="userMenu.isAsideOpen">
+  <div class="aside-mobile-header">
+    <div class="hamburger-icon is-open" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+    </div>
+    <span class="toggle-aside-icon" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+    </span>
+    <div class="txt">Filters</div>
+  </div>
+  <div class="report-filters-wrap">
+    <report-filters
+      (onDownload)="download($event)"
+      (onSubmit)="submit($event)" #filters>
+    </report-filters>
+  </div>
+</aside>
+<i class="mobile-overlay" [class.is-open]="userMenu.isAsideOpen || userMenu.isMenuOpen"></i>

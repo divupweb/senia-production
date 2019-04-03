@@ -1,0 +1,7 @@
+<footer>
+  <div class="text-grey">
+    {{ contact?.name }} {{ contact?.email }} <a href="tel:{{ contact?.phone}}" class="tel">mob. {{ contact?.phone }}</a>
+  </div>
+  <div><a translate="HOME.FOOTER.CONTACT_US" (click)="popup.open()">Contact us</a></div>
+  <contact-popup #popup></contact-popup>
+</footer>

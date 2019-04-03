@@ -1,0 +1,76 @@
+<header class="mb-3">
+  <h2 translate="SUBSIDIES.PLURAL">Subsidies</h2>
+  <div *ngFor="let item of items" class="subscription-wrap">
+    <ng-container *ngIf="item.enabled">
+      <strong class="subscription"> {{ item.subscriptionType | subscription }}</strong>:
+      <span class="sub-title"> {{ item.representation }}</span>
+      &nbsp;&nbsp;
+    </ng-container>
+  </div>
+
+  <div class="toggle-collapse" (click)="toggleCollapsed()">
+    <ng-container *ngIf="collapsed; then collapsedTmp else expandedTmp">
+    </ng-container>
+    <ng-template #collapsedTmp>
+      <span translate="SHARED.EXPAND" class="action"></span>
+      <i class="fa fa-sort-desc" aria-hidden="true"></i>
+    </ng-template>
+    <ng-template #expandedTmp>
+      <span translate="SHARED.COLLAPSE" class="action"></span>
+      <i class="fa fa-sort-asc" aria-hidden="true"></i>
+    </ng-template>
+  </div>
+</header>
+
+<div class="company-kitchens-subsidy row" *ngIf="!collapsed">
+  <div class="col-sm-4" *ngFor="let item of items">
+    <div class="subsidy mb-1">
+      <div class="subsidy-header">
+        <h3 class="type">{{ item.subscriptionType | subscription }}</h3>
+        <div class="subsidy-types">
+          <span class="value_type" [class.active]="item.subsidyType == -2" (click)="changeValueType(item, -2)"
+                translate="SUBSIDIES.NO"></span>
+          <span class="value_type" [class.active]="item.subsidyType == -1" (click)="changeValueType(item, -1)"
+                translate="SUBSIDIES.FREE"></span>
+          <span class="value_type" [class.active]="item.subsidyType == i"
+                *ngFor="let valueType of subsidiesProxy.valueTypes() | async; let i = index"
+                (click)="changeValueType(item, i)">{{ valueType[0] }}</span>
+        </div>
+      </div>
+
+      <div [ngSwitch]="item.subsidyType" class="subsidy-container">
+        <div *ngSwitchCase="-2" translate="SUBSIDIES.MESSAGE.NO"></div>
+        <div *ngSwitchCase="-1" translate="SUBSIDIES.MESSAGE.FREE"></div>
+        <div *ngSwitchDefault class="with-slider">
+          <div class="subsidy-container-top">
+            <div *ngIf="item.subsidyType == 0" class="select-wrap">
+              <div class="select">
+                <select class="form-control" [(ngModel)]="item.period"
+                        (ngModelChange)="onPeriodChange(item, $event)">
+                  <option [value]="period[1]" *ngFor="let period of subsidiesProxy.periods() | async">{{ period[0] }}
+                  </option>
+                </select>
+
+                <i class="fa fa-caret-up"></i>
+                <i class="fa fa-caret-down"></i>
+              </div>
+
+            </div>
+            <div class="form-group v3 mt-2 number-wrap">
+              <input type="number"
+                     (change)="itemChanged($event, item)"
+                     [(value)]="item.value"
+                     class="item-value form-control">
+            </div>
+          </div>
+          <div class="subsidy-slider-container" *ngIf="showSlider">
+            <div class="slider">
+              <slider [(value)]="item.value" [(free)]="item.free" [max]='item.maxValue'
+                      (onUpdateValue)="onUpdate.emit($event)" [showFree]="false" [min]="1"></slider>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

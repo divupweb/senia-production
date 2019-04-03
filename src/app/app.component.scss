@@ -1,0 +1,32 @@
+@import 'normalize.css/normalize.css';
+@import 'ng2-toasty/style.css';
+@import '~assets/css/app';
+
+.cookie-law .cookie-law-wrapper .copy {
+  max-width: 1170px;
+  margin: {
+    left: auto;
+    right: auto;
+  }
+
+  span, a{font-size: 16px!important;}
+
+  span {
+    color: #9b9b9b!important;
+  }
+  a {color: #fff!important;}
+}
+.dismiss {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  box-shadow: none;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  text-align: center;
+  white-space: nowrap;
+  width: 90px;
+  text-decoration: none !important;
+}

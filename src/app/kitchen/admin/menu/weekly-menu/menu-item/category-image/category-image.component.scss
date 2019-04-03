@@ -1,0 +1,45 @@
+@import '~assets/css/conf';
+
+.menu-row-heading {
+  height: 50px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  img {
+    height: 50px;
+    flex-basis: 50px;
+    max-width: 50px;
+    margin-right: 30px;
+    @include border-radius(50%);
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 1.2;
+    text-decoration: none;
+    color: $gray-dark;
+    font-family: $font-bold;
+
+    span {
+      border-bottom: 1px solid $gray-dark;
+    }
+
+    &:hover {
+      span {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+
+  .ctrls a + a {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: $mobile-sm) {
+  .menu-row-heading {
+    justify-content: center;
+  }
+}

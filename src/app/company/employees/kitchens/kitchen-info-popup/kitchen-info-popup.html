@@ -1,0 +1,42 @@
+  <div class="popup" (clickOutside)="close($event)" (keyup.esc)="close($event)" tabindex="1" (setFocus)="true">
+    <div class="popup-body">
+      <header>
+        <img [src]="kitchen.display_url">
+        <div class="info">
+          <div class="title">{{ kitchen.name }}</div>
+          <div class="text-green">{{ kitchen.info }}</div>
+          <div class="content-item"><i class="b64-icon-chef"></i> {{ kitchen.head_chef_name }}</div>
+          <div class="content-item"><i class="b64-icon-location"></i>{{ kitchen.address }}</div>
+          <div class="content-item"><i class="b64-icon-phone"></i>+{{ kitchen.phone }}</div>
+        </div>
+        <div class="deadlines">
+          <div class="title" translate="DEADLINE.SINGULAR">Deadline</div>
+          <div class="deadline" *ngFor="let item of kitchen.deadlines" [innerHTML]="item | firstWordStrong">
+          </div>
+        </div>
+      </header>
+      <section class="menu-items">
+        <menu-item *ngFor="let item of menu" [item]="item" [disabled]="true"></menu-item>
+      </section>
+    </div>
+    <footer>
+      <div class="btn btn-big btn-green" (click)="add()" translate="BUTTONS.ADD">Add</div>
+      &nbsp;&nbsp;&nbsp;
+
+      <span class="favorite" *ngIf="!kitchen.favorite" (click)="kitchen.setFavorite()">
+        <i class="fa fa-star"></i>
+        <span>{{ 'COMPANY.KITCHENS.BUTTONS.MARK_AS_FAVORITE' | translate }}</span>
+      </span>
+      <span class="favorite" *ngIf="kitchen.favorite" (click)="kitchen.setFavorite()">
+        <i class="fa fa-star red"></i>
+        {{ 'COMPANY.KITCHENS.BUTTONS.REMOVE_FROM_FAVORITE' | translate }}
+      </span>
+      <span class="close-popup" (click)="close()" translate="BUTTONS.CLOSE">Close</span>
+    </footer>
+  </div>
+
+  <add-popup *ngIf="showAdd"
+    [activeSubscriptions]="kitchen.companySubscriptions"
+    [activeDays]="activeDays"
+    (onAdd)="onAddPopupSave($event)"
+    (onClose)="onAddPopupClose($event)"></add-popup>

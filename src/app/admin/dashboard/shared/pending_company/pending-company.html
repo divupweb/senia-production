@@ -1,0 +1,61 @@
+<div class="top">
+  <div class="datetime">
+    <span class="month"> {{ company.updated_at | dayMonth }}</span>
+    <span class="time">{{ company.updated_at | shortTime }}</span>
+  </div>
+</div>
+<h2>{{ 'ADMIN.PENDING_COMPANY' | translate }}</h2>
+<div class="body">
+  <div class="body-left">
+    <div class="field">
+      <strong>{{ 'CONTROLS.COMPANY_NAME' | translate }}:</strong>
+      <div class="value">{{company.name}}</div>
+    </div>
+    <div class="field" *ngIf="company.admin">
+      <strong>{{ 'CONTROLS.CONTACT_PERSON' | translate }}:</strong>
+      <div class="value">{{company.admin.first_name}} {{company.admin.last_name}}</div>
+      <div class="value">{{company.admin.email}}</div>
+    </div>
+    <div class="field">
+      <strong>{{ 'ADMIN.COMPANY.CONTACT_INFO' | translate }}:</strong>
+      <div class="value">{{company.email}}</div>
+      <div class="value">{{company.phone}}</div>
+    </div>
+    <div class="field">
+      <strong>{{ 'ADMIN.COMPANY.LOCATION' | translate }}:</strong>
+      <div class="value">{{company.address}}</div>
+      <div class="value">{{company.city}}</div>
+      <div class="value">{{company.country}}</div>
+    </div>
+    <div class="field">
+      <strong translate="ADMIN.COMPANY.ORG_NUMBER">Org. number:</strong>
+      <div class="value">{{company.organization_number}}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.PAYMENT_DETAILS">Payment details:</strong>
+      <div class="value">{{company.payment_details}}</div>
+    </div>
+    <div class="field">
+      <strong>{{ 'ADMIN.COMPANY.EMPLOYEES' | translate }}:</strong>
+      <div class="value">{{company.employees_count}}</div>
+    </div>
+    <div class="field">
+      <strong>{{ 'ADMIN.COMPANY.SUBSIDY_PER_EMPLOYEE' | translate }}:</strong>
+      <div class="value">{{company.subsidy_per_employee}}</div>
+    </div>
+  </div>
+
+  <div class="body-right">
+    <div class="bottom">
+      <select *ngIf="regions && regions.length > 0" class="form-control transfer" [(ngModel)]="accountId">
+        <option *ngFor="let region of regions" [value]="region.id">
+          {{region.name}}
+        </option>
+      </select>
+      <button *ngIf="regions && regions.length > 0" class="btn btn-big btn-green" (click)="transfer(company.id)" translate="BUTTONS.TRANSFER">Transfer</button>
+      <button class="btn btn-big btn-green" (click)="approveCompany(company.id)" translate="BUTTONS.APPROVE">Approve</button>
+      &nbsp;&nbsp;&nbsp;
+      <button class="btn btn-big btn-red" (click)="rejectCompany(company.id)" translate="BUTTONS.REJECT">Reject</button>
+    </div>
+  </div>
+</div>

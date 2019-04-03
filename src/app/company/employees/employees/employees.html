@@ -1,0 +1,35 @@
+<div class="aside-inner">
+  <header>
+    <div class="aside-title" [routerLink]="['kitchens']">
+      <i class="fa fa-cog fa-2" aria-hidden="true"></i>
+      <div [innerHTML]="'COMPANY.EMPLOYEES.SETTINGS_FOR_ALL' | translate"></div>
+    </div>
+    <div class="aside-search">
+      <input type="text" placeholder="{{ 'COMPANY.EMPLOYEES.SEARCH_EMPLOYEE' | translate }}" [(ngModel)]="search">
+    </div>
+  </header>
+
+  <div class="employees-list">
+    <div *ngFor="let employee of employees | nameFilter:search:searchColumns" class="employees-list-item">
+      <div class="custom-checkbox">
+        <label>
+            <input type="checkbox" [(ngModel)]="employee.active" (change)="changeActive(employee, $event)" [disabled]="employee.company_admin">
+            <i aria-hidden="true" class="fa fa-check-circle" [ngClass]="{'text-green': employee.company_admin}"></i>
+        </label>
+      </div>
+      <div class="left-ctrl" [routerLink]="['employee', employee.id ]" >
+        <span class="txt">{{ employee.name }}</span>
+        <i class="fa fa-sliders" aria-hidden="true" *ngIf="!employee.you && employee.custom_settings"></i>
+        <span *ngIf="employee.company_admin" class="admin" translate="COMPANY.EMPLOYEES.ADMIN">Admin</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="info" *ngIf="currentCompany">{{ 'COMPANY.EMPLOYEES.COMPANY_PIN' | translate: { pin_code: currentCompany.pin_code } }}</div>
+    <button class="btn btn-green btn-block btn-big" [routerLink]="['employee/']" translate="COMPANY.EMPLOYEES.BUTTONS.ADD_EMPLOYEE">Add new employee</button>
+    <a href="mailto:?body={{inviteLink}}" class="invite" translate="COMPANY.EMPLOYEES.BUTTONS.INVITE">
+      Invite employee
+    </a>
+  </footer>
+</div>

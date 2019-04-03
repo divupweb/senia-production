@@ -1,0 +1,10 @@
+<div *ngIf="haveDifferences">
+  <div class="field">
+    <strong translate="SUBSCRIPTIONS.SINGULAR">subscription_type</strong>
+    <div class="value">{{ ('SUBSCRIPTIONS.' + getSubscriptionTitle(subscription.type)|uppercase) | translate }}</div>
+  </div>
+  <div class="field" *ngIf="differences.capacity">
+    <strong translate="CONTROLS.CAPACITY">capacity</strong>
+    <div class="value">{{ subscription.capacity }}</div>
+  </div>
+</div>

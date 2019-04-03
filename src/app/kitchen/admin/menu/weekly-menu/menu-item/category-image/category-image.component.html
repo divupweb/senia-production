@@ -1,0 +1,6 @@
+<div class="menu-row-heading">
+  <img [src]="item.category.display_url" alt="{{ item.category.name }}">
+  <div class="txt">
+    <a class="title" (click)="setMenu.open(item.category)"><span>{{ item.category.name }}</span></a>
+  </div>
+</div>

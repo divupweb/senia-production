@@ -1,0 +1,139 @@
+@import '~assets/css/conf';
+
+.spinner{
+  max-width: 160px;
+  min-width: 90px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include user-select(none);
+
+  &.disabled{
+    opacity: .6;
+    cursor: not-allowed;
+
+    .spinner-btn{
+      cursor: not-allowed;
+    }
+  }
+
+  .spinner-btn{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include border-radius(50%);
+    border: 1px solid transparent;
+
+    .fa{
+      font-size: 9px;
+    }
+
+    &.incr{
+      background: $main-green;
+      .fa{
+        color: white
+      }
+    }
+    &.decr{
+      border-color: $main-green;
+      .fa{
+        color: $main-green;
+      }
+    }
+  }
+
+  .spinner-input{
+    max-width: 70px;
+    height: 25px;
+    text-align: center;
+    @include border-radius(0);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid #f3f3f3;
+    outline: none;
+
+    &:focus{
+      outline: none;
+      border-bottom-color: $main-green;
+    }
+
+    &:disabled{
+      background: transparent;
+      cursor: not-allowed;
+    }
+  }
+}
+
+
+
+
+
+// Old version
+
+// .spinner {
+//   width: 43px;
+
+//   input.form-control {
+//     text-align: right;
+//     border: 1px solid $gray-border !important;
+//     -webkit-appearance: none;
+//     padding: 0 2px;
+//     text-align: center;
+//     background: #fff;
+//     border-top-left-radius: 4px;
+//     border-bottom-left-radius: 4px;
+//     font-size: 17px;
+//     line-height: 20px;
+//     color: #000;
+
+//     &:disabled + .input-group-btn-vertical{
+//       cursor: not-allowed;
+
+//       .btn{
+//         cursor: not-allowed;
+//       }
+//     }
+//   }
+// }
+// .input-group-btn-vertical{
+//   position: relative;
+//   white-space: nowrap;
+//   width: 1%;
+//   vertical-align: middle;
+//   display: table-cell;
+//   >.btn{
+//     display: block;
+//     float: none;
+//     width: 100%;
+//     min-width: 0;
+//     max-width: 100%;
+//     padding: 2px 5px 8px;
+//     margin-left: -1px;
+//     position: relative;
+//     border-radius: 0;
+//     background: #fff;
+//     border: 1px solid $gray-border;
+
+//     .fa{
+//       font-size: 0;
+//     }
+
+//     &:first-child{
+//       border-top-right-radius: 4px;
+//     }
+//     &:last-child{
+//       margin-top: -2px;
+//       border-bottom-right-radius: 4px;
+//     }
+//   }
+//   i{
+//     position: absolute;
+//     top: 0;
+//     left: 4px;
+//   }
+// }

@@ -1,0 +1,9 @@
+<div class="pending-wrap" *ngFor="let company of companies | paginate: paginationConfig">
+  <pending-company (onApprove)="approveCompany($event)"
+                   (onReject)="rejectCompany($event)"
+                   (onTransfer)="rejectCompany($event)"
+                   [company]="company"
+                   [regions]="regions"></pending-company>
+</div>
+
+<admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id"></admin-pagination>

@@ -1,0 +1,263 @@
+<div class="main-inner">
+  <div *ngIf="dish" class="dish-rating">
+    <div class="rating" *ngIf="dish.rating">
+      <rating [(ngModel)]="dish.rating" [max]="5" [readonly]="true"></rating>
+    </div>
+    <div class="votes" *ngIf="dish.ratings && dish.ratings.length > 0" (click)="popup.open()">
+      <span>
+        <span>{{ dish.ratings.length }}</span> {{ dish.ratings.length | i18nPlural: {'=0': 'KITCHENS.VOTES.NO_VOTES'|translate, '=1': 'KITCHENS.VOTES.SINGULAR'|translate, 'other': 'KITCHENS.VOTES.PLURAL'|translate} }}
+      </span>
+      <votes-popup #popup [ratings]="dish.ratings"></votes-popup>
+    </div>
+  </div>
+
+  <form [formGroup]="form" autocomplete="off" class="dish-form">
+
+    <div class="text-center mt-3">
+      <div class="logo-upload mb-3">
+        <div>
+          <div class="logo-upload-placeholder">
+            <div class="heading-img">
+              <div class="img" [ngStyle]="{ 'background-image': 'url(' + form.get(['dishImage', 'displayUrl']).value + ')' }"></div>
+              <div class="logo-controls">
+                <div class="upload">
+                  <label for="image">
+                    {{ 'SHARED.COMPONENTS.UPLOAD_IMAGE' | translate }}
+                  </label>
+                  <input type="file" (change)="fileChange($event)" id="image" #file/>
+                </div>
+                <a (click)="form.get(['dishImage', 'file']).reset()" *ngIf="form.get(['dishImage', 'displayUrl']).value" class="remove">{{ 'BUTTONS.REMOVE_LOGO' | translate }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group v3 col-lg-5">
+        <input formControlName="name" id="name" type="text"  class="form-control">
+        <label for="name" translate="CONTROLS.NAME">Name </label>
+        <form-controll-errors [form]="form" [controlName]="'name'"></form-controll-errors>
+      </div>
+    </div>
+
+    <div class="form-group v3">
+      <input formControlName="description" id="description" [maxlength]="descriptionLimit" (keyup)="onDescriptionChange($event)" class="form-control">
+      <label for="description">{{ 'CONTROLS.DESCRIPTION' | translate }} <span class="characters-left">{{ description.left }} {{ description.word }} left</span></label>
+      <form-controll-errors [form]="form" [controlName]="'description'"></form-controll-errors>
+    </div>
+
+    <div class="row">
+      <div class="form-group v3 col-lg-5">
+        <select  class="form-control" formControlName="dishCategoryId" (change)="onChangeCategory($event.target.value)">
+          <option *ngFor="let category of dishCategoriesService.categories" [value]="category.id">
+            {{category.name}}
+          </option>
+        </select>
+        <label translate="SHARED.CATEGORIES.SINGULAR">Category</label>
+        <i class="fa fa-caret-down"></i>
+        <form-controll-errors [form]="form" [controlName]="'dishCategoryId'" [translation]="'SHARED.CATEGORIES.SINGULAR'"></form-controll-errors>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group v3 col-lg-5">
+        <select class="form-control" formControlName="dishType">
+          <option *ngFor="let type of categories" [value]="type">
+            {{ 'KITCHENS.DISH_TYPES.' + type|uppercase | translate }}
+          </option>
+        </select>
+        <label translate="KITCHENS.CONTROLS.DISH_TYPE">Type</label>
+        <i class="fa fa-caret-down"></i>
+        <form-controll-errors [form]="form" [controlName]="'dishType'" [translation]="'KITCHENS.CONTROLS.DISH_TYPE'"></form-controll-errors>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="form-group v3 col-lg-2">
+          <input type="number" (change)="inputPriceChange($event.target.value)" formControlName="price" id="price" class="form-control price-input" [readonly]="priceRange.min == priceRange.max">
+          <label>{{ 'CONTROLS.PRICE'| translate | currencyCode }}</label>
+        </div>
+        <div class="col-lg-3" *ngIf="showSlider">
+          <slider [value]="form.controls.price.value" class="dish-form-slider" (valueChange)="onPriceChange($event)" [min]='priceRange.min' [max]='priceRange.max' [displayLabels]='false'></slider>
+        </div>
+      </div>
+      <div class="text-grey" translate="KITCHENS.PRICE_DESCRIPTION" [translateParams]="{min: priceRange.min, max: priceRange.max}">
+      </div>
+      <form-controll-errors [form]="form" [controlName]="'price'"></form-controll-errors>
+    </div>
+
+    <div class="form-group v3">
+      <input type="number" max="100" min="0" formControlName="nettoPercent" id="nettoPercent" class="form-control">
+      <label for="nettoPercent">{{ 'KITCHENS.CONTROLS.NETTO_PERCENT' | translate }}</label>
+      <form-controll-errors [form]="form" [controlName]="'nettoPercent'"></form-controll-errors>
+    </div>
+    <div class="row">
+      <div class="form-group col-lg-12">
+        <h2 class="mb-3" translate="SHARED.INGREDIENTS.PLURAL">Ingredients</h2>
+        <div class="ingridients-table-wrap">
+          <table class="table table-lines desktop-ingridients">
+            <thead>
+              <th translate="SHARED.INGREDIENTS.SINGULAR">Ingredient</th>
+              <th>
+                {{'SHARED.DISH_COMPONENTS.WEIGHT' | translate }}
+                <div class="text-green">{{ dish.weight }}</div>
+              </th>
+              <th>
+                {{'SHARED.DISH_COMPONENTS.KCAL' | translate }}
+                <div class="text-green">{{ dish.kilocalories }}</div>
+              </th>
+              <th>
+                {{ 'SHARED.DISH_COMPONENTS.PROTEIN' | translate }}
+                <div class="text-green">{{ dish.protein }}</div>
+              </th>
+              <th>
+                {{ 'SHARED.DISH_COMPONENTS.CARBO' | translate }}
+                <div class="text-green">{{ dish.carbo }}</div>
+              </th>
+              <th>
+                {{ 'SHARED.DISH_COMPONENTS.FAT' | translate }}
+                <div class="text-green">{{ dish.fat }}</div>
+              </th>
+              <th></th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of dishComponents" [hidden]="item._destroy">
+                <td>
+                  {{ item.ingredient.name }}
+                </td>
+                <td width="120px">
+                  <div class="form-group v3 no-label">
+                    <input type="number" class="form-control" [(ngModel)]="item.weight" [min]="1" (ngModelChange)="onIngredientWeightChange(item, $event)" [required]="true" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </td>
+                <td class="text-center">{{ item.kilocalories }}</td>
+                <td class="text-center">{{ item.protein }}</td>
+                <td class="text-center">{{ item.carbo }}</td>
+                <td class="text-center">{{ item.fat }}</td>
+                <td>
+                  <span class="remove-ingredient" (click)="removeIngredient(item)" (change)="updateDishNutrients()">×</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span>
+                    <dropdown
+                      [updateItemsFn]="updateIngredientsList()"
+                      [query]="newIngredient.query"
+                      [placeholder]="'KITCHENS.CONTROLS.INGREDIENT_NAME' | translate"
+                      (onChange)="onIngredientSelect($event)"
+                      (onClear)="onIngredientClear($event)">
+                    </dropdown>
+                  </span>
+                </td>
+                <td width="120px">
+                  <div class="form-group v3">
+                    <input [(ngModel)]="newIngredient.weight" type="number" class="form-control" [min]="0" [ngModelOptions]="{standalone: true}">
+                    <label translate="SHARED.DISH_COMPONENTS.WEIGHT">Weight,g</label>
+                  </div>
+                </td>
+                <td colspan="5">
+                  <button class="btn btn-green btn-big" type="button" (click)="addIngredient()" [disabled]="disabledAddButton()">
+                    {{ 'KITCHENS.BUTTONS.ADD_INGREDIENT' | translate }}
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+          <div class="mobile-ingridients">
+            <!--<div class="mobile-ingridients-th" translate="SHARED.INGREDIENTS.SINGULAR">Ingredient</div>-->
+            <div class="mobile-ingridient-header">
+
+              <div class="mobile-ingridient-td">
+                {{'SHARED.DISH_COMPONENTS.WEIGHT' | translate }}
+                <div class="text-green">{{ dish.weight }}</div>
+              </div>
+              <div class="mobile-ingridient-td">
+                {{'SHARED.DISH_COMPONENTS.KCAL' | translate }}
+                <div class="text-green">{{ dish.kilocalories }}</div>
+              </div>
+              <div class="mobile-ingridient-td">
+                {{ 'SHARED.DISH_COMPONENTS.PROTEIN' | translate }}
+                <div class="text-green">{{ dish.protein }}</div>
+              </div>
+              <div class="mobile-ingridient-td">
+                {{ 'SHARED.DISH_COMPONENTS.CARBO' | translate }}
+                <div class="text-green">{{ dish.carbo }}</div>
+              </div>
+              <div class="mobile-ingridient-td">
+                {{ 'SHARED.DISH_COMPONENTS.FAT' | translate }}
+                <div class="text-green">{{ dish.fat }}</div>
+              </div>
+            </div>
+
+
+            <div class="mobile-ingridient-item" *ngFor="let item of dishComponents" [hidden]="item._destroy">
+
+              <div class="name">
+                <div class="name-txt">{{ item.ingredient.name }}</div>
+
+                <span class="remove-ingredient" (click)="removeIngredient(item)" (change)="updateDishNutrients()">×</span>
+              </div>
+
+              <div class="components">
+                <div class="mobile-ingridient-td">{{ item.weight }}</div>
+                <div class="mobile-ingridient-td">{{ item.kilocalories }}</div>
+                <div class="mobile-ingridient-td">{{ item.protein }}</div>
+                <div class="mobile-ingridient-td">{{ item.carbo }}</div>
+                <div class="mobile-ingridient-td">{{ item.fat }}</div>
+              </div>
+            </div>
+
+            <div class="mobile-ingridient-item">
+
+              <div class="name">
+                  <span>
+                    <dropdown
+                      [updateItemsFn]="updateIngredientsList()"
+                      [query]="newIngredient.query"
+                      [placeholder]="'KITCHENS.CONTROLS.INGREDIENT_NAME' | translate"
+                      (onChange)="onIngredientSelect($event)"
+                      (onClear)="onIngredientClear($event)">
+                    </dropdown>
+                  </span>
+              </div>
+              <div class="components new-item">
+                <div class="mobile-ingridient-td">
+                  <div class="form-group v3">
+                    <input [(ngModel)]="newIngredient.weight" type="number" class="form-control" [min]="0" [ngModelOptions]="{standalone: true}">
+                  </div>
+                </div>
+                <div class="mobile-ingridient-td">
+                  <button class="btn btn-green btn-big" type="button" (click)="addIngredient()" [disabled]="disabledAddButton()">
+                    {{ 'KITCHENS.BUTTONS.ADD_INGREDIENT' | translate }}
+                  </button>
+                </div>
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <h2 class="mb-3" translate="SHARED.ALLERGY.PLURAL">Allergies</h2>
+      <allergies-select [allergyIds]="allergyIds" id="allergies" (onChange)="touchForm()"></allergies-select>
+    </div>
+  </form>
+
+  <footer class="kitchen-menu-footer">
+    <button class="btn btn-green btn-big" (click)="submit()">{{ submitButtonLabel | translate }}</button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button class="btn btn-red btn-big" *ngIf="!newDish &&  true == dish.active" (click)="removeDish()" translate="KITCHENS.BUTTONS.REMOVE_DISH">Remove dish</button>
+    <a [routerLink]="backLink" class="backlink" translate="KITCHENS.BUTTONS.BACK_TO_MENU">Back to menu</a>
+  </footer>
+</div>

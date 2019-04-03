@@ -1,0 +1,8 @@
+<div class="dish" [hidden]="!item.active">
+  <img [src]="item.kitchenDishCategory.displayUrl">
+  <div class="txt">
+    <div><strong>{{ item.kitchenDishCategory.dishCategory }}</strong></div>
+    <div class="text-grey">{{ item.kitchen.name }}</div>
+    <div class="text-green">{{ [item.kitchenDishCategory.minPrice, item.kitchenDishCategory.maxPrice] | currencyFormat  }}</div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector">
+      <li>
+        <a routerLinkActive="router-link-active" [routerLink]="['./index']"> {{ 'ADMIN.DASHBOARD.TITLE' | translate}}</a>
+      </li>
+      <li>
+        <a routerLinkActive="router-link-active" [routerLink]=" ['./pending_companies'] " translate="ADMIN.PENDING_COMPANIES">Pending Companies</a>
+        <span class="btn btn-green btn-mini">{{ pendingService.count.companies }}</span>
+      </li>
+      <li>
+        <a routerLinkActive="router-link-active" [routerLink]=" ['./pending_kitchens'] " translate="ADMIN.PENDING_KITCHENS">Pending Kitchens</a>
+        <span class="btn btn-green btn-mini">{{ pendingService.count.kitchens }}</span>
+      </li>
+    </ul>
+  </div>
+</user-menu>
+<div class="area-layout">
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <aside [class.is-open]="userMenu.isAsideOpen">
+    <div class="aside-mobile-header">
+      <div class="hamburger-icon is-open" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <span class="toggle-aside-icon" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <div class="txt">Messages</div>
+    </div>
+    <notifications class="notifications"></notifications>
+  </aside>
+  <i class="mobile-overlay" [class.is-open]="userMenu.isAsideOpen || userMenu.isMenuOpen"></i>
+</div>

@@ -1,0 +1,118 @@
+@import '~assets/css/conf';
+
+.home-hero {
+  &:before {
+    display: none;
+  }
+  background-color: #f9f5e9;
+  min-height: 600px;
+  height: auto;
+  padding-bottom: 70px;
+  flex-direction: column;
+
+  .home-hero-i {
+    padding:{
+      top: 40px;
+      bottom: 40px;
+    }
+    &:before, &:after {
+      content:"";
+      display: block;
+      background:{
+        image: url("/assets/images/home/coffee-border.png");
+        position: center;
+        repeat: no-repeat;
+      }
+      height: 32px;
+      width: 100%;
+      margin: 30px auto;
+    }
+    &:after {
+      transform: rotateY(180deg);
+    }
+  }
+
+  h2 {
+    padding-top: 0;
+    margin-bottom: 50px;
+    font-family: $font-bold;
+  }
+
+  h3 {
+    line-height: 1.5;
+    position: relative;
+    z-index: 3;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.benefits {
+  .row {
+    &--flexed {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  h4.eighty-percents-width {
+    max-width: 70%;
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+
+  &.light-gray-bg {
+    background-color: $gray-light-blue;
+  }
+
+  @media(min-width: $mobile-sm) {
+    &.top-image-crossing {
+      padding-top: 170px;
+    }
+  }
+}
+
+.advantages {
+  background-color: $gray-dark;
+  color: $white;
+  position: relative;
+
+  @media (min-width: $mobile-sm) {
+    padding-bottom: 300px;
+  }
+
+  @media(min-width: $mobile-md) {
+    padding-bottom: 400px;
+  }
+
+  h2 {
+    color: $white;
+  }
+
+  &__wrap {
+    margin-top: 80px;
+  }
+
+  .three-windows__pic {
+    position: absolute;
+    bottom: -7%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+}
+
+.get-in-touch {
+  background-color: $sky-blue;
+  @media(min-width: $mobile-sm) {
+    padding-bottom: 300px;
+    background: $sky-blue url("/assets/images/home/keyboard-blue.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: 365px;
+  }
+}

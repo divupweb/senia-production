@@ -1,0 +1,72 @@
+@import '~assets/css/conf';
+.lang-item{
+  display: inline-block;
+  vertical-align: middle;
+  @media (min-width: $mobile-sm) {
+    margin-right: 30px;
+  }
+}
+
+.sidebar {
+  .lang-item{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .lang {
+    font-size: 14px;
+    color: $gray-text;
+    text-decoration: none;
+    text-transform: lowercase;
+    &.active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.header-lang-switcher{
+  padding-left:0;
+  margin-bottom:0;
+  display: flex;
+  .lang{
+    cursor: pointer;
+    text-decoration: none;
+    color: $gray-text;
+    font-family: $font-normal;
+    display: inline-block;
+    border-bottom: 1px solid transparent;
+    &-item {
+      display: block;
+      list-style: none;
+      text-align: center;
+    }
+    &-item:hover,
+    &-item.active {
+      position: relative;
+      &:after {
+        content:"";
+        width: 20px;
+        height: 2px;
+        display: block;
+        background-color: $main-green;
+        margin:{
+          top: 3px;
+          left: auto;
+          right: auto;
+        }
+      }
+      a{color: $gray-dark;}
+    }
+    &-item.active {
+      cursor: default;
+      a{
+        cursor: default;
+      }
+    }
+  }
+
+
+  // ******* RESPONSIVE STYLES *******
+  @media (max-width: 767px){
+    .lang-item{&:not(:last-child){margin-right:10px;}}
+  }
+}

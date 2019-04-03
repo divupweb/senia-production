@@ -1,0 +1,58 @@
+@import '~assets/css/conf';
+
+.menu-header-day{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.menu-subscriptions{
+  padding: 20px 0 30px;
+  text-align: center;
+}
+.menu-item-wrap {
+  position: relative;
+}
+
+.heading {
+  text-transform: none;
+}
+// OWN KITCHEN
+.own-kitchen {
+  display: inline-block;
+  padding: 140px 16px 0;
+  vertical-align: top;
+  width: 33%;
+}
+
+
+.user-message{
+  text-align: center;
+  line-height: 2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  .fa-lock{
+    font-size: 130px;
+  }
+  .big{font-size: 24px;text-transform: uppercase;}
+  .small{font-size: 18px;color: $gray-text}
+  img{
+    display: block;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+}
+
+.user-header-calendar{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.defaults-button-wrap{
+  padding-top: 47px;
+}
+.cart-info-wrap{
+  padding-top: 40px;
+}
+

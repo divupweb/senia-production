@@ -1,0 +1,31 @@
+<div class="popup kitchen-info-popup">
+  <header class="kitchen-info-header" [ngStyle]="{'background-image': 'url(' + kitchen.chefDisplayUrl + ')'}">
+
+    <div class="header-controls">
+      <div class="kitchen-info">
+        <img [src]="kitchen.displayUrl" />
+        <div class="txt">
+          <div class="name">{{ kitchen.name }}</div>
+          <div class="text-grey">
+            <i class="b64-icon-chef"></i> {{kitchen.headChefName}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="popup-body">
+    <p>{{ kitchen.description }}</p>
+    <div class="deadline" *ngIf="deadlines && deadlines.length > 0">
+      <div class="title" translate="DEADLINE.SINGULAR">Deadline</div>
+      <table>
+        <tr *ngFor="let dd of deadlines">
+          <th>{{ dd[0] }}</th>
+          <td>{{ dd[1] }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <footer>
+    <a (click)="close($event)" translate="BUTTONS.CLOSE">Close</a>
+  </footer>
+</div>

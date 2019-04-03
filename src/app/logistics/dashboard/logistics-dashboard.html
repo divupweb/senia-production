@@ -1,0 +1,43 @@
+<div class="logistics-container">
+  <main class="logistics-main">
+    <div class="logistics-calendar">
+      <div class="line-calendar-wrap">
+        <line-calendar (daySelect)="onDaySelect($event)"></line-calendar>
+      </div>
+      <div class="logistics-calendar-days">
+        <div class="day" *ngFor="let subscriptionData of daysData">
+          <div class="day-inner">
+            <div>
+              <div class="date">{{ subscriptionData.date | dayMonth }}</div>
+              <div *ngIf="subscriptionData.shipment_count > 0" class="time">
+                {{ subscriptionData.starts_at | shortDateTime }}
+              </div>
+              <div *ngIf="subscriptionData.error_count > 0" class="issues">
+                {{ 'LOGISTICS.COUNT_PROBLEMS' |translate: { count: subscriptionData.error_count } }}
+              </div>
+            </div>
+            <div>
+              <h2>{{ ('SUBSCRIPTIONS.' + subscriptionData.subscription|uppercase) | translate }}</h2>
+              <div class="orders-ammount">{{subscriptionData.shipment_count}} {{ 'SHARED.ORDERS.PLURAL' | translate | lowercase}}</div>
+            </div>
+            <div>
+              <button (click)="goToShipments(subscriptionData.subscription, subscriptionData.date_db)"
+                      *ngIf="subscriptionData.shipment_count > 0"
+                      [disabled]="!subscriptionData.deadlines_passed"
+                      class="btn btn-block btn-green btn-big">
+                {{ subscriptionData.button_text }} <span *ngIf="subscriptionData.button_text_date"> {{ subscriptionData.button_text_date | shortTime }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pull-right">
+      <month-select [period]="selectedMonth" (change)="onMonthChange($event)"></month-select>
+      <button type="button" class="btn btn-green" color="primary" (click)="generateInvoice()" translate="BUTTONS.GENERATE_INVOICE">Generate Invoice</button>
+    </div>
+
+  </main>
+  <logistics-statuses [dates]="dates" [isKitchen]="isKitchen"></logistics-statuses>
+</div>

@@ -1,0 +1,226 @@
+<main class="white-bg">
+
+  <div class="stats row" *ngIf="statistics">
+    <month-tile [month]="item" *ngFor="let item of months"></month-tile>
+  </div>
+  <div class="report-cards row mb-3" *ngIf="statistics">
+    <div class="col-sm-4">
+      <div class="report-card white-bg blue-top">
+        <h3>{{ 'CALENDAR.LAST_MONTH' | translate }}</h3>
+        <div class="subtitle mb-3">{{ lastMonth[0] | month }}</div>
+        <button class="btn btn-green btn-block btn-big" translate="BUTTONS.GENERATE" (click)="generate(lastMonth)">Generate</button>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="report-card white-bg yellow-top">
+        <h3>{{ 'CALENDAR.LAST_WEEK' | translate }}</h3>
+        <div class="subtitle mb-3">{{lastWeek | daysRange}}</div>
+        <button class="btn btn-green btn-block btn-big" translate="BUTTONS.GENERATE" (click)="generate(lastWeek)">Generate</button>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="report-card white-bg green-top">
+        <h3>{{ lastDay[0] | calendarTime: { lastWeek: 'CALENDAR.LAST_WEEK' | translate } }}</h3>
+        <div class="subtitle mb-3">{{ lastDay[0] | dayMonth }}</div>
+        <button class="btn btn-green btn-block btn-big" translate="BUTTONS.GENERATE" (click)="generate(lastDay)">Generate</button>
+      </div>
+    </div>
+  </div>
+  <div class="report-cards row" *ngIf="report?.general">
+    <div class="col-sm-4">
+      <div class="report-card blue-top">
+        <h3>{{ report.general.charged | currencyFormat}}</h3>
+        <div class="subtitle">To be charged</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="report-card yellow-top">
+        <h3>{{ report.general.paid | currencyFormat}}</h3>
+        <div class="subtitle">To be paid</div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="report-card green-top">
+        <h3>{{ report.general.profit | currencyFormat}}</h3>
+        <div class="subtitle">Profit</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <div class="collapsable-item" *ngIf="report.companyInvoices?.general">
+      <div class="header report-table-header">
+        <table class="report-table">
+          <tr>
+            <th>
+              <h4 (click)="toggle('companyInvoices')">
+                {{ 'ADMIN.REPORTS.COMPANY_INVOICES' | translate }}
+                <div class="toggle">
+                  <i class="fa fa-caret-{{ companyInvoices ? 'up' : 'down'}}" aria-hidden="true"></i>
+                </div>
+              </h4>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'SHARED.TOTAL' | translate }}</div>
+              <strong class="big">{{ report.companyInvoices.general?.total | currencyFormat }}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.CREDIT' | translate }}</div>
+              <strong class="big">{{ report.companyInvoices.general?.credits }}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.DISCOUNT' | translate }}</div>
+              <strong class="big">{{ report.companyInvoices.general?.discount | number: '1.2-2'}}%</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.TO_BE_CHARGED' | translate }}</div>
+              <strong class="big">{{ report.companyInvoices.general?.charged | currencyFormat }}</strong>
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div class="body report-table-body" *ngIf="report.companyInvoices.details?.length > 0" [@slideInOut]="companyInvoices">
+        <table class="report-table">
+          <tr *ngFor="let item of report.companyInvoices.details">
+            <td>
+            <span class="table-icon placeholder">
+              <img [src]="item.owner?.displayUrl" *ngIf="item.owner?.displayUrl">
+            </span>
+              <strong class="table-item-name">{{ item.owner?.name }}</strong>
+            </td>
+            <td>{{ item.total | currencyFormat }}</td>
+            <td>{{ item.credits | currencyFormat}}</td>
+            <td>{{ item.discount | number: '1.2-2'}}%</td>
+            <td><strong class="big">{{ item.charged | currencyFormat }}</strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="collapsable-item" *ngIf="report.cardCharges?.general">
+      <div class="header report-table-header">
+        <table class="report-table">
+          <tr>
+            <th>
+              <h4 (click)="toggle('cardCharges')">
+                {{ 'ADMIN.REPORTS.CARD_CHARGES' | translate }}
+                <div class="toggle">
+                  <i class="fa fa-caret-{{ cardCharges ? 'up' : 'down'}}" aria-hidden="true"></i>
+                </div>
+              </h4>
+
+            </th>
+            <th>
+              <div class="text-grey">{{ 'SHARED.TOTAL' | translate }}</div>
+              <strong class="big">{{ report.cardCharges.general?.total | currencyFormat }}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.CREDIT' | translate }}</div>
+              <strong class="big">{{ report.cardCharges.general?.credits }}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.DISCOUNT' | translate }}</div>
+              <strong class="big">{{ report.cardCharges.general?.discount | number: '1.2-2'}}%</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.TO_BE_CHARGED' | translate }}</div>
+              <strong class="big">{{ report.cardCharges.general?.charged | currencyFormat }}</strong>
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div class="body report-table-body" *ngIf="report.cardCharges.details?.length > 0" [@slideInOut]="cardCharges">
+        <table class="report-table">
+          <tr *ngFor="let item of report.cardCharges.details">
+            <td>
+            <span class="table-icon placeholder">
+              <img [src]="item.owner?.displayUrl" *ngIf="item.owner?.displayUrl">
+            </span>
+              <strong class="table-item-name">{{ item.owner?.name }}</strong>
+            </td>
+            <td>{{ item.total | currencyFormat }}</td>
+            <td>{{ item.credits | currencyFormat}}</td>
+            <td>{{ item.discount | number: '1.2-2'}}%</td>
+            <td><strong class="big">{{ item.charged | currencyFormat }}</strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="collapsable-item" *ngIf="report.kitchenInvoices?.general">
+      <div class="header report-table-header">
+        <table class="report-table">
+          <tr>
+            <th>
+              <h4 (click)="toggle('kitchenInvoices')">
+                {{ 'ADMIN.REPORTS.KITCHEN_INVOICES' | translate }}
+                <div class="toggle">
+                  <i class="fa fa-caret-{{ kitchenInvoices ? 'up' : 'down'}}" aria-hidden="true"></i>
+                </div>
+              </h4>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'SHARED.TOTAL' | translate }}</div>
+              <strong class="big">{{ report.kitchenInvoices.general?.total | currencyFormat }}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'CONTROLS.INTEREST_PERCENT' | translate }}</div>
+              <strong class="big">{{ report.kitchenInvoices.general?.interestPercent | number: '1.2-2'}}%</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.TO_BE_PAID' | translate }}</div>
+              <strong class="big">{{ report.kitchenInvoices.general?.paid | currencyFormat }}</strong>
+            </th>
+          </tr>
+        </table>
+      </div>
+      <div class="body report-table-body" *ngIf="report.kitchenInvoices.details?.length > 0" [@slideInOut]="kitchenInvoices">
+        <table class="report-table">
+          <tr *ngFor="let item of report.kitchenInvoices.details">
+            <td>
+            <span class="table-icon placeholder">
+              <img [src]="item.kitchen.displayUrl" *ngIf="item.kitchen.displayUrl">
+            </span>
+              <strong class="table-item-name">{{ item.kitchen.name }}</strong>
+            </td>
+            <td>{{ item.total | currencyFormat }}</td>
+            <td>{{ item.interestPercent }}%</td>
+            <td><strong class="big">{{ item.paid | currencyFormat }}</strong></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="collapsable-item" *ngIf="report.delivery">
+      <div class="header report-table-header">
+        <table class="report-table">
+          <tr>
+            <th>
+              <h4>
+                {{ 'ADMIN.REPORTS.DELIVERY' | translate }}
+              </h4>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.ONE_DELIVERY_COST' | translate }}</div>
+              <strong class="big">{{ report.delivery?.cost | currencyFormat }}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.QUANTITY' | translate }}</div>
+              <strong class="big">{{ report.delivery?.quantity}}</strong>
+            </th>
+            <th>
+              <div class="text-grey">{{ 'ADMIN.REPORTS.TO_BE_PAID' | translate }}</div>
+              <strong class="big">{{ report.delivery?.paid | currencyFormat }}</strong>
+            </th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+<aside>
+  <report-filters
+    (onDownload)="download($event)"
+    (onSubmit)="submit($event)"
+    (onClickBack)="showStatistics($event)"
+    #filters>
+  </report-filters>
+</aside>

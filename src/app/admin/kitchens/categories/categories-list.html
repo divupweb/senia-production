@@ -1,0 +1,27 @@
+<div class="aside-inner">
+  <header>
+    <div class="aside-title">
+      {{'KITCHENS.SETTINGS.CATEGORIES' | translate }}
+    </div>
+    <div class="aside-search">
+      <input type="text" placeholder="{{ 'SHARED.FILTERS.SEARCH_CATEGORY' | translate }}" [(ngModel)]="search">
+    </div>
+  </header>
+
+  <div class="category-list">
+    <div class="category-list-item" (click)="openCategory(category)" *ngFor="let category of categories | nameFilter:search:searchColumns">
+      <div class="img">
+        <img [src]="category.display_url" alt="">
+      </div>
+      <div class="txt">
+        <strong>{{ category.name }}</strong>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <button class="btn btn-green btn-block btn-big" (click)="openCategory(null)" translate="BUTTONS.ADD_CATEGORY">Add new category</button>
+  </footer>
+</div>
+
+<add-category #addCategory (onCategorySave)="onCategorySave($event)" [showBunch]="true" [buttonTitle]="'BUTTONS.SAVE'"></add-category>

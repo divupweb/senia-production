@@ -1,0 +1,7 @@
+<div *ngIf="show" class="popup-wrap" #popupWrap tabindex="1" (click)="onClick($event)" (keyup.esc)="close($event)" (setFocus)="true">
+  <update-subsidies-popup *ngIf="item.kind == 'subsidy'" [item]="item" (onClose)="close($event)"></update-subsidies-popup>
+  <update-suspends-popup *ngIf="item.kind == 'kitchen_suspend'" [item]="item" (onClose)="close($event)"></update-suspends-popup>
+  <kitchen-added-popup *ngIf="item.kind == 'kitchen_added'" [item]="item" (onClose)="close($event)"></kitchen-added-popup>
+  <kitchen-removed-popup *ngIf="item.kind == 'kitchen_removed'" [item]="item" (onClose)="close($event)"></kitchen-removed-popup>
+  <general-suspends-popup *ngIf="item.kind == 'general_suspend'" [item]="item" (onClose)="close($event)"></general-suspends-popup>
+</div>

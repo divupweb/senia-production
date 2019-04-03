@@ -1,0 +1,95 @@
+@import '~assets/css/conf';
+
+:host{
+  max-height: 80vh;
+  padding-top: 15px;
+  display: flex;
+  flex-flow: column nowrap;
+  position: absolute;
+  top: 70px;
+  right: -3px;
+  width: 420px;
+  background: white;
+  margin: 15px 0;
+  position: absolute;
+  z-index: 2;
+  box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.1);
+  &:before{
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 10px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 9px 10px 9px;
+    border-color: transparent transparent white transparent;
+  }
+}
+.body{
+  padding: 0 30px;
+  overflow-y: auto;
+}
+.settings-item{
+  padding: 20px 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+
+  + .settings-item{
+    border-top: 1px solid #f3f3f3;
+  }
+  .left{
+    flex: 1;
+  }
+  h3{
+    margin: 0;
+    text-transform: uppercase;
+  }
+  .price{
+    font-size: 16px;
+    font-family: $font-bold;
+    color: $main-green;
+  }
+}
+footer{
+  flex-basis: 110px;
+  max-height: 110px;
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  >div+div{margin-left: 30px;opacity: .7}
+  span{
+    text-decoration: underline;
+  }
+  .amount{
+    min-width: 16px;
+    height: 16px;
+    font-size: 12px;
+    line-height: 19px;
+    text-align: center;
+    background: $gray-dark;
+    color: white;
+    border-radius: 50px;
+    display: inline-block;
+  }
+  &:before{
+    content: "";
+    height: 1px;
+    left: 30px;
+    right: 30px;
+    top: 0;
+    display: block;
+    background: #f3f3f3;
+    position: absolute;
+  }
+}
+
+.highlight {
+  padding: 30px;
+  border: 1px solid $red;
+}

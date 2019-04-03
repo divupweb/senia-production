@@ -1,0 +1,15 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" closePopup (onClosePopup)="close($event)">
+    <header class="popup-body-header">
+      <h3>{{ 'SHARED.NOTIFICATIONS.KINDS.' + item.kind.toUpperCase()  | translate }}</h3>
+    </header>
+    <ng-container [ngSwitch]="item.kind">
+      <notification-feedback *ngSwitchCase="'feedback'" [item]="item"></notification-feedback>
+      <notification-rating *ngSwitchCase="'rating'" [item]="item"></notification-rating>
+      <notification-default *ngSwitchDefault [item]="item"></notification-default>
+    </ng-container>
+    <footer>
+      <a (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+    </footer>
+  </div>
+</div>

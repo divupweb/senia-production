@@ -1,0 +1,39 @@
+@import '~assets/css/conf';
+
+h2 {
+  font-size: 36px;
+  line-height: 1;
+  margin: 0;
+  text-transform: none;
+}
+
+.sub-title {
+  color: $gray-text;
+  font-size: 17px;
+  line-height: 1;
+}
+
+section {
+  margin: 30px 0 70px;
+}
+
+header{
+  >
+  .i{
+    display: flex;
+    flex-flow: row nowrap;
+
+    .right{margin-left: auto;}
+  }
+}
+
+@media (max-width: $mobile) {
+  section {
+    margin: 20px 0 30px;
+  }
+}
+@media (max-width: $mobile-sm) {
+  .sub-title {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,49 @@
+<div class="pending-carousel" *ngIf="show" [class.toggled]="expanded">
+  <span class="toggle" (click)="toggle()">
+    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+  </span>
+  <div class="expandable-block" [hidden]="expanded">
+    <div class="expandable-block-title">{{ 'ADMIN.PENDING_SLIDER.TITLE' | translate: { count: pendingElements.length } }}</div>
+    <p class="text-grey">{{ pendingNames }}</p>
+  </div>
+  <div class="carousel-slider-wrap" *ngIf="expanded">
+    <div class="carousel-slider">
+      <swiper [config]="config">
+        <span class="border-left"></span>
+        <span class="border-right"></span>
+        <a class="carousel-slider-arr left button-prev">
+          <div class="circle-arrow circle-arrow-left">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          </div>
+        </a>
+
+        <div class="carousel-slider-i swiper-wrapper">
+          <div *ngFor="let item of pendingElements" class="carousel-slider-item swiper-slide">
+            <div *ngIf="item['type'] == 'company'; else kitchen">
+              <div>
+              <pending-company [company]="item" (onApprove)="onApprove(item)" (onReject)="onReject(item)"></pending-company>
+              </div>
+            </div>
+            <ng-template #kitchen>
+              <div [ngSwitch]="isUpdate(item)">
+                  <div *ngSwitchCase="true">
+                    <kitchen-update [kitchen]="item" (onApprove)="onApprove(item)" (onReject)="onReject(item)" (onError)="onError($event)"></kitchen-update>
+                  </div>
+                  <div *ngSwitchDefault>
+                    <kitchen-new [kitchen]="item" (onApprove)="onApprove(item)" (onReject)="onReject(item)" (onError)="onError($event)"></kitchen-new>
+                  </div>
+                </div>
+            </ng-template>
+          </div>
+        </div>
+
+        <a class="carousel-slider-arr right button-next">
+          <div class="circle-arrow circle-arrow-right">
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </div>
+        </a>
+      </swiper>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" (clickOutside)="close($event)" tabindex="1" (keyup.esc)="close($event)" (setFocus)="true">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div [hidden]="success">
+        <h4 class="mb-3" translate="HOME.CONTACT_FORM.TITLE">Contact us</h4>
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="{{ 'HOME.CONTACT_FORM.NAME' | translate }}" formControlName="name">
+          <div class="alert alert-danger" *ngIf="form.controls.name.touched && form.controls.name.invalid">
+            <div *ngIf="form.controls.name.errors?.required">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.NAME' | translate } }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="email" class="form-control" placeholder="{{ 'HOME.CONTACT_FORM.EMAIL' | translate }}" formControlName="email">
+          <div class="alert alert-danger" *ngIf="form.controls.email.touched && form.controls.email.invalid">
+            <div *ngIf="form.controls.email.errors?.required">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.EMAIL' | translate } }}
+            </div>
+            <div *ngIf="form.controls.email.errors?.invalidEmailAddress"  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" placeholder="{{ 'HOME.CONTACT_FORM.PHONE' | translate }}" formControlName="phone">
+          <div class="alert alert-danger" *ngIf="form.controls.phone.touched && form.controls.phone.invalid">
+            <div *ngIf="form.controls.phone.errors?.required">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.PHONE' | translate } }}
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="3" placeholder="{{ 'HOME.CONTACT_FORM.MESSAGE' | translate }}" formControlName="message"></textarea>
+          <div class="alert alert-danger" *ngIf="form.controls.message.touched && form.controls.message.invalid">
+            <div *ngIf="form.controls.message.errors?.required">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'HOME.CONTACT_FORM.MESSAGE' | translate } }}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center" [hidden]="!success">
+        <h4 class="mb-0" translate="HOME.CONTACT_FORM.SUCCESS">Your message has been sent</h4>
+        <div class="text-grey mb-3" translate="HOME.CONTACT_FORM.SUCCESS_DESC">Our regional administrator will contact you soon</div>
+        <img src="/assets/images/home/img_message_send.png" alt="" class="message-sent-img">
+      </div>
+      <footer>
+        <button [hidden]="success" type="submit" class="btn btn-green btn-block btn-big mt-1" translate="HOME.CONTACT_FORM.SEND">Send Message</button>
+        <div class="mt-1"><a translate="BUTTONS.CLOSE" (click)="close($event)">Close</a></div>
+      </footer>
+    </form>
+  </div>
+</div>

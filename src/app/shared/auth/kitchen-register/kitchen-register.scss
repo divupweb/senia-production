@@ -1,0 +1,22 @@
+@import '~assets/css/conf';
+
+.close-button {
+  padding: 5px;
+}
+
+.admin-img{
+  border-radius: 50%;
+}
+
+.custom-checkbox {
+  .custom-checkbox__inner-wrap {
+    display: flex;
+  }
+
+  &__txt {
+    margin-left: 15px;
+  }
+}
+.popup {
+  max-height: 900px;
+}

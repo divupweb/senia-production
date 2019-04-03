@@ -1,0 +1,52 @@
+<div class="user-header" [ngClass]="{'active': (suspendPopover || newsPopover || profilePopover || settingsPopover.show)}">
+  <div class="al-user-container">
+    <div class="user-header-i">
+      <div class="logo">
+        <img src="assets/images/logo.svg"  height="24" alt="Food Farm">
+      </div>
+
+      <ng-content></ng-content>
+
+      <div class="user-header-controls">
+        <div [ngClass]="{'active': newsPopover.show}">
+          <div class="click-overlay" (click)="newsPopover.toggle()"></div>
+          <i class="fa fa-bell-o" aria-hidden="true"></i>
+          <span class="circle-notification" *ngIf="notifications.unread > 0">{{ notifications.unread }}</span>
+          <news-popover #newsPopover [hidden]="!newsPopover.show" (onPopupOpen)="onPopupOpen($event)"></news-popover>
+          <news-item-popover #newsItemPopover (onClose)="onPopupClose($event)"></news-item-popover>
+        </div>
+        <div (clickOutside)="suspendPopover = false" [ngClass]="{'active': suspendPopover}">
+          <div class="click-overlay" (click)="suspendPopover = true"></div>
+          <i class="fa fa-calendar-o" aria-hidden="true"></i>
+          <suspend-popover [hidden]="!suspendPopover" [show]="suspendPopover"></suspend-popover>
+        </div>
+        <div (clickOutside)="profilePopover = false" [ngClass]="{'active': profilePopover}">
+          <div class="click-overlay" (click)="profilePopover = true"></div>
+          <i class="fa fa-user-o" aria-hidden="true"></i>
+          <profile-popover *ngIf="profilePopover"></profile-popover>
+        </div>
+        <div (clickOutside)="settingsPopover.close()" [ngClass]="{'active': settingsPopover.show}">
+          <div class="click-overlay" (click)="settingsPopover.open()"></div>
+          <i class="fa fa-cog" aria-hidden="true"></i>
+          <settings-popover #settingsPopover [hidden]="!settingsPopover.show" (onSave)="settingsPopover.close()"></settings-popover>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="user-header-banner" *ngIf="defaultsBanner">
+  <div class="al-user-container user-header-banner-i banner-1">
+    <h2 [innerHTML]="'USER.DEFAULT_BANNER.TITLE' | translate"></h2>
+    <p [innerHTML]="'USER.DEFAULT_BANNER.DESC' | translate "></p>
+    <span class="banner-close" (click)="toggleBanner()">✕</span>
+  </div>
+</div>
+<div class="user-header-banner" *ngIf="suspendBanner">
+  <div class="al-user-container user-header-banner-i banner-2">
+    <h2 [innerHTML]="'USER.HOLIDAY_BANNER.TITLE' | translate"></h2>
+    <p [innerHTML]="'USER.HOLIDAY_BANNER.DESC' | translate "></p>
+    <span class="banner-close" (click)="toggleBanner()">✕</span>
+  </div>
+</div>

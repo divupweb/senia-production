@@ -1,0 +1,69 @@
+@import '~assets/css/conf';
+// Set input popup
+.set-menu-popup {
+  height: 560px;
+  max-height: none;
+  .popup-body-header{
+    height: 75px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .popup-body{
+    height: 370px;
+    max-height: none;
+    overflow: hidden;
+  }
+  .days-list{
+    flex-basis: 222px;
+    max-width: 222px;
+    text-align: right;
+    .day{
+      width: 36px;
+      height: 36px;
+      font-size: 10px;
+      line-height: 36px;
+      font-family: $font-bold;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      color: #f3f3f3;
+
+      >span.active{color: $main-green}
+    }
+  }
+  .search-input {
+    width: 100%;
+    height: 50px;
+    padding: 0 30px;
+    line-height: 50px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .category-switcher {
+    width: 206px;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.set-menu-top {
+  padding: 20px 0;
+}
+
+.set-menu-list {
+  height: 280px;
+  margin: 0 -30px;
+  overflow-y: auto;
+}

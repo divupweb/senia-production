@@ -1,0 +1,115 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector">
+      <li *ngFor='let subscription of subscriptions' >
+        <a (click)="selectSubscription(subscription)" [ngClass]="{'router-link-active': selectedSubscription == subscription}">{{ ('SUBSCRIPTIONS.' + subscription|uppercase) | translate }}</a>
+      </li>
+    </ul>
+  </div>
+</user-menu>
+
+<div class="orders-report">
+  <div class="orders-report-top" [class.scrolled]="scrolled">
+    <div class="weekly-range-wrap">
+      <weekly-range (onSelectWeek)="selectWeek($event)"></weekly-range>
+    </div>
+    <div class="orders-report-row">
+      <div class="total">
+        <div class="total-i">
+          <strong>{{ weeklyTotal.companies }} {{ weeklyTotal.companies | i18nPlural: {'=1': 'SHARED.COMPANIES.SINGULAR'|translate,
+          'other': 'SHARED.COMPANIES.PLURAL'|translate} }}</strong>
+          <span class="text-grey"><i class="b64-icon-cup"></i>&nbsp;&nbsp;{{ weeklyTotal.dishes }} {{ weeklyTotal.dishes | i18nPlural: {'=1': 'USER.DISH_SINGULAR'|translate, 'other':
+          'USER.DISH_PLURAL'|translate} }}</span>
+        </div>
+      </div>
+      <div class="orders-report-col" *ngFor="let date of dates; let $index = index"
+           [ngClass]="{'green': (date|isPassed) || total[$index]?.delivered }">
+        <div class="orders-report-day">
+          <div class="row-1">
+            <div><strong>{{ date | wkDay}}</strong></div>
+            <div><span class="text-grey">{{ date | dayMonth }}</span></div>
+          </div>
+          <div class="row-2">
+            <div class="total"> {{ total[$index]?.count }}</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="orders-report-table">
+    <table class="table table-main table-lines">
+      <thead>
+      </thead>
+      <tbody>
+      <tr *ngFor="let companyData of data">
+        <td>
+        <span class="table-icon placeholder" *ngIf="companyData.company.display_url">
+          <img [src]="companyData.company.display_url">
+        </span>
+          <strong class="table-item-name">{{ companyData.company.name }}</strong>
+        </td>
+        <td *ngFor="let byDate of companyData.dates">
+          <div class="dish-block" *ngIf="byDate.total > 0">
+
+            <div class="img" *ngFor="let byKitchen of byDate.kitchens">
+              <img [src]="byKitchen.kitchen.display_url" [alt]="byKitchen.kitchen.name">
+              <div class="amount-circle {{ byKitchen?.shipment?.status =='delivered' ? 'green' : 'grey' }}">{{
+                byKitchen.total }}
+              </div>
+
+              <div class="info-popover">
+                <div class="info-popover-i">
+                  <div class="main-info">
+                    <div class="main-info-header">
+                      <h4>{{ byKitchen.kitchen.name }}</h4>
+                      <img [src]="byKitchen.kitchen.display_url">
+                    </div>
+                    <div class="info-row" *ngFor="let order_dish of byKitchen.order_dishes">
+                      <div class="name" *ngIf="order_dish.dish">{{ order_dish.dish.name }}</div>
+                      <div class="value">{{ order_dish.quantity}}</div>
+                    </div>
+                    <div class="info-row total">
+                      <div class="name">{{ 'SHARED.TOTAL' | translate }}</div>
+                      <div class="value">{{ byKitchen.total }}</div>
+                    </div>
+                  </div>
+                  <div class="secondary-info">
+                    <div *ngIf="byKitchen.shipment">
+                      <div class="info-row">
+                        <div class="name">{{'CONTROLS.STATUS' | translate }}</div>
+                        <div class="value">{{ ('SHARED.SHIPMENTS.STATUS.' + byKitchen.shipment.status|uppercase) |
+                          translate}}
+                        </div>
+                      </div>
+                      <div class="info-row" *ngIf="byKitchen.shipment.pickup_at">
+                        <div class="name">{{ 'ADMIN.REPORTS.PICKED_UP' | translate }}</div>
+                        <div class="value">{{byKitchen.shipment.pickup_at | shortTime }}</div>
+                      </div>
+                      <div class="info-row" *ngIf="byKitchen.shipment.delivered_at">
+                        <div class="name">{{ 'ADMIN.REPORTS.DELIVERED' | translate }}</div>
+                        <div class="value">{{byKitchen.shipment.delivered_at | shortTime}}</div>
+                      </div>
+                      <div *ngIf="byKitchen.shipment.signature_display_url">
+                        <div>{{ 'ADMIN.REPORTS.SIGNATURE' | translate }}:</div>
+                        <div>{{byKitchen.shipment.delivered_at | shortTime }}: <img src="{{byKitchen.shipment.signature_display_url}}"/>
+                        </div>
+                      </div>
+                    </div>
+                    <div *ngIf="byKitchen.shipment" class="delivery-kitchen-company"
+                         [popover]="deliveryPopover"
+                         [popoverOnHover]="true">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

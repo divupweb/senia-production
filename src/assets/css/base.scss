@@ -1,0 +1,60 @@
+@import "variables";
+body{
+  font-size: 14px;
+  line-height: 1.2;
+  color: $gray-dark;
+  font-family: $font-normal;
+}
+h2,h3{font-family: $font-bold;}
+h3{font-size: 16px;margin-bottom: 20px;text-transform: uppercase;}
+h2{font-size: 36px;margin-top: 30px;text-transform: none;}
+strong{font-family: $font-bold;}
+img{max-width: 100%}
+a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: $main-green;
+  > .fa{
+    color: $gray-dark;
+  }
+
+  &:hover{
+    text-decoration: none;
+    cursor: pointer;
+    color: $main-green;
+  }
+}
+a:not([href]):not([tabindex]){text-decoration: underline;}
+
+
+// CUSTOM SCROLLBAR
+::-webkit-scrollbar{
+    width: 6px;
+}
+::-webkit-scrollbar-button{
+    border-radius: 3px;
+    background: transparent;
+}
+::-webkit-scrollbar-track{
+    background: transparent;
+    // border: 5px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-track-piece:start {
+    background: transparent url('/assets/images/trnsprnt.png') repeat-y !important;
+}
+
+::-webkit-scrollbar-track-piece:end {
+    background: transparent url('/assets/images/trnsprnt.png') repeat-y !important;
+}
+::-webkit-scrollbar-thumb{
+    background: #777;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-corner{
+    border-radius: 3px;
+    background: transparent;
+}
+::-webkit-resizer{
+    display: none;
+}

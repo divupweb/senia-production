@@ -1,0 +1,57 @@
+@import '~assets/css/conf';
+
+.week-select{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 5px 0;
+
+  .week-day {
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    .week-day-icon{
+      width: 29px;
+      height: 29px;
+      position: absolute;
+      left: -15px;
+      top: -5px;
+      background-image: url($icons);
+      background-repeat: no-repeat;
+      background-position: 0 -471px;
+    }
+    .week-day-i{
+      padding-left: 25px;
+      position: relative;
+      white-space: nowrap;
+    }
+    &.selected {
+      cursor: default;
+      font-family: $font-bold;
+    }
+    &.custom{
+      .week-day-icon{
+        background-position: 0 -437px;
+      }
+    }
+    &.periodic{
+      .week-day-icon{
+        background-position: 0 -403px;
+      }
+    }
+    &.disabled{
+      cursor: not-allowed;
+    }
+  }
+  .ctrl{
+    padding: 0 15px;
+    display: block;
+    cursor: pointer;
+    font-size: 14px;
+    .fa{
+      cursor: pointer;
+      &:before{
+        cursor: pointer;
+      }
+    }
+  }
+}

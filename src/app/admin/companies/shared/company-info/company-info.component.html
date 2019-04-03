@@ -1,0 +1,12 @@
+<div class="item" *ngIf="company.hidden != true">
+  <div class="img">
+    <span class="overlay"  (click)="removeCompany()" *ngIf="remove">
+      <i class="fa fa-times"></i>
+    </span>
+    <img [src]="company.displayUrl" *ngIf="company.displayUrl">
+  </div>
+  <div class="txt">
+    <div><strong>{{ company.name }}</strong></div>
+    <div>{{ company.ownLocation }}</div>
+  </div>
+</div>

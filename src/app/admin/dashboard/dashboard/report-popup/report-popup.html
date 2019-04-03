@@ -1,0 +1,28 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" (clickOutside)="close($event)" (keyup.esc)="close($event)" (setFocus)="true">
+    <div class="popup-body">
+      <div *ngIf="info?.kitchens?.length > 0">
+        <div class="defaults-item" *ngFor="let item of info.kitchens">
+          <img [src]="item?.logo">
+          <div class="txt">
+            <div><strong>{{ item.name }}</strong></div>
+          </div>
+          <div class="row-2">
+            <div class="row-2-inner">
+              <span class="b64-icon-truck"></span>
+              <div class="text-green" *ngFor="let day of item.days"><span *ngIf="day">{{ day.shipments }}</span></div>
+            </div>
+            <div class="row-2-inner">
+              <span class="b64-icon-cup"></span>
+              <div class="text-green" *ngFor="let day of item.days"><span *ngIf="day">{{ day.items }}</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a translate="BUTTONS.CLOSE" (click)="close()">Close</a>
+    </footer>
+  </div>
+</div>

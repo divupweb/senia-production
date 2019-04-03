@@ -1,0 +1,5 @@
+<ul [ngClass]="customClass">
+  <li class="lang-item" *ngFor="let lang of translate.getLangs()" [ngClass]="{ 'active': translate.currentLang == lang }">
+    <a class="lang" (click)="change(lang)">{{ ('SHARED.LANGS.' + lang|uppercase) | translate }}</a>&nbsp;
+  </li>
+</ul>

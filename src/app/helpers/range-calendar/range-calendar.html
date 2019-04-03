@@ -1,0 +1,39 @@
+<div class="range-calendar">
+  <header>
+    <div class="header-i">
+      <div>
+        <a class="circle-arrow circle-arrow-left" (click)="changeMonth(-1)">
+          <i class="fa fa-chevron-left"></i>
+        </a>
+      </div>
+      <div>
+        <strong class="month-title">{{monthTitle}}</strong>
+      </div>
+      <div>
+        <a class="circle-arrow circle-arrow-right" (click)="changeMonth(1)">
+          <i class="fa fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+  <table class="table">
+    <tr>
+      <th *ngFor="let item of weekDays">{{ item }}</th>
+    </tr>
+    <tr *ngFor="let weekDays of days">
+      <td *ngFor="let day of weekDays"
+          (click)="clickDay(day)"
+          class="calendar-day"
+          [ngClass]="{active: day.today,
+                      weekend: day.weekend,
+                      disabled: day.disabled,
+                      empty: day.empty,
+                      selected: day.selected,
+                      between: day.betweenSelected,
+                      another: day.another}">
+        <span class="date">{{day.number}}</span>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      </td>
+    </tr>
+  </table>
+</div>

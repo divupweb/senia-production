@@ -1,0 +1,28 @@
+@import '~assets/css/conf';
+.seprtr{
+  margin: 22px 22px 0;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  font-family: $font-bold;
+  color: $gray-dark;
+  position: relative;
+  >div {
+    background: #f9f5f0;
+    padding: 0 10px;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+  }
+  &:after{
+    content: "";
+    width: 100%;
+    height: 2px;
+    background: $gray-dark;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+  }
+}

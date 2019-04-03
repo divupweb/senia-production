@@ -1,0 +1,66 @@
+@import '~assets/css/conf';
+
+
+:host{
+
+}
+.body{
+  display: flex;
+  flex-flow: row wrap;
+  &-left{flex: 2 1 auto;}
+  &-right{flex: 1 1 auto;display: flex;}
+}
+
+h2{
+  font-size: 56px;
+  margin-bottom: 60px;
+}
+.datetime{
+  font-size: 12px;
+  font-family: $font-bold;
+  .time{color: $main-green}
+  &>*{
+    display: block;
+  }
+}
+.field{
+  margin-bottom: 15px;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 16px;
+  strong{
+    flex: 0 0 180px;
+  }
+  .value{
+    color: $gray-text;
+  }
+}
+.bottom{
+  padding-top: 30px;
+  flex: 0 0 100%;
+  margin-top: auto;
+  text-align: right;
+}
+select.transfer{
+  width: 140px;
+  display: inline-block;
+}
+
+@media (max-width: $mobile) {
+  h2{
+    white-space: normal;
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  .field{
+    margin-bottom: 10px;
+    font-size: 14px;
+    flex-wrap: wrap;
+    strong{
+      flex: 0 0 100%;
+    }
+  }
+  .bottom{
+    padding-top: 10px;
+  }
+}

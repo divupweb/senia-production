@@ -1,0 +1,90 @@
+@import '~assets/css/conf';
+@import './shared/common';
+
+.company-kitchens{
+  letter-spacing: 0;
+  section{
+    margin: 30px 0 70px;
+  }
+  >.i{
+    background: #f9f5f0;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+
+    main{
+      padding-top: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 110px;
+      flex-grow: 1;
+      overflow-y: auto;
+      position: relative;
+      height: 100%;
+
+      .main-inner{
+        height: 100%;
+        margin: 0 -20px;
+        padding: 0 20px;
+        overflow-y: auto;
+      }
+    }
+    aside{
+      max-width: 330px;
+      height: 100%;
+      padding-top: 186px;
+      padding-bottom: 110px;
+      flex-basis: 330px;
+      flex-shrink: 0;
+      border-left: 1px solid #edeae5;
+      position: relative;
+    }
+  }
+}
+
+@media (max-width: $laptop){
+  .company-kitchens > .i aside{
+    max-width: 230px;
+    flex-basis: 230px;
+  }
+}
+
+@media (max-width: $mobile){
+  .company-kitchens > .i {
+    position: relative;
+    height: auto;
+    main{
+      padding-bottom: 60px;
+    }
+    aside {
+      height: 60px;
+      width: 100px;
+      padding: 0;
+      max-width: none;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 9;
+      border-left: 0;
+      .aside-mobile-header .txt{
+        font-size: 18px;
+      }
+      employees{
+        display: none;
+      }
+
+      &.is-open {
+        width: 300px;
+        display: block;
+        height: auto;
+        padding-top: 150px;
+        padding-bottom: 110px;
+        employees{
+          display: block;
+        }
+      }
+    }
+  }
+}

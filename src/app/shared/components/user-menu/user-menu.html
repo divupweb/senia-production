@@ -1,0 +1,31 @@
+<div class="al-top">
+
+  <!--<nav class="mobile-navbar">-->
+  <!--<a class="logo">-->
+  <!--<img src="assets/images/logo-white.svg" width="170" alt="Food Farm">-->
+  <!--</a>-->
+  <!--<div class="mobile-navbar-toggle" [class.is-open]="userMenu.isMenuOpen" (click)="onMenuToggle()"><span></span></div>-->
+  <!--</nav>-->
+
+
+  <div class="hamburger-icon" [class.is-open]="userMenu.isMenuOpen"
+       (click)="userMenu.isMenuOpen = !userMenu.isMenuOpen">
+    <span>
+      <i></i>
+      <i></i>
+      <i></i>
+    </span>
+  </div>
+  <nav class="navbar navbar-fixed-top">
+    <div id="navbar">
+      <ng-content></ng-content>
+
+      <nav class="info" *ngIf="user">
+        <span>{{ 'SHARED.COMPONENTS.LOGGED_IN' | translate: { title: userTitle } }}</span>
+
+        <a *ngIf="state.companyAdmin()" (click)="navigateMarketplace()" translate="BUTTONS.MARKETPLACE">Marketplace</a>
+        <a (click)="auth.submitLogout()" translate="BUTTONS.LOG_OUT">Log out</a>
+      </nav>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,15 @@
+<div class="body-wrap" (clickOutside)="close($event)" (keyup.esc)="close($event)" tabindex="0">
+  <div class="body" infinite-scroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="300" (scrolled)="onScroll($event)" [scrollWindow]="false">
+    <news-item *ngFor="let item of notifications.messages" [item]="item"> </news-item>
+  </div>
+  <footer>
+    <div>
+      <span (click)="notifications.readAllMessage()" [class.disabled]="notifications.unread == 0" translate="USER.NOTIFICATIONS.MARK_AS_READ">Mark new as read</span>
+      <div class="amount">{{ notifications.unread }}</div>
+    </div>
+    <div>
+      <span (click)="notifications.toggleView()" [class.disabled]="notifications.count == notifications.unread" >{{(notifications.hidden ? "USER.NOTIFICATIONS.VIEW_PREVIOUS" : "USER.NOTIFICATIONS.HIDE_PREVIOUS") | translate }}</span>
+      <div class="amount">{{ notifications.showHideCount }}</div>
+    </div>
+  </footer>
+</div>

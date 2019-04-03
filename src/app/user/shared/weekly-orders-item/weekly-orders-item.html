@@ -1,0 +1,49 @@
+<div class="i" [ngClass]="{ 'no-dishes': !totalDishes, 'locked': dayLocked || !dayActive }">
+  <div class="menu-item-info">
+    <i class="fa fa-lock" aria-hidden="true" *ngIf="!userLock"></i>
+    <div *ngIf="dayActive && !dayLocked">
+      <div *ngFor="let s of subscriptions;">
+        <h3>{{ ('SUBSCRIPTIONS.' + s|uppercase) | translate }}</h3>
+        <div class="dish" *ngFor="let item of dayOrders[s]">
+          <img [src]="item.displayUrl">
+          <div class="txt">
+            <div><strong>{{ item.name }}</strong></div>
+            <div class="text-grey">{{ item.kitchenName }}</div>
+            <div class="text-green">{{ item.price | currencyFormat  }}</div>
+            <div *ngIf="item.rating">
+              <div class="text-green" *ngIf="!item?.rating.id"><a (click)="rating.apply(item).show()" translate="USER.MENU.RATE">Rate</a></div>
+              <rating [readonly]="true" *ngIf="item.rating.score" [ngModel]="item.rating.score"></rating>
+              <div class="text-green" *ngIf="item?.rating.comment">
+                <a (click)="rating.apply(item).show()"><i class="fa fa-comment-o text-green" aria-hidden="true"></i>{{'USER.MENU.VIEW_COMMENT' | translate }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3"></div>
+      </div>
+      <h3 *ngIf="!totalDishes" translate="USER.NO_DISHES">No dishes</h3>
+      <div *ngIf="!dayLocked">
+        <button class="btn btn-green btn-big" (click)="form.show()" translate="BUTTONS.EDIT">Edit</button>
+      </div>
+    </div>
+    <h3 *ngIf="dayLocked || !dayActive" translate="USER.MENU.DAY_LOCKED">Locked</h3>
+    <div *ngIf="userLock">
+      <button class="btn btn-big btn-dark" (click)="unlock()" [disabled]="dayData.date|isPassed" translate="USER.BUTTONS.UNLOCK">Unlock</button>
+    </div>
+  </div>
+  <div class="menu-item-day">
+    <strong>{{ dayData.date | wkDay }}</strong>
+    <div class="sub">{{ dayData.date | dayMonth }}</div>
+    <div class="sub" *ngIf="totalDishes > 0">{{ totalDishes }} {{ totalDishes | i18nPlural: { '=1': 'USER.DISH_SINGULAR' | translate, 'other': 'USER.DISH_PLURAL' | translate } }}</div>
+  </div>
+</div>
+
+<weekly-edit-popup #form
+                     (onConfirmChanges)="confirmOrders($event)"
+                      [subscriptions]="dayData.active_subscriptions"
+                      [date]="dayData.date">
+
+</weekly-edit-popup>
+<rating-popup #rating
+              [menuItem]="menuItem"
+              [date]="dayData.date"></rating-popup>

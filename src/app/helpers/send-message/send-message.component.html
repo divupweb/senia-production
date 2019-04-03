@@ -1,0 +1,139 @@
+<div class="popup-wrap" *ngIf="show">
+  <div class="popup send-message-popup" closePopup (onClosePopup)="close($event)">
+
+    <div class="send-message-body">
+      <main>
+        <div class="main-i">
+          <div *ngIf="!!message; then messageView; else inputView"></div>
+
+          <ng-template #inputView>
+            <div class="main-top">
+              <div>
+                <div class="messages-option mt-3">
+                  <div class="custom-checkbox">
+                    <label>
+                      <span class="d-inline-block">
+                        <input type="checkbox"
+                               [checked]="owner"
+                               (change)="changeOwner($event)">
+                        <i class="fa fa-check-circle"></i>
+                      </span>
+                      <div class="txt" *ngIf="option == 0">
+                        <strong class="uppercase" translate="ADMIN.SEND_MESSAGE.COMPANY_ADMIN">Company</strong>
+                        <div class="text-grey" translate="ADMIN.SEND_MESSAGE.COMPANY_ADMIN_DESCRIPTION">Send message for
+                          company administrator
+                        </div>
+                      </div>
+                      <div class="txt" *ngIf="option == 1">
+                        <strong class="uppercase" translate="ADMIN.SEND_MESSAGE.KITCHEN_ADMIN">Kitchen</strong>
+                        <div class="text-grey" translate="ADMIN.SEND_MESSAGE.KITCHEN_ADMIN_DESCRIPTION">Send message for
+                          kitchen administrator
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div class="messages-option mt-3">
+                  <div class="custom-checkbox">
+                    <label>
+                      <input type="checkbox"
+                             [checked]="showEmployees"
+                             (change)="changeShowEmployees($event)">
+                      <i class="fa fa-check-circle"></i>
+                      <div class="txt">
+                        <strong class="uppercase" translate="ADMIN.SEND_MESSAGE.EMPLOYEES">Employees</strong>
+                        <div *ngIf="option == 0" class="text-grey"
+                             translate="ADMIN.SEND_MESSAGE.COMPANY_EMPLOYEES_DESCRIPTION">Send message for company
+                          employees
+                        </div>
+                        <div *ngIf="option == 1" class="text-grey"
+                             translate="ADMIN.SEND_MESSAGE.KITCHEN_EMPLOYEES_DESCRIPTION">Send message for kitchen
+                          employees
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="messages-option employees mt-1" *ngIf="showEmployees">
+                <div class="all-employees">
+                  <div class="custom-checkbox">
+                    <label>
+                      <input type="checkbox"
+                             [checked]="allEmployees"
+                             (change)="setAllEmployees($event)">
+                      <i class="fa fa-check-circle"></i>
+                      <div class="txt" translate="ADMIN.SEND_MESSAGE.ALL_EMPLOYEES">All employees</div>
+                    </label>
+                  </div>
+                </div>
+                <div *ngFor="let employee of employees">
+                  <div>
+                    <div class="custom-checkbox">
+                      <label>
+                        <input type="checkbox"
+                               [checked]="employee.checked"
+                               (change)="changeEmployee(employee, $event)">
+                        <i class="fa fa-check-circle"></i>
+                        <div class="txt">{{ employee.name }}</div>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-bottom">
+              <form [formGroup]="form">
+              <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="{{ 'ADMIN.SEND_MESSAGE.PLACEHOLDER' | translate }}"
+                          formControlName="message"></textarea>
+                <div class="alert alert-danger" *ngIf="form.get('message').touched && form.get('message').invalid">
+                  <div *ngIf="form.get('message').hasError('required')">
+                    {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'HOME.CONTACT_FORM.MESSAGE' | translate }
+                    }}
+                  </div>
+                </div>
+              </div>
+            </form>
+            </div>
+
+          </ng-template>
+
+
+          <ng-template #messageView>
+            <div class="message-area">
+              <div class="message-title">{{ message.to }}</div>
+              <div class="text-grey">{{ message.recipients }}</div>
+              <div class="message-txt">{{ message.text }}</div>
+            </div>
+          </ng-template>
+        </div>
+      </main>
+
+      <aside *ngIf="messages.length > 0">
+        <div class="messages-list">
+
+          <div class="messages" infinite-scroll (scrolled)="onMessagesScroll()" [scrollWindow]="false">
+            <div (click)="sendNewMessage()" class="message new-message" [class.active]="!message">
+              <strong translate="ADMIN.SEND_MESSAGE.SEND_NEW">Send new message</strong>
+            </div>
+            <div *ngFor="let item of messages" [class.active]="!!message && message.id == item.id" (click)="onMessageClick(item)" class="message">
+              <div class="date">{{ item.created_at | dayMonth }}</div>
+              <div>
+                <span class="text-grey" translate="ADMIN.SEND_MESSAGE.TO">To</span>: <strong>{{ item.to }}</strong>
+              </div>
+              <div class="text-grey">{{ item.text }}</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <footer>
+      <button [hidden]="success || !!message" type="button" (click)="submit()" class="btn btn-green btn-big" translate="ADMIN.SEND_MESSAGE.SEND">Send Message</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a translate="BUTTONS.CLOSE" (click)="close($event)">Close</a>
+    </footer>
+  </div>
+</div>

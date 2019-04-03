@@ -1,0 +1,61 @@
+<div class="popup-wrap" *ngIf="show">
+  <div class="popup" (clickOutside)="close($event)" (keyup.esc)="close($event)" (setFocus)="true">
+    <div *ngIf="!registered">
+      <div class="popup__header">
+        <h4 class="text-center mb-2" translate="CONTROLS.BECOME_FF_DRIVER"></h4>
+      </div>
+      <div class="popup__body">
+       <form [formGroup]="driverForm" autocomplete="off" (ngSubmit)="onSubmit()">
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.FIRST_NAME' | translate }}" formControlName="firstName"
+                  id="first-name" type="text">
+           <div class="alert alert-danger" *ngIf="driverForm.controls.firstName.touched && driverForm.controls.firstName.invalid">
+             <div *ngIf="driverForm.controls.firstName.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.FIRST_NAME">
+               Please, enter first name
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.LAST_NAME_OPTIONAL' | translate }}" formControlName="lastName"
+                  id="last-name" type="text">
+           <div class="alert alert-danger" *ngIf="driverForm.controls.lastName.touched && driverForm.controls.lastName.invalid">
+             <div *ngIf="driverForm.controls.lastName.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.LAST_NAME">
+               Please, enter last name
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.PHONE' | translate }}" formControlName="phone"
+                  id="phone" type="text">
+           <div class="alert alert-danger" *ngIf="driverForm.controls.phone.touched && driverForm.controls.phone.invalid">
+             <div *ngIf="driverForm.controls.phone.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.PHONE">
+               Please, enter phone
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.WORK_EMAIL' | translate }}" formControlName="email"
+                  id="invoice-email" type="email">
+           <div class="alert alert-danger"
+                *ngIf="driverForm.controls.email.touched && driverForm.controls.email.invalid">
+             <div *ngIf="driverForm.controls.email.errors?.invalidEmailAddress"
+                  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect
+             </div>
+           </div>
+           <div class="alert alert-danger" *ngIf="driverForm.errors?.email?.length > 0">
+             <div *ngFor="let error of driverForm.errors?.email">{{ 'CONTROLS.EMAIL' | translate }} {{ error }}</div>
+           </div>
+         </div>
+         <div class="popup__pre-footer">
+           <button class="btn btn-big btn-green btn-block" type="submit"
+                   translate="BUTTONS.SUBMIT"></button>
+           <div class="mt-1">
+             <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+           </div>
+         </div>
+       </form>
+     </div>
+
+    </div>
+  </div>
+</div>

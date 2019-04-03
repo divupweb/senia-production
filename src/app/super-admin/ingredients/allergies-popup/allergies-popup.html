@@ -1,0 +1,15 @@
+<div class="allergy-popup-wrap" *ngIf="show">
+  <div class="allergy-popup" (clickOutside)="cancelPopup($event)">
+    <h2 class="text-center" translate="SUPER_ADMIN.ALLERGY.SELECT">Select allergy</h2>
+    <div class="allergy-list">
+      <div *ngFor="let allergy of allergies" class="allergy-list-item" (click)="toggleAllergy(allergy)" [ngClass]="{'active': activeAllergy(allergy)}">
+        <div class="allergy-icon" [ngStyle]="{'background-image': 'url(' + allergy.display_url + ')'}"></div>
+        <div class="allergy-name"></div>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <button class="btn btn-gray" (click)="cancelPopup()" translate="BUTTONS.CANCEL">Cancel</button>
+      <button class="btn btn-green" (click)="save()" translate="BUTTONS.SAVE">Save</button>
+    </div>
+  </div>
+</div>

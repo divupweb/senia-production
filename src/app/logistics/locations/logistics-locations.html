@@ -1,0 +1,284 @@
+<div class="locations" style="position: fixed;top: 0;bottom: 0;left: 0;right: 0;z-index: 9999;background: white;">
+  <div class="logistics-container">
+
+    <main class="logistics-main">
+      <a [routerLink]="['../../..']" class="locations-close">
+        <span>✕</span>
+        {{ 'BUTTONS.CLOSE' | translate }}
+      </a>
+      <div id="gmap" style="width:100%;height:100%;"></div>
+    </main>
+
+    <aside class="logistics-aside drivers">
+      <div class="logistics-location-aside">
+        <header class="drivers-aside-header"
+                (click)="switchTab()"
+                [ngClass]="{'selected': !currentTab}">
+            <i class="b64-icon-driver-header"></i>
+            <h4>{{'LOGISTICS.ALL_ASSIGNED' | translate }}</h4>
+            <!-- <div class="amount-wrap"><div *ngIf="shipments" class="amount-circle red">{{shipments.length}}</div></div> -->
+          <i class="arr"></i>
+        </header>
+        <div class="content">
+          <div class="drivers-list">
+            <div *ngFor="let driver of drivers"
+                 [dragula]='"shipments"'
+                 [dragulaModel]='driver.shipments'
+                 (click)="selectDriver(driver)"
+                 [ngClass]="{'selected': selectedDriver == driver}"
+                 [attr.data-id]="driver.id"
+                 class="drivers-list-item">
+              <div class="item-i">
+                <div class="img">
+                  <img [src]="driver.display_url" alt="" *ngIf="driver.display_url">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <div class="name-wrap">
+                  <div class="name">{{driver.name}}</div>
+                  <!-- <div class="extra">Trip time: 2h 35m</div> -->
+                </div>
+                <div class="amount-wrap">
+                  <div *ngIf="driver.shipment_ids.length" class="amount-circle direct">{{driver.shipment_ids.length}}</div>
+                  <div *ngIf="driver.to_hub_shipment_ids.length" class="amount-circle to-hub">{{driver.to_hub_shipment_ids.length}}</div>
+                  <div *ngIf="driver.from_hub_shipment_ids.length" class="amount-circle from-hub">{{driver.from_hub_shipment_ids.length}}</div>
+                  <div *ngIf="driver && driver.errorsCount > 0" class="amount-circle">{{driver.errorsCount}}</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- <footer>
+          <i class="b64-icon-car"></i>
+          <h4>SUMMARY</h4>
+          <div class="amount-wrap">
+            <div class="amount-circle direct">1</div>
+            <div class="amount-circle to-hub">2</div>
+            <div class="amount-circle from-hub">3</div>
+          </div>
+        </footer> -->
+      </div>
+    </aside>
+
+    <aside class="logistics-aside locations">
+      <div class="logistics-location-aside">
+        <header>
+          <div class="tabs">
+            <div *ngFor="let tab of tabs"
+                 (click)="switchTab(tab)"
+                 [ngClass]="{'selected': currentTab == tab}" class="tab">
+              <div class="tab-icon"
+                   [ngClass]="{'b64-icon-direct': tab == 'direct',
+                               'b64-icon-from_hub': tab == 'from_hub',
+                               'b64-icon-to_hub': tab == 'to_hub'}"></div>
+              <div class="txt">{{('LOGISTICS.' + tab | uppercase) | translate}}</div>
+            </div>
+          </div>
+        </header>
+        <div class="content">
+          <div *ngIf="canManage" class="kitchens-list">
+            <div class="hub-select" *ngIf="showHubSelect()">
+              <div class="hub-select-top" [ngClass]="{'opened': hubSelectOpen}" (click)="hubSelectOpen = !hubSelectOpen">
+                <div class="txt">
+                  <label>{{'LOGISTICS.HUB_NAME' | translate}}</label>
+                  <div class="value">{{currentHub.name}}</div>
+                  <i class="fa fa-caret-down"></i>
+                </div>
+                <!-- <span class="amount-circle red">0</span> -->
+              </div>
+              <div class="hub-select-dropdown" *ngIf="hubSelectOpen">
+                <div class="item" *ngFor="let hub of hubs" (click)="selectHub(hub.id)">{{hub.name}}</div>
+              </div>
+            </div>
+
+            <div *ngFor="let kitchenShipments of selectedShipments"
+                  [ngClass]="{'opened': kitchenShipments.expanded}"
+                  class="kitchens-list-dropdown"
+                  [dragula]='"shipments"'
+                  [dragulaModel]='[kitchenShipments.shipments]'>
+              <div *ngIf="showKitchens()" class="dropdown-title" >
+                <div class="kitchens-list-item-title">
+                  <span class="expand-overlay" (click)="kitchenShipments.expanded = !kitchenShipments.expanded"></span>
+                  <div [ngClass]="{'visible': selectedDriver,
+                                   'opened': popover == 'kitchen_' + kitchenShipments.kitchen.id}"
+                       class="table-extra" >
+                    <div class="table-extra-dots"
+                         (click)="togglePopover('kitchen', kitchenShipments.kitchen.id)"
+                         [ngClass]="{'opened': popover == 'kitchen_' + kitchenShipments.kitchen.id}">
+                         <i></i><i></i><i></i>
+                    </div>
+                    <div class="table-extra-popover"
+                         *ngIf="popover == 'kitchen_' + kitchenShipments.kitchen.id"
+                         closePopup
+                         (onClosePopup)="closePopover($event)">
+                      <a class="item" (click)="clearAssignments(kitchenShipments.kitchen.id, kitchenShipments.direction)">Remove</a>
+                    </div>
+                  </div>
+                  <span *ngIf="showLineArrow()">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                  </span>
+                  <span *ngIf="kitchenShipments.direction == 'to'">{{'LOGISTICS.TO_HUB' | translate }}: </span>
+                  <span *ngIf="kitchenShipments.direction == 'from'">{{'LOGISTICS.FROM_HUB' | translate }}: </span>
+                  {{kitchenShipments.kitchen.name}}
+                  <span>{{kitchenShipments.kitchen.pickup_time}}</span>
+                  <div class="kitchen-list-right">
+                    <div class="amount-circle red">{{kitchenShipments.shipments.length}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kitchens dispayed at driver's to hub section -->
+              <div class="dropdown-content"
+                   *ngIf="kitchenShipments.kitchens"
+                   [dragula]='"shipments"'
+                   [dragulaModel]='kitchenShipments.shipments'>
+                <div *ngFor="let kitchen of kitchenShipments.kitchens" class="dropdown-title" >
+                  <div class="kitchens-list-item-title">
+                    <div [ngClass]="{'visible': selectedDriver,
+                                     'opened': popover == 'kitchen_' + kitchen.id}"
+                         class="table-extra" >
+                      <div class="table-extra-dots"
+                           (click)="togglePopover('kitchen', kitchen.id)"
+                           [ngClass]="{'opened': popover == 'kitchen_' + kitchen.id}">
+                           <i></i><i></i><i></i>
+                      </div>
+                      <div class="table-extra-popover"
+                           *ngIf="popover == 'kitchen_' + kitchen.id"
+                           closePopup
+                           (onClosePopup)="closePopover($event)">
+                        <a class="item" (click)="clearAssignments(kitchen.id, kitchenShipments.direction, null, true)">Remove</a>
+                      </div>
+                    </div>
+                    {{kitchen.name}}
+                    <span>{{ kitchen.pickup_time }}</span>
+                    <div class="kitchen-list-right">
+                      <div *ngIf="kitchen.shipments_length" class="amount-circle red">{{kitchen.shipments_length}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipments (company address) displayed everywhere -->
+              <div class="dropdown-content"
+                   *ngIf="!kitchenShipments.kitchens && kitchenShipments.shipments.length > 0"
+                   [dragula]='"shipments"'
+                   [dragulaModel]='kitchenShipments.shipments'>
+
+                <div [hidden]="hideCompanies()" *ngFor="let shipment of kitchenShipments.shipments" class="kitchens-list-item" >
+                  <div [ngClass]="{'visible': selectedDriver, 'opened': popover == 'shipment_' + shipment.id}"
+                       class="table-extra">
+                    <div (click)="togglePopover('shipment', shipment.id)"
+                         class="table-extra-dots">
+                      <i></i><i></i><i></i>
+                    </div>
+                    <div class="table-extra-popover"
+                         *ngIf="popover == 'shipment_' + shipment.id"
+                         closePopup
+                         (onClosePopup)="closePopover($event)">
+                      <a class="item" (click)="clearAssignments(kitchenShipments.kitchen.id, kitchenShipments.direction, shipment.id)">Remove</a>
+                    </div>
+                  </div>
+                  <span class="i">
+                    {{shipment.company}}
+                    <div *ngIf="shipment.groupIds" class="amount">
+                      <i class="b64-icon-case"></i>
+                      <span>{{shipment.groupIds.length}}</span>
+                    </div>
+                  </span>
+                  <div *ngFor="let initials of shipmentDriversInitials(shipment)" class="kitchen-list-right">
+                    <div class="kitchens-list-initials">
+                      {{initials}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="!canManage" class="report">
+            <div *ngFor="let kitchenShipments of selectedShipments"
+                 [ngClass]="{'opened': kitchenShipments.expanded}"
+                 class="kitchens-list-dropdown">
+              <div class="dropdown-title"
+                   (click)="kitchenShipments.expanded = !kitchenShipments.expanded"
+                   *ngIf="kitchenShipments.kitchen">
+                <div class="kitchens-list-item-title">
+
+                  <span *ngIf="showLineArrow()">
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    &nbsp;&nbsp;
+                  </span>
+                  {{kitchenShipments.kitchen.name}}
+                  <span>{{kitchenShipments.kitchen.pickup_time}}</span>
+                  <div class="kitchen-list-right">
+                    <div class="amount-circle red">{{kitchenShipments.shipments.length}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Kitchens dispayed at driver's to hub section -->
+              <div class="dropdown-content"
+                   *ngIf="kitchenShipments.kitchens"
+                   [dragula]='"shipments"'
+                   [dragulaModel]='kitchenShipments.shipments'>
+                <div *ngFor="let kitchen of kitchenShipments.kitchens" class="dropdown-title" >
+                  <div class="kitchens-list-item-title">
+                    <div [ngClass]="{'visible': selectedDriver,
+                                     'opened': popover == 'kitchen_' + kitchen.id}"
+                         class="table-extra" >
+                      <div class="table-extra-dots"
+                           (click)="togglePopover('kitchen', kitchen.id)"
+                           [ngClass]="{'opened': popover == 'kitchen_' + kitchen.id}">
+                           <i></i><i></i><i></i>
+                      </div>
+                      <div class="table-extra-popover"
+                           *ngIf="popover == 'kitchen_' + kitchen.id"
+                           closePopup
+                           (onClosePopup)="closePopover($event)">
+                        <a class="item" (click)="clearAssignments(kitchen.id, kitchenShipments.direction, null, true)">Remove</a>
+                      </div>
+                    </div>
+                    {{kitchen.name}}
+                    <span>{{ kitchen.pickup_time }}</span>
+                    <div class="kitchen-list-right">
+                      <div *ngIf="kitchen.shipments_length" class="amount-circle red">{{kitchen.shipments_length}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- Shipments (company address) displayed everywhere -->
+              <div class="dropdown-content"
+                   *ngIf="!kitchenShipments.kitchens && kitchenShipments.shipments.length > 0">
+                <div *ngFor="let shipment of kitchenShipments.shipments"
+                     class="report-item"
+                     [ngClass]="{'warning': shipment.status == 'failed',
+                                 'green': shipment.status == 'delivered' || shipment.status == 'delivered_hub',
+                                 'yellow': shipment.status == 'pickup'   || shipment.status == 'pickup_hub'}"
+                     (click)="openPopup(shipment)">
+                  <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                  <div [hidden]="hideCompanies()" class="kitchens-list-item">
+                    <span class="i">
+                      <span *ngIf="shipment.time" class="report-time">{{ shipment.time | shortTime }}</span>
+                      {{shipment.company}}
+                    </span>
+                    <div *ngFor="let initials of shipmentDriversInitials(shipment)" class="kitchen-list-right">
+                      <div class="kitchens-list-initials">
+                        {{initials}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--<footer>-->
+          <!--<button (click)="calculateRoute()" *ngIf="selectedDriver" class="btn btn-green btn-block" translate="LOGISTICS.BUTTONS.DRIVER_ROUTE">Driver route</button>-->
+        <!--</footer>-->
+      </div>
+    </aside>
+  </div>
+</div>
+<failure-logistics-popup *ngIf="failedShipment" [shipment]="failedShipment" [(show)]="showPopup"></failure-logistics-popup>

@@ -1,0 +1,18 @@
+.month-select {
+  display: inline-block;
+}
+
+.change-day {
+  cursor: pointer;
+  padding: 0 5px;
+}
+
+.period {
+  display: inline-block;
+
+  .month {
+    display: inline-block;
+    min-width: 9em;
+    text-align: center;
+  }
+}

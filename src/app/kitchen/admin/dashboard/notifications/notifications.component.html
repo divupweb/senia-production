@@ -1,0 +1,10 @@
+<div infinite-scroll (scrolled)="onScroll()" [scrollWindow]="false" class="search-results">
+  <div *ngFor="let item of notifications" (click)="notificationPopup.open(item)">
+    <div [ngSwitch]="item.kind">
+      <dish-rating *ngSwitchCase="'rating'" [item]="item"></dish-rating>
+      <default *ngSwitchDefault [item]="item"></default>
+    </div>
+  </div>
+</div>
+
+<notification-popup #notificationPopup></notification-popup>

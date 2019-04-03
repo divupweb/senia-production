@@ -1,0 +1,178 @@
+@import '~assets/css/conf';
+
+.messages-option {
+  .txt {
+    font-size: 16px;
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  &.employees {
+    .txt {
+      font-size: 14px;
+      color: $gray-text;
+    }
+  }
+}
+
+.all-employees {
+  border-bottom: 1px solid $gray-light;
+  margin-bottom: 25px;
+  padding-bottom: 20px;
+}
+
+.send-message-popup {
+  width: 720px;
+
+  .send-message-body {
+    height: 480px;
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+    display: flex;
+    flex-flow: row nowrap;
+
+    main {
+      height: 480px;
+      overflow: hidden;
+      flex: 2;
+
+      .main-i {
+        height: 480px;
+      }
+
+      .main-top {
+        height: 385px;
+        overflow-y: auto;
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      .main-bottom {
+        border-top: 1px solid $gray-light;
+        margin-left: 30px;
+        margin-right: 30px;
+        padding-top: 30px;
+      }
+
+      textarea {
+        height: 40px;
+        border: 0;
+        resize: none;
+
+        + .alert.alert-danger {
+          padding-top: 0;
+          padding-bottom: 0;
+          background: 0;
+          border: none;
+        }
+      }
+    }
+
+    aside {
+      flex-basis: 300px;
+      max-width: 300px;
+      border-left: 1px solid $gray-light;
+      overflow-y: auto;
+
+      .messages-list {
+        .message {
+          height: 110px;
+          padding: 0 30px;
+          display: flex;
+          flex-flow: column nowrap;
+          justify-content: center;
+          cursor: pointer;
+          position: relative;
+
+          &:after {
+            content: "";
+            position: absolute;
+            right: 30px;
+            width: 30px;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(255,255,255,0.2) 0%,rgba(255,255,255,1) 100%);
+          }
+
+          > * {
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+
+          .date {
+            color: $main-green;
+            font-size: 12px;
+            font-family: $font-bold;
+          }
+
+          &:hover {
+            background-color: $gray-light3;
+
+            &:after {
+              background: linear-gradient(to right, rgba(242,242,242,0.2) 0%,rgba(242,242,242,1) 100%);
+            }
+          }
+
+          &.active {
+            background-color: $main-green;
+
+            .date {
+              color: white;
+            }
+
+            &:after {
+              background: linear-gradient(to right, transparentize($main-green, 1) 0%, transparentize($main-green, 0) 100%);
+            }
+          }
+        }
+
+        .new-message {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .message-area {
+    padding: 50px 30px 30px;
+    max-height: 480px;
+    overflow-y: auto;
+
+    .message-item {
+      margin-bottom: 50px;
+    }
+
+    .message-title {
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-family: $font-bold;
+      font-size: 16px;
+    }
+
+    .message-txt {
+      padding: 30px;
+      margin: 20px 0;
+      border-radius: 8px;
+      background-color: $gray-light3;
+      font-size: 16px;
+      position: relative;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: -10px;
+        top: 30px;
+        border-style: solid;
+        border-width: 0 10px 10px 0;
+        border-color: transparent $gray-light3 transparent transparent;
+      }
+    }
+  }
+}

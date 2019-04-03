@@ -1,0 +1,77 @@
+<div class="file-upload">
+  <label>
+    <input type="file" id="file" ng2FileSelect [uploader]="uploader">
+  </label>
+  <progress *ngIf="uploadFile" class="progress progress-striped progress-animated" max="100" [value]='uploadProgress'>
+    <span style="color:white; white-space:nowrap;">{{ uploadProgress }}%</span>
+  </progress>
+</div>
+<div class="categories-wraper" (keyup.esc)="cancelPopup($event)" tabindex="1">
+  <div class="categories">
+    <ul class="categories-list">
+      <li *ngFor="let category of categories">
+        <div class="category" [ngClass]="{'active': selectedCategory == category}" [hidden]="category.hidden">
+          <div class="arrow" (click)="selectCategory(category)">
+            <i class="fa fa-caret-right" aria-hidden="true"></i>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+
+          <div class="name">
+            <strong>{{ category.name }}</strong>
+          </div>
+          <div class="controls">
+            <div>
+              <div class="add-allergy item" (click)="categoryAddAllergy(category)">
+                <div class="tooltip" translate="SUPER_ADMIN.ALLERGY.ADD">Add allergy</div>
+              </div>
+            </div>
+
+            <div *ngFor="let allergy of category.allergies">
+              <div class="allergy-item item" (click)="categoryRemoveAllergy(category, allergy)">
+                <span class="allergy-remove">×</span>
+                <span class="allergy-icon" [ngStyle]="{'background-image': 'url(' + allergy?.display_url + ')'}"></span>
+                <div class="tooltip">
+                  {{ 'BUTTONS.REMOVE' | translate }}
+                  <div class="allergy-name">{{ allergy?.name }}</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <a class="text-red" (click)="removeCategory(category)" translate="BUTTONS.REMOVE">Remove</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="ingredients" *ngIf="selectedCategory == category && showIngredients && !category.hidden">
+          <div class="ingredient" *ngFor="let ingredient of ingredients" [hidden]="ingredient.hidden">
+            <div class="name">
+              <strong>{{ ingredient.name }}</strong>
+            </div>
+
+            <div class="controls">
+              <div>
+                <div class="add-allergy item" (click)="ingredientAddAllergy(ingredient)">
+                  <div class="tooltip" translate="SUPER_ADMIN.ALLERGY.ADD">Add allergy</div>
+                </div>
+              </div>
+
+              <div *ngFor="let allergy of ingredient.allergies">
+                <div class="allergy-item item">
+                  <span class="allergy-remove" (click)="ingredientRemoveAllergy(ingredient, allergy)">×</span>
+                  <span class="allergy-icon" [ngStyle]="{'background-image': 'url(' + allergy?.display_url + ')'}"></span>
+                  <div class="tooltip">
+                    {{ 'BUTTONS.REMOVE' | translate }}
+                    <div class="allergy-name">{{ allergy?.name }}</div>
+                  </div>
+                </div>
+              </div>
+              <a class="text-red" (click)="removeIngredient(ingredient)" translate="BUTTONS.REMOVE">Remove</a>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <allergies-popup [allergies]="allergies" [selected]="selectedAllergies" [(show)]="showPopup" (onSave)="onSave($event)"></allergies-popup>
+</div>

@@ -1,0 +1,84 @@
+@import '~assets/css/conf';
+@import 'nouislider/distribute/nouislider.min.css';
+
+// nouislider customization
+
+.nouislider-wrap{
+  padding-bottom: 30px;
+  position: relative;
+}
+.nouislider-start-val{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.nouislider-end-val{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.noUi-base{
+
+}
+.noUi-target{
+  margin-top: 11px;
+  @include border-radius(0);
+  height: 4px;
+  border: none;
+  background: $main-green;
+  box-shadow: none;
+}
+.noUi-origin{
+
+}
+.noUi-horizontal .noUi-handle{
+  width: 20px;
+  height: 18px;
+  background: #000;
+  box-shadow: none;
+  border: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  position: relative;
+  top: -30px;
+  margin-left: 8px;
+
+  &:before{
+    display: none;
+  }
+  &:after{
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 10px 0 10px;
+    border-color: #000 transparent transparent transparent;
+    background: none!important;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    top: auto;
+  }
+}
+.noUi-horizontal .noUi-tooltip{
+  position: absolute;
+  bottom: -63px;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  padding-bottom: 0;
+  background-color: transparent;
+}
+
+.dish-form-slider{
+  .nouislider-wrap{
+    padding-top: 40px;
+    padding-bottom: 0;
+  }
+  .noUi-tooltip{
+    display: none;
+  }
+}

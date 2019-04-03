@@ -1,0 +1,61 @@
+@import '~assets/css/conf';
+@import '~assets/css/base64-icons';
+
+// Base styles for Employee(user) pages
+.user-area{
+  h2,h3{text-transform: none;}
+  h2{font-size: 20px;}
+  h3{}
+
+  .btn{
+    min-width: 0!important;
+  }
+
+  .heading .heading-selector{
+    li{
+      font-size: 16px!important;
+      text-transform: none;
+      &:first-letter{text-transform: uppercase;}
+
+      &.router-link-active{
+        font-family: $font-bold;
+      }
+    }
+  }
+
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+
+  main{
+    flex: 1;
+    overflow-y: auto;
+  }
+}
+
+.al-user-main{
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+.al-user-container{
+  max-width: 1100px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.dismiss {
+  background-color: transparent;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  box-shadow: none;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  text-align: center;
+  white-space: nowrap;
+  width: 90px;
+  text-decoration: none !important;
+}

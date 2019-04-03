@@ -1,0 +1,24 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" (clickOutside)="close($event)" (keyup.esc)="close($event)" (setFocus)="true">
+    <div class="search-input-block">
+      <input type="text" class="search-input" placeholder="{{ 'KITCHENS.SEARCH_DISH' | translate }}" [(ngModel)]="search">
+    </div>
+    <div class="popup-body">
+      <div class="popup-list">
+        <div class="list-item" *ngFor="let item of companies | nameFilter:search" (click)="select(item)">
+          <div class="img">
+            <img [src]="item.display_url" >
+          </div>
+          <div class="name">
+            {{ item.name }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <footer>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a translate="BUTTONS.CLOSE" (click)="close()">Close</a>
+    </footer>
+  </div>
+</div>

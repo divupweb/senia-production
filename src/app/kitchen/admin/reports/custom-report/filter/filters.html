@@ -1,0 +1,104 @@
+<div class="slct-control mt-1 mb-3" >
+  <div (click)="toggleState('dateOptions')" style="width: 300px;">
+    <div class="title" translate="SHARED.FILTERS.DATE">Date</div>
+    <div class="selected-items">{{ dateValue[0] | dayMonth }} - {{ dateValue[1] | dayMonth }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover calendar-wrap" [hidden]="!dateOptions">
+    <range-calendar (onSelectRange)="pickerChange($event);closeOptions('dateOptions')"
+                    [selectedStart]="defaultSelected[0]"
+                    [selectedEnd]="defaultSelected[1]"
+                    #calendar></range-calendar>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('categoriesOptions')">
+  <div (click)="toggleState('categoriesOptions')">
+    <div class="title" translate="SHARED.CATEGORIES.PLURAL">Categories</div>
+    <div class="selected-items" [hidden]="categories.length != categoryValue.length" translate="SHARED.FILTERS.ALL">All</div>
+    <div class="selected-items" [hidden]="categories.length == categoryValue.length">{{ selectedCategories() }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!categoriesOptions">
+    <a (click)="selectAllCategories()" [hidden]="categories.length == categoryValue.length" translate="SHARED.FILTERS.SELECT_ALL">Select all</a>
+    <a (click)="deselectAllCategories()" [hidden]="categories.length != categoryValue.length" translate="SHARED.FILTERS.DESELECT_ALL">Deselect all</a>
+    <div class="mb-2 mt-3">
+      <input type="text" placeholder="{{ 'SHARED.FILTERS.SEARCH_CATEGORY' | translate }}" [(ngModel)]="search">
+    </div>
+    <div class="slct-control-content">
+      <div class="custom-checkbox" *ngFor="let category of categories | nameFilter:search:searchColumns"
+           [ngClass] = "{checked: categoryValue.indexOf(category.id) > -1 }">
+        <label>
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                 (change)="categoryChange($event)"
+                 [value]="category.id"
+                 [checked]="categoryValue.indexOf(category.id) > -1">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{ category.name }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('mealOptions')">
+  <div (click)="toggleState('mealOptions')">
+    <div class="title" translate="SHARED.FILTERS.SERVICE">Service</div>
+    <div class="selected-items">{{ selectedService() }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!mealOptions">
+    <div class="slct-control-content">
+      <div class="custom-checkbox"
+           [ngClass] = "{checked: mealValue.indexOf(item.subscription_type) > -1 }"
+           *ngFor="let item of subscriptions">
+        <label>
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                 (change)="mealChange($event)"
+                 [checked]="mealValue.indexOf(item.subscription_type) > -1"
+                 value="{{item.subscription_type}}">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{( 'SUBSCRIPTIONS.' + item.subscription_type | uppercase) | translate }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('groupingOptions')">
+  <div (click)="toggleState('groupingOptions')">
+    <div class="title" translate="SHARED.FILTERS.GROUPED_BY">Grouped by</div>
+    <div class="selected-items">{{ selectedGrouping() }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!groupingOptions">
+    <div class="grouping">
+      <div class="grouping-item" *ngFor="let grouping of groupings; let $group = index;"
+           [ngClass]="{checked: $group == groupingValue }">
+        <div class="left">
+          <div *ngFor="let group of grouping; let $index = index;">
+            <div *ngIf="group != 'service' && $index == 0">
+              <strong> {{ ( 'SHARED.FILTERS.GROUPINGS.' + group|uppercase)|translate | upperFirst }}</strong>
+            </div>
+            <div class="text-grey" *ngIf="group != 'service' && $index != 0"> {{ ( 'SHARED.FILTERS.GROUPINGS.' + group|uppercase)|translate | upperFirst }}</div>
+            <div class="grouping-tags" *ngIf="group == 'service' ">
+              <span class="grouping-tag"> {{ ( 'SHARED.FILTERS.GROUPINGS.' + group|uppercase)|translate | upperFirst }}</span>
+              <span class="grouping-tag"></span>
+              <span class="grouping-tag"></span>
+            </div>
+          </div>
+        </div>
+        <div class="custom-checkbox">
+          <label>
+            <input type="radio"
+                   (change)="groupingChange($event)"
+                   value="{{ $group }}"
+                   [checked]="$group == groupingValue"
+                   name="grouping">
+            <i class="fa fa-check-circle"></i>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-green btn-big btn-block" (click)="onSubmit.emit($event)" translate="BUTTONS.GENERATE">Generate</button>
+<button class="btn btn-green btn-big btn-block" (click)="onDownload.emit($event)" translate="SHARED.FILTERS.BUTTONS.DOWNLOAD_PDF">Download pdf</button>

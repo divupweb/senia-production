@@ -1,0 +1,32 @@
+<div class="kitchen-menu">
+  <div class="i">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <aside [class.is-open]="userMenu.isAsideOpen">
+      <div class="aside-mobile-header">
+        <div class="hamburger-icon is-open" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+        </div>
+        <span class="toggle-aside-icon" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25px" height="25px" viewBox="0 0 25 25" style="enable-background:new 0 0 25 25;" xml:space="preserve">
+          <path d="M9,2.5c0,1.7,2,2.5,2,5S9,10,9,10s1-0.8,1-2.5C10,5,8,5,8,2.5S10,0,10,0S9,0.8,9,2.5z"/>
+          <path d="M14,2.5c0,1.7,2,2.5,2,5S14,10,14,10s1-0.8,1-2.5c0-2.5-2-2.5-2-5S15,0,15,0S14,0.8,14,2.5z"/>
+          <path d="M25,13v-1H0v1c0.2,5,3.3,9.2,7.6,11H2v1h21v-1h-5.6C21.7,22.2,24.8,18,25,13z M12.5,24C6.3,24,1.3,19.1,1,13h23
+            C23.7,19.1,18.7,24,12.5,24z"/>
+          <rect x="1" y="15" width="23" height="1"/>
+        </svg>
+      </span>
+        <div class="txt">Dishes</div>
+      </div>
+      <div class="dishes-list-wrap">
+        <dishes-list></dishes-list>
+      </div>
+    </aside>
+    <i class="mobile-overlay" [class.is-open]="userMenu.isAsideOpen || userMenu.isMenuOpen"></i>
+  </div>
+</div>

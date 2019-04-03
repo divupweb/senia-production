@@ -1,0 +1,11 @@
+.dropdown{
+  .text-grey{
+    cursor: pointer;
+  }
+
+  &.open{
+    .fa-caret-down{
+      transform: rotate(.5turn);
+    }
+  }
+}

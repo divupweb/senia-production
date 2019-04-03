@@ -1,0 +1,25 @@
+<div *ngFor="let item of subscriptions" class="subscription" (click)="onSubscriptionSelect(item)"  [ngClass]="item.type" [class.active]="active == item.type">
+  <span class="txt">{{ ('SUBSCRIPTIONS.' + item.type|uppercase) | translate }}</span>
+  <span class="subscription-amount" *ngIf="item.amount > 0" [ngClass]="{'periodic': item.periodic, 'custom': item.custom}">
+    {{ item.amount }}
+     <span class="repeat">
+      <svg    width="28px"
+              height="28px"
+              viewBox="0 0 33 38"
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+              <g id="repeat-icon" transform="translate(-1180.000000, -224.000000)" stroke="#000" stroke-width="2">
+                  <g id="Group-2" transform="translate(1174.333333, 222.132184)">
+                      <g id="Page-1" transform="translate(22.171681, 22.694145) rotate(-44.000000) translate(-22.171681, -22.694145) translate(6.671681, 7.194145)">
+                          <polyline id="Stroke-1" points="30.9213575 3.80520371 29.5433395 8.41787159 24.8814063 7.05451335"></polyline>
+                          <path d="M29.3807767,8.02264607 C28.8135732,7.00317723 28.1243975,6.02986804 27.3032521,5.12744688 C21.5152433,-1.23269345 11.6115096,-1.74638441 5.18264737,3.98037958 C-1.24588157,9.70681387 -1.76509609,19.5051887 4.02324602,25.8656587 C8.88679974,31.2099571 16.6556886,32.4242856 22.8276096,29.2791649" id="Stroke-3"></path>
+                      </g>
+                  </g>
+              </g>
+          </g>
+      </svg>
+    </span>
+  </span>
+</div>

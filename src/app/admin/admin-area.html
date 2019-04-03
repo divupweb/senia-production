@@ -1,0 +1,104 @@
+<spinner></spinner>
+
+<user-menu></user-menu>
+<div class="al-sidebar" [class.is-open]="userMenu.isMenuOpen">
+  <div class="al-sidebar-i">
+    <div class="al-sidebar-heading">
+      <div class="hamburger-icon" [class.is-open]="userMenu.isMenuOpen" (click)="userMenu.isMenuOpen = !userMenu.isMenuOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <a [routerLink]="['pending_companies']" class="logo">
+        <img src="assets/images/logo-white.svg" width="170" alt="Food Farm">
+      </a>
+      <span class="navbar-brand navbar-region" *ngIf="user?.region">{{ user.region.name }}</span>
+    </div>
+    <div class="al-sidebar-image" *ngIf="account?.icon">
+      <div class="logo-upload-placeholder">
+        <div class="logo-box">
+          <img [src]="account.icon"/>
+        </div>
+      </div>
+    </div>
+    <ul class="al-sidebar-list nav" (click)="userMenu.close()">
+      <li>
+        <a title="{{'ADMIN.DASHBOARD.TITLE' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['dashboard'] " >
+          <span class="sidebar-list-icon dashboard-icon"></span>
+          <span class="sidebar-list-txt">
+            <span translate="ADMIN.DASHBOARD.TITLE">Dashboard</span>
+            <span class="btn btn-green btn-mini">{{ pendingService.count.companies + pendingService.count.kitchens}}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'SHARED.COMPANIES.PLURAL' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['companies'] " >
+          <span class="sidebar-list-icon companies-list-icon"></span>
+          <span class="sidebar-list-txt">
+            <span translate="SHARED.COMPANIES.PLURAL">Companies</span>
+            &nbsp;
+            <span class="btn btn-green btn-mini">{{ pendingService.count.total_companies }}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'ADMIN.COMPANY_ORDERS' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['reports', 'company_orders'] ">
+          <span class="sidebar-list-icon company-orders-icon"></span>
+          <span class="sidebar-list-txt" translate="ADMIN.COMPANY_ORDERS">
+            Company Orders
+          </span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'SHARED.KITCHENS.PLURAL' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['kitchens'] ">
+          <span class="sidebar-list-icon kitchens-list-icon"></span>
+          <span class="sidebar-list-txt">
+            <span translate="SHARED.KITCHENS.PLURAL">Kitchens</span>
+            <span class="btn btn-green btn-mini">{{ pendingService.count.total_kitchens }}</span>
+          </span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'ADMIN.KITCHEN_ORDERS' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['reports', 'kitchen_orders'] ">
+          <span class="sidebar-list-icon kitchens-orders-icon"></span>
+          <span class="sidebar-list-txt" translate="ADMIN.KITCHEN_ORDERS">Kitchen Orders</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'ADMIN.LOGISTICS' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['logistics_schedule'] " >
+          <span class="sidebar-list-icon logistics-icon"></span>
+          <span class="sidebar-list-txt" translate="ADMIN.LOGISTICS">Logistics</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'ADMIN.FINANCIAL_REPORT' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['reports', 'financial'] ">
+          <span class="sidebar-list-icon report-icon"></span>
+          <span class="sidebar-list-txt" translate="ADMIN.FINANCIAL_REPORT">Financial Report</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{'ADMIN.SETTINGS.TITLE' | translate}}" routerLinkActive="router-link-active" [routerLink]=" ['settings'] ">
+          <span class="sidebar-list-icon settings-icon"></span>
+          <span class="sidebar-list-txt" translate="ADMIN.SETTINGS.TITLE">Settings</span>
+        </a>
+      </li>
+      <li *ngIf="userMenu.isMenuOpen">
+        <a title="{{'BUTTONS.LOG_OUT' | translate}}" (click)="auth.submitLogout()">
+          <span class="sidebar-list-icon"></span>
+          <span class="sidebar-list-txt" translate="BUTTONS.LOG_OUT">Log out</span>
+        </a>
+      </li>
+    </ul>
+    <footer>
+      <lang-switcher [customClass]="{ 'sidebar': true }"></lang-switcher>
+    </footer>
+  </div>
+</div>
+
+<div class="al-main">
+  <div class="al-content" style="padding: 0;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+@import '~assets/css/conf';
+@import '~assets/css/base64-icons';
+
+.image-upload {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  .image-upload-placeholder {
+    background: $gray-light;
+    width: 200px;
+    height: 200px;
+    background: #f9f5f0;
+    position: relative;
+    @include border-radius(50%);
+    i {
+      vertical-align: middle;
+      line-height: 118px;
+      font-size: 40px;
+    }
+    .b64-icon-lock {
+      filter: invert(100%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    span {
+      position: absolute;
+      display: block;
+      z-index: 2;
+      text-transform: uppercase;
+      left: 0;
+      width: 100%;
+      font-size: 14px;
+      left: 0;
+      bottom: 31px;
+    }
+  }
+  .txt{
+    margin-top: 50px;
+    font-size: 16px;
+    text-decoration: underline;
+  }
+  &:hover {
+    cursor: pointer;
+    .upload-logo-txt {
+      opacity: 1;
+    }
+    .txt{
+      text-decoration: none;
+    }
+  }
+  label {
+    cursor: pointer;
+  }
+  input[type="file"] {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+  }
+}

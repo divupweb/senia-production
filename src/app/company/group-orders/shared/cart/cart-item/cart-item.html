@@ -1,0 +1,41 @@
+<div class="basket-item" [ngClass]="{ deadline: soon(), locked: locked(), accepted: !!cartItem.kitchen_accepted_at, rejected: !!cartItem.kitchen_rejected_at, changed: cartItem.changed }">
+  <i class="fa fa-clock-o" aria-hidden="true"></i>
+  <div class="img" (click)="remove()">
+    <img [src]="cartItem.information.display_url" >
+    <circle-progress class="circle-progress-red" #circleProgMenuItem *ngIf="soon()"
+                  [percent]="deadline.progress"
+                  [boxSize]="50"
+                  [radius]="24"
+                  [lowColor]="'red'"
+                  [middleColor]="'red'"
+                  [interColor]="'red'"
+                  [highColor]="'red'"
+                  [border]="1"
+                  [time]="0">
+    </circle-progress>
+
+    <div class="overlay overlay-locked" *ngIf="passed()">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+    </div>
+    <div class="overlay overlay-rejected">
+      <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <div class="overlay overlay-accepted">
+      <i class="fa fa-check" aria-hidden="true"></i>
+    </div>
+  </div>
+  <div class="txt">
+    <div class="dish">{{ cartItem.information.name }}</div>
+    <div class="kitchen">{{ cartItem.information.kitchen.name }}</div>
+    <div class="price">{{ cartItem.information.price | currencyFormat  }}</div>
+  </div>
+  <div class="basket-counter">
+    <div class="counter-ctrl" (click)="cartItem.inc()" *ngIf="showButtons()">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </div>
+    <div class="counter-amount">{{ cartItem.amount }}</div>
+    <div class="counter-ctrl" (click)="cartItem.dec()" *ngIf="showButtons()">
+      <i class="fa fa-minus" aria-hidden="true" ></i>
+    </div>
+  </div>
+</div>

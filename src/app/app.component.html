@@ -1,0 +1,7 @@
+<router-outlet></router-outlet>
+<cookie-law position="top" #cookieLaw (isSeen)="lawSeen($event)" expiration="3650">
+  {{'CONTROLS.COOKIES' | translate }}
+  <a [routerLink]="['home', 'cookie-policy']" >{{'CONTROLS.COOKIES_POLICY' | translate }}</a>
+</cookie-law>
+<privacy-policy></privacy-policy>
+<ng2-toasty></ng2-toasty>

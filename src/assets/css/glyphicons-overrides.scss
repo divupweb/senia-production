@@ -1,0 +1,26 @@
+@import "variables";
+.glyphicon.glyphicon-star{
+  font: normal normal normal 14px/1 'FontAwesome';
+  &:before{
+    content: "\f005";
+  }
+}
+.glyphicon.glyphicon-star-empty{
+  font: normal normal normal 14px/1 'FontAwesome';
+  &:before{
+    content: "\f006";
+  }
+}
+
+.glyphicon.glyphicon-chevron-left{
+  font: normal normal normal 10px/1 'FontAwesome';
+  &:before{
+    content: "\f053";
+  }
+}
+.glyphicon.glyphicon-chevron-right{
+  font: normal normal normal 10px/1 'FontAwesome';
+  &:before{
+    content: "\f054";
+  }
+}

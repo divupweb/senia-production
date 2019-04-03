@@ -1,0 +1,34 @@
+@import '~assets/css/conf';
+@import '../shared/common';
+.availability{
+  h3{
+    border-bottom: 1px solid #d9d9d9;
+    margin-bottom: 0;
+    padding-bottom: 15px;
+  }
+}
+
+
+footer {
+  padding: 0 30px;
+  position: absolute;
+  height: 110px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid rgba(0,0,0,.05);
+  display: flex;
+  align-items: center;
+}
+
+.pull-right {
+  margin-left: auto;
+}
+
+.not-available{
+  padding: 30px 0;
+  text-align: center;
+  strong{
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,28 @@
+<div class="cart-info" (clickOutside)="close()">
+  <div *ngIf="basket">
+    <div>
+      <strong> {{basket.quantity}} {{ basket.quantity | i18nPlural: { '=1': 'USER.DISH_SINGULAR' | translate, 'other':
+        'USER.DISH_PLURAL' | translate } }}</strong>
+    </div>
+    <div class="text-green">{{ 'SHARED.YOU_PAY'| translate }}: {{ basket.total | currencyFormat }}</div>
+    <div class="text-red" *ngIf="soon() && !locked()">
+      {{ 'SHARED.TIME_LEFT'| translate: {time: deadline.timeLeft | duration } }}
+    </div>
+  </div>
+  <circle-progress class="circle-progress-red" #circleProgMenuItem *ngIf="soon()" [percent]="deadline.progress"
+                   [boxSize]="50" [radius]="24" [lowColor]="'red'" [middleColor]="'red'" [interColor]="'red'"
+                   [highColor]="'red'" [border]="1" [time]="0">
+  </circle-progress>
+  <div class="cart-icon" (click)="toggle()">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  </div>
+  <div class="cart-popover basket" *ngIf="showCart && visibleItems.length">
+    <div class="cart-popover-content">
+      <cart-item [cartItem]="item" *ngFor="let item of visibleItems" (onItemChange)="onAmountChange($event)"
+                 [hidden]="item.quantity == 0"></cart-item>
+    </div>
+    <footer>
+      <a (click)="clearAll()" translate="USER.BUTTONS.CLEAR_ALL">Clear all</a>
+    </footer>
+  </div>
+</div>

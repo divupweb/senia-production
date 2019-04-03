@@ -1,0 +1,105 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" closePopup (onClosePopup)="close($event)">
+    <div class="popup-body">
+      <section class="old-companies" *ngIf="currentCompanies && currentCompanies.length > 0">
+        <company-info *ngFor="let company of currentCompanies" [company]="company"
+                      (onRemove)="onOldCompanyRemove($event)"></company-info>
+      </section>
+
+      <section class="drop-spots">
+        <div class="form-group v3">
+          <select class="form-control" [(ngModel)]="selectedDropSpotId"
+                  (change)="onDropStopSelected($event.target.value)">
+            <option [value]="item.id" *ngFor="let item of dropSpots">{{ item.text }}</option>
+          </select>
+          <label translate="ADMIN.COMPANIES.DROP_SPOT"></label>
+          <i class="fa fa-caret-down"></i>
+        </div>
+      </section>
+      <section class="drop-spot">
+        <form [formGroup]="form" autocomplete="off">
+          <div class="form-group v3">
+            <input formControlName="name" class="form-control">
+            <label translate="CONTROLS.DROP_SPOT_NAME">DropSpot Name</label>
+          </div>
+          <div class="form-group v3">
+            <input formControlName="country" class="form-control">
+            <label translate="CONTROLS.COUNTRY">Country</label>
+          </div>
+          <div class="form-group v3">
+            <input formControlName="city" class="form-control">
+            <label translate="CONTROLS.CITY">City</label>
+          </div>
+          <div class="form-group v3">
+            <input formControlName="address" class="form-control">
+            <label translate="CONTROLS.ADDRESS">Address</label>
+          </div>
+          <div class="form-group v3">
+            <input formControlName="address2" class="form-control">
+            <label translate="CONTROLS.ADDRESS2">Address 2</label>
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group v3">
+                <input formControlName="floor" type="number" class="form-control">
+                <label translate="CONTROLS.FLOOR">Floor</label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group v3">
+                <input formControlName="zipCode" class="form-control">
+                <label translate="CONTROLS.ZIP_CODE">Zip Code</label>
+              </div>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="new-companies">
+        <company-info *ngFor="let company of companies" [company]="company"
+                      (onRemove)="onCompanyRemove($event)"></company-info>
+      </section>
+
+      <div class="mb-3">
+        <dropdown #dropdown
+                [updateItemsFn]="updateCompaniesList"
+                [query]="search"
+                [placeholder]="'ADMIN.COMPANIES.SHARED_LOCATION.COMPANY_QUERY' | translate "
+                (onChange)="onAddCompany($event)">
+
+        <ng-template let-item>
+          <company-info [company]="item" [remove]="false"></company-info>
+        </ng-template>
+      </dropdown>
+      </div>
+    </div>
+    <footer>
+      <button class="btn btn-big" (click)="save()" type="button" translate="BUTTONS.SHARE"
+              [ngClass]="{'btn-green': form.valid}">SHARE
+      </button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+    </footer>
+  </div>
+</div>
+
+
+
+
+<!--https://projects.invisionapp.com/share/4AAS5FKX8#/screens/246799464-->
+
+<!--<div class="popup-wrap">-->
+  <!--<div class="map-popup">-->
+    <!--<div class="map">-->
+      <!--<div id="gmap" style="width:100%;height:100%;"></div>-->
+    <!--</div>-->
+    <!--<div class="content">-->
+      <!--<div class="popup-body">-->
+
+      <!--</div>-->
+      <!--<footer>-->
+        <!--<button class="btn btn-big btn-block btn-green">Close</button>-->
+      <!--</footer>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->

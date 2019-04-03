@@ -1,0 +1,38 @@
+<div class="popup-wrap" *ngIf="show">
+  <div class="popup"  closePopup (onClosePopup)="close($event)">
+    <form [formGroup]="discountForm" (submit)="submit()" autocomplete="off">
+      <div class="popup-body">
+        <div class="mb-3 mt-3">
+          <div class="date-select">
+            <div class="slct-control">
+              <div class="title" translate="SHARED.FILTERS.DATE">Date</div>
+              <div (click)="openPicker()" class="selected-items">{{ range[0] | dayMonth }} - {{ range[1] | dayMonth }}</div>
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+              <div class="slct-control-popover" *ngIf="showPicker">
+                <range-calendar (onSelectRange)="pickerChange($event)"
+                                [selectedStart]="range[0]"
+                                [selectedEnd]="range[1]"></range-calendar>
+              </div>
+            </div>
+            <div *ngIf="rangeLength" class="days-amount">{{rangeLength}} {{'CALENDAR.DAYS' | translate}}</div>
+          </div>
+          <div class="option-block">
+            <div class="row">
+              <div class="col-sm-10">
+                <div class="form-group percent-input v3">
+                  <input type="number" formControlName="percent" class="form-control">
+                  <label translate="ADMIN.DISCOUNT.DISCOUNT_KITCHEN">New kitchen interest percent</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <button class="btn btn-big btn-green" [disabled]="!formValid()" type="submit" translate="BUTTONS.SAVE">Save</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="close-popup" (click)="close()" translate="BUTTONS.CANCEL">Cancel</a>
+      </footer>
+    </form>
+  </div>
+</div>

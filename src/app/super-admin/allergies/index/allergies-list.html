@@ -1,0 +1,34 @@
+<div class="heading space-between">
+  <a [routerLink]="['new']" class="btn btn-big btn-green" translate="SHARED.MODES.ADD_NEW">
+    Add new
+  </a>
+</div>
+
+<table class="table table-main table-lines table-stripes">
+  <thead>
+  <tr>
+    <th translate="CONTROLS.NAME">Name</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let allergy of allergies | paginate: paginationConfig">
+    <td>
+      <span class="table-icon placeholder">
+        <img *ngIf="allergy.display_url" src="{{allergy.display_url}}"/>
+      </span>
+      <span class="table-item-name">{{allergy.name}}</span>
+    </td>
+    <td>
+      <a (click)="showEdit(allergy.id)" class="">{{ 'BUTTONS.EDIT' | translate }}</a>
+      &nbsp;&nbsp;
+      <a (click)="showConfirm(allergy.id)" class="text-red" translate="BUTTONS.REMOVE">Remove</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="text-right">
+  <admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id">
+  </admin-pagination>
+</div>

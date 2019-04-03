@@ -1,0 +1,27 @@
+@import '~assets/css/conf';
+
+.image-box {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+  img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid $gray-light;
+    border-radius: 50%;
+  }
+  &:hover{
+    .txt{
+      text-decoration: none;
+    }
+  }
+}
+.txt{
+  margin-top: 50px;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: $red;
+}

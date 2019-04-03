@@ -1,0 +1,27 @@
+<div class="aside-inner">
+  <header>
+    <div class="aside-title">
+      <div class="title">{{ 'SHARED.DISHES.PLURAL' | translate | upperFirst }}</div>
+      <sort-dishes (onSelect)="onSortSelect($event)"></sort-dishes>
+    </div>
+    <div class="aside-search">
+      <input type="text" placeholder="{{ 'KITCHENS.SEARCH_DISH' | translate }}" [(ngModel)]="search">
+    </div>
+  </header>
+
+  <div>
+    <dish-item *ngFor="let item of dishesData.dishes | nameFilter:search:searchColumns" [dish]="item"></dish-item>
+  </div>
+
+  <footer>
+    <a (click)="dishesData.showInactive()" *ngIf="dishesData.showActiveDishes" class="show-inactive" translate="KITCHENS.BUTTONS.SHOW_INACTIVE">
+      Show inactive
+    </a>
+    <a (click)="dishesData.showActive()" *ngIf="!dishesData.showActiveDishes" translate="KITCHENS.BUTTONS.SHOW_ACTIVE">
+      Show active
+    </a>
+    <button [routerLink]=" ['dishes/new'] " class="btn btn-green btn-block btn-big" translate="KITCHENS.BUTTONS.ADD_NEW_DISH">
+      Add new dish
+    </button>
+  </footer>
+</div>

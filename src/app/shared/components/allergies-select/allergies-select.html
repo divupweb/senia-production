@@ -1,0 +1,8 @@
+<div class="allergies-select" [ngClass]="customClass">
+  <div class="allergy-item" *ngFor="let allergy of allergies" (click)="toggleAllergy(allergy)" [ngClass]="{'active': allergyExists(allergy)}">
+    <div class="allergy-img">
+      <div class="allergy-icon" [ngStyle]="{'background-image': 'url(' + allergy.display_url + ')'}"></div>
+    </div>
+    <div class="allergy-name">{{ allergy.name }}</div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="image-upload">
+  <label for="image-upload">
+    <div class="image-upload-placeholder">
+      <div class="b64-icon-lock"></div>
+    </div>
+    <div class="txt"> {{ 'SHARED.COMPONENTS.UPLOAD_IMAGE' | translate }}</div>
+  </label>
+  <input type="file" ng2FileSelect [uploader]="uploader" />
+  <progress *ngIf="uploaderFile" class="progress progress-striped progress-animated" max="100" [value]='uploaderProgress'>
+    <span style="color:white; white-space:nowrap;">{{uploaderProgress}}%</span>
+  </progress>
+</div>

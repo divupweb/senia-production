@@ -1,0 +1,23 @@
+<div class="details-popup-wrap" [hidden]="!showValue">
+  <div class="details-popup" (clickOutside)="cancelPopup($event)">
+    <div class="map">
+      <div id="gmap-failure" style="width:100%;height:100%;"></div>
+    </div>
+    <div class="content">
+
+      <div class="img">
+        <!-- <img src="http://fillmurray.com/50/50"> -->
+        D{{shipment.driver_id}}
+        <div class="warning-icon"></div>
+      </div>
+      <div>
+        <div class="time">{{ shipment.time | shortDateTime }}</div>
+        <div class="name">{{ shipment.driver_name }}</div>
+        <div class="descr">Issue</div>
+      </div>
+
+      <div class="details-text">{{shipment.delivery_errors}}</div>
+      <div class="btn btn-green" (click)="cancelPopup()" translate="BUTTONS.CLOSE">Close</div>
+    </div>
+  </div>
+</div>

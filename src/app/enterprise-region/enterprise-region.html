@@ -1,0 +1,74 @@
+<enterprise-region-header [logo]="logo"></enterprise-region-header>
+<login #login></login>
+<div class="enterprise-region-body">
+  <section *ngIf="account.settings.landingEmployee" class="platforms-section">
+    <div class="home-container text-center">
+      <h2 translate="ENTERPRISE.ARE_YOU_EMPLOYEE"> You are an employee?</h2>
+      <h3 class="text-grey" translate="ENTERPRISE.SELECT_WAY">Select convenient way to order food</h3>
+      <div class="row mt-9 platform-cards">
+        <div class="col-sm-4">
+          <a [href]="urlsInfo.APPLE_APP" class="platform-card" (click)="analytics.downloadIOSApp($event)">
+            <img class="platform-card-img" src="/assets/images/ios-platform-img.png" alt="">
+            <span class="platform-card-txt">
+            <span class="text-grey" translate="HOME.DOWNLOAD.IOS">Download iOS App on</span>
+            <strong translate="HOME.EAT.APP_STORE">App store</strong>
+          </span>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <a [href]="urlsInfo.GOOGLE_APP" class="platform-card" (click)="analytics.downloadAndroidApp($event)">
+            <img class="platform-card-img" src="/assets/images/android-platporm-img.png" alt="">
+            <span class="platform-card-txt">
+            <span class="text-grey" translate="HOME.DOWNLOAD.ANDROID">Download Android App on</span>
+            <strong translate="HOME.EAT.GOOGLE_PLAY">Google Play</strong>
+          </span>
+          </a>
+        </div>
+        <div class="col-sm-4">
+          <a [routerLink]="['sign_up']" class="platform-card">
+            <img class="platform-card-img" src="/assets/images/browser-platform-img.png" alt="">
+            <span class="platform-card-txt">
+            <span class="text-grey" translate="ENTERPRISE.OPEN_IN_BROWSER_0">Open web-version in</span>
+            <strong translate="ENTERPRISE.OPEN_IN_BROWSER_1">Browser</strong>
+          </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section *ngIf="account.settings.landingCompany" class="set-up home-vertical-gap-bottom">
+    <div class="home-container text-center">
+      <h2 translate="ENTERPRISE.ARE_YOU_COMPANY"> You are a company?</h2>
+      <h3 class="text-grey" translate="HOME.EAT.NEVER_HASSLE_2">And never hassle with it again</h3>
+      <div class="row mt-9 steps">
+        <div class="col-sm-4 step">
+          <div class="home-icon building-icon"><span class="step-num">1</span></div>
+          <h4 translate="HOME.EAT.REGISTER">Register</h4>
+          <p class="text-grey" translate="HOME.EAT.START_AN_ACCOUNT">Start an account by regster your company.</p>
+        </div>
+        <div class="col-sm-4 step">
+          <div class="home-icon order-icon"><span class="step-num">2</span></div>
+          <h4 translate="HOME.EAT.ORDER">Order</h4>
+          <p class="text-grey" translate="HOME.EAT.CHOOSE_KITCHENS">Choose kitchens, set subsides and send out invites.
+            You and your employees are now ready to start ordering.</p>
+        </div>
+        <div class="col-sm-4 step">
+          <div class="home-icon food-icon"><span class="step-num">3</span></div>
+          <h4 translate="HOME.EAT.GET_YOUR_FOOD">GET YOUR FOOD</h4>
+          <p class="text-grey" translate="HOME.EAT.YOUR_ORDER_2"></p>
+        </div>
+      </div>
+      <div class="mt-9">
+        <a class="btn btn-green btn-big" (click)="companyRegister.open()" translate="HOME.EAT.COMPANY_SIGNUP">Get
+          Started</a>
+      </div>
+      <p class="text-grey mt-3" translate="HOME.EAT.WHY_NOT_TRY">Why not try us? It's free.</p>
+
+    </div>
+  </section>
+  <div class="text-center vertical-gap">
+    <lang-switcher [customClass]="{'header-lang-switcher': true}"></lang-switcher>
+  </div>
+</div>
+<company-register #companyRegister [presetRegion]="region"></company-register>

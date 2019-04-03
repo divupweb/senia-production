@@ -1,0 +1,60 @@
+<header class="mt-1 mb-1">
+  <div class="header-left">
+    <h3>{{ ('SUBSCRIPTIONS.' + subscription.subscription_type|uppercase) | translate }}</h3>
+    <div class="extra-info" [popover]="deliveryPrice" [popoverOnHover]="true" *ngIf="amount > 0">
+      <popover-content #deliveryPrice
+                    placement="top"
+                    [animation]="true"
+                    [closeOnClickOutside]="true">
+        <div [innerHTML]="">
+          <div class="small" translate="COMPANY.KITCHENS.DELIVERY_COST.ESTIMATED">Estimated delivery cost</div>
+          <div class="big" translate="COMPANY.KITCHENS.DELIVERY_COST.MIN" [translateParams]="{ cost: deliveryCost | currencyFormat  }">
+          </div>
+          <div class="big" *ngIf="deliveryRange"
+               translate="COMPANY.KITCHENS.DELIVERY_COST.MAX"
+               [translateParams]="{ max: (delivery[1]| currencyFormat ), amount: amount, cost: (deliveryCost| currencyFormat ) }">
+          </div>
+        </div>
+      </popover-content>
+      <span class="b64-icon-truck"></span>
+      <span >{{ delivery | currencyFormat  }}</span>
+    </div>
+  </div>
+  <div class="add-kitchens-ctrl" [ngClass]="{'opened': isOpen}">
+    <span class="open-popup"  (click)="openKitchensSelect()" translate="COMPANY.KITCHENS.BUTTONS.ADD">Add kitchens</span>
+    <span class="close-popup"  (click)="closeKitchensSelect()" translate="BUTTONS.CLOSE">Close</span>
+  </div>
+</header>
+<div class="kitchens-list">
+  <div class="kitchens-list-item" *ngFor="let item of dki | notDestroyed" >
+    <div class="img">
+      <img [src]="item.kitchen?.display_url" alt="">
+      <span class="overlay" (click)="removeKitchen(item.kitchen)">
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </span>
+    </div>
+    <div class="name">{{ item.kitchen?.name }}</div>
+  </div>
+</div>
+
+<div class="kitchens-popup" [ngClass]="{'opened': isOpen}" (clickOutside)="closeKitchensSelect()" (keyup.esc)="closeKitchensSelect()">
+  <div class="kitchens-popup-search">
+    <input type="text" placeholder="{{ 'COMPANY.KITCHENS.SEARCH_KITCHEN' | translate }}" [(ngModel)]="search"/>
+  </div>
+  <div class="kitchens-popup-list">
+    <div *ngFor="let kitchen of kitchens | nameFilter:search">
+      <div class="kitchens-list-item" [ngClass]="{'favorite': kitchen.favorite}" (click)="addKitchen(kitchen)" *ngIf="-1 == ids.indexOf(kitchen.id)">
+        <div class="img">
+          <img [src]="kitchen.display_url" alt="">
+          <div class="overlay green">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="name">{{ kitchen.name }}</div>
+        <div class="extra">
+          <i class="fa fa-star"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

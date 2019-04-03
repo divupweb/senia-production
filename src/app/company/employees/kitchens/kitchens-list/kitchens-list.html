@@ -1,0 +1,20 @@
+<header class="mb-3">
+  <div class="i">
+    <div class="left">
+      <h2 translate="SHARED.KITCHENS.PLURAL">Kitchens</h2>
+      <div class="sub-title">
+        <sort-list (onSelect)="onSortSelect($event)"></sort-list>
+      </div>
+    </div>
+    <div class="right">
+      <div class="custom-checkbox subsidy" *ngFor="let item of subscriptions">
+        <label>
+          <input type="checkbox" [(ngModel)]="item.selectActive" (ngModelChange)="updateKitchens()">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{('SUBSCRIPTIONS.' + item.subscription_type|uppercase) | translate }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</header>
+<carousel-slider #kitchenCarousel [items]="selectedKitchens" [sort]="false" (onSelect)="onKitchenSelect($event)"></carousel-slider>

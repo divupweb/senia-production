@@ -1,0 +1,61 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector" *ngIf="!width.isMobile()">
+      <li *ngFor='let subscription of subscriptions'>
+        <a class="nav-item nav-link" [ngClass]="{'router-link-active': selectedSubscription == subscription}" (click)="selectSubscription(subscription)">
+          {{ ('SUBSCRIPTIONS.' + subscription|uppercase)|translate }}
+        </a>
+      </li>
+    </ul>
+    <div class="heading-selector-mobile" *ngIf="width.isMobile()">
+      <select [(ngModel)]="selectedLink" (change)="goTo($event.target.value)">
+        <option *ngFor='let subscription of subscriptions'>{{ ('SUBSCRIPTIONS.' + subscription|uppercase)|translate }}</option>
+      </select>
+    </div>
+  </div>
+</user-menu>
+
+<div class="main-inner" id="main-inner" (scroll)="onScroll($event)" [class.scrolled]="scrolled">
+  <div class="main-inner-i">
+    <header class="kitchen-menu-header">
+      <div class="header-i">
+        <div class="top-controls">
+          <div class="date-selector">
+            <div class="circle-arrow circle-arrow-left" (click)="previousWeek()">
+              <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </div>
+            <div class="circle-arrow circle-arrow-right" (click)="nextWeek()">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+            <span *ngIf="!this.width.isMobile()" class="date">{{ currentWeek | daysRange }}</span>
+            <span *ngIf=" this.width.isMobile()" class="date">{{ selectedDay | dayMonth }}</span>
+          </div>
+          <div class="menu-settings">
+            <div class="">
+              <div><a class="text-grey" (click)="menu.randomize()" translate="KITCHENS.BUTTONS.SET_RANDOM_MENU">Set random dishes</a></div>
+              <div><a class="text-grey" (click)="menu.copyPreviousWeek()" translate="KITCHENS.BUTTONS.COPY_PREVIOUS_WEEK">Copy menu from previous week</a></div>
+            </div>
+            <button class="btn btn-green btn-big" (click)="setMenu.open()" [disabled]="!menu.loaded" translate="KITCHENS.BUTTONS.SET_MENU">Set menu</button>
+          </div>
+        </div>
+        <div class="menu-row">
+          <div class="menu-col" *ngFor="let weekDay of weekDays">
+            <div class="menu-day" [class.active]="menu.days[weekDay.i] == true" [class.today]="weekDay.day.isSame(today, 'day')">
+              <div class="day"><strong>{{ weekDay.day | wkDay }}</strong></div>
+              <div class="date">{{ weekDay.day | dayMonth }}</div>
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <div>
+        <menu-item *ngFor="let item of menu.items" [selectedDay]="selectedDay" [item]="item" [setMenu]="setMenu"></menu-item>
+      </div>
+    </div>
+    <menu-footer [subscription]="selectedSubscription" [weekStart]="currentWeek"></menu-footer>
+  </div>
+</div>
+
+<set-menu #setMenu [date]="currentWeek"></set-menu>

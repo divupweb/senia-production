@@ -1,0 +1,19 @@
+<sign-up-header>
+  <div class="header-content">
+    <a class="btn btn-green btn-big" routerLink="/user" translate="SIGN_UP.BUTTONS.SKIP">Skip</a>
+  </div>
+</sign-up-header>
+
+<section class="gray-bg">
+  <div class="user-container">
+    <default-orders #defaultOrders (onChange)="onChange($event)"></default-orders>
+  </div>
+</section>
+
+<sign-up-footer>
+  <div class="footer-content">
+    <button class="btn btn-big" [class.btn-green]="changed" (click)="defaultOrders.save()" [disabled]="!changed" translate="BUTTONS.SAVE">Save</button>
+    <div class="text-center text-grey mb-1 mt-2" translate="SIGN_UP.OR">or</div>
+    <div><a routerLink="/user" translate="SIGN_UP.BUTTONS.SET_LATER">Set it later</a></div>
+  </div>
+</sign-up-footer>

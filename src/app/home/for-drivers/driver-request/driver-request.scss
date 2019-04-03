@@ -1,0 +1,37 @@
+.popup {
+  padding: 0;
+  max-height: none;
+  &-wrap>*{outline:none;&:focus{outline:none;}}
+
+  &__header, &__body, &__pre-footer {
+    margin: 0 40px;
+  }
+
+  &__header {padding-top: 40px;}
+
+  &__pre-footer {
+    margin:{
+    top: 20px;
+    bottom: 30px;
+  }
+    padding-top: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    text-align: center;
+  }
+
+  .popup__footer {
+    background-color: #4a4a4a;
+    margin-top: 0;
+    padding: 30px 40px;
+    font-size: 13px;
+  }
+}
+.custom-checkbox {
+  &__inner-wrap {
+    display: flex;
+  }
+
+  &__txt {
+    margin-left: 15px;
+  }
+}

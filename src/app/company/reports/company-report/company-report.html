@@ -1,0 +1,81 @@
+<div class="orders-report">
+  <div class="orders-report-top" [class.scrolled]="scrolled">
+    <div class="orders-report-top-i">
+      <div>
+        <div class="orders-report-date">
+          <div (click)="selectCurrentWeek()" class="calendar-btn">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+            <span class="line-calendar-tooltip" translate="SHARED.COMPONENTS.TODAY">Today</span>
+          </div>
+          <div class="circle-arrow circle-arrow-left" (click)="selectWeek(back)" [class.disabled]="!back">
+            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          </div>
+          <div *ngIf="!isMobile()" class="date">{{ weekStart | daysRange }}</div>
+          <div *ngIf=" isMobile()" class="date">{{ weekStart | dayMonth }}</div>
+          <div class="circle-arrow circle-arrow-right" (click)="selectWeek(forward)" [class.disabled]="!forward">
+              <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </div>
+          <div class="datepicker">
+              <span (click)="showPicker = !showPicker" class="calendar-btn">
+      <i class="fa fa-calendar"></i>
+      <span class="line-calendar-tooltip" translate="SHARED.COMPONENTS.CALENDAR">Calendar</span>
+    </span>
+            <div class="datepicker-dropdown">
+              <datepicker [hidden]="!showPicker"
+                          [(ngModel)]="calendarDate"
+                          (ngModelChange)="dateCalendarPicked($event)"
+                          [startingDay]="1"
+                          [formatDay]="'D'"
+                          [showWeeks]="false"></datepicker>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="orders-report-row">
+        <div  *ngFor="let day of weekDays; let i = index" class="orders-report-col">
+          <div class="orders-report-day">
+            <i class="fa fa-spinner fa-spin fa-2x fa-fw margin-bottom" [hidden]="!showSpinner(day)"></i>
+            <div class="row-1">
+              <strong>{{ formatDate(day) }}</strong>
+              <strong>{{ total[i] | currencyFormat  }}</strong>
+            </div>
+            <div class="row-2">
+              <span class="text-grey">{{ dishesPerDay(day)  }} {{'SHARED.DISHES.PLURAL' | translate }}</span>
+              <strong class="text-green">{{'SUBSIDIES.PLURAL'|translate}}: {{ subsidiesPerDay(day) | currencyFormat  }} </strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="orders-report-content">
+    <section *ngFor="let employee of employees()">
+      <div class="orders-report-title">{{ employee }}</div>
+      <div class="orders-report-row">
+        <div *ngFor="let day of weekDays" class="orders-report-col">
+          <div class="orders-list">
+            <div *ngFor="let dish of dayDishes(employee, day)" class="item">
+              <img src="{{ dish.display_url }}">
+              <div class="txt">
+                <div class="preorder-txt" *ngIf="!dish.locked" translate="COMPANY.REPORTS.PREORDER">Preorder</div>
+                <strong>{{ dish.dish }}</strong>
+                <div translate="COMPANY.FROM_KITCHEN" [translateParams]="{ kitchen: dish.kitchen }"></div>
+              </div>
+              <strong class="price">
+                <span *ngIf="dish.quantity > 1">{{dish.quantity}} x</span>
+                {{ dish.item_price | currencyFormat  }}
+              </strong>
+            </div>
+            <div class="item" *ngIf="dayTotal(employee, day)">
+              <div class="price">
+                <strong>{{'SHARED.TOTAL'|translate}}: {{ dayTotal(employee, day) | currencyFormat  }}</strong>
+                <div class="subsidy">{{'SUBSIDIES.PLURAL'|translate}}: {{ employeeSubsidy(employee, day) | currencyFormat  }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<form [formGroup]="userForm" *ngIf="state" (submit)="submitForm()" autocomplete="off">
+  <div class="popup-wrap">
+  <div class="popup">
+    <div class="popup-body">
+      <div class="form-group v3">
+        <input type="text" class="form-control" formControlName="firstName">
+        <label>First Name</label>
+      </div>
+      <div class="form-group v3">
+        <input type="text" class="form-control" formControlName="lastName">
+        <label>Last Name</label>
+      </div>
+      <div class="form-group v3">
+        <input type="text" class="form-control" formControlName="email">
+        <label>Email</label>
+      </div>
+      <div class="form-group v3">
+        <input type="password" class="form-control" formControlName="password">
+        <label>Password</label>
+      </div>
+      <div class="form-group v3 mb-3">
+        <select class="form-control" formControlName="role" placeholder="Select role">
+          <option [attr.selected]="option == role" value="{{ option | lowercase }}" *ngFor="let option of roles">
+            {{ ('SHARED.ROLES.'+ option|uppercase) |translate}}
+          </option>
+        </select>
+        <label translate="CONTROLS.ROLE">Role</label>
+        <i class="fa fa-caret-down"></i>
+      </div>
+    </div>
+    <footer>
+      <button class="btn btn-green btn-big" translate="BUTTONS.SAVE">Save</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>
+</form>

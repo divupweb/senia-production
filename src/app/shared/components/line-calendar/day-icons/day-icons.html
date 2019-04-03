@@ -1,0 +1,19 @@
+<div *ngIf="icons" >
+
+  <i class="fa fa-lock" *ngIf="icons.locked" aria-hidden="true"></i>
+  <div  *ngIf="!icons.locked">
+    <span class="day-icon" *ngFor="let icon of icons.orders" [ngClass]="icon.type">
+      <span *ngIf="icon.kind == 1">
+        <i class="fa fa-repeat" aria-hidden="true"></i>
+      </span><!-- periodic -->
+      <span *ngIf="icon.kind == 2">
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+      </span><!-- custom -->
+      <span *ngIf="icon.kind == 3">
+        <i class="fa fa-circle-o" aria-hidden="true"></i>
+      </span><!-- some kind of cerber -->
+    </span>
+
+  </div>
+
+</div>

@@ -1,0 +1,410 @@
+@import '~assets/css/conf';
+
+.calendar-control-wrap {
+  padding-top: 35px;
+  letter-spacing: 0;
+  text-align: center;
+  position: relative;
+  .calendar-control-title {
+    color: $gray-text;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .datepicker {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+
+    .datepicker-dropdown {
+      right: -2px;
+      left: auto;
+    }
+  }
+  .btn {
+    padding: 6px 20px 2px;
+    line-height: 1;
+  }
+  .calendar-btn {
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid $main-green;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    position: relative;
+    @include user-select(none);
+
+    .fa {
+      color: $main-green;
+      font-size: 13px;
+      line-height: 1;
+      position: relative;
+      top: 4px;
+    }
+    .fa-calendar-check-o {
+      left: 1px;
+    }
+    .line-calendar-tooltip {
+      padding: 6px 12px 4px;
+      background: $gray-dark;
+      color: #c1c1c1;
+      position: absolute;
+      font-size: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 40px;
+      box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      @include border-radius(3px);
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -5px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: $gray-dark transparent transparent transparent;
+      }
+    }
+    &:hover {
+      background: $main-green;
+      .line-calendar-tooltip {
+        opacity: 1;
+      }
+      .fa {
+        color: white;
+      }
+    }
+  }
+}
+
+.calendar-control {
+  padding: 0 50px;
+  margin: 0 34px;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+
+  &-days {
+    width: 420px;
+    white-space: nowrap;
+  }
+  &-day {
+    width: 68px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0;
+    position: relative;
+    padding: 17px 0 12px;
+    cursor: pointer;
+    @include user-select(none);
+
+    .number {
+      font-size: 24px;
+      line-height: 26px;
+      margin-bottom: 1px;
+    }
+    .weekday {
+      font-size: 14px;
+      line-height: 16px;
+      color: $gray-text;
+    }
+    &.passed {
+      color: #d6d5d5;
+      .weekday {
+        color: #d6d5d5;
+      }
+    }
+    &.selected {
+      cursor: default;
+
+      day-icons {
+        &:before,
+        &:after {
+          background: white;
+        }
+      }
+      &.weekend {
+        .number {
+          color: $red;
+        }
+      }
+    }
+    &.disabled {
+      cursor: default;
+    }
+    &.passed{
+      color: #d6d5d5!important;
+      .weekday{
+        color: #d6d5d5!important;
+      }
+      &.weekend{
+        .number{
+          color: #d6d5d5;
+        }
+      }
+    }
+  }
+  .arrow {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    width: 26px;
+    height: 26px;
+    background: $main-green;
+    cursor: pointer;
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+    @include border-radius(50%);
+    @include user-select(none);
+
+    .fa {
+      font-size: 11px;
+      color: white;
+      position: absolute;
+      top: 8px;
+
+    }
+    &.left {
+      left: 0;
+      .fa {
+        left: 8px;
+      }
+    }
+    &.right {
+      right: 0;
+      .fa {
+        right: 9px;
+      }
+    }
+  }
+}
+
+// DAYS SELECTION
+$border: 2px solid $gray-dark;
+$radius: 7px;
+@mixin border-left($border, $radius) {
+  border-left: $border;
+  border-top-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+}
+
+@mixin border-right($border, $radius) {
+  border-right: $border;
+  border-top-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+}
+
+.calendar-control-day.selected {
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: $border;
+    border-bottom: $border;
+    @include border-left($border, $radius);
+  }
+  & ~ .calendar-control-day.selected {
+    &:after {
+      @include border-left(0, 0);
+    }
+  }
+  & + .calendar-control-day.selected {
+    &:after {
+      @include border-right($border, $radius);
+    }
+  }
+  & ~ .calendar-control-day.selected.weekend {
+    &:after {
+      @include border-left(0, 0);
+      @include border-right(0, 0);
+      border-top: $border;
+      border-bottom: $border;
+    }
+  }
+  & ~ .calendar-control-day:not(.selected) {
+    color: $gray-dark;
+    &.weekend {
+      .number {
+        color: $red;
+      }
+      &.passed{
+        .number{
+          color: #d6d5d5;
+        }
+      }
+    }
+  }
+}
+
+// MULTIDAY TYPE
+.calendar-control-wrap:not(.weekly) {
+  .calendar-control {
+    &:before,
+    &:after {
+      content: "";
+      width: 90px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      z-index: 2
+    }
+    &:before {
+      left: 0;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,1+59,0.75+100 */
+      background: -moz-linear-gradient(left,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#bfffffff',GradientType=1 ); /* IE6-9 */
+    }
+    &:after {
+      right: 0;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0.75+0,1+41,1+100 */
+      background: -moz-linear-gradient(left,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 50%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+    }
+  }
+  .calendar-control-days {
+    width: 484px;
+  }
+  .calendar-control-day {
+    transform: translateX(-34px);
+  }
+  .calendar-control-day:hover {
+    background: #f3f3f3;
+    @include border-left(none, $radius);
+    + .calendar-control-day {
+      background: #f3f3f3;
+      @include border-right(none, $radius);
+    }
+  }
+}
+
+// ONE DAY TYPE
+.calendar-control-wrap.weekly {
+  .calendar-control-days {
+    width: 476px;
+  }
+  .calendar-control-day {
+    @include border-radius(7px);
+
+    &:not(.weekend):not(.selected):hover {
+      background: #f3f3f3;
+    }
+  }
+  .calendar-control-day.selected:after {
+    border: 2px solid #4a4a4a;
+    @include border-radius(7px);
+  }
+}
+
+:host {
+  &.week-days {
+    .calendar-control-day {
+      padding: 25px 0 20px;
+      .number {
+        font-size: 16px;
+        font-family: $font-bold;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+
+
+@media (max-width: $mobile) {
+  :host {
+    &.week-days {
+      .calendar-control-day {
+        padding: 15px 0 10px;
+        .number {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+  .calendar-control{
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .calendar-control-day{
+    width: 38px;
+    .number{
+      font-size: 20px;
+      line-height: 20px;
+    }
+  }
+
+  .calendar-control-wrap{
+    width: 314px;
+    margin: 0 auto;
+    padding-top: 60px;
+    padding-bottom: 20px;
+    .calendar-control-title{
+      top: 24px;
+    }
+    .datepicker,
+    .today{
+      position: absolute;
+      top: 21px;
+    }
+    .today{
+      left: 0;
+    }
+    .datepicker {
+      right: 0;
+    }
+    .calendar-btn{
+      .line-calendar-tooltip {
+        display: none;
+      }
+    }
+
+    &.weekly{
+      .calendar-control-days {
+        width: 314px;
+      }
+    }
+  }
+
+  .calendar-control-wrap:not(.weekly) {
+    .calendar-control-days{
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .calendar-control {
+      &:before,
+      &:after {
+        width: 45px;
+      }
+      .arrow.right{right: 0;}
+      .arrow.left{left: 0;}
+    }
+    .calendar-control-day{
+      transform: translateX(-38px);
+    }
+  }
+}
+
+
+

@@ -1,0 +1,13 @@
+<div class="spinner" [ngClass]="{'disabled': disabled}">
+
+  <span class="spinner-btn decr" (click)="decreaseValue()">
+    <i class="fa fa-minus"  aria-hidden="true"></i>
+  </span>
+
+  <input type="text" class="spinner-input" [ngModel]="value" (ngModelChange)="onChangeInput($event)" [disabled]="disabled">
+
+  <span class="spinner-btn incr" (click)="increaseValue()">
+    <i class="fa fa-plus" aria-hidden="true"></i>
+  </span>
+
+</div>

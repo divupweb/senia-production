@@ -1,0 +1,9 @@
+{
+  "name": "App",
+  "icons": [{
+    "src": "/assets/favicon.ico",
+    "sizes": "32x32",
+    "type": "image/ico",
+    "density": 1
+  }]
+}

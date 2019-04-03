@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+</style>
+<g id="ic_x5F_company_x5F_orders">
+	<g>
+		<path class="st0" d="M21,3v18H3V3H21 M22,2H2v20h20V2L22,2z"/>
+	</g>
+	<g>
+		<rect x="7" y="7" class="st0" width="3" height="1"/>
+	</g>
+	<g>
+		<rect x="14" y="7" class="st0" width="3" height="1"/>
+	</g>
+	<g>
+		<rect x="7" y="12" class="st0" width="3" height="1"/>
+	</g>
+	<g>
+		<rect x="14" y="12" class="st0" width="3" height="1"/>
+	</g>
+	<polygon class="st0" points="16,17 8,17 7,17 7,18 7,21 8,21 8,18 16,18 16,21 17,21 17,18 17,17 	"/>
+</g>
+</svg>

@@ -1,0 +1,98 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" closePopup (onClosePopup)="close($event)">
+    <div class="popup-body" [hidden]="form.get('ownerId').value">
+      <div class="search-input-block">
+        <input-debounce #control [placeholder]="'ADMIN.DASHBOARD.MANUAL.SEARCH_FOR_OWNER' | translate" (value)="onQueryChange($event)" [delay]="800"></input-debounce>
+        <form-controll-errors [form]="form" [controlName]="'ownerId'" [translation]="'ADMIN.DASHBOARD.MANUAL.OWNER'">
+        </form-controll-errors>
+      </div>
+      <owners-group [company]="company" *ngFor="let company of companies" (onSelect)="onSelect($event)" [employeeFilter]="ownerQuery"></owners-group>
+    </div>
+
+    <div class="popup-body main" *ngIf="selectedOwner">
+      <header>
+        <div class="img">
+          <img [src]="selectedOwner?.displayUrl">
+          <img [src]="selectedOwner?.company?.displayUrl" *ngIf="selectedOwner.ownerType == 'User'">
+          <div class="overlay" (click)="removeSelectedOwner()">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </div>
+        </div>
+        <div class="txt">
+          <strong>{{ selectedOwner.name }}</strong>
+          <div class="text-grey">{{ selectedOwner.email}}</div>
+          <div class="text-grey" *ngIf="selectedOwner.ownerType == 'User'">{{ selectedOwner?.company?.name }}</div>
+        </div>
+        <div class="info">
+          <div><strong>{{'SHARED.TOTAL' | translate }}: {{ total?.amount | currencyFormat }}</strong></div>
+          <div class="text-green">{{ 'SUBSIDIES.PLURAL' | translate }}: {{ total?.subsidy | currencyFormat }}</div>
+          <div class="text-grey">
+            {{total?.dishes}} {{ total?.dishes| i18nPlural: { '=1': 'USER.DISH_SINGULAR' | translate, 'other': 'USER.DISH_PLURAL' | translate } }}
+          </div>
+        </div>
+      </header>
+      <div class="list">
+        <div class="item" *ngFor="let item of dishes">
+          <div class="img">
+            <img [src]="item.dishCategory.displayUrl" [alt]="item.name">
+            <div class="overlay" (click)="removeDish(item)">
+              <i class="fa fa-times" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="txt">
+            <div><strong>{{ item.name }}</strong></div>
+            <div class="text-grey">{{ item.kitchen.name }}</div>
+            <div class="text-green"> {{ item.price | currencyFormat }}</div>
+          </div>
+          <div class="tag" (click)="item.toggleCharge(); calcTotal();" [ngClass]="{'tag-red': item.skipCharge }">
+            {{ 'ADMIN.DASHBOARD.MANUAL.SKIP_CHARGE' | translate }}
+          </div>
+          <div class="counter">
+            <div class="counter-ctrl" (click)="item.inc(); calcTotal();">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+            <div class="counter-amount">{{ item.quantity }}</div>
+            <div class="counter-ctrl" (click)="item.dec(); calcTotal();">
+              <i class="fa fa-minus" aria-hidden="true" ></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="search-input-block">
+        <dropdown #dropdown
+                  [classes]="{'in-auth': true}"
+                  [updateItemsFn]="updateDishList"
+                  [query]="searchDish"
+                  [placeholder]="'ADMIN.DASHBOARD.MANUAL.SEARCH_FOR_DISH' | translate "
+                  (onChange)="onChange($event)">
+
+          <ng-template let-item>
+            <div class="dropdown-item-i">
+              <div class="img">
+                <img [src]="item?.dish_category?.display_url" [alt]="item?.name">
+                <div class="overlay overlay-green">
+                  <i class="fa fa-plus"></i>
+                </div>
+              </div>
+              <div class="txt">
+                <div><strong>{{ item?.name }}</strong></div>
+                <div class="text-grey">{{ item?.kitchen?.name }}</div>
+                <div class="text-green"> {{ item?.price | currencyFormat }}</div>
+              </div>
+            </div>
+          </ng-template>
+        </dropdown>
+        <div class="search-close" (click)="clearSearch()">
+          <i class="fa fa-times"></i>
+        </div>
+      </div>
+
+    </div>
+    <footer>
+      <button class="btn btn-green btn-big" translate="BUTTONS.SAVE" (click)="save()">Save</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a translate="BUTTONS.CLOSE" (click)="close()">Close</a>
+    </footer>
+  </div>
+</div>

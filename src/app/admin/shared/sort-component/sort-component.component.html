@@ -1,0 +1,13 @@
+<div class="custom-dropdown">
+  <div class="txt" (click)="open()">
+    <span class="text-grey" translate="ADMIN.SORT.FILTERED_BY">Filtered by: </span>:&nbsp;
+    <strong *ngIf="sortOrder && sortOrder.column">{{ 'ADMIN.SORT.COLUMNS.' + sortOrder.column.toUpperCase() | translate }}</strong>
+    <i class="fa fa-caret-up" aria-hidden="true" *ngIf="sortOrder.order"></i>
+    <i class="fa fa-caret-down" aria-hidden="true" *ngIf="!sortOrder.order"></i>
+  </div>
+  <div class="custom-dropdown-popover" *ngIf="isOpened" closePopup (onClosePopup)="close($event)">
+    <a class="item" *ngFor="let item of items" (click)="select(item)" [class.active]="isActive(item)">
+      {{ 'ADMIN.SORT.COLUMNS.' + item.column.toUpperCase() | translate }}
+    </a>
+  </div>
+</div>

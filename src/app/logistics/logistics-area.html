@@ -1,0 +1,27 @@
+<user-menu></user-menu>
+<div class="al-sidebar"  [class.is-open]="userMenu.isMenuOpen">
+  <div class="al-sidebar-i">
+    <div class="al-sidebar-heading">
+      <a [routerLink]=" ['./'] " class="logo">
+        <img src="assets/images/logo-white.svg"  width="170" alt="Food Farm">
+      </a>
+    </div>
+    <ul class="al-sidebar-list nav" (click)="userMenu.close()">
+      <li>
+        <a [routerLink]=" ['./'] " routerLinkActive="router-link-active">Dashboard</a>
+      </li>
+      <li>
+        <a [routerLink]=" ['details'] " routerLinkActive="router-link-active">Invoice Details</a>
+      </li>
+      <li *ngIf="userMenu.isMenuOpen">
+        <a href="" (click)="auth.submitLogout()">Log out</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="al-main" (click)="userMenu.close()">
+  <div class="al-content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

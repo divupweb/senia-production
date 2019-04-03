@@ -1,0 +1,101 @@
+<div class="filter-tabs">
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="companyInvoices">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.COMPANY_INVOICES' | translate }}
+      </div>
+    </div>
+  </label>
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="cardCharges">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.CARD_CHARGES' | translate }}
+      </div>
+    </div>
+  </label>
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="kitchenInvoices">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.KITCHEN_INVOICES' | translate }}
+      </div>
+    </div>
+  </label>
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="delivery">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.DELIVERY' | translate }}
+      </div>
+    </div>
+  </label>
+</div>
+<div class="slct-control mb-3" >
+  <div (click)="toggleState('dateOptions')" style="width: 300px;">
+    <div class="title" translate="SHARED.FILTERS.DATE">Date</div>
+    <div class="selected-items">{{ dateValue[0] | dayMonth }} - {{ dateValue[1] | dayMonth }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover calendar-wrap" *ngIf="dateOptions">
+    <range-calendar (onSelectRange)="pickerChange($event);closeOptions('dateOptions')"
+                    [selectedStart]="defaultSelected[0]"
+                    [selectedEnd]="defaultSelected[1]"
+                    #calendar>
+
+    </range-calendar>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('accountOptions')" *ngIf="companyInvoices">
+  <div (click)="toggleState('accountOptions')">
+    <div class="title" translate="SHARED.REGIONS.PLURAL">Regions</div>
+    <div class="selected-items" *ngIf="accounts.length == accountList.length; else selectedA" translate="SHARED.FILTERS.ALL">All</div>
+    <ng-template #selectedA>{{ selectedAccounts() }}</ng-template>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!accountOptions">
+    <div class="slct-control-content">
+      <div class="custom-checkbox checked" *ngFor="let account of accountList">
+        <label (change)="accounts.includes(account) ? removeAccount(account) : addAccount(account)">
+          <input type="checkbox" [value]="account.id" [checked]="accounts.includes(account)">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{ account.name }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slct-control  mb-3" (clickOutside)="closeOptions('subscriptionOptions')">
+  <div (click)="toggleState('subscriptionOptions')">
+    <div class="title" translate="SHARED.FILTERS.SERVICE">Service</div>
+    <div class="selected-items">{{ selectedService() }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!subscriptionOptions">
+    <div class="slct-control-content">
+      <div class="custom-checkbox"
+           [ngClass] = "{checked: subscriptionValue.indexOf(item) > -1 }"
+           *ngFor="let item of subscriptions">
+        <label>
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                 (change)="subscriptionChange($event)"
+                 [checked]="subscriptionValue.indexOf(item) > -1"
+                 value="{{item}}">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{( 'SUBSCRIPTIONS.' + item | uppercase) | translate }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-green btn-big btn-block" (click)="submit($event)" translate="BUTTONS.GENERATE">Generate</button>
+<button class="btn btn-green btn-big btn-block" (click)="download($event)" translate="SHARED.FILTERS.BUTTONS.DOWNLOAD_PDF">Download pdf</button>
+<div class="text-center mt-1">
+  <a (click)="onClickBack.emit()" translate="ADMIN.REPORTS.BACK"></a>
+</div>

@@ -1,0 +1,20 @@
+<div class="alert alert-danger" *ngIf="control && control.touched && control.invalid">
+  <p *ngIf="control.hasError('required')">
+    {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: translation | translate } }}
+  </p>
+  <p *ngIf="control.hasError('invalidEmailAddress')">
+    {{ 'CONTROLS.ERRORS.INCORRECT.EMAIL' | translate }}
+  </p>
+  <p *ngIf="control.hasError('matchPassword')">
+    {{ 'CONTROLS.ERRORS.MATCH.PASSWORD' | translate }}
+  </p>
+  <p *ngIf="control.hasError('invalidProfitMargin')">
+    {{ 'CONTROLS.ERRORS.INCORRECT.MESSAGE'| translate: { field: translation | translate } }}
+  </p>
+  <p *ngIf="control.hasError('invalidPriceRange')">
+    {{ 'KITCHENS.ERRORS.INVALID_RANGE' | translate }}
+  </p>
+  <p *ngIf="control.hasError('server')">
+    {{ translation | translate }} {{ control.getError('server') }}
+  </p>
+</div>

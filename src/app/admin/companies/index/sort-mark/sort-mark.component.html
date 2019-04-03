@@ -1,0 +1,4 @@
+<ng-container *ngIf="!!sortOrder && active">
+  <i class="fa fa-sort-asc" aria-hidden="true" *ngIf="sortOrder.order === true"></i>
+  <i class="fa fa-sort-desc" aria-hidden="true" *ngIf="sortOrder.order !== true"></i>
+</ng-container>

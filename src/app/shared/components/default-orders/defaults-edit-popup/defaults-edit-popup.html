@@ -1,0 +1,51 @@
+<div class="popup-wrap" tabindex="1" *ngIf="showPopup" (keyup.esc)="close()" (clickOutside)="close($event)" (setFocus)="true">
+  <div class="popup">
+    <div class="popup-body-header">
+      <div class="sort-select">
+        <div class="title">{{ item.weekday }}</div>
+        <div class="dropdown" [class.open]="showDropdown" (keyup.esc)="closeDropdown($event)" (clickOutside)="closeDropdown($event)" tabindex="2">
+          <span class="txt" (click)="openDropdown()">
+            {{ activeSort.name | translate }}
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" *ngFor="let i of sortItems" (click)="onSortSelect(i)" [class.disabled]="i == activeSort">
+              {{ i.name | translate }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="popup-tabs">
+        <h3 class="tab" *ngFor="let subscription of subscriptions" (click)="setSubscription(subscription)" [class.active]="current == subscription">
+          {{ ('SUBSCRIPTIONS.' + subscription|uppercase) | translate }}
+        </h3>
+      </div>
+    </div>
+    <div class="popup-body" *ngIf="current">
+      <div>
+        <div class="defaults-item" *ngFor="let menuItem of currentOptions">
+          <img [src]="menuItem.display_url">
+          <div class="txt">
+            <div><strong>{{ menuItem.dish_category }}</strong></div>
+            <div class="text-grey">{{ menuItem.kitchen_name }}</div>
+            <div class="text-green">{{ [menuItem.min_price, menuItem.max_price] | currencyFormat  }}</div>
+          </div>
+          <div class="custom-checkbox">
+            <label>
+              <input type="checkbox" [(ngModel)]="menuItem.active" (ngModelChange)="onChangeData($event)">
+              <i class=" fa fa-check-circle"></i>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-message"
+           translate="SHARED.COMPONENTS.DEFAULTS.FOOTER_MESSAGE"
+           [translateParams]="{ subscription: current, weekday: item.weekday }"></div>
+      <button class="btn btn-big" [class.btn-green]="changed" (click)="save()" [disabled]="!changed" translate="BUTTONS.CONFIRM">Confirm</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>

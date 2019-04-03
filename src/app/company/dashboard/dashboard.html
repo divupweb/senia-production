@@ -1,0 +1,166 @@
+<div class="company-admin-dashbord">
+  <main class="dashbord-main">
+    <div class="dashbord-main-top">
+      <line-calendar (daySelect)="onDaySelect($event)"></line-calendar>
+    </div>
+    <div class="dashbord-main-content">
+      <div class="dashboard-days">
+        <div *ngFor="let data of subscriptionsData" class="dashboard-day-wrap">
+          <div [ngClass]="{'completed': data.finished || (data.date | isPassed) }"
+               class="dashboard-day {{data.subscription}}">
+            <div class="info">
+              <div class="day" *ngIf="(data.date|isTomorrow) || (data.date|isToday)"> {{ data.date | calendarTime }}
+              </div>
+              <div class="date">{{ data.date | dayMonth}}</div>
+              <div *ngIf="data.delivered.error_count > 0" class="problems">
+                {{ 'COMPANY.DASHBOARD.COUNT_PROBLEMS' | translate: { count: data.delivered.error_count} }}
+              </div>
+            </div>
+            <h2>{{ ('SUBSCRIPTIONS.' + data.subscription|uppercase) | translate}}</h2>
+            <div class="order-steps mt-3">
+              <div [ngClass]="{'completed': data.ordered.started }" class="step">
+                <div *ngIf="data.ordered.time_left" class="warning"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                </div>
+                <div class="step-left">
+                  <div class="step-circle"><i class="step-1"></i></div>
+                </div>
+                <div class="step-right">
+                  <div class="kitchens">
+                    <div *ngFor="let kitchenLogo of data.ordered.kitchen_logos" class="kitchen"
+                         title="{{kitchenLogo[1]}}">
+                      <img src="{{kitchenLogo[0]}}" alt="">
+                    </div>
+                  </div>
+                  <div class="title">
+                    <a (click)="openPopup('ordered', data.date, data.subscription)"
+                       translate="COMPANY.DASHBOARD.ORDERED">Ordered</a>
+                    <span *ngIf="data.ordered.time_left" class="expiration-time">&nbsp; {{ 'SHARED.TIME_LEFT' | translate: { time: data.ordered.time_left } }}</span>
+                  </div>
+                  <div class="details">
+                    <span *ngIf="data.ordered.company_order_count > 0">
+                      {{ 'COMPANY.DASHBOARD.COUNT_COMPANY_ORDERS' | translate: {count: data.ordered.company_order_count} }}
+                    </span>
+                    <span *ngIf="data.ordered.employee_order_count > 0">
+                      {{ 'COMPANY.DASHBOARD.COUNT_EMPLOYEE_ORDERS' | translate: {count: data.ordered.employee_order_count } }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div [ngClass]="{'completed': data.producing.progress == 100, 'started': data.producing.progress > 0  }"
+                   class="step">
+                <div class="step-left">
+
+                  <circle-progress *ngIf="data.producing.progress > 0 && data.producing.progress < 100"
+                                   class="circle-progress-produce" #circleProgTotal
+                                   [percent]="data.producing.progress"
+                                   [boxSize]="34"
+                                   [radius]="16"
+                                   [border]="2"
+                                   [time]="0">
+                  </circle-progress>
+
+                  <div class="step-circle"><i class="step-2"></i></div>
+                </div>
+                <div class="step-right">
+                  <div *ngIf="data.producing.kitchen_logos.length > 0" class="kitchens">
+                    <div *ngFor="let kitchenLogo of data.producing.kitchen_logos" class="kitchen"
+                         title="{{kitchenLogo[1]}}">
+                      <img src="{{kitchenLogo[0]}}" alt="">
+                    </div>
+                  </div>
+                  <div class="title"><a (click)="openPopup('producing', data.date, data.subscription)"
+                                        translate="COMPANY.DASHBOARD.PRODUCING">Producing</a></div>
+                  <div class="details">
+                    <span *ngFor="let dd of data.producing.deadlines; let i = index">{{ dd | shortDateTime }}{{ i + 1 < data.producing.deadlines.length ? ', ' : '' }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div [ngClass]="{'completed': data.pickup.progress == 100, 'started': data.pickup.progress > 0 }"
+                   class="step">
+                <div class="step-left">
+                  <div class="step-circle"><i class="step-3"></i></div>
+                  <circle-progress *ngIf="data.pickup.progress > 0 && data.pickup.progress < 100"
+                                   class="circle-progress-produce" #circleProgTotal
+                                   [percent]="data.pickup.progress"
+                                   [boxSize]="34"
+                                   [radius]="16"
+                                   [border]="2"
+                                   [time]="0">
+                  </circle-progress>
+                </div>
+                <div class="step-right">
+                  <div *ngIf="data.pickup.kitchen_logos.length > 0" class="kitchens">
+                    <div *ngFor="let kitchenLogo of data.pickup.kitchen_logos" class="kitchen"
+                         title="{{kitchenLogo[1]}}">
+                      <img src="{{kitchenLogo[0]}}" alt="">
+                    </div>
+                  </div>
+                  <div class="title"><a (click)="openPopup('pickup', data.date, data.subscription)"
+                                        translate="SHARED.PICKED_UP">Picked up</a></div>
+                  <div class="details">
+                    <span *ngFor="let dd of data.pickup.timestamps; let i = index">{{ dd | shortDateTime }}{{ i + 1 < data.pickup.timestamps.length ? ', ' : '' }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div [ngClass]="{'completed': data.delivered.progress == 100, 'started': data.delivered.progress > 0 }"
+                   class="step">
+                <div *ngIf="data.delivered.error_count > 0" class="warning"><i class="fa fa-exclamation-circle"
+                                                                               aria-hidden="true"></i></div>
+                <div class="step-left">
+                  <div class="step-circle"><i class="step-4"></i></div>
+                  <circle-progress *ngIf="data.delivered.progress > 0 && data.delivered.progress < 100"
+                                   class="circle-progress-produce" #circleProgTotal
+                                   [percent]="data.delivered.progress"
+                                   [boxSize]="34"
+                                   [radius]="16"
+                                   [border]="2"
+                                   [time]="0">
+                  </circle-progress>
+                </div>
+                <div class="step-right">
+                  <div *ngIf="data.delivered.kitchen_logos.length > 0" class="kitchens">
+                    <div *ngFor="let kitchenLogo of data.delivered.kitchen_logos" class="kitchen"
+                         title="{{kitchenLogo[1]}}">
+                      <img src="{{kitchenLogo[0]}}" alt="">
+                    </div>
+                  </div>
+                  <div class="title"><a (click)="openPopup('delivered', data.date, data.subscription)"
+                                        translate="SHARED.DELIVERED">Delivered</a></div>
+                  <div class="details">
+                    <span *ngFor="let dd of data.delivered.timestamps; let i = index">{{ dd | shortDateTime }}{{ i + 1 < data.delivered.timestamps.length ? ', ' : '' }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <aside [class.is-open]="userMenu.isAsideOpen">
+    <div class="aside-mobile-header">
+      <div class="hamburger-icon is-open" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <span class="toggle-aside-icon" (click)="userMenu.isAsideOpen = !userMenu.isAsideOpen">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <div class="txt">Messages</div>
+    </div>
+    <notifications></notifications>
+  </aside>
+  <i class="mobile-overlay" [class.is-open]="userMenu.isAsideOpen || userMenu.isMenuOpen"></i>
+</div>
+<dashboard-details-popup [type]="popupType"
+                         [date]="popupDate"
+                         [subscription]="popupSubscription"
+                         [(show)]="showPopup"></dashboard-details-popup>
+
+

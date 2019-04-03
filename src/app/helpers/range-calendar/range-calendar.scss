@@ -1,0 +1,144 @@
+@import '~assets/css/conf';
+
+.range-calendar {
+  padding: 33px;
+  header{
+    position: relative;
+    .header-i{
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+
+      >div:first-child,
+      >div:last-child{
+        flex-basis: 26px;
+        min-width: 26px;
+      }
+    }
+    .month-title{
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+
+    .planner{
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $gray-blue;
+      font-size: 16px;
+      display: block;
+      text-decoration: none;
+    }
+  }
+  .table{
+    width: auto;
+    margin-bottom: 0;
+    table-layout: fixed;
+    th{
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      color: $main-green;
+      vertical-align: middle;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 11px;
+      border: 0;
+      font-family: $font-bold;
+    }
+    td{
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      border: 1px solid #e7e7e7;
+      position: relative;
+      vertical-align: middle;
+      text-align: center;
+      .fa-lock{
+        position: absolute;
+        bottom: 4px;
+        right: 4px;
+        display: none;
+      }
+
+      &.disabled{
+        .fa-lock{display: inline-block;}
+        .date{opacity: .4}
+      }
+      &.between{
+        background: #aedcc7;
+        &:after{
+          content: "";
+          border: 1px solid #55c49e;
+          position: absolute;
+          top: -1px;
+          bottom: -1px;
+          left: -1px;
+          right: -1px;
+        }
+      }
+      &.selected{
+        background: $main-green;
+        color: white;
+        &:after{
+          content: "";
+          border: 1px solid #459d7f;
+          position: absolute;
+          top: -1px;
+          bottom: -1px;
+          left: -1px;
+          right: -1px;
+          z-index: 2;
+        }
+      }
+      &.another{
+        color: #c1c1c1;
+        background: #f3f3f3;
+      }
+    }
+  }
+
+
+}
+.select-date{
+  max-width: 540px;
+  padding: 35px 0;
+  margin: 20px auto 0;
+  .close{
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 28px;
+  }
+
+
+  .datepicker{
+    display: inline-block;
+    width: 49%;
+  }
+
+  .select-date-controls{
+    button{
+      width: 100%;
+      background: transparent;
+      border: 0;
+      border-bottom: 2px solid $gray-blue;
+      display: block;
+      padding: 15px 10px;
+      text-align: left;
+      color: #000;
+      font-size: 12px;
+      outline: none;
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .range-calendar {
+    padding: 15px 10px;
+    .table td{
+      width: 45px;
+      height: 45px;
+    }
+  }
+}

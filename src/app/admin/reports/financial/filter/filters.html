@@ -1,0 +1,167 @@
+<div class="filter-tabs">
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="companyInvoices">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.COMPANY_INVOICES' | translate }}
+      </div>
+    </div>
+  </label>
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="cardCharges">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.CARD_CHARGES' | translate }}
+      </div>
+    </div>
+  </label>
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="kitchenInvoices">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.KITCHEN_INVOICES' | translate }}
+      </div>
+    </div>
+  </label>
+  <label class="item">
+    <input type="checkbox" [(ngModel)]="delivery">
+    <div class="item-i">
+      <i class="tab-icon"></i>
+      <div class="tab-tooltip">
+        {{ 'ADMIN.REPORTS.DELIVERY' | translate }}
+      </div>
+    </div>
+  </label>
+</div>
+<div class="slct-control mb-3" >
+  <div (click)="toggleState('dateOptions')" style="width: 300px;">
+    <div class="title" translate="SHARED.FILTERS.DATE">Date</div>
+    <div class="selected-items">{{ dateValue[0] | dayMonth }} - {{ dateValue[1] | dayMonth }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover calendar-wrap" [hidden]="!dateOptions">
+    <range-calendar (onSelectRange)="pickerChange($event);closeOptions('dateOptions')"
+                    [selectedStart]="defaultSelected[0]"
+                    [selectedEnd]="defaultSelected[1]"
+                    #calendar>
+
+    </range-calendar>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('companyOptions')" *ngIf="companyInvoices">
+  <div (click)="toggleState('companyOptions')">
+    <div class="title" translate="SHARED.COMPANIES.PLURAL">Companies</div>
+    <div class="selected-items" *ngIf="companies.length == 0; else selectedC" translate="SHARED.FILTERS.ALL">All</div>
+    <ng-template #selectedC>{{ selectedCompanies() }}</ng-template>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!companyOptions">
+    <div class="mb-2 mt-3">
+      <dropdown [classes]="{'in-auth': true}"
+                [updateItemsFn]="companiesList"
+                [placeholder]="'SHARED.SEARCH_QUERY' | translate "
+                (onChange)="addCompany($event)">
+      </dropdown>
+    </div>
+    <div class="slct-control-content">
+      <div class="custom-checkbox checked" *ngFor="let company of companies">
+        <label (click)="removeCompany(company)">
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid" [value]="company.id" [checked]="true">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{ company.name }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="slct-control mb-3" (clickOutside)="closeOptions('employeeOptions')" *ngIf="cardCharges">
+  <div (click)="toggleState('employeeOptions')">
+    <div class="title" translate="SHARED.FILTERS.EMPLOYEES">Employees</div>
+    <div class="selected-items" *ngIf="employees.length == 0; else selectedE" translate="SHARED.FILTERS.ALL">All</div>
+    <ng-template #selectedE>{{ selectedEmployees() }}</ng-template>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!employeeOptions">
+    <div class="mb-2 mt-3">
+      <dropdown [classes]="{'in-auth': true}"
+                [updateItemsFn]="employeesList"
+                [placeholder]="'COMPANY.REPORTS.SEARCH_EMPLOYEE' | translate "
+                (onChange)="addEmployee($event)">
+      </dropdown>
+    </div>
+    <div class="slct-control-content">
+      <div class="custom-checkbox checked" *ngFor="let employee of employees">
+        <label (click)="removeEmployee(employee)">
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                 (change)="employeeChange($event)"
+                 [value]="employee.id"
+                 [checked]="true">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{ employee.name }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('kitchenOptions')" *ngIf="kitchenInvoices">
+  <div (click)="toggleState('kitchenOptions')">
+    <div class="title" translate="SHARED.KITCHENS.PLURAL">Kitchens</div>
+    <div class="selected-items" *ngIf="kitchens.length == 0; else selectedK" translate="SHARED.FILTERS.ALL">All</div>
+    <ng-template #selectedK>{{ selectedKitchens() }}</ng-template>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!kitchenOptions">
+    <div class="mb-2 mt-3">
+      <dropdown [classes]="{'in-auth': true}"
+                [updateItemsFn]="kitchensList"
+                [placeholder]="'SHARED.SEARCH_QUERY' | translate "
+                (onChange)="addKitchen($event)">
+      </dropdown>
+    </div>
+    <div class="slct-control-content">
+      <div class="custom-checkbox checked" *ngFor="let kitchen of kitchens">
+        <label (click)="removeKitchen(kitchen)">
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                 [value]="kitchen.id"
+                 [checked]="true">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{ kitchen.name }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="slct-control mb-3" (clickOutside)="closeOptions('subscriptionOptions')">
+  <div (click)="toggleState('subscriptionOptions')">
+    <div class="title" translate="SHARED.FILTERS.SERVICE">Service</div>
+    <div class="selected-items">{{ selectedService() }}</div>
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </div>
+  <div class="slct-control-popover" [hidden]="!subscriptionOptions">
+    <div class="slct-control-content">
+      <div class="custom-checkbox"
+           [ngClass] = "{checked: subscriptionValue.indexOf(item) > -1 }"
+           *ngFor="let item of subscriptions">
+        <label>
+          <input type="checkbox" class="ng-untouched ng-pristine ng-valid"
+                 (change)="subscriptionChange($event)"
+                 [checked]="subscriptionValue.indexOf(item) > -1"
+                 value="{{item}}">
+          <i aria-hidden="true" class="fa fa-check-circle"></i>
+          <span class="txt">{{( 'SUBSCRIPTIONS.' + item | uppercase) | translate }}</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button class="btn btn-green btn-big btn-block" (click)="submit($event)" translate="BUTTONS.GENERATE">Generate</button>
+<button class="btn btn-green btn-big btn-block" (click)="download($event)" translate="SHARED.FILTERS.BUTTONS.DOWNLOAD_PDF">Download pdf</button>
+
+<div class="text-center mt-1">
+  <a (click)="onClickBack.emit()" translate="ADMIN.REPORTS.BACK"></a>
+</div>

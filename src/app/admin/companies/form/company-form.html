@@ -1,0 +1,281 @@
+<ng-container *ngIf="editMode">
+  <user-menu>
+    <div class="user-menu-links">
+      <span>
+        <a (click)="sendMesssage.open(service, id, 'Company')" translate="BUTTONS.SEND_MESSAGE"></a>
+      </span>
+      <span>
+        <a (click)="companyDiscount.open(id)" translate="ADMIN.COMPANIES.DISCOUNTS"></a>
+      </span>
+      <span>
+        <a (click)="companyCredits.open(id)" translate="ADMIN.COMPANIES.CREDITS"></a>
+        <span class="text-grey" *ngIf="company.balance"> {{ company.balance }}</span>
+      </span>
+      <span>
+        <a (click)="sharedLocation.open([company])" translate="ADMIN.COMPANIES.SHARED_LOCATION.TITLE"></a>
+        <span class="text-grey" *ngIf="company.sharedLocationId" translate="ADMIN.COMPANIES.SHARED_LOCATION.SHARED"></span>
+      </span>
+      <span>
+        <a (click)="generateInvoice.open(service, id)" translate="ADMIN.COMPANIES.GENERATE_INVOICE"></a>
+      </span>
+      <span>
+        <a (click)="becomeCompany(id)" translate="BUTTONS.BECOME"></a>
+      </span>
+      <span>
+        <a (click)="becomeEmployee.open(id)" translate="ADMIN.COMPANY.EMPLOYEES"></a>
+      </span>
+    </div>
+  </user-menu>
+
+  <send-message #sendMesssage></send-message>
+  <company-discount #companyDiscount></company-discount>
+  <company-credits #companyCredits (onChange)="handleCreditsChange($event)"></company-credits>
+  <generate-invoice #generateInvoice></generate-invoice>
+  <employee-become #becomeEmployee></employee-become>
+  <shared-location #sharedLocation (onUpdate)="onSharedLocationUpdate($event)"></shared-location>
+</ng-container>
+
+
+<div class="admin-companies">
+  <div class="i">
+    <main>
+      <div class="main-inner">
+        <div class="heading">
+          <h2 translate="SHARED.COMPANIES.SINGULAR">Company</h2>
+          <div class="heading-img">
+            <div class="img"><img [src]="imageDisplayUrl" alt="" *ngIf="imageDisplayUrl"></div>
+            <div>
+              <div class="upload">
+                <input id="img-upload" type="file" (change)="imageChange($event)"/>
+                <label for="img-upload">
+                  {{ 'SHARED.COMPONENTS.UPLOAD_NEW_LOGO' | translate }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <form [formGroup]="form">
+            <div class="row">
+              <div class="col-sm-4">
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="name" id="name">
+                  <label for="name" translate="CONTROLS.NAME">Name</label>
+                  <form-controll-errors [form]="form" [controlName]="'name'"></form-controll-errors>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="email" id="email" type="email">
+                  <label for="email" translate="CONTROLS.INVOICE_EMAIL">Invoice email</label>
+                  <form-controll-errors [form]="form" [controlName]="'email'"
+                                        [translation]="'CONTROLS.INVOICE_EMAIL'"></form-controll-errors>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="organizationNumber" id="organization-number"
+                         (focus)="onFocus($event)" (blur)="onBlur($event)">
+                  <label for="organization-number" translate="CONTROLS.ORGANIZATION_NUMBER">Organization number</label>
+                  <form-controll-errors [form]="form" [controlName]="'organizationNumber'"></form-controll-errors>
+                  <div class="dropdown" [ngClass]="{open: showCompanyInfo}" (keyup.esc)="showCompanyInfo = false"
+                       tabindex="1" *ngIf="showCompanyInfo">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <span class="dropdown-item" (click)="fillInCompanyInfo()">{{ companyInfo?.companyName }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="phone" id="phone">
+                  <label for="phone" translate="CONTROLS.PHONE">Company phone</label>
+                  <form-controll-errors [form]="form" [controlName]="'phone'"></form-controll-errors>
+                </div>
+
+                <div *ngIf="showChargePeriod" class="form-group v3">
+                  <select class="form-control" formControlName="chargePeriod">
+                    <option *ngFor="let period of chargePeriods" [value]="period.id">
+                      {{period.value}}
+                    </option>
+                  </select>
+                  <label translate="CONTROLS.CHARGE_PERIOD">Charge period</label>
+                  <i class="fa fa-caret-down"></i>
+                </div>
+              </div>
+              <div class="col-sm-4" [formGroup]="form.get('locationAttributes')">
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="country" id="country">
+                  <label for="country" translate="CONTROLS.COUNTRY">Country</label>
+                  <form-controll-errors [form]="form.get('locationAttributes')"
+                                        [controlName]="'country'"></form-controll-errors>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="city" id="city">
+                  <label translate="CONTROLS.CITY">City</label>
+                  <form-controll-errors [form]="form.get('locationAttributes')"
+                                        [controlName]="'city'"></form-controll-errors>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="address" id="delivery-address">
+                  <label for="delivery-address" translate="CONTROLS.DELIVERY_ADDRESS">Delivery Address</label>
+                  <form-controll-errors [form]="form.get('locationAttributes')"
+                                        [controlName]="'address'"></form-controll-errors>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-8 form-group v3">
+                    <input class="form-control" formControlName="floor" id="floor" type="number">
+                    <label for="floor" translate="CONTROLS.FLOOR">Floor</label>
+                    <form-controll-errors [form]="form.get('locationAttributes')"
+                                          [controlName]="'floor'"></form-controll-errors>
+                  </div>
+                  <div class="col-sm-4 form-group v3">
+                    <input class="form-control" formControlName="zipCode" id="zip-code">
+                    <label for="zip-code" translate="CONTROLS.ZIP_CODE">Zip Code</label>
+                    <form-controll-errors [form]="form.get('locationAttributes')"
+                                          [controlName]="'zipCode'"></form-controll-errors>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="address2">
+                  <label for="delivery-address" translate="CONTROLS.DELIVERY_ADDRESS_2">Delivery Address 2</label>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div *ngIf="displayUserForm" class="user-form mb-2" [formGroup]="adminForm">
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="firstName" id="first-name">
+                    <label for="first-name" translate="CONTROLS.FIRST_NAME">First Name</label>
+                    <form-controll-errors [form]="adminForm" [controlName]="'firstName'"></form-controll-errors>
+                  </div>
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="lastName" id="last-name">
+                    <label for="last-name" translate="CONTROLS.LAST_NAME">Last Name</label>
+                    <form-controll-errors [form]="adminForm" [controlName]="'lastName'"></form-controll-errors>
+                  </div>
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="phone" id="user-phone">
+                    <label for="user-phone" translate="CONTROLS.MOBILE">Mobile</label>
+                    <form-controll-errors [form]="adminForm" [controlName]="'phone'"></form-controll-errors>
+                  </div>
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="email" id="adminEmail" type="email">
+                    <label for="adminEmail" translate="CONTROLS.EMAIL">Email</label>
+                    <form-controll-errors [form]="adminForm" [controlName]="'email'"></form-controll-errors>
+                  </div>
+                  <div class="form-group v3">
+                    <input class="form-control" formControlName="password" id="password" type="password">
+                    <label for="password" translate="CONTROLS.ADMIN_PASSWORD">Admin Password</label>
+                    <form-controll-errors [form]="adminForm" [controlName]="'password'"></form-controll-errors>
+                  </div>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="bankAccount" id="bankAccount">
+                  <label for="bankAccount" translate="CONTROLS.BANK_ACCOUNT">Bank account</label>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="invoiceDelay" type="number" id="invoiceDelay">
+                  <label for="invoiceDelay" translate="CONTROLS.INVOICE_DELAY">Invoice delay</label>
+                  <form-controll-errors [form]="form" [controlName]="'invoiceDelay'"></form-controll-errors>
+                </div>
+                <div class="form-group v3">
+                  <span *ngIf="company?.canteenApplied">
+                    {{ 'ADMIN.COMPANIES.CANTEEN_APPLIED_SINCE' | translate: { date: company?.canteenApplied | defaultDate } }}
+                  </span>
+                  <br>
+                  <div class="custom-checkbox">
+                    <label>
+                      <input type="checkbox" class="form-control" formControlName="canteen">
+                      {{ 'CONTROLS.CANTEEN' | translate }}
+                      <i aria-hidden="true" class="fa fa-check-circle"></i>
+                    </label>
+                  </div>
+                  <form-controll-errors [form]="form" [controlName]="'canteen'"></form-controll-errors>
+                </div>
+                <div class="form-group v3">
+                  <input class="form-control" formControlName="comment" id="comment">
+                  <label for="comment" translate="CONTROLS.COMMENT">Comment</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-sm-4" *ngIf="company && company.admin">
+                <div class="card">
+                  <div class="card-title mb-1" translate="ADMIN.SINGULAR">Admin</div>
+                  <div class="card-item">
+                    <div class="left" *ngIf="company.admin.display_url">
+                      <img [src]="company.admin.display_url" alt="">
+                    </div>
+                    <div class="right">
+                      <div><strong>{{ company.admin.name }}</strong></div>
+                      <div class="text-grey">{{ company.admin.email }}</div>
+                      <div class="text-grey"><span translate="CONTROLS.MOBILE"></span>{{ company.admin.phone }}</div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <div class="card" [ngClass]="{'no-bg': !relatedKitchen}">
+                  <div class="card-title">
+                    <span translate="ADMIN.RELATED_KITCHEN">Related kitchen</span>
+                    <div class="right">
+                      <div class="custom-checkbox" (click)="toggleRelatedKitchen()">
+                        <label>
+                          <input type="checkbox" [checked]="relatedKitchen" disabled>
+                          <i class="fa fa-check-circle" aria-hidden="true"></i>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-1" *ngIf="relatedKitchen">
+                    <div class="card-item">
+                      <div class="left">
+                        <img [src]="relatedKitchen.displayUrl" alt="" *ngIf="relatedKitchen.displayUrl">
+                      </div>
+                      <div class="right">
+                        <div><strong>{{ relatedKitchen.name }}</strong></div>
+                        <div class="text-grey">{{ relatedKitchen.address }}</div>
+                        <div class="text-grey">{{ relatedKitchen.phone }}</div>
+                        <div (click)="toggleRelatedKitchen(true)">
+                          <span class="text-green" translate="CONTROLS.CHANGE">Change</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row card-item">
+                      <div class="left"></div>
+                      <div class="col-sm-6 form-group v3">
+                        <input class="form-control" formControlName="profitMargin" type="number" min="0" max="100"
+                               placeholder="9.5" step="0.1" id="profit-margin">
+                        <label for="profit-margin" translate="CONTROLS.PROFIT_MARGIN">Profit margin, %</label>
+                        <form-controll-errors [form]="form" [controlName]="'profitMargin'"></form-controll-errors>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <footer class="main-footer">
+        <button type="submit" class="btn btn-gray btn-big" [class.btn-green]="activeSaveButton()" translate="BUTTONS.SAVE"
+                (click)="submitForm()">Save
+        </button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a [routerLink]="backLink" translate="ADMIN.COMPANY.BACK"></a>
+        <div class="right">
+          <switch-checkbox class="text-center" [ngModel]="form.get('active').value"
+                           (ngModelChange)="onActiveChange($event)">
+            {{ (form.get('active').value ? 'SHARED.STATES.ACTIVE' : 'SHARED.STATES.INACTIVE') | translate }}
+          </switch-checkbox>
+        </div>
+      </footer>
+    </main>
+    <aside>
+      <div class="aside-i">
+        <company-kitchens [kitchens]="kitchens" (onChange)="onCompanyKitchensChange($event)"></company-kitchens>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<kitchens-select-list *ngIf="showRelatedKitchens" [kitchens]="kitchens"
+                      (onSelect)="onRelatedKitchenSelect($event)"></kitchens-select-list>

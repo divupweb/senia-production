@@ -1,0 +1,83 @@
+<user-header>
+  <div class="mode-switcher">
+    <div [routerLink]="['../menu']" routerLinkActive="active" translate="USER.MENU.DAY">Day</div>
+    <div [routerLink]="['../weekly-menu']" routerLinkActive="active" translate="USER.MENU.WEEK">Week</div>
+  </div>
+</user-header>
+<menu-header>
+  <div class="menu-header-day">
+    <div class="defaults-button-wrap">
+      <defaults-button></defaults-button>
+    </div>
+    <week-select #weekSelect
+      [selectedDay]="selectedDay"
+      (onWeeklyUpdate)="onWeeklyUpdate($event)"
+      (onDaySelect)="dayChange($event)">
+    </week-select>
+    <div class="cart-info-wrap">
+      <user-cart (onItemChange)="onItemChange($event)"></user-cart>
+    </div>
+  </div>
+</menu-header>
+
+<div class="content">
+  <div class="al-user-container">
+    <div *ngIf="anySubscriptions && !locked">
+      <div class="menu-subscriptions">
+        <div class="heading">
+          <subscriptions [subscriptions]="subscriptions"
+                         [active]="selectedSubscription"
+                         (onSelect)="subscriptionChange($event)">
+          </subscriptions>
+        </div>
+      </div>
+
+      <div>
+        <div *ngFor="let menuItem of menuItems; let $odd = odd" [ngClass]="{'own-kitchen': menuItem.ownKitchen, 'menu-item-wrap': !menuItem.ownKitchen}">
+          <menu-item
+            [menuItem]="menuItem"
+            [subscription]="selectedSubscription"
+            [day]="selectedDayName" [date]="formattedDate"
+            [user]="user"
+            [customClass]="{ 'reverse': $odd && !menuItem.ownKitchen, 'own-kitchen': menuItem.ownKitchen }"
+            [ngClass]="{ 'reverse': $odd }"
+            (onChange)="createOrUpdate($event)"
+            (onPeriodicSet)="changeBasket($event)">
+          </menu-item>
+        </div>
+      </div>
+    </div>
+    <div class="user-message" *ngIf="(!anySubscriptions || locked || kitchens?.length == 0) && hasWeeklyData()">
+      <i class="fa fa-lock" aria-hidden="true"></i>
+      <div *ngIf="!locked">
+        <div class="big" translate="USER.MENU.DAY_UNAVAILABLE">Currently Unavailable</div>
+        <div class="small" [innerHTML]="'USER.MENU.DAY_UNAVAILABLE_DESC' | translate">
+          Contact your company admin<br>
+          (usually the HR person or your boss)<br>
+          to start ordering
+        </div>
+      </div>
+      <div *ngIf="locked && !suspend">
+        <div class="big" translate="USER.MENU.DAY_LOCKED">Locked</div>
+        <div class="small" translate="USER.MENU.DAY_LOCKED_DESC">
+          You have previously frozen this day
+        </div>
+        <div class="mt-2">
+          <button class="btn btn-green btn-big" (click)="unlock()" [disabled]="formattedDate|isPassed">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ 'USER.BUTTONS.UNLOCK' | translate}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+        </div>
+      </div>
+      <div *ngIf="suspend">
+        <div class="big">{{ suspend.name }}</div>
+        <div class="small">{{ suspend.description }}</div>
+        <div class="mt-2">
+          <img [src]="suspend.display_url">
+        </div>
+      </div>
+    </div>
+  </div>
+  <user-footer></user-footer>
+</div>
+
+<!-- POPUPS -->
+
+<kitchen-info-popup style="display: none;" *ngIf="false"></kitchen-info-popup>

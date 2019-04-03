@@ -1,0 +1,5 @@
+<div class="news-list-item" (click)="openNewsItem()" [class.read]="item.isRead">
+  <i class="{{ item.iconClass }}"></i>
+  <div class="text-grey">{{ item.createdAt | calendarTime }} {{ item.createdAt | shortTime: false }}</div>
+  <div class="txt">{{ item.message }}</div>
+</div>

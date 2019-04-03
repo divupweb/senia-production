@@ -1,0 +1,12 @@
+<div class="carousel-slider-wrap">
+  <div class="carousel-slider">
+    <swiper [config]="config" *ngIf="collection.length">
+      <div class="carousel-slider-i banners-slider-block__slide-wrap swiper-wrapper">
+        <div class="carousel-slider-item swiper-slide banners-slider-block__slide-item banners-slider-block__slide-item--card" *ngFor="let item of collection">
+          <img class="banners-slider-block__pic" [src]="item.image" [attr.alt]="item.name">
+        </div>
+      </div>
+    </swiper>
+  </div>
+
+</div>

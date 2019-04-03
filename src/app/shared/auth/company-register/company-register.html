@@ -1,0 +1,156 @@
+<div class="popup-wrap" *ngIf="show">
+  <div class="popup" (clickOutside)="close($event)" (keyup.esc)="close($event)" (setFocus)="true">
+    <div *ngIf="!registered">
+      <div class="popup__header">
+        <h4 class="text-center mb-2" translate="HOME.COMPANY.WHOS_HUNGRY">Who's hungry?</h4>
+        <p class="text-grey text-center mt-2 mb-3" translate="HOME.COMPANY.DROP_YOUR_DETAILS">Drop your details below to bring great food to you office.</p>
+      </div>
+      <div class="popup__body">
+       <form [formGroup]="companyForm" autocomplete="off" (ngSubmit)="onSubmit()">
+         <div class="form-group" *ngIf="!presetRegion">
+           <input class="form-control" formControlName="accountId" type="hidden">
+           <input class="form-control" formControlName="accountName" type="hidden">
+           <dropdown #dropdown
+                     [other]="{ name: 'HOME.REGION.OTHER_CITY' | translate }"
+                     [showSuggestions]="false"
+                     [readonly]="dropdownReadonly"
+                     [classes]="{'in-auth': true}"
+                     [updateItemsFn]="updateAccountList"
+                     [query]="companyForm.controls.accountName.value"
+                     [placeholder]="'CONTROLS.CHOOSE_A_CITY' | translate"
+                     (onChange)="onChange($event)"
+                     (onClear)="onClear($event)" (onTyping)="onTyping($event)">
+           </dropdown>
+           <div class="alert alert-danger"
+                *ngIf="companyForm.touched && companyForm.controls.accountName.errors?.required"
+                translate="CONTROLS.ERRORS.REQUIRED.CITY">Please, chose city
+           </div>
+         </div>
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.FIRST_NAME' | translate }}" formControlName="firstName"
+                  id="first-name" type="text">
+           <div class="alert alert-danger" *ngIf="companyForm.controls.firstName.touched && companyForm.controls.firstName.invalid">
+             <div *ngIf="companyForm.controls.firstName.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.FIRST_NAME">
+               Please, enter first name
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.LAST_NAME_OPTIONAL' | translate }}" formControlName="lastName"
+                  id="last-name" type="text">
+           <div class="alert alert-danger" *ngIf="companyForm.controls.lastName.touched && companyForm.controls.lastName.invalid">
+             <div *ngIf="companyForm.controls.lastName.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.LAST_NAME">
+               Please, enter last name
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+           <input class="form-control" placeholder="{{ 'CONTROLS.WORK_EMAIL' | translate }}" formControlName="email"
+                  id="invoice-email" type="email">
+           <div class="alert alert-danger"
+                *ngIf="companyForm.controls.email.touched && companyForm.controls.email.invalid">
+             <div *ngIf="companyForm.controls.email.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.EMAIL">
+               Please, enter Email field
+             </div>
+             <div *ngIf="companyForm.controls.email.errors?.invalidEmailAddress"
+                  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect
+             </div>
+           </div>
+           <div class="alert alert-danger" *ngIf="companyForm.errors?.email?.length > 0">
+             <div *ngFor="let error of companyForm.errors?.email">{{ 'CONTROLS.EMAIL' | translate }} {{ error }}</div>
+           </div>
+         </div>
+         <div class="form-group merged">
+           <input class="form-control" placeholder="{{ 'CONTROLS.PASSWORD' | translate }}" type="password"
+                  formControlName="password">
+           <div class="hr"></div>
+           <input class="form-control" placeholder="{{ 'CONTROLS.RETYPE_PASSWORD' | translate }}" type="password"
+                  formControlName="passwordConfirmation">
+           <div>
+             <div class="alert alert-danger"
+                  *ngIf="companyForm.controls.password.touched && companyForm.controls.password.errors?.required"
+                  translate="CONTROLS.ERRORS.REQUIRED.PASSWORD">Please, enter Password field
+             </div>
+             <div class="alert alert-danger"
+                  *ngIf="companyForm.controls.passwordConfirmation.touched && companyForm.controls.passwordConfirmation.errors?.required"
+                  translate="CONTROLS.ERRORS.REQUIRED.CONFIRM_PASSWORD">Please, enter Confirm Password field
+             </div>
+             <div class="alert alert-danger"
+                  *ngIf="companyForm.controls.password.touched && companyForm.controls.passwordConfirmation.touched && companyForm.controls.passwordConfirmation.errors?.matchPassword"
+                  translate="CONTROLS.ERRORS.MATCH.PASSWORD">Password not match
+             </div>
+             <div class="alert alert-danger" *ngIf="companyForm.errors?.password?.length > 0">
+               <div *ngFor="let error of companyForm.errors?.password">{{ 'CONTROLS.PASSWORD' | translate }} {{ error
+                 }}
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="form-group mt-2">
+           <div class="custom-checkbox">
+             <label class="custom-checkbox__inner-wrap">
+               <input type="checkbox" class="form-control" formControlName="receiveEmail">
+               <i class=" fa fa-check-circle"></i>
+               <div class="txt text-grey custom-checkbox__txt" translate="CONTROLS.RECEIVE_OCCASIONAL">RECEIVE_OCCASIONAL</div>
+             </label>
+           </div>
+         </div>
+         <div class="form-group">
+           <div class="custom-checkbox">
+             <label  class="custom-checkbox__inner-wrap">
+               <input type="checkbox" class="form-control" formControlName="agreeToc">
+               <i class=" fa fa-check-circle"></i>
+               <div class="txt text-grey custom-checkbox__txt">
+                 {{'CONTROLS.AGREE_FF' | translate }}
+                 <a class="text-black" [routerLink]=" ['../terms-of-service'] " target="_blank">{{'CONTROLS.TERMS_OF_SERVICE' | translate}}</a>
+               </div>
+             </label>
+           </div>
+           <div class="alert alert-danger" *ngIf="companyForm.controls.agreeToc.touched && companyForm.controls.agreeToc.invalid">
+             <div *ngIf="companyForm.controls.agreeToc.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.MUST_AGREE">
+               You must agree
+             </div>
+           </div>
+         </div>
+         <div class="form-group">
+           <div class="custom-checkbox">
+             <label  class="custom-checkbox__inner-wrap">
+               <input type="checkbox" class="form-control" formControlName="agreePp">
+               <i class=" fa fa-check-circle"></i>
+               <div class="txt text-grey custom-checkbox__txt">
+                 {{'CONTROLS.AGREE_FF' | translate }}
+                 <a class="text-black" [routerLink]=" ['../privacy-policy'] " target="_blank">{{'CONTROLS.PRIVACY_POLICY' | translate}}</a>
+               </div>
+             </label>
+           </div>
+           <div class="alert alert-danger" *ngIf="companyForm.controls.agreePp.touched && companyForm.controls.agreePp.invalid">
+             <div *ngIf="companyForm.controls.agreePp.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.MUST_AGREE">
+               You must agree
+             </div>
+           </div>
+         </div>
+         <div class="popup__pre-footer">
+           <button class="btn btn-big btn-green btn-block" type="submit"
+                   translate="BUTTONS.GET_STARTED"></button>
+           <div class="mt-1">
+             <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+           </div>
+         </div>
+       </form>
+     </div>
+     <footer class="popup__footer">
+       <div >
+           <span class="text-grey">{{'CONTROLS.HAVE_ACCOUNT' | translate }}</span>
+           <a  class="text-white" (click)="loginForm.request()" translate="BUTTONS.LOG_IN">Log in</a>
+       </div>
+       <div class="mt-2"><span  class="text-grey">{{'CONTROLS.COMPANY_ALREADY_ACCOUNT' | translate}}</span></div>
+       <div>
+           <a class="text-white" [routerLink]="['../sign-up']" translate="CONTROLS.SIGN_UP_PIN">Sign up with your PIN code</a>
+       </div>
+       <div class="mt-2">
+           <a class="text-white" (click)="openDecision()" translate="HOME.EAT.SEND_INFO">Send info to decision maker</a>
+       </div>
+     </footer>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<footer class="kitchen-menu-footer">
+  <span class="add-category" (click)="addCategoryOpen()"><i></i> <span translate="KITCHENS.BUTTONS.ADD_NEW_CATEGORY">Add new category</span></span>
+  <a class="btn btn-white btn-big" [href]="printUrl" target="_blank" translate="KITCHENS.BUTTONS.PRINT">Print</a>
+</footer>
+
+<add-category #addCategory (onCategorySave)="onCategorySave($event)"></add-category>

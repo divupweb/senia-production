@@ -1,0 +1,39 @@
+@import '~assets/css/conf';
+
+.controls {
+  height: 140px;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+
+  .date{
+    font-size: 30px;
+    line-height: 1;
+    text-transform: uppercase;
+    font-family: $font-bold;
+    text-align: center;
+  }
+  .calendar-btn{
+    position: relative;
+    .datepicker-dropdown{
+
+    }
+  }
+  .circle-arrow-left{
+    margin-left: 35px;
+  }
+  .circle-arrow-right{
+    margin-right: 35px;
+  }
+
+  .datepicker{
+    position: relative;
+  }
+  .datepicker-dropdown{
+    right: -4px;
+    top: 27px;
+  }
+}

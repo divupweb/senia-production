@@ -1,0 +1,53 @@
+@import '~assets/css/conf';
+
+.home-hero {
+  &:before {
+    display: none;
+  }
+  background-color: #f9f5e9;
+  min-height: 600px;
+  //height: auto;
+   .home-hero-i {
+     padding-bottom: 120px;
+   }
+
+  
+  h3 {
+    line-height: 1.5;
+    position: relative;
+    z-index: 3;
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.benefits {
+  .row {
+    &--flexed {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.get-in-touch {
+  background: #f0f0f4;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: none;
+  position: relative;
+  padding-bottom: 130px;
+  @media(min-width: 500px) {
+    background-position: center 160px;
+    background-image: url("/assets/images/home/home-hero-2.png");
+  }
+  @media(min-width: $mobile-sm) {
+    padding-bottom: 230px;
+    background-position: center 190px;
+  }
+  a {
+    text-decoration: none
+  }
+}

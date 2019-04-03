@@ -1,0 +1,42 @@
+<spinner></spinner>
+
+<user-menu></user-menu>
+<div class="al-sidebar" [class.is-open]="userMenu.isMenuOpen">
+  <div class="al-sidebar-i">
+    <div class="al-sidebar-heading">
+      <a [routerLink]="['dashboard']" class="logo">
+        <img src="assets/images/logo-white.svg"  width="170" alt="Food Farm">
+      </a>
+    </div>
+    <div>
+      <div class="al-sidebar-image">
+        <div class="logo-upload-placeholder">
+          <div class="logo-box" *ngIf="imageDisplayUrl">
+            <img [src]="imageDisplayUrl" />
+          </div>
+        </div>
+      </div>
+      <button *ngIf="showInvoiceButton" class="btn btn-green pull-right" color="primary" (click)="getInvoice()" translate="KITCHENS.BUTTONS.GET_INVOICE">Get Invoice</button>
+    </div>
+    <ul class="al-sidebar-list nav" (click)="userMenu.close()">
+      <li>
+        <a routerLinkActive="router-link-active" [routerLink]=" ['dashboard'] " translate="KITCHENS.DASHBOARD">Dashboard</a>
+      </li>
+      <li>
+        <a routerLinkActive="router-link-active" [routerLink]=" ['menu'] " translate="KITCHENS.MENU">Menu</a>
+      </li>
+      <li *ngIf="userMenu.isMenuOpen">
+        <a href="" (click)="auth.submitLogout()" translate="BUTTONS.LOG_OUT">Log out</a>
+      </li>
+      <li>
+        <lang-switcher></lang-switcher>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="al-main" style="padding-bottom: 0;">
+  <div class="al-content" style="padding: 0;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="dish-popup opened" tabindex="1" (keyup.esc)="close()" (clickOutside)="close($event)">
+  <div class="dish-popup-search">
+    <input type="text" placeholder="{{ 'KITCHENS.SEARCH_DISH' | translate }}" [(ngModel)]="search">
+  </div>
+  <div class="dish-popup-list">
+    <div class="dish-list-item" [class.active]="item.id == dish?.id" *ngFor="let item of dishes | nameFilter:search" (click)="onSelect(item)">{{ item.name }}</div>
+  </div>
+</div>

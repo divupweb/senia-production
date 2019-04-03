@@ -1,0 +1,76 @@
+<spinner></spinner>
+
+<div class="al-sidebar" [class.is-open]="userMenu.isMenuOpen">
+  <div class="al-sidebar-i">
+    <div class="al-sidebar-heading">
+      <div class="hamburger-icon" [class.is-open]="userMenu.isMenuOpen" (click)="userMenu.isMenuOpen = !userMenu.isMenuOpen">
+        <span>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      </div>
+      <a [routerLink]="['dashboard']" class="logo">
+        <img src="assets/images/logo-white.svg"  width="170" alt="Food Farm">
+      </a>
+    </div>
+
+    <div class="al-sidebar-image-wrap">
+      <div class="user-controls-mobile" *ngIf="user">
+        <div>{{ userTitle }}</div>
+        <a *ngIf="state.companyAdmin()" (click)="navigateMarketplace()" translate="BUTTONS.MARKETPLACE">Marketplace</a>
+        <a (click)="auth.submitLogout()" translate="BUTTONS.LOG_OUT">Log out</a>
+      </div>
+      <div class="al-sidebar-image">
+        <div class="logo-upload-placeholder">
+          <div class="logo-box" *ngIf="imageDisplayUrl">
+            <img [src]="imageDisplayUrl" />
+          </div>
+        </div>
+      </div>
+      <button *ngIf="showInvoiceButton" class="btn btn-green pull-right" color="primary" (click)="getInvoice()" translate="KITCHENS.BUTTONS.GET_INVOICE">Get Invoice</button>
+    </div>
+
+    <ul class="al-sidebar-list nav" (click)="userMenu.close()">
+      <li>
+        <a title="{{ 'KITCHENS.DASHBOARD' | translate }}" routerLinkActive="router-link-active" [routerLink]=" ['dashboard'] " >
+          <span class="sidebar-list-icon dashboard-icon"></span>
+          <span class="sidebar-list-txt" translate="KITCHENS.DASHBOARD">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'KITCHENS.MENU' | translate }}" routerLinkActive="router-link-active" [routerLink]=" ['menu'] " >
+          <span class="sidebar-list-icon menu-icon"></span>
+          <span class="sidebar-list-txt" translate="KITCHENS.MENU">Menu</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'KITCHENS.REPORTS.TITLE' | translate }}" routerLinkActive="router-link-active" [routerLink]=" ['reports'] " >
+          <span class="sidebar-list-icon report-icon"></span>
+          <span class="sidebar-list-txt" translate="KITCHENS.REPORTS.TITLE">Reports</span>
+        </a>
+      </li>
+      <li *ngIf="kitchen.delivery">
+        <a title="{{ 'KITCHENS.DELIVERIES' | translate }}" routerLinkActive="router-link-active" [routerLink]=" ['deliveries'] " >
+          <span class="sidebar-list-icon logistics-icon"></span>
+          <span class="sidebar-list-txt" translate="KITCHENS.DELIVERIES">Deliveries</span>
+        </a>
+      </li>
+      <li>
+        <a title="{{ 'KITCHENS.SETTINGS.TITLE' | translate }}" routerLinkActive="router-link-active" [routerLink]=" ['settings'] " >
+          <span class="sidebar-list-icon settings-icon"></span>
+          <span class="sidebar-list-txt" translate="KITCHENS.SETTINGS.TITLE">Settings</span>
+        </a>
+      </li>
+    </ul>
+    <footer>
+      <lang-switcher [customClass]="{ 'sidebar': true }"></lang-switcher>
+    </footer>
+  </div>
+</div>
+
+<div class="al-main" style="padding-bottom: 0;">
+  <div class="al-content" style="padding: 0;">
+    <router-outlet></router-outlet>
+  </div>
+</div>

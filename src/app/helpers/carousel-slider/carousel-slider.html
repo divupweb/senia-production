@@ -1,0 +1,36 @@
+<div class="carousel-slider-wrap">
+  <div class="carousel-slider">
+    <swiper [config]="config">
+      <span class="border-left"></span>
+      <span class="border-right"></span>
+      <a class="carousel-slider-arr left button-prev">
+        <div class="arrow left">
+          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        </div>
+      </a>
+
+      <div class="carousel-slider-i swiper-wrapper">
+        <div *ngFor="let item of items"
+             [ngClass]="{'favorite': item.favorite, 'active': selected?.id == item.id}"
+             class="carousel-slider-item swiper-slide" (click)="setActive(item)">
+          <div class="img">
+            <i class="fa fa-star" aria-hidden="true" (click)="onFavoriteClick($event, item)"
+               *ngIf="showFavorite && !item.own"></i>
+            <img src="{{ item.display_url }}" alt="" draggable="false">
+          </div>
+          <div class="txt">
+            <div class="name">{{ item.name }}</div>
+            <div class="amount" *ngIf="item.amount > 0">{{ item.amount }} {{ 'SHARED.DISHES.PLURAL' | translate }}</div>
+            <div class="info" *ngIf="item.info">{{ item.info }}</div>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-slider-arr right button-next">
+        <div class="arrow right">
+          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+        </div>
+      </a>
+    </swiper>
+  </div>
+
+</div>

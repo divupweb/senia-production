@@ -1,0 +1,57 @@
+<footer>
+    <div class="footer-i ng-footer-i">
+        <div class="footer__item">
+            <h6 translate="HOME.FOOTER.CONTACT_US">Contact us</h6>
+            <p class="text-grey">{{"CONTROLS.EMAIL" | translate }}: <a class="text-grey" href="mailto: hello@food.farm">hello@food.farm</a></p>
+            <p class="text-grey">{{"CONTROLS.PHONE" | translate }}: 456 85 268</p>
+        </div>
+        <div class="footer__item">
+            <h6 translate="HOME.FOOTER.GET_TO_KNOW_US">Get to know us</h6>
+            <p><a routerLink="about-us" translate="HOME.FOOTER.LINKS.ABOUT_US" class="text-grey">About us</a></p>
+            <p><a routerLink="proprietary-technology" translate="HOME.FOOTER.LINKS.PROPRIETARY_TECHNOLOGY" class="text-grey">Proprietary technology</a></p>
+            <p><a href="https://blog.food.farm" target="_blank" translate="HOME.FOOTER.LINKS.BLOG" class="text-grey">Blog</a></p>
+        </div>
+        <div class="footer__item">
+            <h6 translate="HOME.FOOTER.PARTNER_WITH_US">Partner with us</h6>
+            <p><a routerLink="for-restaurants" class="text-grey" translate="HOME.HEADER.FOR_RESTAURANTS">For restaurants</a></p>
+            <p><a routerLink="for-companies" class="text-grey" translate="HOME.HEADER.FOR_COMPANIES">For companies</a></p>
+            <p><a routerLink="for-drivers" class="text-grey" translate="HOME.FOOTER.LINKS.FOR_DRIVERS">For drivers</a></p>
+            <p><a routerLink="proprietary-technology" class="text-grey" translate="HOME.FOOTER.LINKS.FOR_REAL_ESTATE_COMPANIES">For real estate companies</a></p>
+        </div>
+        <div class="footer__item">
+            <h6 translate="HOME.FOOTER.CONNECT_WITH_US">Connect with us</h6>
+            <p><a href="http://www.facebook.com/foodfarm.no" target="_blank" class="text-grey">Facebook</a></p>
+            <p><a href="https://www.instagram.com/food.farm.as/" target="_blank" class="text-grey">Instagram</a></p>
+        </div>
+    </div>
+    <div class="footer-i download-app__wrap ng-footer-app-wrap">  <!-- showinstallbuttons check-->
+            <div class="download-app-btn-wrap">
+                <a [href]="urlsInfo.APPLE_APP" class="download-app-btn appstore" (click)="analytics.downloadIOSApp($event)">
+          <span class="txt--wrap">
+              <span class="small-txt" translate="HOME.EAT.AVAILABLE_ON">Available on the</span>
+          <span class="big-txt" translate="HOME.EAT.APP_STORE">App Store</span>
+          </span>
+                </a>
+            </div>
+            <div class="download-app-btn-wrap">
+                <a [href]="urlsInfo.GOOGLE_APP" class="download-app-btn googleplay"
+                   (click)="analytics.downloadAndroidApp($event)">
+          <span class="txt--wrap">
+              <span class="small-txt" translate="HOME.EAT.ANDROID_APP">Android app on</span>
+          <span class="big-txt" translate="HOME.EAT.GOOGLE_PLAY">Google Play</span>
+          </span>
+                </a>
+            </div>
+    </div>
+    <div class="footer__bottom">
+        <p class="copyright text-grey"> {{"HOME.CITIES.MADE_WITH" | translate }}
+            <span class="icon icon-love">♡</span> {{"HOME.CITIES.IN_OSLO" | translate }}.
+            <a [routerLink]=" ['privacy-policy'] " target="_blank">{{'CONTROLS.PRIVACY_POLICY' | translate}}</a>
+            <a [routerLink]=" ['terms-of-service'] " target="_blank">{{'CONTROLS.TERMS_OF_SERVICE' | translate}}</a>
+        <p class="text-grey">
+            {{ "HOME.EAT.COMPANY_ALREARY" | translate }}
+            <a [routerLink]=" ['sign-up'] ">{{"CONTROLS.SIGN_UP_PIN" | translate }}</a>
+        </p>
+    </div>
+    <contact-popup #popup></contact-popup>
+</footer>

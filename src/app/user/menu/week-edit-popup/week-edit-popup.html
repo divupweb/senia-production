@@ -1,0 +1,110 @@
+<div class="popup-wrap">
+  <div class="popup">
+    <div class="popup-body-header">
+      <div class="sort-select">
+        <div class="title">Friday</div>
+        <div class="text-grey">Sort by kitchen <i class="fa fa-caret-down"></i></div>
+      </div>
+      <div class="popup-tabs">
+        <h3 class="tab" (click)="tabToggle(true,false,false)" [ngClass]="{'active': tab1}">Breakfast</h3>
+        <h3 class="tab" (click)="tabToggle(false,true,false)" [ngClass]="{'active': tab2}">Lunch</h3>
+        <h3 class="tab" (click)="tabToggle(false,false,true)" [ngClass]="{'active': tab3}">Dinner</h3>
+      </div>
+    </div>
+    <div class="popup-body">
+      <div *ngIf="tab1">
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="tab2">
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="tab3">
+        <div class="defaults-item">
+          <img src="http://fillmurray.com/50/50" alt="">
+          <div class="txt">
+            <div><strong>Salad</strong></div>
+            <div class="text-grey">Salad</div>
+            <div class="text-green">24,- to 38,-</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <button class="btn btn-green btn-big">Confirm</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a>Close</a>
+    </footer>
+  </div>
+</div>

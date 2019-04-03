@@ -1,0 +1,41 @@
+@import '~assets/css/conf';
+.item{
+  height: 80px;
+  padding: 0 30px;
+  margin: 0 -30px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  .img{
+    max-width: 50px;
+    flex: 0 0 50px;
+    height: 50px;
+    margin-right: 30px;
+    border-radius: 50%;
+    background: $gray-light2;
+    overflow: hidden;
+    position: relative;
+    .img{
+      max-width: 100%;
+    }
+    .overlay{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: transparentize($red, .4);
+      text-align: center;
+      line-height: 50px;
+      color: white;
+      display: none;
+      cursor: pointer;
+    }
+  }
+  &:hover{
+    background: $gray-light3;
+    .img .overlay{
+      display: block;
+    }
+  }
+}

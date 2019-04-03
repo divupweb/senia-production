@@ -1,0 +1,26 @@
+@import '~assets/css/conf';
+@import '~assets/css/shared-elements/area-layout'; // upload-logo
+
+.heading {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
+}
+
+.heading .heading-selector {
+  li > a {
+    color: $gray-text;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &.router-link-active {
+      font-family: $font-bold;
+      color: black;
+      text-decoration: none;
+      cursor: default;
+    }
+  }
+}

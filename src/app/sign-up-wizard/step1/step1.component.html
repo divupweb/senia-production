@@ -1,0 +1,126 @@
+<sign-up-header>
+  <div class="header-content">
+    <div class="user-container">
+      <div class="sub-text" [innerHTML]="'SIGN_UP.COMPANY_HAS_INVITED_YOU'| translate: { company: settings.company.name }" *ngIf="settings.company.name"></div>
+      <div class="subsidy-info">
+        <div class="subsidy-info-item" *ngFor="let subscription of settings.subscriptions" [ngClass]="subscription.subscription_type">
+          <div class="title">
+            {{ ('SUBSCRIPTIONS.' + subscription.subscription_type|uppercase) | translate }}
+          </div>
+          <div class="subsidy">{{'SUBSIDIES.SINGULAR'| translate}}: {{ subscription.subsidy == 'free' ? ('SUBSIDIES.FREE'| translate): (subscription.subsidy | currencyFormat) }}</div>
+        </div>
+      </div>
+      <a class="btn btn-green btn-big" pageScroll href="#allergies" translate="BUTTONS.ACCEPT">Accept</a>
+    </div>
+  </div>
+
+  <div class="header-content" style="display: none;">
+    <h2 translate="SIGN_UP.WHAT_WOULD_YOU_LIKE">What would you like to eat?</h2>
+    <div class="sub-text" translate="SIGN_UP.YOU_CAN_CHANGE_LATER">You can always change this later</div>
+    <a class="btn btn-white btn-big" pageScroll href="#allergies" translate="SIGN_UP.BUTTONS.SKIP">Skip</a>
+  </div>
+</sign-up-header>
+
+
+<section class="gray-bg" id='allergies'>
+  <div class="user-container">
+    <div class="payment-heading">
+      <h2 translate="SHARED.ALLERGY.PLURAL">Allergies</h2>
+      <div class="text-grey" translate="SIGN_UP.YOU_CAN_CHANGE_SETTINGS">You can always change this in your settings later</div>
+    </div>
+    <div>
+      <div class="allergies-wrap">
+      <allergies-select [allergyIds]="settings.allergyIds" [customClass]="{ 'vertical-items': true }"></allergies-select>
+      </div>
+        <div class="text-grey text-center f16 mb-2 mt-2" translate="SIGN_UP.ALLERGY_MESSAGE">If a future order is caught in the allergy filter</div>
+      <div class="options-block active mb-2">
+        <div class="top" translate="SIGN_UP.ALLERGY_MESSAGE_SUB">FoodFarm will select a new dish for me</div>
+        <div class="list">
+          <div *ngFor="let item of settings.preferences">
+            <div class="custom-checkbox">
+              <label>
+                <input type="checkbox" [checked]="item.id == settings.preferenceId" (change)="settings.preferenceId = item.id">
+                <i class="fa fa-check-circle"></i>
+                <span class="txt">{{ item.name }}</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-grey text-center mb-2" translate="SIGN_UP.OR">or</div>
+      <div class="choice-btn" (click)="settings.preferenceId = null" pageScroll href="#sorting" translate="SIGN_UP.CHECK_MANUALLY">I want to check my orders manually</div>
+    </div>
+  </div>
+</section>
+<section class="white-bg" id="sorting">
+  <div class="user-container">
+    <div class="payment-heading">
+      <h2 translate="SIGN_UP.SORTING">Sorting</h2>
+      <div class="text-grey" translate="SIGN_UP.YOU_CAN_CHANGE_SETTINGS">You can always change this in your settings later</div>
+    </div>
+    <div class="sorting">
+      <label class="sorting-item high">
+        <div class="sorting-icon">
+          <svg  height="70"
+                width="80"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1">
+            <rect height="30" width="20" fill="white" stroke="#5db990" stroke-width="1" x="1" y="39"/>
+            <rect height="50" width="20" fill="#5db990" stroke="#5db990" stroke-width="1" x="30" y="19"/>
+            <rect height="70" width="20" fill="#5db990" stroke="#5db990" stroke-width="1" x="60" y="0"/>
+          </svg>
+        </div>
+        <div class="mt-1">
+          <strong translate="SIGN_UP.PRICE">Price</strong>
+        </div>
+        <div class="text-grey" translate="SIGN_UP.BUTTONS.LOW_TO_HIGH">Low to high</div>
+        <input type="radio" name="sort-price" (change)="settings.sorting = 'asc'" [checked]="settings.sorting == 'asc'">
+        <i></i>
+      </label>
+      <label class="sorting-item low">
+        <div class="sorting-icon">
+          <svg  height="70"
+                width="80"
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1">
+            <rect height="30" width="20" fill="white" stroke="#5db990" stroke-width="1" x="1" y="39"/>
+            <rect height="50" width="20" fill="#5db990" stroke="#5db990" stroke-width="1" x="30" y="19"/>
+            <rect height="70" width="20" fill="#5db990" stroke="#5db990" stroke-width="1" x="60" y="0"/>
+          </svg>
+        </div>
+        <div class="mt-1">
+          <strong translate="SIGN_UP.PRICE">Price</strong>
+        </div>
+        <div class="text-grey" translate="SIGN_UP.BUTTONS.HIGH_TO_LOW">High to low</div>
+        <input type="radio" name="sort-price" (change)="settings.sorting = 'desc'" [checked]="settings.sorting == 'desc'">
+        <i></i>
+      </label>
+    </div>
+  </div>
+</section>
+
+<section class="gray-bg">
+  <div class="user-container">
+    <div class="payment-heading">
+      <h2 translate="SIGN_UP.NOTIFICATIONS">Notifications</h2>
+      <div class="text-grey" translate="SIGN_UP.YOU_CAN_CHANGE_SETTINGS">You can always change this in your settings later</div>
+    </div>
+    <p class="text-center f18 mb-3" [innerHTML]="'SIGN_UP.NOTIFICATIONS_MESSAGE' | translate "></p>
+
+    <div class="choice-btn" [ngClass]="{'active': settings.notifications}" (click)="settings.toggleNotifications()" pageScroll href="#next" translate="SIGN_UP.BUTTONS.WANT_TO_RECEIVE_NOTIFICATIONS">I want to receive notifications from foodfarm</div>
+  </div>
+</section>
+
+<sign-up-footer>
+  <div class="footer-content">
+    <div *ngIf="!!settings && !!settings.user && settings.user.can_edit_orders; else notFreeFooter">
+      <button class="btn btn-green btn-big" (click)="nextStep()" translate="SIGN_UP.BUTTONS.FILL_DEFAULTS">Fill in default orders</button>
+    </div>
+    <ng-template #notFreeFooter>
+      <button class="btn btn-green btn-big" (click)="onAddCreditCard()" translate="SIGN_UP.BUTTONS.ADD_CARD">Add credit card</button>
+      <div class="text-center text-grey mb-1 mt-2" translate="SIGN_UP.OR">or</div>
+      <div><a (click)="nextStep()" translate="SIGN_UP.BUTTONS.START_USING">Start using foodfarm with subsidies limits</a></div>
+    </ng-template>
+  </div>
+</sign-up-footer>
+<!-- <modal-credit-card #modalCreditCard (onModalHide)="onModalHide()"></modal-credit-card> -->

@@ -1,0 +1,16 @@
+<user-menu>
+  <div class="heading">
+    <ul class="heading-selector">
+      <li>
+        <a [routerLink]="['general' ]" routerLinkActive="router-link-active" translate="ADMIN.SETTINGS.GENERAL_INFO">General Info</a>
+      </li>
+      <li>
+        <a [routerLink]="['suspends']" routerLinkActive="router-link-active" translate="ADMIN.SETTINGS.SUSPEND_PLANNER">Suspend Planner</a>
+      </li>
+      <li>
+        <a [routerLink]="['users']" routerLinkActive="router-link-active" translate="ADMIN.SETTINGS.USERS">users</a>
+      </li>
+    </ul>
+  </div>
+</user-menu>
+<router-outlet></router-outlet>

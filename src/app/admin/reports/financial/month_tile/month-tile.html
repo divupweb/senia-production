@@ -1,0 +1,34 @@
+<div class="stats-col col-sm-4">
+  <div class="stats-col-i">
+    <h2>{{ month | month }}</h2>
+    <ul class="list-unstyled">
+      <li>
+        <div class="txt">
+          <span>{{ 'ADMIN.REPORTS.TO_BE_CHARGED' | translate }}</span>
+          <strong>{{ data.charged | currencyFormat }}</strong>
+        </div>
+        <progress class="progress progress-narrow progress-blue progress-animated" max="100" [value]="charged" *ngIf="isFinite(charged)">
+          <span style="color:white; white-space:nowrap;"></span>
+        </progress>
+      </li>
+      <li>
+        <div class="txt">
+          <span>{{ 'ADMIN.REPORTS.TO_BE_PAID' | translate }}</span>
+          <strong>{{ data.paid | currencyFormat }}</strong>
+        </div>
+        <progress class="progress progress-narrow progress-yellow progress-animated" max="100" [value]="paid" *ngIf="isFinite(paid)">
+          <span style="color:white; white-space:nowrap;"></span>
+        </progress>
+      </li>
+      <li>
+        <div class="txt">
+          <span>{{ 'ADMIN.REPORTS.PROFIT' | translate }}</span>
+          <strong>{{ data.profit | currencyFormat }}</strong>
+        </div>
+        <progress class="progress progress-narrow progress-green progress-animated" max="100" [value]="profit" *ngIf="isFinite(profit)">
+          <span style="color:white; white-space:nowrap;"></span>
+        </progress>
+      </li>
+    </ul>
+  </div>
+</div>

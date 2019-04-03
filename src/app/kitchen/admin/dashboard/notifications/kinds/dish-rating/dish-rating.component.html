@@ -1,0 +1,16 @@
+<div class="notification-item rating">
+  <div class="txt">
+    <div class="date">{{ item.createdAt | calendarTime }} {{ item.createdAt | shortTime }}</div>
+    <div class="announcement-i" *ngIf="information">
+      <div class="img">
+        <img [src]="information.displayUrl">
+      </div>
+      <div class="txt">
+        <div class="date-time">{{ information.dishName }}</div>
+        <p>{{ information.owner }}</p>
+        <div><rating [(ngModel)]="information.score" [readonly]="true"></rating></div>
+      </div>
+    </div>
+    <div class="content-text" *ngIf="information">{{ information.comment }}</div>
+  </div>
+</div>

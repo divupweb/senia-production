@@ -1,0 +1,41 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" (clickOutside)="close($event)" tabindex="1" (keyup.esc)="close($event)" (setFocus)="true">
+    <h4 class="mb-3" translate="BUTTONS.LOG_IN">Log in</h4>
+    <div class="home-login">
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <input class="form-control" type="email" placeholder="{{'CONTROLS.EMAIL' | translate }}" autofill="false" formControlName="email">
+          <div class="alert alert-danger" *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+            <div *ngIf="loginForm.controls.email.errors?.required">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.EMAIL' | translate } }}
+            </div>
+            <div *ngIf="loginForm.controls.email.errors?.invalidEmailAddress"  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect</div>
+          </div>
+        </div>
+        <div class="form-group has-forgot-pass">
+          <input class="form-control" type="password" placeholder="{{'CONTROLS.PASSWORD' | translate }}" formControlName="password">
+          <a (click)="forgotPassword()" class="forgot-pass-link"
+             [ngClass]="{'disabled' : !loginForm.controls.email.valid}">{{'BUTTONS.FORGOT' | translate }}?</a>
+          <div class="alert alert-danger" *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+            <div *ngIf="loginForm.controls.password.errors?.required">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.PASSWORD' | translate } }}
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="loginForm.errors?.base?.length">
+          <div *ngFor="let error of loginForm.errors?.base">
+            {{ error }}
+          </div>
+        </div>
+        <footer>
+          <button type="submit" class="btn btn-green btn-block btn-big" [disabled]="!loginForm.valid || loadingState">{{ 'BUTTONS.LOG_IN' | translate }}
+            <loading-spinner *ngIf="loadingState"></loading-spinner>
+          </button>
+          <div class="text-center mt-1">
+            <a translate="BUTTONS.CLOSE" (click)="close($event)">Close</a>
+          </div>
+        </footer>
+      </form>
+    </div>
+  </div>
+</div>

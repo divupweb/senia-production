@@ -1,0 +1,30 @@
+@import '~assets/css/conf';
+.top{
+  padding: 30px 0 20px;
+  span,
+  >a{
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    font-size: 20px;
+    font-family: $font-bold;
+    color: $gray-dark;
+  }
+}
+
+textarea{
+  resize: none;
+}
+
+.companies-list{
+  padding: 20px;
+  background: white;
+  height: 308px;
+  overflow-y: auto;
+  border: 1px solid #f3f3f3;
+
+  .fa-check-circle{
+    margin-right: 5px;
+  }
+}

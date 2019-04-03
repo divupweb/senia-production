@@ -1,0 +1,98 @@
+@import '~assets/css/conf';
+
+p {
+  font-size: 18px;
+}
+
+.pending-carousel {
+  position: relative;
+  margin: 30px;
+}
+
+.carousel-slider-arr {
+  padding: 20px 0;
+  background: white;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  &.button-prev {
+    left: -13px;
+  }
+  &.button-next {
+    right: -13px;
+  }
+}
+
+.carousel-slider {
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  white-space: nowrap;
+}
+
+.carousel-slider-item {
+  width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.toggle {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $gray-light3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  cursor: pointer;
+  z-index: 2;
+  right: 47px;
+  top: 47px;
+  transition: transform .3s ease-in-out;
+  .toggled & {
+    transform: rotate(180deg);
+  }
+}
+
+.expandable-block {
+  padding: 40px 100px 40px 60px;
+  border: 1px solid $gray-light;
+
+  &-title {
+    font-family: $font-bold;
+    font-size: 36px;
+
+    + p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+}
+
+.carousel-slider-wrap {
+  padding: 40px 60px;
+  border: 1px solid $gray-light;
+}
+
+@media (max-width: $mobile) {
+  .pending-carousel {
+    margin: 15px;
+  }
+  .toggle{
+    top: 10px;
+    right: 10px;
+  }
+  .expandable-block {
+    padding: 20px 30px 20px 20px;
+  }
+  .expandable-block-title{
+    font-size: 28px;
+    line-height: 1;
+  }
+  .carousel-slider-wrap {
+    padding: 15px;
+  }
+}

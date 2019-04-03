@@ -1,0 +1,26 @@
+<div class="popup kitchen-info-popup">
+  <header class="kitchen-info-header" [ngStyle]="{'background-image': 'url(' + kitchen.chefDisplayUrl + ')'}">
+
+    <div class="header-controls">
+      <div class="kitchen-info">
+        <img [src]="kitchen.displayUrl" />
+        <div class="txt">
+          <div class="name">{{ kitchen.name }}</div>
+          <div class="text-grey">
+            <i class="b64-icon-chef"></i> {{kitchen.headChefName}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="message">
+    <span class="icon">!</span>
+    {{ 'USER.NOTIFICATIONS.KITCHEN_REMOVED' | translate: { type: item.data.type, weekDays: weekDays } }}
+  </div>
+  <div class="popup-body">
+    <p>{{ kitchen.description }}</p>
+  </div>
+  <footer>
+    <a (click)="close($event)" translate="BUTTONS.CLOSE">Close</a>
+  </footer>
+</div>

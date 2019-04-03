@@ -1,0 +1,21 @@
+<div class="switcher">
+  <label>
+    <input type="checkbox" class="ios-switch green bigswitch"
+           [id]="inputId"
+           [checked]="checked"
+           [disabled]="disabled"
+           [name]="name"
+           [tabIndex]="tabindex"
+           [indeterminate]="indeterminate"
+           [attr.aria-label]="ariaLabel"
+           [attr.aria-labelledby]="ariaLabelledby"
+           (focus)="onInputFocus()"
+           (blur)="onInputBlur()"
+           (change)="onInteractionEvent($event)"
+           (click)="onInputClick($event)">
+    <div><div></div></div>
+    <span>
+      <ng-content></ng-content>
+    </span>
+  </label>
+</div>

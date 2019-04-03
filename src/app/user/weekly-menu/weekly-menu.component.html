@@ -1,0 +1,23 @@
+<user-header>
+  <div class="mode-switcher">
+    <div [routerLink]="['../menu']" routerLinkActive="active" translate="USER.MENU.DAY">Day</div>
+    <div [routerLink]="['../weekly-menu']" routerLinkActive="active" translate="USER.MENU.WEEK">Week</div>
+  </div>
+</user-header>
+<menu-header>
+  <div class="menu-header-week">
+    <div class="defaults-button-wrap">
+      <defaults-button></defaults-button>
+    </div>
+    <weekly-range (onSelectWeek)="onSelectWeek($event)"></weekly-range>
+  </div>
+</menu-header>
+
+<div class="content">
+  <div class="al-user-container">
+    <div class="orders-container">
+      <weekly-orders-item *ngFor="let day of weekData" [dayData]="day"></weekly-orders-item>
+    </div>
+  </div>
+  <user-footer></user-footer>
+</div>

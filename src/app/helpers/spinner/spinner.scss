@@ -1,0 +1,22 @@
+@import '~assets/css/conf';
+
+.spinner {
+  z-index: 1100;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: $white;
+  width: 100%;
+
+  progress {
+    height: 4px;
+  }
+
+  progress::-webkit-progress-value {
+    background: $main-green;
+  }
+
+  progress:-moz-progress-value {
+    background: $main-green;
+  }
+}

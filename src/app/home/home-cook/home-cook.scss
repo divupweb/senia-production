@@ -1,0 +1,25 @@
+.home-hero{
+  background: #f0f4f9 url(/assets/images/home/bg_pattern_cook.png) repeat;
+  position: relative;
+
+  .hero-img{
+    max-height: 617px;
+    position: relative;
+    top: -100px;
+  }
+  .home-container{
+    z-index: 2;
+    position: relative;
+  }
+}
+
+@media (max-width: 480px){
+  .home-hero{
+    .hero-img{
+      max-height: 617px;
+      position: relative;
+      top: -40px;
+      background-size: contain!important;
+    }
+  }
+}

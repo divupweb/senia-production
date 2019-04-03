@@ -1,0 +1,22 @@
+<div class="popup" (keyup.esc)="close($event)" tabindex="2" (setFocus)="true">
+  <section>
+    <div class="calendar-plan">
+      <table>
+        <tr>
+          <th *ngFor="let day of weekdays">{{ day }}</th>
+        </tr>
+        <tr *ngFor="let item of calendar">
+          <td class="meal">{{ item.type }}</td>
+          <td *ngFor="let day of item.days; let i = index" [ngClass]="{disabled: item.disabled, active: day}" (click)="toggleDay($event, item, i)">
+            <i class="fa fa-check" aria-hidden="true"></i>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+  <footer>
+    <div class="btn btn-big btn-green" (click)="add()" translate="BUTTONS.ADD">Add</div>
+    &nbsp;&nbsp;&nbsp;
+    <span class="close-popup" (click)="close()" translate="BUTTONS.CLOSE">Close</span>
+  </footer>
+</div>

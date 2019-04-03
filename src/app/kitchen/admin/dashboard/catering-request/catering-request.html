@@ -1,0 +1,66 @@
+<div class="wrapper" [ngClass]="{'collapsed': requestsLeft() == 0}">
+  <div *ngIf="requestsLeft() > 0" [ngStyle]="{'transform': 'translateX(-' + translateX  + '%)'}" class="requests-container">
+    <div *ngFor="let request of requests; let i = index" class="request-wrap">
+      <div class="request">
+        <div class="info">
+          <h3 *ngIf="request.details.account">{{ request.details.account }}</h3>
+          <div class="date">
+            <div>{{request.details.date | dayMonth}}</div>
+            <!--<div class="text-green">Pick up at 12:00 (static)</div>-->
+          </div>
+          <div class="request-sequence">
+            {{requestsLeft()}} requests to review
+          </div>
+        </div>
+        <div class="title">
+          <img [src]="request.company_info.display_url" >
+          <div class="content">
+            <div class="name" translate="KITCHENS.CATERING_REQUEST">Catering request</div>
+            <div class="sub" translate="KITCHENS.CATERING_REQUEST_FROM" [translateParams]="{ company: request.company_info.name}">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <h4 translate="KITCHENS.CATERING_DETAILS">Catering details</h4>
+            <p class="text-grey">
+              {{request.details.address}}
+              <br />{{request.details.date | dayMonth}} {{request.details.start_time}} - {{request.details.end_time}}
+              <br />{{request.details.comment}}
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <h4 translate="KITCHENS.COMPANY_INFO">Company info</h4>
+            <p class="text-grey">
+              {{request.company_info.full_address}}
+              <br />{{request.company_info.phone}}
+              <br />{{request.company_info.email}}
+            </p>
+          </div>
+          <div class="col-sm-4">
+            <h4 translate="CONTROLS.CONTACT_PERSON">Contact person</h4>
+            <p class="text-grey">
+              {{request.contact_person.full_name}}
+              <br />{{request.contact_person.phone}}
+              <br />{{request.contact_person.email}}
+            </p>
+          </div>
+        </div>
+        <footer>
+          <a (click)="viewDetails(request.order_id)" class="details" translate="BUTTONS.VIEW_DETAILS">View details</a>
+          <!-- <div class="custom-checkbox">
+            <label>
+              <input type="checkbox">
+              <i class="fa fa-check-circle"></i>&nbsp;
+              I want to use Food.Farm delivery service
+            </label>
+          </div> -->
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button (click)="accept(request)" class="btn btn-green btn-big" translate="BUTTONS.ACCEPT">Accept</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <button (click)="reject(request)" class="btn btn-red btn-big" translate="BUTTONS.DECLINE">Decline</button>
+        </footer>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+@import "../variables";
+
+.status{
+  text-transform: uppercase;
+  &-active {
+    color: $main-green;
+  }
+  &-inactive {
+    color: $gray-light;
+  }
+}

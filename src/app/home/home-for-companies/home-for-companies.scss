@@ -1,0 +1,68 @@
+@import "../../../assets/css/shared-elements/switcher";
+
+.home-hero{
+  background: #f9f5f0 url("/assets/images/home/company_header.jpg") no-repeat center;
+  position: relative;
+  background-size: cover;
+
+  .home-container{
+    z-index: 2;
+    position: relative;
+  }
+
+  .btn {
+    min-width: auto;
+  }
+  .home-hero-i {
+    align-items: center;
+  }
+
+  .hero-bottom {
+    margin-bottom: -50px;
+    transform: translateY(50%);
+    width: 360px;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    border-radius: 65px;
+    &:before,
+    &:after{
+      content:"";
+      background-image: url("/assets/images/home/circled-angle.png");
+      width: 31px;
+      height: 25px;
+      display: block;
+      position: absolute;
+      top: 37px;
+      @media (min-width: $mobile-sm) {
+        top: 48px;
+      }
+    }
+    &:before {
+      right: -19px;
+    }
+    &:after {
+      left: -19px;
+      transform: rotateY(180deg);
+    }
+    @media(min-width: $mobile-sm) {
+      margin-bottom: -15px;
+    }
+    .btn {
+      @media(min-width: $mobile-sm) {padding: 25px 40px;}
+    }
+  }
+
+  .hero-bottom__item {
+    color: $gray-text;
+    margin:{
+      top: 10px;
+      bottom: 0;
+    }
+    &--link {
+      color: $gray-dark;
+    }
+  }
+}

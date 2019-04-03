@@ -1,0 +1,131 @@
+@import '~assets/css/conf';
+.kitchen-menu{
+  position: fixed;
+  top: 60px;
+  left: 342px;
+  right: 0;
+  bottom: 0;
+
+  >.i{
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    main{
+      right: 330px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+    }
+    aside{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 4;
+      width: 330px;
+      padding-top: 220px;
+      padding-bottom: 110px;
+      border-left: 1px solid #edeae5;
+      .dishes-list-wrap{
+        height: 100%;
+      }
+    }
+  }
+
+  header{
+    >.i{
+      display: flex;
+      flex-flow: row nowrap;
+
+      .right{margin-left: auto;}
+    }
+  }
+  h2{
+    margin: 0;
+    font-size: 36px;
+    line-height: 1;
+    text-transform: none;
+  }
+  .sub-title{
+    font-size: 18px;
+    line-height: 1;
+    color: $gray-text;
+  }
+}
+.backlink{
+  color: $gray-dark;
+}
+@media (max-width: $laptop) {
+  .kitchen-menu{
+    left: 230px;
+    >.i{
+      aside{
+        width: 230px;
+      }
+      main{
+        right: 230px;
+      }
+    }
+  }
+}
+@media (max-width: $laptop-sm) {
+  .kitchen-menu{
+    left: 80px;
+    >.i{
+      aside{
+        width: 230px;
+      }
+      main{
+        right: 230px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile) {
+  .kitchen-menu{
+    left: 0;
+
+    >.i{
+      aside {
+        height: 60px;
+        width: 100px;
+        padding: 0;
+        max-width: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 9;
+        border-left: 0;
+        .dishes-list-wrap{
+          display: none;
+        }
+        &.is-open{
+          height: 100%;
+          width: 300px;
+          padding-top: 120px;
+          padding-bottom: 100px;
+          .dishes-list-wrap{
+            display: block;
+          }
+        }
+      }
+      main{
+        right: 0;
+      }
+    }
+  }
+
+  .kitchen-menu,
+  .kitchen-menu > .i,
+  .kitchen-menu > .i main{
+    position: relative;
+    top: auto;
+  }
+}

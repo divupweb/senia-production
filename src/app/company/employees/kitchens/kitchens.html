@@ -1,0 +1,29 @@
+<section>
+  <subsidies [items]="subsidies.data" (onUpdate)="formChange($event)"></subsidies>
+</section>
+
+<section>
+  <kitchens-list [kitchens]="kitchens" [subscriptions]="subscriptions" (onSelect)="onSelect($event)"></kitchens-list>
+</section>
+
+<daily-kitchens [dailyData]="dailyData" [kitchens]="kitchens" (onUpdate)="formChange($event)"></daily-kitchens>
+
+<footer>
+  <button class="btn btn-big" [ngClass]= "{ 'btn-green': isFormDirty, 'btn-gray-green': !isFormDirty }" (click)="save()" translate="BUTTONS.SAVE_CHANGES">Save changes</button>
+</footer>
+
+<kitchen-info-popup *ngIf="showkitchenPopup"
+  [kitchen]="selectedKitchen"
+  [activeDays]="activeDays()"
+  (onClose)="onPopupClose($event)"
+  (onAdd)="onPopupAdd($event)">
+</kitchen-info-popup>
+<confirmation #confirmation>
+  <div translate="COMPANY.KITCHENS.ON_UPDATE.DESC">All employees will be notified about these changes.</div>
+  <div translate="COMPANY.KITCHENS.ON_UPDATE.CONFIRMATION">Do you want to proceed?</div>
+</confirmation>
+
+<confirmation #confirmationOnLeave>
+  <div translate="COMPANY.KITCHENS.ON_LEAVE.DESC">All your changes will be lost.</div>
+  <div translate="COMPANY.KITCHENS.ON_LEAVE.CONFIRMATION">Do you want to leave this page?</div>
+</confirmation>

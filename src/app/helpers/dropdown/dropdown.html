@@ -1,0 +1,15 @@
+<div *ngIf="active" (keyup)="keyPress($event)">
+  <input-debounce #control [readonly]="readonly" [classes]="classes" [placeholder]="placeholder" (value)="onQueryChange($event)" [inputValue]="query" (onFocus)="onFocus($event)"></input-debounce>
+
+  <div class="dropdown open" [hidden]="!showItems">
+    <ul class="dropdown-menu"  [ngStyle]="{'height': itemslength + 'em'}" tabindex="1">
+      <li *ngFor="let item of itemList" (click)="onItemSelect(item)" class="dropdown-item" tabindex="2">
+        <div #ref>
+          <template [ngTemplateOutlet]="templateRef" [ngTemplateOutletContext]="{$implicit: item}"></template>
+        </div>
+        <div *ngIf="ref.children.length == 0">{{ item.name }}</div>
+      </li>
+      <li *ngIf="other" (click)="onItemSelect(other)" class="dropdown-item" tabindex="2">{{ other.name }}</li>
+    </ul>
+  </div>
+</div>

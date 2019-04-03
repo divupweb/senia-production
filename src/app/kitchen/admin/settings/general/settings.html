@@ -1,0 +1,98 @@
+<div class="general-info" *ngIf="settingForm">
+  <form (ngSubmit)="submitForm()" [formGroup]="settingForm">
+    <div class="general-info-top" *ngIf="fieldsForUpdate.length > 0">
+      <div class="text-grey" translate="KITCHENS.SETTINGS.CHANGES_NEED_TO_APPROVE">
+        Your recent changes needs regional admin approve:
+      </div>
+      <div *ngFor="let field of fieldsForUpdate">
+          <strong>{{ ('CONTROLS.' + field|uppercase) | translate  }}</strong>
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <div class="logo-upload mb-3">
+        <div>
+          <div class="logo-upload-placeholder">
+            <div class="logo-box" *ngIf="kitchenLogo">
+              <img [src]="kitchenLogo" />
+            </div>
+          </div>
+          <h2>{{ kitchen.name }}</h2>
+          <div class="sub">{{ kitchen.address }}</div>
+          <div class="logo-controls">
+            <span class="upload-label">
+              <input type="file" id="logo-upload" ng2FileSelect [uploader]="logoUploader" />
+              <label for="logo-upload">{{ 'SHARED.COMPONENTS.UPLOAD_NEW_LOGO'| translate }}</label>
+            </span>
+            <a (click)="deleteImage()" class="rm" translate="BUTTONS.REMOVE_LOGO">Remove logo</a>
+          </div>
+          <progress *ngIf="logoUploaderFile" class="progress progress-striped progress-animated" max="100" [value]="logoUploaderProgress">
+            <span style="color:white; white-space:nowrap;">{{logoUploaderProgress}}%</span>
+          </progress>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group v3">
+      <input class="form-control" [(ngModel)]="kitchen.headChefName" formControlName="headChefName" required>
+      <label translate="CONTROLS.HEAD_CHEF_NAME">Head Chef</label>
+    </div>
+
+    <div class="form-group v3">
+      <input class="form-control" type="number" [(ngModel)]="kitchen.numberOfEmployees" formControlName="numberOfEmployees" required>
+      <label translate="CONTROLS.NUMBER_OF_EMPLOYEES">Number of employees</label>
+    </div>
+    <div class="form-group v3">
+      <textarea class="form-control" [(ngModel)]="kitchen.description" formControlName="description"  rows="3" required></textarea>
+      <label translate="KITCHENS.SETTINGS.ABOUT" [translateParams]="{kitchen: kitchen.name}"></label>
+    </div>
+    <div class="form-group v3">
+      <input class="form-control" [(ngModel)]="kitchen.bankAccount" formControlName="bankAccount" required>
+      <label translate="CONTROLS.BANK_ACCOUNT">Bank account</label>
+    </div>
+    <div class="form-group v3">
+      <input class="form-control" [(ngModel)]="kitchen.vatNumber" formControlName="vatNumber" required>
+      <label translate="CONTROLS.VAT_NUMBER">VAT number</label>
+    </div>
+    <div formArrayName="subscriptions" *ngIf="settingForm">
+      <div class="subscription-item" [ngClass]="{'disabled': !subscriptions[i].active}" *ngFor="let subscription of settingForm.get('subscriptions').controls; let i = index">
+        <div [formGroupName]="i">
+          <div class="form-group v3">
+            <input type="number" class="form-control" [(ngModel)]="subscriptions[i].capacity"
+                   formControlName="capacity">
+            <label>
+              {{ ('SUBSCRIPTIONS.' + subscriptions[i].name|uppercase)|translate| upperFirst }}
+            </label>
+          </div>
+          <div class="checkbox">
+            <div class="custom-checkbox">
+              <label>
+                <input type="checkbox" [(ngModel)]="subscriptions[i].active"
+                       formControlName="active">
+                <i aria-hidden="true" class="fa fa-check-circle"></i>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <label class="mobile-app-img-upload">
+      <input type="file" ng2FileSelect [uploader]="mobileImageUploader">
+      <div class="mobile-app-img" [ngClass]="{'no-img': !chefImageDisplayUrl }">
+        <img [src]="chefImageDisplayUrl" alt="Image for mobile news" *ngIf="chefImageDisplayUrl">
+      </div>
+      <a translate="SHARED.COMPONENTS.UPLOAD_IMAGE_FOR_APP">Upload image for mobile app</a>
+    </label>
+    <progress *ngIf="mobileImageFile" class="progress progress-striped progress-animated" max="100" [value]="mobileImageProgress">
+      <span style="color:white; white-space:nowrap;">{{mobileImageProgress}}%</span>
+    </progress>
+    <div class="text-center mb-2">
+      <a (click)="changePassword.show()" translate="BUTTONS.CHANGE_PASSWORD">Change password</a>
+    </div>
+    <div class="text-center">
+      <button class="btn btn-green btn-big" [disabled]="!settingForm.valid" type="submit" translate="BUTTONS.SAVE">Save</button>
+    </div>
+  </form>
+</div>
+<change-password #changePassword (onSuccess)="changePassword.close($event)" closePopup (onClosePopup)="changePassword.close($event)">
+</change-password>

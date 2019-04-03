@@ -1,0 +1,14 @@
+@import "../../../assets/css/shared-elements/switcher";
+
+.home-hero{
+  background: #f9f5f0 url(/assets/images/home/bg_pattern_eat.png) repeat;
+  position: relative;
+
+  .hero-img{
+    max-height: 367px;
+  }
+  .home-container{
+    z-index: 2;
+    position: relative;
+  }
+}

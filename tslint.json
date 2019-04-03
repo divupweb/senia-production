@@ -1,0 +1,77 @@
+{
+  "extends": [
+    "tslint:recommended"
+  ],
+  "defaultSeverity": "warning",
+  "rulesDirectory": [
+    "node_modules/codelyzer"
+  ],
+  "rules": {
+    // Custom
+    "trailing-comma": [false, {
+      "multiline": "always",
+      "singleline": "never"
+    }],
+    "interface-name": [false, "always-prefix"],
+    // Angular 2
+    "component-class-suffix": true,
+    // "component-selector": [true, "element", "my", "kebab-case"],
+    "directive-class-suffix": true,
+    // "directive-selector": [true, "attribute", "my", "camelCase"],
+    "invoke-injectable": true,
+    "no-access-missing-member": false,
+    "no-attribute-parameter-decorator": true,
+    "no-forward-ref": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "use-pipe-transform-interface": true,
+    "pipe-naming": [true, "camelCase"],
+    "templates-use-public": false,
+    "use-host-property-decorator": true,
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    // General
+    "no-console": [true,
+      "time",
+      "timeEnd",
+      "trace"
+    ],
+    "max-line-length": [
+      false,
+      1000
+    ],
+    "no-string-literal": false,
+    "no-use-before-declare": true,
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "quotemark": false,
+    "variable-name": [
+      true,
+      "allow-leading-underscore",
+      "allow-pascal-case",
+      "ban-keywords",
+      "check-format"
+    ],
+    "member-access": false,
+    "member-ordering": [
+      false,
+      "public-before-private",
+      "static-before-instance",
+      "variables-before-functions"
+    ],
+    "no-consecutive-blank-lines": false,
+    "semicolon": [true, "always"],
+    "radix": false,
+    "semicolon": false,
+    "no-var-keyword": false,
+    "triple-equals": false,
+    "use-life-cycle-interface": false,
+    "use-pipe-transform-interface": false,
+    "whitespace": false,
+    "curly": false,
+    "max-classes-per-file": false,
+    "object-literal-shorthand": false,
+    "prefer-const": false,
+    "no-debugger": false
+  }
+}

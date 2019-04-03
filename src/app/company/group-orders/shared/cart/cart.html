@@ -1,0 +1,12 @@
+<div class="basket">
+  <div *ngFor="let kitchenItems of groupedItems; let $index = index">
+    <div class="seprtr">
+      <div>
+        <div>{{kitchenItems[0].information.kitchen.name}}</div>
+        <div *ngIf="!deadlines[$index].passed">{{ 'SHARED.TIME_LEFT'| translate: {time: deadlines[$index].timeLeft | duration } }}</div>
+      </div>
+    </div>
+    <div *ngFor="let item of kitchenItems" [cartItem]="item" (onItemChange)="onItemChange($event)" (onItemRemove)="onItemRemove($event)"></div>
+  </div>
+
+</div>

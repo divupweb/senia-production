@@ -1,0 +1,21 @@
+@import '~assets/css/conf';
+
+:host{
+  display: block;
+  padding: 30px;
+}
+
+.pending-wrap{
+  padding: 50px;
+  border: 1px solid $gray-light;
+  margin-bottom: 50px;
+}
+
+@media (max-width: $mobile) {
+  :host{
+    padding: 20px;
+  }
+  .pending-wrap{
+    padding: 15px;
+  }
+}

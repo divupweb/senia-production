@@ -1,0 +1,200 @@
+@import '~assets/css/conf';
+@import '~assets/css/base64-icons';
+
+:host {
+  display: block;
+  position: relative;
+}
+
+header{
+  display: flex;
+  flex-flow: row wrap;
+  h3{
+    margin: 0 4% 0 0;
+    display: inline-block;
+  }
+  .extra-info{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+    color: $gray-text;
+    flex-shrink: 0;
+    border-bottom: 1px solid transparent;
+    cursor: pointer;
+    &:hover{
+      border-color: $gray-text;
+    }
+  }
+  .b64-icon-truck{
+    margin: 0 3px -1px 0;
+  }
+  .header-left{
+    flex: 1;
+  }
+  .add-kitchens-ctrl{
+    margin-left: auto;
+    font-size: 14px;
+    color: $main-green;
+    cursor: pointer;
+    @include user-select(none);
+
+    .open-popup{display: block;}
+    .close-popup{display: none;}
+
+    &.opened{
+      .open-popup{display: none;}
+      .close-popup{display: block;}
+    }
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
+
+.kitchens-list{
+  max-height: 340px;
+  background: white;
+  border: 1px solid #d9d9d9;
+  overflow-y: auto;
+  position: relative;
+}
+
+.kitchens-list-item{
+  height: 80px;
+  padding: 0 10%;
+  background: white;
+  position: relative;
+  z-index: 2;
+
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+
+
+
+
+  .img{
+    width: 50px;
+    height: 50px;
+    margin-right: 10%;
+    position: relative;
+    @include border-radius(50%);
+    overflow: hidden;
+
+    img{
+      width: 50px;
+      height: 50px;
+      @include border-radius(50%);
+    }
+    .overlay{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      line-height: 50px;
+      cursor: pointer;
+      background: rgba(222,74,57,.7);
+
+      .fa{
+        color: white;
+        line-height: 50px;
+      }
+      opacity: 0;
+
+      &.green{
+        background: rgba(93,185,144,.7);
+      }
+    }
+  }
+  .name{
+    font-size: 14px;
+    line-height: 1.2;
+    font-family: $font-bold;
+  }
+  .extra{
+    margin-left: auto;
+
+    .fa-star{
+      color: $red;
+      opacity: 0;
+    }
+  }
+  &:hover{
+    background: rgb(237,237,237); /* Old browsers */
+    background: -moz-linear-gradient(left,  rgba(237,237,237,1) 0%, rgba(237,237,237,1) 72%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(237,237,237,1) 0%,rgba(237,237,237,1) 72%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(237,237,237,1) 0%,rgba(237,237,237,1) 72%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+
+    .img .overlay{
+      opacity: 1;
+    }
+  }
+  &.favorite{
+    .extra{
+      .fa-star{
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.kitchens-popup{
+  background: white;
+  max-height: 380px;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 99.9%;
+  z-index: 3;
+  box-shadow: 0px 0px 15px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  &:before{
+    content: "";
+    position: absolute;
+    top: -9px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 9px 8px;
+    border-color: transparent transparent #ffffff transparent;
+  }
+  .kitchens-popup-search{
+    padding: 10%;
+    input{
+      width: 100%;
+      height: 50px;
+      padding: 0 10%;
+      line-height: 50px;
+      border: 1px solid #ece9e4;
+      font-size: 14px;
+
+      &:focus{
+        outline: none;
+        box-shadow: none;
+      }
+    }
+  }
+  .kitchens-popup-list{
+    max-height: 250px;
+    overflow-y: auto;
+    margin-right: 10px;
+  }
+
+  &.opened{
+    display: block;
+  }
+}
+
+@media (max-width: $laptop){
+
+}
+
+@media (max-width: $mobile-sm){
+  :host {
+    margin: 0 0 30px;
+  }
+}

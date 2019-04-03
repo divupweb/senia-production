@@ -1,0 +1,73 @@
+@import '~assets/css/conf';
+.employee-register{
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: cover;
+  position: relative;
+  text-align: center;
+
+  &-i{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    z-index: 2;
+  }
+  &:after{
+    content: "";
+    position: absolute;
+    background: rgba(74, 74, 74, .85);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+
+
+  .logo{
+    width: 340px;
+    margin: 0 auto 50px;
+  }
+  .info{
+    margin: 80px 0 40px;
+    font-size: 24px;
+    color: #a29b9b;
+    font-family: $font-bold;
+  }
+  .form{
+    width: 300px;
+    margin: 0 auto;
+    color: white;
+    a{
+      color: $main-green;
+    }
+    .fa-check-circle{
+      color: white!important;
+    }
+
+    .back{
+      color: white;
+      text-decoration: none;
+      span{
+        text-decoration: underline;
+      }
+      .fa{
+        color: white;
+      }
+
+      &:hover{
+        span{
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .alert.alert-danger{
+    color: white;
+  }
+}

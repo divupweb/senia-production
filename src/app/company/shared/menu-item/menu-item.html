@@ -1,0 +1,39 @@
+<div class="group-order-dish">
+  <div class="img" [ngStyle]="{'background-image': 'url(' + item.object.image_url  + ')'}">
+    <div class="allergy-label" *ngIf="item.object.allergies">
+      <div><strong>Allergies</strong></div>
+      <div class="allergies">{{ item.object.allergies }}</div>
+    </div>
+  </div>
+  <div class="txt">
+    <div class="txt-top">
+      <h2>{{ item.object.name }}</h2>
+      <div class="category" *ngIf="item.object.category_name">{{ item.object.category_name }}</div>
+      <div class="description">
+        <div class="description-i">
+          {{ item.object.description }}
+        </div>
+      </div>
+    </div>
+    <div class="txt-bottom">
+      <div class="price" [innerHTML]="item.object.price | currencyFormat"></div>
+      <div class="adding-control" [class.added]="item.added" *ngIf="!disabled && (!deadline || !deadline.passed)">
+        <div class="adding-control-i">
+          <div class="adding-control-counter">
+            <div class="ctrl" (click)="item.dec()" [class.disabled]="item.amount <= 0">
+              <i class="fa fa-minus" aria-hidden="true"></i>
+            </div>
+            <div class="amount">{{ item.amount }}</div>
+            <div class="ctrl" (click)="item.inc()">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="add-to-card" (click)="addToCart()">
+            <div class="add-to-card-i" [innerHTML]="('COMPANY.ORDERS.BUTTONS.' + item.text | uppercase) | translate">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

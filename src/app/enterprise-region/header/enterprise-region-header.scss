@@ -1,0 +1,161 @@
+@import '~assets/css/conf';
+:host {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: transparent;
+  z-index: 2;
+}
+
+header{
+  padding: 0 10px;
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: all 0.4s ease-in-out;
+}
+
+.header-i {
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1140px;
+  height: 200px;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: height 0.4s ease-in-out;
+}
+.logo{
+  height: 100px;
+  img {
+    height: 100px;
+  }
+}
+.scrolled{
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
+  background: white;
+  .header-i{height: 120px;}
+}
+
+.home-nav {
+  a {
+    color: $gray-text;
+    display: inline-block;
+    font-family: $font-bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-right: 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    border-bottom: 1px solid transparent;
+    &:hover{
+      color: $main-green;
+      border-bottom-color: $main-green;
+    }
+    &:last-child{
+      margin-right: 0;
+    }
+    &.router-link-active {
+      border-bottom-color: $gray-dark;
+      cursor: default;
+      color: $gray-dark;
+    }
+  }
+}
+.header-lang-wrap{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-auth{
+  padding: 3px 25px 1px!important;
+  min-width: 0!important;
+  margin-left: 30px;
+  background-color: transparent;
+  border: 1px solid $gray-dark;
+  color: $gray-dark;
+  font-family: $font-bold;
+  text-decoration: none!important;
+  display: inline-block;
+  vertical-align: middle;
+  transition: all 0.2s ease-in-out;
+  &:hover{
+    box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.29);
+    background: $gray-dark;
+    color: white!important;
+  }
+}
+
+
+
+
+// ******* RESPONSIVE STYLES *******
+
+.show-on-mobile{
+  visibility: hidden;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+@media (max-width: 767px){
+
+  :host{
+    position: relative;
+  }
+  .scrolled{
+    box-shadow: none;
+    background: transparent;
+  }
+  .header-i{
+    height: 230px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    .scrolled &{
+      height: 230px;
+    }
+  }
+
+
+  .btn-auth{
+    margin-left: 0;
+  }
+  .right{
+    margin-top: 30px;
+    display: flex;
+    flex-flow: column-reverse nowrap;
+    >span{
+      margin-top: 15px;
+      display: block;
+    }
+  }
+  .show-on-mobile{
+    position: inherit;
+  }
+  .hide-on-mobile{
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+
+
+
+
+}
+
+
+@media (max-width: 545px){
+  .logo{
+    margin-right: 15px;
+  }
+  .home-nav{
+    a{
+      margin-right: 15px;
+      font-size: 12px;
+    }
+  }
+}

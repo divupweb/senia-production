@@ -1,0 +1,12 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" (clickOutside)="close($event)" tabindex="1" (keyup.esc)="close($event)" (setFocus)="true">
+    <h4 class="mb-3">Select location</h4>
+    <a class="location" *ngFor="let location of locations" (click)="select(location)">
+      <strong>{{ location.city }}</strong>
+      <span class="text-green">{{ location.country}}</span>
+    </a>
+    <footer>
+      <a translate="BUTTONS.CLOSE" (click)="close($event)">Close</a>
+    </footer>
+  </div>
+</div>

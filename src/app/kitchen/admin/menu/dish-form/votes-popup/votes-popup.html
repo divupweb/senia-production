@@ -1,0 +1,18 @@
+
+<div class="popup-wrap" *ngIf="show" tabindex="2"
+  (keyup.esc)="close($event)"
+  (setFocus)="true">
+  <div class="popup">
+    <div class="popup-body">
+      <div class="item" *ngFor="let rating of ratings">
+        <div><strong>{{ rating.owner }}</strong></div>
+        <div class="text-grey">{{ rating.date | dayMonthYear }}</div>
+        <rating [(ngModel)]="rating.score" [max]="5" [readonly]="true"></rating>
+        <p *ngIf="rating">{{ rating.comment }}</p>
+      </div>
+    </div>
+    <footer>
+      <a class="close-popup" (click)="close($event)" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>

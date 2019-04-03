@@ -1,0 +1,67 @@
+<terms-and-conditions></terms-and-conditions>
+<div class="employee-register" [ngStyle]="{'background-image': 'url(/assets/images/home/menu-img-2.jpg)'}">
+  <div class="employee-register-i">
+    <div class="logo">
+      <img [src]="logo" alt="">
+    </div>
+    <div class="form">
+      <form [formGroup]="employeeForm" autocomplete="off">
+        <div class="form-group">
+          <input class="form-control" placeholder="{{ 'CONTROLS.EMAIL' | translate }}" formControlName="email" id="email" type="email">
+          <div class="alert alert-danger" *ngIf="employeeForm.get('email').touched && employeeForm.get('email').invalid">
+            <div *ngIf="employeeForm.get('email').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.EMAIL' | translate } }}
+            </div>
+            <div *ngIf="employeeForm.get('email').hasError('invalidEmailAddress')" translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="{{ 'CONTROLS.PASSWORD' | translate }}" class="form-control" formControlName="password" id="password">
+          <div class="alert alert-danger" *ngIf="employeeForm.get('password').touched && employeeForm.get('password').invalid">
+            <div *ngIf="employeeForm.get('password').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.PASSWORD' | translate } }}
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group input-with-logo mb-2">
+          <input type='text' placeholder="{{ 'ENTERPRISE.SIGN_UP.COMPANY' | translate }}" step="1" class="form-control"
+                 [value]="company?.name" [ngStyle]="{'background-image': 'url(' + company?.display_url + ')'}" id="company"
+                 (focus)="popup.show()"
+                 readonly="readonly">
+          <i class="fa fa-caret-down" aria-hidden="true"></i>
+          <div class="alert alert-danger" *ngIf="employeeForm.get('pin_code').touched && employeeForm.get('pin_code').invalid">
+            <div *ngIf="employeeForm.get('pin_code').hasError('required')">
+              {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'ENTERPRISE.SIGN_UP.COMPANY' | translate } }}
+            </div>
+          </div>
+        </div>
+
+        <custom-checkbox formControlName="toc" [classes]="{'checkbox-white': true}">
+          {{'EMPLOYEE_REGISTER.TOC.TEXT_BEFORE' | translate }}
+          <a (click)="showModal($event)">
+            <u>{{'EMPLOYEE_REGISTER.TOC.LINK' | translate }}</u>
+          </a>
+          {{'EMPLOYEE_REGISTER.TOC.TEXT_AFTER' | translate }}
+        </custom-checkbox>
+
+        <div class="text-right mt-2 mb-2">
+          <button class="btn btn-big btn-green btn-block"
+                  [disabled]="!employeeForm.valid"
+                  (click)="register()"
+                  translate="BUTTONS.REGISTER">Sign up
+          </button>
+        </div>
+        <div class="text-center mt-2 mb-2">
+          <span class="text-grey">{{ 'ENTERPRISE.POWERED_BY_0' | translate }} <a [routerLink]="['/']" class="text-grey">{{ 'ENTERPRISE.POWERED_BY_1' | translate }}</a></span>
+        </div>
+        <div class="text-center mt-2 mb-2">
+          <a [routerLink]="['../']" class="back">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>&nbsp;&nbsp;<span>{{ 'EMPLOYEE_REGISTER.BUTTONS.BACK_TO_WEBSITE' | translate }}</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<companies-popup #popup (onSelect)="onSelect($event)"></companies-popup>

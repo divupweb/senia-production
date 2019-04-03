@@ -1,0 +1,176 @@
+@import '~assets/css/conf';
+
+.kitchen-profit {
+  margin-top: 30px;
+}
+
+.heading-img{
+  margin-left: 30px;
+  font-size: 16px;
+  position: relative;
+  top: -7px;
+  display: inline-flex;
+  vertical-align: middle;
+  flex-flow: row nowrap;
+  align-items: center;
+  text-transform: capitalize;
+  .img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px;
+    max-width: 50px;
+    height: 50px;
+    flex: 0 0 50px;
+    border-radius: 50%;
+    background: $gray-light;
+    overflow: hidden;
+
+    img{
+      max-width: 100%;
+    }
+  }
+
+  .upload{
+    flex: 0 0 auto;
+    margin-right: 15px;
+    position: relative;
+    input[type="file"]{
+      position: absolute;
+      left: -99999px;
+      top: -999999px;
+    }
+    label{
+      margin: 0;
+      cursor: pointer;
+      text-decoration: underline;
+      position: relative;
+
+      &:hover{
+        text-decoration: none;
+      }
+    }
+  }
+  .remove{
+    flex: 0 0 auto;
+    cursor: pointer;
+    color: $red;
+    text-decoration: underline;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
+
+.user-form + .kitchen-profit {
+  margin-top: 100px;
+}
+
+// ******************
+
+.card-item{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  line-height: 1.2;
+  .left{
+    flex: 0 0 50px;
+    max-width: 50px;
+    margin-right: 7%;
+    overflow: hidden;
+    border-radius: 50%;
+    img{
+      max-width: 100%;
+    }
+  }
+}
+.card {
+  padding: 20px 7%;
+  &-title {
+    margin: 0;
+    font-family: $font-bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: flex;
+    flex-flow: row nowrap;
+
+    .right{
+      margin-left: auto;
+    }
+  }
+
+  &.no-bg{
+    background: transparent;
+  }
+}
+.admin-companies{
+  section{
+    margin: 30px 0 70px;
+  }
+  >.i{
+    background: #f9f5f0;
+    height: calc(100vh - 60px);
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+
+    main{
+      padding-top: 15px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-bottom: 110px;
+      flex-grow: 1;
+      position: relative;
+      height: calc(100vh - 60px);
+      form{
+        height: 100%;
+      }
+      .main-inner{
+        height: 100%;
+        margin: 0 -20px;
+        padding: 0 20px;
+        overflow-y: auto;
+      }
+      .main-footer{
+        padding: 0 20px;
+        position: absolute;
+        height: 110px;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        display: flex;
+        align-items: center;
+        a{
+          color: $gray-dark;
+        }
+        .right{
+          margin-left: auto;
+        }
+      }
+    }
+    aside{
+      height: calc(100vh - 60px);
+      background: white;
+      max-width: 330px;
+      padding-top: 190px;
+      padding-bottom: 110px;
+      flex-basis: 330px;
+      flex-shrink: 0;
+      border-left: 1px solid #edeae5;
+      position: relative;
+
+      .aside-i{
+        height: 100%;
+        overflow-y: auto;
+      }
+    }
+  }
+}
+
+@media (max-width: $laptop){
+  .admin-companies > .i aside{
+    max-width: 230px;
+    flex-basis: 230px;
+  }
+
+}

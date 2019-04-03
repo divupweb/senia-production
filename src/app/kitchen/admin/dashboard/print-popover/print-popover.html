@@ -1,0 +1,35 @@
+<div class="print-popover">
+  <div class="print-popover-list" *ngIf="printable">
+    <div class="print-list-item" (click)="printList('production_lists')">
+      <div class="img">
+        <div class="print-icon products-list"></div>
+      </div>
+      <div class="txt">
+        <strong translate="KITCHENS.PRINT_POPOVER.PRODUCTS_LIST">Products list</strong>
+      </div>
+    </div>
+    <div class="print-list-item" (click)="printList('packaging_lists')">
+      <div class="img">
+        <div class="print-icon packaging-list"></div>
+      </div>
+      <div class="txt">
+        <strong translate="KITCHENS.PRINT_POPOVER.PACKAGING_LIST"></strong>
+      </div>
+    </div>
+    <div class="print-list-item" (click)="printList('both')">
+      <div class="img">
+        <div class="print-icon both"></div>
+      </div>
+      <div class="txt">
+        <strong translate="KITCHENS.PRINT_POPOVER.BOTH_PROD_AND_PACK"></strong>
+      </div>
+    </div>
+  </div>
+  <div class="print-popover-info" *ngIf="!printable">
+    <i></i>
+    <div><strong translate="KITCHENS.PRINT_POPOVER.FOOTER_MESSAGE"></strong></div>
+    <div class="text-grey">
+      {{ 'SHARED.TIME_LEFT'| translate: { time: deadline.timeLeft | duration } }}
+    </div>
+  </div>
+</div>

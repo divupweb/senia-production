@@ -1,0 +1,33 @@
+<div class="order-popover" *ngIf="basket">
+  <header>
+    <h3>{{ basket.day | wkDay }}</h3>
+  </header>
+  <div class="body">
+    <section>
+      <div class="text-center mb-1"><strong>{{ basket.day | defaultDate }}</strong></div>
+      <div class="row mb-1" *ngFor="let item of basket.items">
+        <div class="col-sm-3"><div class="big">{{ item.quantity }}</div></div>
+        <div class="col-sm-9">
+          <div><strong>{{ item.category.kitchen_dish_category.dish_category }}</strong></div>
+          <div *ngIf="item.category.dish">{{ item.category.dish.name }}</div>
+          <div><strong>from {{ item.category.kitchen_dish_category.kitchen_name }} ({{ item.itemPrice | currencyFormat  }})</strong></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="total">
+      <div class="row text-green mb-1">
+        <div class="col-sm-6">Subsidies {{ basket.subscription }}</div>
+        <div class="col-sm-6 text-right">
+          <span *ngIf="basket.subsidy != 'free'">{{ basket.subsidy | currencyFormat  }}</span>
+          <span *ngIf="basket.subsidy == 'free'">FREE</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">Total Bill</div>
+        <div class="col-sm-6 text-right">{{ basket.total | currencyFormat  }}</div>
+      </div>
+    </div>
+  </footer>
+</div>

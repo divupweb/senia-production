@@ -1,0 +1,45 @@
+<div bsModal #modalDec="bs-modal" (onHide)="onHide()" (onShow)="onShow()" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true" >
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" (click)="modal.hide()" aria-label="Close">-->
+          <!--<span aria-hidden="true">&times;</span>-->
+        <!--</button>-->
+        <h4 class="text-center mb-2" translate="HOME.COMPANY.BRING_FOOD">LET'S BRING GREAT FOOD TO YOUR OFFICE!</h4>
+        <p class="text-grey mb-2" translate="HOME.COMPANY.PLEASE_PROVIDE_THE_CONTACT_DETAILS">Please provide the contact details of the decision maker you would like us to reach out to.</p>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="decisionForm" autocomplete="off" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input class="form-control" placeholder="{{ 'CONTROLS.EMAIL' | translate }}" formControlName="email" type="email">
+            <div class="alert alert-danger" *ngIf="decisionForm.controls.email.touched && decisionForm.controls.email.invalid">
+              <div *ngIf="decisionForm.get('email').hasError('required')">
+                {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.EMAIL' | translate } }}
+              </div>
+              <div *ngIf="decisionForm.controls.email.errors?.invalidEmailAddress"  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect</div>
+            </div>
+            <div class="alert alert-danger" *ngIf="decisionForm.errors?.email?.length > 0">
+              <div *ngFor="let error of decisionForm.errors?.email">{{ 'CONTROLS.EMAIL' | translate }} {{ error }}</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="firstName" placeholder="{{ 'CONTROLS.FIRST_NAME' | translate }}">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" formControlName="lastName" placeholder="{{ 'CONTROLS.LAST_NAME_OPTIONAL' | translate }}">
+          </div>
+
+          <footer>
+            <button class="btn btn-big btn-green btn-block" type="submit"
+                    translate="BUTTONS.SUBMIT">Submit
+            </button>
+            <div class="mt-1">
+              <a (click)="modal.hide()" translate="BUTTONS.CLOSE">Close</a>
+            </div>
+          </footer>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

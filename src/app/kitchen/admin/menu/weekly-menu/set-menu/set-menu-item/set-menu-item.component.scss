@@ -1,0 +1,134 @@
+@import '~assets/css/conf';
+
+.menu-list-item {
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+
+  .hover-inner,
+  .inner {
+    height: 50px;
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include transition(.2s ease all .15s);
+  }
+
+  .inner {
+    top: 0;
+    background: white;
+    opacity: 1;
+    z-index: 2;
+    .name {
+      font-size: 18px;
+      line-height: 1.2;
+    }
+  }
+
+  .hover-inner {
+    top: 0;
+    background: #ededed;
+    z-index: 1;
+
+    .name {
+      max-width: 160px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  &:hover {
+    .inner {
+      opacity: 0;
+      z-index: 1;
+    }
+
+    .hover-inner {
+      z-index: 2;
+    }
+  }
+}
+
+.select-day {
+  font-size: 0;
+  white-space: nowrap;
+
+  .day-wrap {
+    display: inline-block;
+  }
+
+  .day-wrap + .day-wrap .day{
+    margin-left: 5px;
+  }
+
+  .day {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+    display: inline-block;
+    overflow: hidden;
+    font-family: $font-bold;
+    @include user-select(none);
+
+    > span {
+      width: 36px;
+      height: 36px;
+      font-size: 10px;
+      line-height: 36px;
+      color: $main-green;
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      text-transform: uppercase;
+      // cursor: pointer;
+      @include border-radius(50%);
+    }
+
+    input[type="checkbox"] {
+      position: absolute;
+      left: -1000px;
+
+      &:checked + span {
+        background: $main-green;
+        color: white;
+      }
+      &:disabled + span {
+        cursor: not-allowed;
+      }
+    }
+
+    &.selected {
+      &:hover span,
+      span {
+        background: $main-green;
+        color: white;
+      }
+    }
+
+    + .day {
+      margin-left: 5px;
+    }
+
+    &.passed:hover {
+      span {
+        background: initial;
+        color: $main-green;
+      }
+    }
+
+    &:hover {
+      span {
+        background: $gray-dark;
+        color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,155 @@
+<user-menu>
+  <div class="heading">
+    <div class="user-menu-links">
+      <custom-checkbox [(ngModel)]="adminState.activeOnly" (change)="onActiveOnlyChange($event)"><span class="txt" translate="ADMIN.COMPANIES.ACTIVE_ONLY"></span></custom-checkbox>
+    </div>
+  </div>
+</user-menu>
+
+<div class="heading space-between">
+  <button class="btn btn-big btn-green" (click)="goToCreateForm()" translate="SHARED.MODES.ADD_NEW">&nbsp;&nbsp;&nbsp;Add
+    new&nbsp;&nbsp;&nbsp;
+  </button>
+  <div>
+    <sort-component [sortOrder]="sortOrder" (onSelect)="onSortSelect($event)" [items]="sortItems"></sort-component>
+  </div>
+  <form [formGroup]="queryForm">
+    <div class="heading-search">
+      <input class="form-control" placeholder="{{ 'SHARED.SEARCH_QUERY' | translate }}" formControlName="query" #query>
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </div>
+  </form>
+</div>
+<table class="table table-main table-lines table-stripes">
+  <thead>
+    <tr>
+      <th>
+        <div class="select-all custom-checkbox">
+          <label>
+          <input type="checkbox" (change)="toggleAll()" [checked]="selectedAll">
+          <i class="fa fa-check-circle" aria-hidden="true"></i>
+          <div class="txt">All</div>
+        </label>
+        </div>
+        <div class="d-inline" (click)="changeOrder('name')">
+          <span translate="CONTROLS.NAME">Name</span>
+          <sort-mark [column]="'name'" [sortOrder]="sortOrder"></sort-mark>
+        </div>
+      </th>
+      <th (click)="changeOrder('address')">
+        <span translate="CONTROLS.ADDRESS">Address</span>
+        <sort-mark [column]="'address'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th (click)="changeOrder('floor')">
+        <span translate="CONTROLS.FLOOR">Floor</span>
+        <sort-mark [column]="'floor'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th (click)="changeOrder('users_count')">
+        <span translate="CONTROLS.USERS">Users</span>
+        <sort-mark [column]="'users_count'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th class="orders-cell" (click)="changeOrder('orders_count')">
+        <span translate="CONTROLS.ORDERS">Orders</span>
+        <sort-mark [column]="'orders_count'" [sortOrder]="sortOrder"></sort-mark>
+      </th>
+      <th class="nowrap text-right">
+        <div class="table-extra" *ngIf="selectedCount > 0">
+          <div class="count-bubble">{{ selectedCount }}</div>
+          <div (click)="openBunchPopover()" class="table-extra-dots"><i></i><i></i><i></i></div>
+          <div class="table-extra-popover" *ngIf="showBunchPopover" closePopup (onClosePopup)="closeBunchPopover($event)">
+            <a class="item" (click)="sharedLocation.open(selectedCompanies)" translate="ADMIN.COMPANIES.SHARED_LOCATION.TITLE"></a>
+          </div>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let company of companies | paginate: paginationConfig" [ngClass]="{'active': company.selected}">
+      <td>
+        <div class="table-img-checkbox">
+          <label>
+          <span class="table-icon placeholder">
+            <img [src]="company.displayUrl" alt="">
+            <span class="checkbox-overlay">
+              <input type="checkbox" (change)="selectCompany(company)" [checked]="company.selected">
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
+              <i class="circle"></i>
+            </span>
+          </span>
+          <span class="table-item-name" (click)="becomeCompany(company.id, $event)">{{ company.name }}</span>
+        </label>
+
+        <span *ngIf="company.comment" class="comment-btn">
+          <span class="fuck"><i class="fa fa-comment"></i></span> 
+          <span class="comment-tooltip">{{company.comment}}</span>
+        </span>
+
+        </div>
+      </td>
+      <td>
+        {{ company.address }} {{ company.address2 }}
+        <span *ngIf="company.phone">, {{company.phone}}</span>
+      </td>
+      <td>{{ company.floor }}</td>
+      <td class='employees'><a (click)="becomeEmployee.open(company.id)">{{ company.usersCount }}</a></td>
+      <td>
+        <div class="progress-horizontal">
+          <span class="txt">{{ company.ordersCount }}</span>
+          <div class="progress-wrap" *ngIf="isFinite(company.ordersPercentage)">
+            <progress class="progress progress-blue progress-animated" max="100" [value]="company.ordersPercentage">
+              <span style="color:white; white-space:nowrap;"></span>
+            </progress>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="nowrap">
+          <a (click)="showEdit(company.id)">{{ 'BUTTONS.EDIT' | translate }}</a>
+          <div class="table-extra">
+            <div (click)="openCompanyPopover(company.id)" class="table-extra-dots"><i></i><i></i><i></i></div>
+            <div class="table-extra-popover" *ngIf="popover == company.id" closePopup (onClosePopup)="closeCompanyPopover($event)">
+              <a class="item" (click)="sendMesssage.open(service, company.id, 'Company')">
+              <span translate="BUTTONS.SEND_MESSAGE"></span>
+            </a>
+              <a class="item" (click)="showDiscountPopup(company.id)">
+              <span translate="ADMIN.COMPANIES.DISCOUNTS"></span>
+              <span class="info"></span>
+            </a>
+              <a class="item" (click)="showCreditsPopup(company.id, company.balance)">
+              <span translate="ADMIN.COMPANIES.CREDITS"></span>
+              <span class="info" *ngIf="company.balance > 0"> {{ company.balance }}</span>
+            </a>
+              <a class="item" (click)="sharedLocation.open([company])">
+              <span translate="ADMIN.COMPANIES.SHARED_LOCATION.TITLE"></span>
+              <span class="info" *ngIf="company.sharedLocationId" translate="ADMIN.COMPANIES.SHARED_LOCATION.SHARED"></span>
+            </a>
+              <a class="item" (click)="generateInvoice.open(service, company.id)">
+              <span translate="ADMIN.COMPANIES.GENERATE_INVOICE"></span>
+              <span class="info"></span>
+            </a>
+              <a class="item" (click)="becomeCompany(company.id)">
+              <span translate="BUTTONS.BECOME"></span>
+              <span class="info"></span>
+            </a>
+              <footer>
+                <span class="txt" translate="SHARED.STATES.ACTIVE" *ngIf="company.active"></span>
+                <span class="txt" translate="SHARED.STATES.INACTIVE" *ngIf="!company.active"></span>
+                <switch-checkbox [ngModel]="company.active" (change)="changeCompanyState(company, $event)"></switch-checkbox>
+              </footer>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="pull-right">
+  <admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id">
+  </admin-pagination>
+</div>
+<company-discount #companyDiscount></company-discount>
+<company-credits #companyCredits (onChange)="handleCreditsChange($event)"></company-credits>
+<send-message #sendMesssage></send-message>
+<generate-invoice #generateInvoice></generate-invoice>
+<employee-become #becomeEmployee></employee-become>
+<shared-location #sharedLocation (onUpdate)="onSharedLocationUpdate($event)"></shared-location>

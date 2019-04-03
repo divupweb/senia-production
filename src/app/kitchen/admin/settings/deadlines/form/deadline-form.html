@@ -1,0 +1,32 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup">
+    <div class="popup-body">
+      <h3 class="mt-1">{{ weekDays[deadline.day] }}</h3>
+      <div class="sub">
+        {{ ('SUBSCRIPTIONS.' + deadline.subscription_type|uppercase)|translate| upperFirst }}
+      </div>
+
+      <div class="time-selector mb-2">
+        <div class="text-grey"  translate="KITCHENS.SETTINGS.DEADLINES.PICKUP_TIME">Pickup time</div>
+        <timepicker class="timepicker-1" [(ngModel)]="pickupTime"></timepicker>
+      </div>
+      <div class="time-selector">
+        <div class="text-grey" translate="KITCHENS.SETTINGS.DEADLINES.DEADLINE_TIME">Deadline time</div>
+        <div style="width: 300px">
+          <timepicker class="timepicker-1" [(ngModel)]="closingTime"></timepicker>
+        </div>
+      </div>
+      <div class="weekdays-selector">
+        <label *ngFor="let weekDay of weekDaysShort; let $index = index">
+          <input type="radio" name="weekday" [value]="$index" [(ngModel)]="closingDay">
+          <div>{{ weekDay }}</div>
+        </label>
+      </div>
+    </div>
+    <footer>
+      <button class="btn btn-big btn-green" (click)="submit()" translate="BUTTONS.SAVE">Save</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>

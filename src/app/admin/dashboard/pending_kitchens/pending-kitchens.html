@@ -1,0 +1,14 @@
+<div class="pending-kitchens">
+  <div *ngFor="let kitchen of kitchens | paginate: paginationConfig">
+    <div class="pending-wrap" [ngSwitch]="isUpdate(kitchen)">
+        <div *ngSwitchCase="true">
+            <kitchen-update [kitchen]="kitchen" (onApprove)="onApprove($event)" (onReject)="onReject($event)" (onError)="onError($event)"></kitchen-update>
+        </div>
+        <div *ngSwitchDefault>
+            <kitchen-new [kitchen]="kitchen" (onApprove)="onApprove($event)" (onReject)="onReject($event)" (onError)="onError($event)"></kitchen-new>
+        </div>
+    </div>
+  </div>
+</div>
+
+<admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id"></admin-pagination>

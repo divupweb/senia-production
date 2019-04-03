@@ -1,0 +1,99 @@
+@import '~assets/css/conf';
+
+:host{
+  display: block;
+}
+.requests-container{
+  height: 100%;
+  white-space: nowrap;
+  transition: .5s;
+}
+.wrapper{
+  overflow: hidden;
+  font-size: 0;
+  height: 585px;
+  margin: 0 0 15px;
+
+  transition: height .5s;
+  &.collapsed {
+    height: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+  }
+}
+.request-wrap{
+  height: 100%;
+}
+.request{
+  margin: 0 30px;
+  font-size: 14px;
+  height: 100%;
+  padding: 4%;
+  border-top: 2px solid $catering;
+  border-left: 1px solid $gray-light;
+  border-right: 1px solid $gray-light;
+  border-bottom: 1px solid $gray-light;
+  white-space: normal;
+  display: flex;
+  flex-flow: column nowrap;
+
+  h4{
+    font-size: 18px;
+    font-family: $font-bold;
+    margin-bottom: 0;
+  }
+  .info{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+  .date{
+    height: 51px;
+    font-size: 12px;
+    line-height: 1.2;
+    font-family: $font-bold;
+    position: relative;
+  }
+  .request-sequence{
+    color: $main-green;
+    font-size: 24px;
+  }
+  .title{
+    margin: 45px 0 60px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+
+    img{
+      display: block;
+      margin-right: 30px;
+      @include border-radius(50%);
+
+      flex-basis: 110px;
+      max-width: 110px;
+    }
+    .content{
+      line-height: 1.2;
+    }
+    .name{
+      font-size: 60px;
+      font-family: $font-bold;
+    }
+    .sub{
+      color: $gray-text;
+      font-size: 24px;
+    }
+  }
+  footer{
+    margin-top: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+    .details{
+      margin-right: auto;
+      color: $gray-dark
+    }
+  }
+}

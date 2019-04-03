@@ -1,0 +1,62 @@
+@import '~assets/css/conf';
+.collapsable-item{
+  margin-bottom: 30px;
+  .header{
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    cursor: pointer;
+    .img {
+      height: 50px;
+      flex: 0 0 50px;
+      margin-right: 30px;
+      border-radius: 50%;
+      overflow: hidden;
+      img{
+        min-width: 100%;
+        font-size: 11px;
+        text-align: center;
+      }
+    }
+    strong{
+      font-size: 18px;
+    }
+
+    .toggle{
+      margin-left: auto;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      border-radius: 50%;
+      border: 1px solid $gray-light;
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      &.collapsed{
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .body{
+    padding-left: 80px;
+    ul{
+      list-style: none;
+      padding: 0;
+    }
+    li{
+      margin-bottom: 15px;
+      a{
+        color: $gray-dark;
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+      .info{
+        color: $gray-text;
+        font-size: 12px;
+      }
+    }
+  }
+}

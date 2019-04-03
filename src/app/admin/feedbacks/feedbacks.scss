@@ -1,0 +1,12 @@
+@import '~assets/css/conf';
+@import '~assets/css/shared-elements/tables';
+@import '~assets/css/shared-elements/table-icons';
+
+td:first-child{
+  width: 25%;
+}
+tr.unread{
+  .company-name{
+    font-family: $font-bold
+  }  
+}

@@ -1,0 +1,30 @@
+<header>
+    <div><strong>{{ user.first_name }} {{ user.last_name }}</strong></div>
+    <div class="text-grey">{{ company?.name }}, {{company?.address}} {{company?.zip_code}} {{company?.city}}</div>
+</header>
+<div class="body">
+  <div class="month-switcher">
+    <span class="circle-arrow circle-arrow-left" (click)="changeMonth(-1)">
+      <i class="fa fa-chevron-left"></i>
+    </span>
+    <strong>{{ current | fullMonth }}</strong>
+    <span class="circle-arrow circle-arrow-right" (click)="changeMonth(1)">
+      <i class="fa fa-chevron-right"></i>
+    </span>
+  </div>
+
+  <div class="chart-container">
+    <span class="chart-center">
+      <b>{{ total }}</b>
+      <small translate="USER.MEAL.PLURAL">Meals</small>
+    </span>
+    <x-chartist
+      [data]="data"
+      [type]="type"
+      [options]="options">
+    </x-chartist>
+  </div>
+
+</div>
+<footer><a *ngIf="state.companyAdmin()" (click)="navigateAdmin()" translate="BUTTONS.COMPANY_ADMIN">Go to Company admin</a></footer>
+<footer><a (click)="auth.submitLogout()" translate="BUTTONS.LOG_OUT">Log out</a></footer>

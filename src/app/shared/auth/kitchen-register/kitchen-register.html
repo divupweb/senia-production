@@ -1,0 +1,146 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup" (clickOutside)="close($event)" tabindex="1" (keyup.esc)="close($event)" (setFocus)="true">
+    <div *ngIf="!success">
+      <h4 class="mb-2" translate="KITCHEN_REGISTER.SIGN_UP_KITCHEN">Sign up your kitchen</h4>
+      <form (ngSubmit)="submitForm()" [formGroup]="kitchen">
+      <div class="form-group" formGroupName="accountParams">
+        <input name="account_params_id" type="hidden" formControlName="id">
+        <input name="account_params_name" type="hidden" formControlName="name">
+        <dropdown #dropdown
+          [other]="{ name: 'HOME.REGION.OTHER_CITY' | translate }"
+          [showSuggestions]="false"
+          [readonly]="dropdownReadonly"
+          [classes]="{'in-auth': true}"
+          [updateItemsFn]="updateAccountList"
+          [query]="kitchen.get(['accountParams', 'name']).value"
+          [placeholder]="'CONTROLS.REGION' | translate"
+          (onChange)="onChange($event)"
+          (onClear)="onClear($event)"
+          (onTyping)="onTyping($event)">
+        </dropdown>
+        <div class="alert alert-danger" *ngIf="kitchen.touched && kitchen.get(['accountParams', 'name']).invalid">
+          <div *ngIf="kitchen.get(['accountParams', 'name']).errors?.required">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.REGION' | translate } }}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control"  placeholder="{{ 'CONTROLS.CONTACT_PERSON' | translate }}"  formControlName="headChefName">
+        <div class="alert alert-danger" *ngIf="kitchen.controls.headChefName.touched && kitchen.controls.headChefName.invalid">
+          <div *ngIf="kitchen.controls.headChefName.errors?.required">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.CONTACT_PERSON' | translate } }}
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="kitchen.errors?.headChefName?.length > 0">
+          <div *ngFor="let error of kitchen.errors?.headChefName">{{ 'CONTROLS.CONTACT_PERSON' | translate }} {{ error }}</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control"  placeholder="{{ 'CONTROLS.KITCHEN_NAME' | translate }}"  formControlName="name">
+        <div class="alert alert-danger" *ngIf="kitchen.controls.name.touched && kitchen.controls.name.invalid">
+          <div *ngIf="kitchen.controls.name.errors?.required">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.KITCHEN_NAME' | translate } }}
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="kitchen.errors?.name?.length > 0">
+          <div *ngFor="let error of kitchen.errors?.name">{{ 'CONTROLS.KITCHEN_NAME' | translate }} {{ error }}</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" placeholder="{{ 'CONTROLS.PHONE' | translate }}" formControlName="phone">
+        <div class="alert alert-danger" *ngIf="kitchen.controls.phone.touched && kitchen.controls.phone.invalid">
+          <div *ngIf="kitchen.controls.phone.errors?.required">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.PHONE' | translate } }}
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="kitchen.errors?.phone?.length > 0">
+          <div *ngFor="let error of kitchen.errors?.phone">{{ 'CONTROLS.PHONE' | translate }} {{ error }}</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" placeholder="{{ 'CONTROLS.EMAIL' | translate }}" type="email"  formControlName="email">
+        <div class="alert alert-danger" *ngIf="kitchen.controls.email.touched && kitchen.controls.email.invalid">
+          <div *ngIf="kitchen.controls.email.errors?.required">
+            {{ 'CONTROLS.ERRORS.REQUIRED.MESSAGE'| translate: { field: 'CONTROLS.EMAIL' | translate } }}
+          </div>
+          <div *ngIf="kitchen.controls.email.errors?.invalidEmailAddress"  translate="CONTROLS.ERRORS.INCORRECT.EMAIL">Email is incorrect</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="kitchen.errors?.email?.length > 0">
+          <div *ngFor="let error of kitchen.errors?.email">{{ 'CONTROLS.EMAIL' | translate }} {{ error }}</div>
+        </div>
+      </div>
+
+      <div class="custom-checkbox text-grey">
+        <label class="custom-checkbox__inner-wrap">
+          <input type="checkbox" class="form-control" formControlName="receiveEmail">
+          <i class=" fa fa-check-circle"></i>
+          <div class="txt custom-checkbox__txt" translate="CONTROLS.RECEIVE_OCCASIONAL">RECEIVE_OCCASIONAL</div>
+        </label>
+      </div>
+
+      <div class="custom-checkbox text-grey">
+        <label class="custom-checkbox__inner-wrap">
+          <input type="checkbox" class="form-control" formControlName="agreeToc">
+          <i class=" fa fa-check-circle"></i>
+          <div class="custom-checkbox__txt">
+            {{'CONTROLS.AGREE_FF' | translate }}
+            <a [routerLink]=" ['../terms-of-service-kitchen'] " target="_blank">{{'CONTROLS.TERMS_OF_SERVICE' | translate}}</a>
+          </div>
+        </label>
+      </div>
+      <div class="alert alert-danger" *ngIf="kitchen.controls.agreeToc.touched && kitchen.controls.agreeToc.invalid">
+        <div *ngIf="kitchen.controls.agreeToc.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.MUST_AGREE">
+          You must agree
+        </div>
+      </div>
+
+      <div class="custom-checkbox text-grey">
+        <label class="custom-checkbox__inner-wrap">
+          <input type="checkbox" class="form-control" formControlName="agreePp">
+          <i class=" fa fa-check-circle"></i>
+          <div class="custom-checkbox__txt">
+            {{'CONTROLS.AGREE_FF' | translate }}&nbsp;
+            <a [routerLink]=" ['../privacy-policy'] " target="_blank">{{'CONTROLS.PRIVACY_POLICY' | translate}}</a>
+          </div>
+        </label>
+      </div>
+      <div class="alert alert-danger" *ngIf="kitchen.controls.agreePp.touched && kitchen.controls.agreePp.invalid">
+        <div *ngIf="kitchen.controls.agreePp.errors?.required" translate="CONTROLS.ERRORS.REQUIRED.MUST_AGREE">
+          You must agree
+        </div>
+      </div>
+
+      <footer>
+        <button class="btn btn-big btn-green btn-block" type="submit">{{ 'BUTTONS.SIGN_UP' | translate }}</button>
+        <div class="mt-1">
+          <a translate="BUTTONS.CLOSE" (click)="close()">Close</a>
+        </div>
+      </footer>
+    </form>
+    </div>
+    <div *ngIf="success" class="text-center">
+
+      <h4 class="mb-1">{{ 'KITCHEN_REGISTER.SUCCESS' | translate }}</h4>
+      <div class="text-grey mb-3">{{ 'KITCHEN_REGISTER.SUCCESS_DESC' | translate }}</div>
+      <div *ngIf="admin">
+        <img class="admin-img" [src]="admin.display_url" alt="">
+        <div class="mt-2"><strong class="uppercase" translate="COMPANY.CONTACT.YOUR_LOCAL_ADMIN">Your local admin</strong></div>
+        <div class="text-grey">{{ admin?.name }}</div>
+        <div><a href="mailto:{{ admin?.email }}" class="text-grey">{{ admin?.email }}</a></div>
+        <div *ngIf="admin?.phone" class="text-grey">mob. <a href="tel:{{ admin?.phone}}" class="text-grey">{{ admin?.phone }}</a></div>
+      </div>
+
+      <footer>
+        <div class="mt-1">
+          <a translate="BUTTONS.CLOSE" (click)="close()">Close</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+
+</div>

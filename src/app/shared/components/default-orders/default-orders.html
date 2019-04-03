@@ -1,0 +1,3 @@
+<default-orders-day *ngFor="let item of periodicsData.data" [item]="item" [popup]="popup" (onChange)="dayOnChange($event)"></default-orders-day>
+
+<defaults-edit-popup #popup (onSave)="periodicsData.onPopupClose($event)"></defaults-edit-popup>

@@ -1,0 +1,93 @@
+<div class="top">
+  <div class="datetime">
+    <span class="month"> {{ kitchen.created_at | dayMonth }}</span>
+    <span class="time">{{ kitchen.created_at | shortTime }}</span>
+  </div>
+  <h2>{{ 'ADMIN.PENDING_KITCHEN' | translate }}</h2>
+</div>
+<div class="body">
+  <div class="body-left">
+
+    <div class="field">
+      <strong translate="CONTROLS.KITCHEN_NAME">Kitchen name</strong>
+      <div class="value">{{ kitchen.name }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.PHONE">Phone</strong>
+      <div class="value">{{ kitchen.phone }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.EMAIL">Email</strong>
+      <div class="value">{{ kitchen.email }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.ADDRESS">Address</strong>
+      <div class="value">{{ kitchen.address }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.CITY">City</strong>
+      <div class="value">{{ kitchen.city }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.ZIP_CODE">Zip code</strong>
+      <div class="value">{{ kitchen.zip_code }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.COUNTRY">Country</strong>
+      <div class="value">{{ kitchen.country }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.PAYMENT_DETAILS">Payment Details</strong>
+      <div class="value">{{ kitchen.payment_details }}</div>
+    </div>
+    <div class="field">
+      <strong translate="CONTROLS.HEAD_CHEF_NAME">Head Chef Name</strong>
+      <div class="value">{{ kitchen.head_chef_name }}</div>
+    </div>
+
+  </div>
+
+  <div class="body-right">
+    <div *ngIf="kitchen.kitchen_subscriptions.length > 0">
+      <span translate="SUBSCRIPTIONS.PLURAL">Subscriptions</span>
+      <div *ngFor="let subscription of kitchen.kitchen_subscriptions">
+        <div class="field">
+          <strong translate="SUBSCRIPTIONS.SINGULAR">subscription_type</strong>
+          <div class="value">{{ ('SUBSCRIPTIONS.' + subscription.subscription_type|uppercase) | translate }}</div>
+        </div>
+        <div class="field">
+          <strong translate="CONTROLS.CAPACITY">capacity</strong>
+          <div class="value">{{ subscription.capacity }}</div>
+        </div>
+        <div class="field">
+          <strong translate="CONTROLS.INTEREST_PERCENT">interest_percent</strong>
+          <div class="value">{{ subscription.interest_percent }}</div>
+        </div>
+        <div class="field">
+          <strong translate="CONTROLS.DELIVERY"></strong>
+          <div class="value">{{ subscription.kitchen_delivery }}</div>
+        </div>
+
+        <div class="">
+          <div *ngIf="subscription.dish_categories.length > 0">
+            <span translate="SHARED.CATEGORIES.PLURAL">Categories</span>
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let category of subscription.dish_categories">{{ category.name }}</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="bottom">
+  <button (click)="approveKitchen()" [disabled]="kitchen.active" class="btn btn-big btn-green"
+          translate="BUTTONS.APPROVE">Approve
+  </button>
+  &nbsp;&nbsp;&nbsp;
+  <button (click)="rejectKitchen()" [disabled]="kitchen.active" class="btn btn-big btn-red"
+          translate="BUTTONS.REJECT">
+    Reject
+  </button>
+</div>

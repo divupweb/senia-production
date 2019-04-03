@@ -1,0 +1,3 @@
+<div class="form-group" [ngClass]="classes">
+  <input type="text" class="form-control" [(ngModel)]="inputValue" (focus)="onFocusEvent($event)" [readonly]="readonly" #control [placeholder]="placeholder">
+</div>

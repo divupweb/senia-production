@@ -1,0 +1,135 @@
+@import '~assets/css/conf';
+
+:host{
+  flex-basis: 80px;
+  display: block;
+  background: #fdf0c2;
+  border-bottom: 1px solid #f1e4bb;
+}
+.user-header{
+  background: #fdf0c2;
+  position: relative;
+  z-index: 2;
+
+  &.active{
+    z-index: 3;
+  }
+}
+.user-header-calendar{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.user-header-i{
+  height: 80px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-header-sub{
+  height: 142px;
+  background: white;
+  border-bottom: 1px solid #eaeaea;
+}
+.cart-info-wrap{
+  padding-top: 40px;
+}
+
+.user-header-controls{
+  >div{
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    position: relative;
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    .click-overlay{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+    }
+    .fa{
+      font-size: 22px;
+      color: #9f8282;
+    }
+
+    &.active,
+    &:hover{
+      background: #ecdda5;
+      .fa{color: $purple}
+    }
+  }
+}
+.circle-notification{
+  width: 20px;
+  height: 20px;
+  line-height: 24px;
+  font-family: $font-bold;
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  background: $red;
+  position: absolute;
+  top: 8px;
+  right: 5px;
+  @include border-radius(50%);
+}
+.user-header-banner{
+  background: $purple;
+  line-height: 1.2;
+   margin-top: 10px;
+  position: relative;
+  z-index: 2;
+  h2{
+    margin: 0;
+    font-size: 36px;
+    color: white;
+  }
+  p{
+    font-size: 18px;
+    color: #9673a1;
+  }
+  .banner-close{font-size:20px;color:#9673a1;position:absolute;right:30px;top: 50%;transform: translateY(-50%);cursor: pointer}
+}
+.user-header-banner-i{
+  padding-left: 260px;
+  min-height: 140px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  &.banner-1{background: url(~assets/images/usr-header-banner-img.jpg) 15px bottom no-repeat;
+    &:after{
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 8px 0 8px;
+      border-color: #9f93a2 transparent transparent transparent;
+      position: absolute;
+      bottom: -8px;
+      left: 30px;
+    }
+  }
+  &.banner-2{background: url(~assets/images/usr-header-banner-img2.jpg) 15px bottom no-repeat;
+    &:after{
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 8px 8px 8px;
+      border-color: transparent transparent $purple transparent;
+      position: absolute;
+      top: -8px;
+      right: 145px;
+    }
+  }
+}

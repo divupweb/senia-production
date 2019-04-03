@@ -1,0 +1,55 @@
+@import '~assets/css/conf';
+// USERS
+.users{
+  max-width: 390px;
+  padding: 0 20px;
+  margin: 60px auto;
+
+  &-item{
+    padding: 25px 30px;
+    border: 1px solid #f2f2f2;
+    margin-bottom: 30px;
+    position: relative;
+    cursor: pointer;
+    @include user-select(none);
+    &:hover{
+      border-color: $gray-dark;
+    }
+  }
+  .name{
+    font-size: 18px;
+    line-height: 1.2;
+    font-family: $font-bold;
+  }
+  .overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  .remove{
+    width: 30px;
+    height: 30px;
+    line-height: 34px;
+    position: absolute;
+    z-index: 3;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    cursor: pointer;
+    @include border-radius(50%);
+    .i{color: #de4a39;font-size: 24px}
+    &:hover{
+      background: #de4a39;
+      .i{color: white}
+    }
+  }
+}
+
+
+.users{
+  margin-top: 20px;
+}

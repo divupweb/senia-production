@@ -1,0 +1,39 @@
+<div class="heading space-between">
+  <button (click)="goToCreateForm()" class="btn btn-green btn-big" translate="BUTTONS.ADD_NEW">
+    Add new
+  </button>
+</div>
+
+<table class="table table-main table-lines table-stripes">
+  <thead>
+  <tr>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.NAME">Name</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.ADMIN_EMAIL">Admin email</th>
+    <th translate="SUPER_ADMIN.PROSPECTIVE_ACC.DELIVERY_TYPE">Delivery type</th>
+    <th></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let account of accounts | paginate: paginationConfig">
+    <td>
+      <span class="table-item-name">{{account.name}}</span>
+    </td>
+    <td>
+      <span class="table-item-name">{{account.admin_email}}</span>
+    </td>
+    <td>
+      <span class="table-item-name">{{deliveryTypes[account.delivery]}}</span>
+    </td>
+    <td>
+      <a [href]="service.emails(account.id)" translate="CONTROLS.EMAILS" target="_blank">Emails</a>
+      &nbsp;&nbsp;
+      <a (click)="showEdit(account.id)" >{{ 'BUTTONS.EDIT' | translate }}</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="text-right">
+  <admin-pagination (getPage)="getPage($event)" [id]="paginationConfig.id">
+  </admin-pagination>
+</div>

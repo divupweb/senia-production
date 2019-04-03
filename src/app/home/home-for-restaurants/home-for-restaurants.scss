@@ -1,0 +1,141 @@
+@import '~assets/css/conf';
+
+.home-hero{
+  background:{
+    image: url(/assets/images/home/restaurant_header.jpg);
+    repeat: no-repeat;
+    size: cover;
+    position: center bottom;
+  }
+  @media (max-height: 768px) {
+    background-position-y: 70%;
+  }
+  height: calc(100vh - 100px);
+  position: relative;
+
+  &:before {
+    height: 600px;
+    background: linear-gradient(to bottom, $white 20%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  h3{line-height: 1.6;}
+
+  .home-hero-i {
+    align-items: center;
+    padding-bottom: 0;
+    height: auto;
+  }
+
+  .home-container{
+    z-index: 2;
+    position: relative;
+  }
+
+  .hero-bottom {
+    transform: translateY(50%);
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 25px;
+    margin-top: -33px;
+    border-radius: 65px;
+    @media(min-width: $mobile-sm) {
+      margin-bottom: -16px;
+    }
+    &:before, &:after {
+      content: "";
+      background-image: url(/assets/images/home/circled-angle.png);
+      width: 31px;
+      height: 25px;
+      display: block;
+      position: absolute;
+      top: 32px;
+      @media (min-width: $mobile-sm) {
+        top: 37px;
+      }
+    }
+    &:before {
+      right: -21px;
+      @media (min-width: $mobile-sm) {
+        right: -18px;
+      }
+    }
+    &:after {
+      left: -21px;
+      transform: rotateY(180deg);
+      @media (min-width: $mobile-sm) {
+        left: -18px;
+      }
+    }
+
+    .btn-big {
+     @media(min-width: $mobile-sm) {
+       padding: 30px 40px;
+     }
+    }
+  }
+}
+
+.opinions {
+  background-color: $gray-light-blue;
+  &:before {
+    background-image: url("/assets/images/home/home-icons/two-commas-icon.png");
+  }
+  &__pic {
+    background: {
+      color:#fff;
+      image: url(/assets/images/restaurant-owner.png);
+      position: right 40%;
+      repeat: no-repeat;
+      size: cover;
+    }
+  }
+
+  &__content {
+    @media(min-width: $mobile-sm) {
+      max-width: 75%;
+      margin: auto;
+    }
+  }
+}
+
+.banners-slider-block {
+  @media(min-width: $mobile-sm) {
+    h2 {
+      max-width: 80%;
+      margin:{
+        left: auto;
+        right: auto;
+        bottom: 60px;
+      }
+    }
+  }
+}
+
+.register-kitchen {
+@media (min-width: $mobile-sm) {
+  h2 {
+    max-width: 65%;
+    margin:{
+      left: auto;
+      right: auto;
+    }
+  }
+}
+
+  &__footer {
+    &--pic {
+      z-index: 0;
+      display: block;
+      margin:{
+        right: auto;
+        left: auto;
+        bottom: -150px;
+      }
+      @media(min-width: $mobile-xs) {
+        margin-bottom: -250px;
+      }
+    }
+  }
+}

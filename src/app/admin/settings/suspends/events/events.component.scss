@@ -1,0 +1,59 @@
+@import '~assets/css/conf';
+.item{
+  min-height: 80px;
+  padding: 0 30px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  .img{
+    height: 50px;
+    flex: 0 0 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: $gray-light;
+    position: relative;
+    img{
+      max-width: 100%;
+      &[src="null"]{
+        display: none;
+      }
+    }
+    .overlay{
+      background: $main-green;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      font-size: 26px;
+      text-align: center;
+      line-height: 53px;
+      color: white;
+    }
+  }
+  .date{
+    color: $main-green;
+    font-size: 12px;
+  }
+  .txt{
+    line-height: 1.2;
+  }
+  .add-new{
+    cursor: pointer;
+    .img{
+      background: transparent;
+    }
+  }
+  &.active,
+  &:hover{
+    background: #ededed;
+  }
+}
+
+@media (max-width: $laptop) {
+  .item{
+    padding: 0 15px;
+  }
+}
+

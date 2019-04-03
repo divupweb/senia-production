@@ -1,0 +1,14 @@
+<div class="dish-item" [class.inactive]="!dish.active">
+  <div class="img">
+    <img [src]="dish.dishImage?.displayUrl || dish.dishCategory.displayUrl" *ngIf="dish.dishImage?.displayUrl || dish.dishCategory?.displayUrl">
+    <div class="overlay green" *ngIf="!dish.active" (click)="changeActiveDishState($event)"><span>+</span></div>
+  </div>
+  <div class="txt">
+    <div>
+      <div><strong>{{ dish.name }}</strong></div>
+      <div class="text-grey">{{ dish.categoryName }}</div>
+    </div>
+    <div class="text-green">{{ dish.price | currencyFormat  }}</div>
+  </div>
+  <i class="click-overlay" [routerLink]="['dishes', dish.id ]"></i>
+</div>

@@ -1,0 +1,40 @@
+<div class="popup-wrap" *ngIf="state">
+  <div class="popup">
+    <div class="popup-body-header">
+      <div class="sort-select">
+        <div class="title">{{ date | wkDay }}</div>
+        <div class="dropdown" [class.open]="showDropdown" (keyup.esc)="closeDropdown($event)" (clickOutside)="closeDropdown($event)" tabindex="2">
+          <span class="txt" (click)="openDropdown()">
+            {{ activeSort?.name | translate }}
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </span>
+          <ul class="dropdown-menu">
+            <li class="dropdown-item" *ngFor="let i of sortItems" (click)="onSortSelect(i)" [class.disabled]="i == activeSort">
+              {{ i?.name | translate }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="popup-tabs">
+        <h3 class="tab" *ngFor="let s of subscriptions; let $index = index;"
+            (click)="selected = $index;"
+            [ngClass]="{'active': selected == $index}">
+          {{ ('SUBSCRIPTIONS.' + s|uppercase) | translate | uppercase }}
+        </h3>
+      </div>
+    </div>
+    <div class="popup-body">
+      <div *ngFor="let s of subscriptions; let $index = index" [hidden]="selected != $index">
+        <cart-item *ngFor="let item of items[s]"
+          [cartItem]="item"
+                   (onItemChange)="isDirty = true"
+          [allowRemove]="false"></cart-item>
+      </div>
+    </div>
+    <footer>
+      <button class="btn btn-green btn-big" (click)="confirm()" [disabled]="!isDirty" translate="BUTTONS.CONFIRM">Confirm</button>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a (click)="close()" translate="BUTTONS.CLOSE">Close</a>
+    </footer>
+  </div>
+</div>

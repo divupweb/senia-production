@@ -1,0 +1,13 @@
+@import '~assets/css/conf';
+@import '~app/company/group-orders/shared/cart/cart-item/cart-item';
+
+.basket-item {
+  &:hover{
+    .img .overlay.red {
+      display: block;
+    }
+  }
+  .overlay.red {
+    background: rgba(217, 48, 16, .5);
+  }
+}

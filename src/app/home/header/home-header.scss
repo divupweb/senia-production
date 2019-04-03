@@ -1,0 +1,125 @@
+@import '~assets/css/conf';
+:host {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background: transparent;
+  z-index: 2;
+}
+
+header{
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: all 0.4s ease-in-out;
+}
+
+.header-i {
+  align-items: center;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1140px;
+  height: 100px;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;
+  transition: height 0.4s ease-in-out;
+}
+
+.scrolled{
+  box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
+  background: white;
+  .header-i{height: 60px;}
+}
+
+.home-nav {
+  padding-left: 0;
+  margin-bottom:0;
+  display: flex;
+  &__item {
+    list-style: none;
+    cursor: pointer;
+    position: relative;
+    &:not(:last-child) {
+      margin-right: 30px;
+    }
+    &:hover,
+    &.router-link-active {
+      &:after {
+        content:"";
+        width: 20px;
+        height: 2px;
+        display: block;
+        background-color: $main-green;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      a{color: $gray-dark;}
+    }
+    &.router-link-active {
+      cursor: default;
+      a{
+        cursor: default;
+      }
+    }
+    a {
+      color: $gray-text;
+      display: inline-block;
+      font-family: $font-bold;
+      font-size: 14px;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.2s ease-in-out;
+      border-bottom: 1px solid transparent;
+    }
+  }
+}
+.header-lang-wrap{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn {
+  font-family: $font-bold;
+  min-width: auto;
+}
+
+// ******* RESPONSIVE STYLES *******
+
+.show-on-mobile{
+  visibility: hidden;
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+@media (max-width: 767px){
+  .show-on-mobile{
+    position: inherit;
+  }
+  .hide-on-mobile{
+    visibility: hidden;
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+
+
+  .header-i{
+    height: 80px;
+  }
+
+}
+
+
+@media (max-width: 545px){
+  .logo{
+    margin-right: 15px;
+  }
+  .home-nav{
+    a{
+      font-size: 12px;
+    }
+  }
+}
+

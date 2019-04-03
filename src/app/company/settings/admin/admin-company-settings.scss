@@ -1,0 +1,66 @@
+@import '~assets/css/conf';
+
+
+:host{
+  display: block;
+  max-width: 380px;
+  padding: 0 20px;
+  margin: 60px auto;
+  text-align: center;
+}
+.logo-upload{
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  .logo-upload-placeholder{
+    width: 110px;
+    height: 110px;
+    background: $gray-light;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .logo-controls{
+    font-size: 16px;
+    .rm{color: $red;cursor: pointer;}
+
+    .upload-label{
+      cursor: pointer;
+      position: relative;
+      text-decoration: underline;
+      overflow: hidden;
+      margin: 0 15px 0 0;
+      display: inline-block;
+      vertical-align: middle;
+      input[type="file"]{
+        position: absolute;
+        left: -1000px;
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.logo-box {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid $gray-light;
+  }
+  i {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+  }
+}

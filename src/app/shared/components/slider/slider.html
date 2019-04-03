@@ -1,0 +1,5 @@
+<div class="nouislider-wrap" *ngIf="min !== max">
+  <span class="nouislider-start-val" *ngIf='displayLabels' [hidden]="hideMin()">{{ min }}</span>
+  <nouislider [config]="sliderConfig" [min]="min" [max]="max" [step]="1" [(ngModel)]="value" (change)="onValueChange($event)"></nouislider>
+  <span class="nouislider-end-val" *ngIf='displayLabels' [hidden]="hideMax()">{{ maxValue }}</span>
+</div>

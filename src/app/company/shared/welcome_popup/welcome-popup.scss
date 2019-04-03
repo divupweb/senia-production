@@ -1,0 +1,185 @@
+@import '~assets/css/conf';
+
+.add-card {
+  min-width: 0;
+}
+
+.alert.alert-danger {
+  padding: 7px 0 0;
+  background: transparent;
+  border: none;
+  color: $red;
+  text-align: left;
+}
+
+.arrow {
+  font-size: 2em;
+}
+
+.block-title {
+  display: inline-block;
+}
+
+.popup {
+  width: auto;
+  overflow: hidden;
+
+  header {
+    padding: 1em 2em 0;
+
+  }
+}
+
+.first-order {
+  display: flex;
+  padding: 0;
+  width: 700px;
+
+  .dish {
+    background-image: url('/assets/images/ca/tikka.jpg');
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    height: 410px;
+  }
+
+  .popup-body {
+    height: 410px;
+    padding: 0;
+    width: 70%;
+  }
+
+  .dish {
+    display: flex;
+    flex-direction: column;
+
+    .your-order {
+      color: $white;
+      font-family: $font-bold;
+      font-size: 3em;
+      padding: 1em 1.5em 0;
+    }
+
+    .one-step {
+      color: $main-green;
+      font-size: 1.8em;
+      padding: 0 1em 2em 2em;
+    }
+  }
+
+  .payment {
+    text-transform: uppercase;
+    font-family: $font-bold;
+  }
+
+}
+
+.description {
+  color: $gray-text;
+}
+
+.empty-p {
+  padding: 0 !important;
+}
+
+.empty-width {
+  width: 0 !important;
+  overflow: hidden !important;
+}
+
+.container {
+  display: flex;
+  padding: 4em 0 0;
+
+  .graph {
+    padding: 0 2.5em;
+    justify-content: center;
+    align-items: center;
+
+    .or {
+      color: $gray-text;
+      font-family: $font-bold;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    img {
+      width: 45px;
+    }
+  }
+
+  .payments {
+    .option {
+      padding-bottom: 5em;
+    }
+  }
+}
+
+@media (max-width: $mobile-sm) {
+  .first-order {
+    width: auto;
+    display: block;
+
+    .dish {
+      height: 300px;
+
+      .one-step,
+      .your-order {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+    .popup-body {
+      width: auto;
+    }
+  }
+  .container {
+    padding: 20px 0;
+    .graph img {
+      width: 26px;
+    }
+    .payments .option {
+      padding-bottom: 0;
+
+      &:first-child {
+        padding-bottom: 60px;
+      }
+    }
+  }
+}
+
+@media (max-width: $mobile-xs) {
+  .popup{
+
+  }
+  .first-order {
+    width: auto;
+    display: block;
+    .popup-body{
+      height: auto;
+    }
+    .dish {
+      height: auto;
+
+      .one-step{
+        font-size: 1.5em;
+
+      }
+      .your-order {
+        font-size: 1.8em;
+      }
+    }
+  }
+
+  .card-form{
+    .popup-body{
+      max-height: 245px;
+    }
+  }
+  .company-form{
+    .popup-body{
+      max-height: 245px;
+    }
+  }
+
+}

@@ -1,0 +1,15 @@
+<div class="popup" tabindex="3">
+  <div class="popup-body">
+    <div class="title">
+      <span translate="USER.NOTIFICATIONS.GENERAL_SUSPEND.TITLE">FoodFarm is away on holiday</span>
+      <span *ngIf="data && data.startDate == data.endDate" translate="USER.NOTIFICATIONS.GENERAL_SUSPEND.ONE" [translateParams]="data"></span>
+      <span *ngIf="data && data.startDate != data.endDate" translate="USER.NOTIFICATIONS.GENERAL_SUSPEND.MULTIPLE" [translateParams]="data"></span>
+    </div>
+    <p>{{ suspend.name }}</p>
+    <p>{{ suspend.description }}</p>
+    <img *ngIf="suspend.displayUrl" [src]="suspend.displayUrl">
+  </div>
+  <footer>
+    <a (click)="close($event)" translate="BUTTONS.CLOSE">Close</a>
+  </footer>
+</div>
